@@ -4,21 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Ricardo Bisignano — Sitio Oficial</title>
-  <!--
-    Descripción de la página para SEO y redes sociales. Mantiene el mensaje original
-    centrado en la propuesta de stand‑up y música improvisada. Se puede ajustar
-    la redacción en el futuro sin modificar la estructura del documento.
-  -->
   <meta name="description" content="Stand up, canciones improvisadas e interacción en vivo. Comprá entradas para el Paseo." />
-  <!-- Color de tema para navegadores móviles -->
   <meta name="theme-color" content="#0b0b0b" />
-  <!-- Enlaces preconectados para acelerar la carga de tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
-  <!-- Estilos optimizados. La versión se incrementa para forzar refresco del caché. -->
- <link rel="stylesheet" href="styles.css?v=1" />
-  <!-- Open Graph para compartir en redes sociales -->
+  <link rel="stylesheet" href="styles.css?v=6" />
   <meta property="og:title" content="Ricardo Bisignano — Sitio Oficial" />
   <meta property="og:description" content="Stand up, canciones improvisadas e interacción en vivo." />
   <meta property="og:image" content="assets/hero.jpg" />
@@ -46,39 +37,29 @@
          onclick="metr('track','cta_topbar')">Comprar entradas</a>
     </div>
   </header>
-  <!-- Script externo para métricas -->
+
+  <!-- Métricas -->
   <script>
-  function loadScript(callback){
-    var head = document.getElementsByTagName("head")[0], script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://tracker.metricool.com/resources/be.js";
-    script.onreadystatechange = callback;
-    script.onload = callback;
-    head.appendChild(script);
-  }
-  loadScript(function(){
-    if (typeof beTracker !== 'undefined') {
-      beTracker.t({hash:"4ae811a39424f16b35ee6f160f415523"});
+    function loadScript(cb){
+      var h=document.getElementsByTagName("head")[0], s=document.createElement("script");
+      s.type="text/javascript"; s.src="https://tracker.metricool.com/resources/be.js";
+      s.onreadystatechange=cb; s.onload=cb; h.appendChild(s);
     }
-  });
+    loadScript(function(){
+      if (typeof beTracker!=='undefined'){ beTracker.t({hash:"4ae811a39424f16b35ee6f160f415523"}); }
+    });
   </script>
+
   <main id="inicio">
     <!-- ====== HERO ====== -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-inner container">
         <div class="hero-text">
           <p class="kicker">PRÓXIMA FUNCIÓN:</p>
-          <!--
-            El encabezado utiliza un elemento <time> con el atributo datetime para
-            mejorar la accesibilidad y el SEO. La fecha se mantiene como texto
-            visible respetando el formato original.
-          -->
           <h1 id="hero-title">
-            <time datetime="2025-09-19">VIERNES 19/9</time><br />
-            PASEO LA PLAZA
+            <time datetime="2025-09-19">VIERNES 19/9</time><br />PASEO LA PLAZA
           </h1>
-          <p class="subtitle">Club Temple · 23.30 hs</p>
-
+          <p class="subtitle">Club Temple · 23.30&nbsp;hs</p>
           <div class="cta-group">
             <a class="btn-primary"
                href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
@@ -87,11 +68,7 @@
                onclick="metr('track','cta_hero')">Comprar entradas</a>
           </div>
         </div>
-
         <div class="hero-image" aria-hidden="true">
-          <!-- La imagen de héroe es decorativa. Según las directrices de la W3C, los
-               elementos decorativos deben tener alt="" para que los lectores de
-               pantalla la ignoren【346675392568588†L96-L104】. -->
           <img src="assets/hero.jpg" alt="" loading="eager" decoding="async" />
         </div>
       </div>
@@ -104,41 +81,28 @@
       <div class="container">
         <h2 id="videos-title">Videos</h2>
         <div class="video-grid">
-          <!-- Cada tarjeta contiene un iframe de YouTube. Se utilizan atributos
-               que refuerzan la seguridad y la privacidad. -->
           <article class="video-card">
             <div class="video-wrapper">
-              <iframe
-                title="Canción improvisada: Simpática"
+              <iframe title="Canción improvisada: Simpática"
                 src="https://www.youtube.com/embed/r2ao-fpUy88?rel=0&modestbranding=1&playsinline=1"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen></iframe>
+                loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
           </article>
-
           <article class="video-card">
             <div class="video-wrapper">
-              <iframe
-                title="Clip 2"
+              <iframe title="Clip 2"
                 src="https://www.youtube.com/embed/HWz5htm6BmE?rel=0&modestbranding=1&playsinline=1"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen></iframe>
+                loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
           </article>
-
           <article class="video-card">
             <div class="video-wrapper">
-              <iframe
-                title="Clip 3"
+              <iframe title="Clip 3"
                 src="https://www.youtube.com/embed/uF0v_gtMUPs?rel=0&modestbranding=1&playsinline=1"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen></iframe>
+                loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
           </article>
         </div>
@@ -151,13 +115,11 @@
     <section id="shows" class="shows-section" aria-labelledby="shows-title">
       <div class="container">
         <h2 id="shows-title">Próximos shows</h2>
-
         <div class="shows-list">
-          <!-- Tarjeta de show 19/9 -->
           <article class="show-card">
             <div class="show-info">
               <time class="show-date" datetime="2025-09-19">VIERNES 19/9</time>
-              <span class="show-meta">23.30 h — PASEO LA PLAZA</span>
+              <span class="show-meta">23.30&nbsp;h — PASEO LA PLAZA</span>
             </div>
             <a class="btn-ticket"
                href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
@@ -165,15 +127,16 @@
                aria-label="Comprar entradas para el 19 de septiembre"
                onclick="metr('track','cta_show_19')">
               <span>Comprar</span>
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 5.2L20 12l-6.8 6.8-1.4-1.4L16.3 13H4v-2h12.3l-5.3-4.4 1.4-1.4z" fill="currentColor"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.2 5.2L20 12l-6.8 6.8-1.4-1.4L16.3 13H4v-2h12.3l-5.3-4.4 1.4-1.4z" fill="currentColor"/>
+              </svg>
             </a>
           </article>
 
-          <!-- Tarjeta de show 26/9 -->
           <article class="show-card">
             <div class="show-info">
               <time class="show-date" datetime="2025-09-26">VIERNES 26/9</time>
-              <span class="show-meta">23.30 h — PASEO LA PLAZA</span>
+              <span class="show-meta">23.30&nbsp;h — PASEO LA PLAZA</span>
             </div>
             <a class="btn-ticket"
                href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410520"
@@ -181,31 +144,27 @@
                aria-label="Comprar entradas para el 26 de septiembre"
                onclick="metr('track','cta_show_26')">
               <span>Comprar</span>
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 5.2L20 12l-6.8 6.8-1.4-1.4L16.3 13H4v-2h12.3l-5.3-4.4 1.4-1.4z" fill="currentColor"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.2 5.2L20 12l-6.8 6.8-1.4-1.4L16.3 13H4v-2h12.3l-5.3-4.4 1.4-1.4z" fill="currentColor"/>
+              </svg>
             </a>
           </article>
         </div>
       </div>
     </section>
+
     <hr class="divider" />
 
     <!-- ====== CÓMO LLEGAR ====== -->
     <section id="llegar" class="llegar-section">
       <div class="container">
         <h2>Cómo llegar a Temple</h2>
-
         <div class="llegar-grid">
           <div class="map-container">
-            <iframe
-              loading="lazy"
-              allowfullscreen
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=Paseo%20La%20Plaza%20Buenos%20Aires&z=17&output=embed">
-            </iframe>
+            <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Paseo%20La%20Plaza%20Buenos%20Aires&z=17&output=embed"></iframe>
           </div>
-
           <div class="llegar-photos">
-            <!-- Se añade la clase photo-card--temple para cambiar el orden en desktop -->
             <figure class="photo-card photo-card--temple">
               <img src="assets/SaveVid.Net_489951430_122175670454288882_6748368576523613481_n.jpg" alt="Exterior del Temple Bar en Paseo La Plaza" loading="lazy" decoding="async" />
             </figure>
@@ -214,13 +173,9 @@
             </figure>
           </div>
         </div>
-
         <div class="llegar-cta">
-          <a class="btn-secondary" href="https://goo.gl/maps/Lm71Zw7JzD6uFyFTA" target="_blank" rel="noopener">Abrir en Google Maps</a>
-          <a class="btn-primary"
-             href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
-             target="_blank" rel="noopener"
-             onclick="metr('track','cta_maps')">Comprar entradas</a>
+          <a class="btn-secondary" href="https://goo.gl/maps/Lm71Zw7JzD6uFyFTA" target="_blank" rel="noopener">Abrir en Google&nbsp;Maps</a>
+          <a class="btn-primary" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519" target="_blank" rel="noopener" onclick="metr('track','cta_maps')">Comprar entradas</a>
         </div>
       </div>
     </section>
@@ -231,13 +186,7 @@
     <section id="fotos" class="fotos-section" aria-labelledby="fotos-title">
       <div class="container">
         <h2 id="fotos-title">Fotos</h2>
-
         <div class="gallery">
-          <!--
-            Cada botón del carrusel usa data-full para indicar la ruta de la imagen
-            ampliada. Se añade un role="button" para que sean reconocidos por
-            lectores de pantalla. Al hacer clic se abrirá el dialog lightbox.
-          -->
           <button class="gallery-item" data-full="assets/DSC_0309.JPG.png" aria-label="Ver imagen ampliada de la entrada al Temple Bar" role="button">
             <img src="assets/DSC_0309.JPG.png" alt="Entrada del Temple Bar" loading="lazy" decoding="async" />
           </button>
@@ -251,13 +200,11 @@
             <img src="assets/gallery1.jpg" alt="Interior del Temple" loading="lazy" decoding="async" />
           </button>
         </div>
-      </div>
 
-      <!-- Lightbox implementado con dialog. El script que acompaña a este
-           documento gestiona su apertura y cierre. -->
-      <dialog id="lightbox" class="lightbox" aria-label="Vista ampliada">
-        <img src="" alt="Imagen ampliada" />
-      </dialog>
+        <dialog id="lightbox" class="lightbox" aria-label="Vista ampliada">
+          <img src="" alt="Imagen ampliada" />
+        </dialog>
+      </div>
     </section>
 
     <hr class="divider" />
@@ -272,7 +219,6 @@
           <p>Gire con mis unipersonales <em>Viste?</em>, <em>Sin Calle</em> y <em>The Working Progre</em>, girando todo el país y países limítrofes.</p>
           <p>Comparto clips y canciones en <strong>Instagram</strong>, <strong>YouTube</strong>, <strong>TikTok</strong> y <strong>Facebook</strong></p>
         </div>
-
         <div class="bio-photo" aria-hidden="true">
           <img src="assets/perfil.png" alt="Ricardo Bisignano de perfil" loading="lazy" decoding="async" />
         </div>
@@ -296,48 +242,20 @@
 
   <footer class="footer" role="contentinfo">© <span id="year"></span> Ricardo Bisignano</footer>
 
-  <!-- ====== Sticky CTA para dispositivos móviles ====== -->
-  <!--
-    Este elemento aparece únicamente en pantallas pequeñas (configurado en
-    CSS). Proporciona un acceso permanente para comprar entradas, tal y como
-    recomiendan los expertos en optimización de eventos: el botón de compra
-    debe ser visible y accesible en todo momento【911442354372138†L41-L64】.
-  -->
-  <div class="sticky-cta" aria-hidden="true">
-    <a class="btn-primary" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519" target="_blank" rel="noopener" onclick="metr('track','cta_sticky')">Comprar entradas</a>
-  </div>
+  <!-- Sin sticky-cta: eliminado -->
 
-  <!-- Script para actualizar el año en el footer -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <!-- Script para el lightbox de la galería -->
-  <script>
     (function(){
-      var lightbox = document.getElementById('lightbox');
-      if (!lightbox) return;
-      var img = lightbox.querySelector('img');
-      // Abrir diálogo al hacer clic en una miniatura
+      var lightbox=document.getElementById('lightbox'); if(!lightbox) return;
+      var img=lightbox.querySelector('img');
       document.querySelectorAll('.gallery-item').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          var full = this.getAttribute('data-full');
-          if (full) {
-            img.src = full;
-            lightbox.showModal();
-          }
+        btn.addEventListener('click',function(){
+          var full=this.getAttribute('data-full'); if(full){ img.src=full; lightbox.showModal(); }
         });
       });
-      // Cerrar al hacer clic fuera de la imagen o al pulsar Escape
-      lightbox.addEventListener('click', function(e){
-        if (e.target === lightbox) {
-          lightbox.close();
-        }
-      });
-      lightbox.addEventListener('keydown', function(e){
-        if (e.key === 'Escape') {
-          lightbox.close();
-        }
-      });
+      lightbox.addEventListener('click',function(e){ if(e.target===lightbox){ lightbox.close(); } });
+      lightbox.addEventListener('keydown',function(e){ if(e.key==='Escape'){ lightbox.close(); } });
     })();
   </script>
 </body>
