@@ -722,4 +722,7 @@ h2 {
 @media (max-width: 360px) {
   .cta-group .btn-primary { font-size: .98rem; }
   .hero-text h1 { font-size: 13.5vw; }
+/* Ocultar el botón fijo en mobile */
+@media (max-width: 1024px){
+  .sticky-cta{ display:none !important; }
 }
