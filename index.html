@@ -11,7 +11,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=142" />
 </head>
-<script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"4ae811a39424f16b35ee6f160f415523"})});</script>
+<script>
+function loadScript(a){
+  var b=document.getElementsByTagName("head")[0],c=document.createElement("script");
+  c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",
+  c.onreadystatechange=a,c.onload=a,b.appendChild(c)
+}
+loadScript(function(){beTracker.t({hash:"4ae811a39424f16b35ee6f160f415523"})});
+</script>
 <body>
   <!-- ====== TOPBAR ====== -->
   <header class="topbar" role="banner">
@@ -25,7 +32,11 @@
         <a href="#bio">Bio</a>
         <a href="#contrataciones">Contrataciones</a>
       </nav>
-      <a class="btn-cta" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519" target="_blank" rel="noopener" aria-label="Comprar entradas ahora">Comprar entradas</a>
+      <a class="btn-cta"
+         href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
+         target="_blank" rel="noopener"
+         aria-label="Comprar entradas ahora"
+         onclick="metr('track','cta_topbar')">Comprar entradas</a>
     </div>
   </header>
 
@@ -42,9 +53,8 @@
             <a class="btn-primary"
                href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
                target="_blank" rel="noopener"
-               aria-label="Comprar entradas para Paseo La Plaza">
-              Comprar entradas
-            </a>
+               aria-label="Comprar entradas para Paseo La Plaza"
+               onclick="metr('track','cta_hero')">Comprar entradas</a>
           </div>
         </div>
 
@@ -55,7 +65,6 @@
     </section>
 
     <hr class="divider" />
-
 
     <!-- ====== VIDEOS ====== -->
     <section id="videos" class="videos-section" aria-labelledby="videos-title">
@@ -114,7 +123,11 @@
           <span class="show-date">VIERNES 19/9</span>
           <span class="show-meta">23.30H — PASEO LA PLAZA</span>
         </div>
-        <a class="btn-ticket" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519" target="_blank" rel="noopener" aria-label="Comprar entradas para el 19 de septiembre">
+        <a class="btn-ticket"
+           href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
+           target="_blank" rel="noopener"
+           aria-label="Comprar entradas para el 19 de septiembre"
+           onclick="metr('track','cta_show_19')">
           <span>Comprar</span>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 5.2L20 12l-6.8 6.8-1.4-1.4L16.3 13H4v-2h12.3l-5.3-4.4 1.4-1.4z" fill="currentColor"/></svg>
         </a>
@@ -125,7 +138,11 @@
           <span class="show-date">VIERNES 26/9</span>
           <span class="show-meta">23.30H — PASEO LA PLAZA</span>
         </div>
-        <a class="btn-ticket" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410520" target="_blank" rel="noopener" aria-label="Comprar entradas para el 26 de septiembre">
+        <a class="btn-ticket"
+           href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410520"
+           target="_blank" rel="noopener"
+           aria-label="Comprar entradas para el 26 de septiembre"
+           onclick="metr('track','cta_show_26')">
           <span>Comprar</span>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 5.2L20 12l-6.8 6.8-1.4-1.4L16.3 13H4v-2h12.3l-5.3-4.4 1.4-1.4z" fill="currentColor"/></svg>
         </a>
@@ -135,17 +152,13 @@
 </section>
 <hr class="divider" />
 
-<!-- ====== CÓMO ====== -->
-
-    <hr class="divider" />
-
+<!-- ====== CÓMO LLEGAR ====== -->
 <section id="llegar" class="llegar-section">
   <div class="container">
     <h2>Cómo llegar a Temple</h2>
 
     <div class="llegar-grid">
       <div class="map-container">
-        <!-- Mapa centrado en Paseo La Plaza con zoom 17 -->
         <iframe
           loading="lazy"
           allowfullscreen
@@ -155,7 +168,6 @@
       </div>
 
       <div class="llegar-photos">
-        <!-- Hacemos que TEMPLE luzca más (más grande y primero) -->
         <figure class="photo-card photo-card--temple">
           <img src="assets/SaveVid.Net_489951430_122175670454288882_6748368576523613481_n.jpg" alt="Temple Bar en Paseo La Plaza">
         </figure>
@@ -167,13 +179,15 @@
 
     <div class="llegar-cta">
       <a class="btn-secondary" href="https://goo.gl/maps/Lm71Zw7JzD6uFyFTA" target="_blank" rel="noopener">Abrir en Google Maps</a>
-      <a class="btn-primary" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519" target="_blank" rel="noopener">Comprar entradas</a>
+      <a class="btn-primary"
+         href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
+         target="_blank" rel="noopener"
+         onclick="metr('track','cta_maps')">Comprar entradas</a>
     </div>
   </div>
 </section>
 
 <hr class="divider" />
-
 
 <!-- ====== FOTOS ====== -->
 <section id="fotos" class="fotos-section" aria-labelledby="fotos-title">
@@ -181,30 +195,27 @@
     <h2 id="fotos-title">Fotos</h2>
 
     <div class="gallery">
-      <!-- Usa data-full para el lightbox (puede ser el mismo src si no tenés versión grande) -->
-          <button class="gallery-item" data-full="assets/DSC_0309.JPG.png" aria-label="Entrada Temple">
+      <button class="gallery-item" data-full="assets/DSC_0309.JPG.png" aria-label="Entrada Temple">
         <img src="assets/DSC_0309.JPG.png" alt="Entrada Temple" loading="lazy" decoding="async" />
-      
+      </button>
       <button class="gallery-item" data-full="assets/extra 1.png" aria-label="Ricardo Bisignano en escena">
         <img src="assets/extra 1.png" alt="Ricardo Bisignano en escena" loading="lazy" decoding="async" />
       </button>
       <button class="gallery-item" data-full="assets/357717276_10228064656914378_4229634095250468237_n.jpg" aria-label="Paseo La Plaza">
         <img src="assets/357717276_10228064656914378_4229634095250468237_n.jpg" alt="Paseo La Plaza" loading="lazy" decoding="async" />
       </button>
-    </button><button class="gallery-item" data-full="assets/gallery1.jpg" aria-label="Temple interior">
+      <button class="gallery-item" data-full="assets/gallery1.jpg" aria-label="Temple interior">
         <img src="assets/gallery1.jpg" alt="Temple interior" loading="lazy" decoding="async" />
       </button>
     </div>
   </div>
 
-  <!-- Lightbox nativo (sin librerías) -->
   <dialog id="lightbox" class="lightbox" aria-label="Vista ampliada">
     <img src="" alt="" />
   </dialog>
 </section>
 
 <hr class="divider" />
-
 
 <!-- ====== BIO ====== -->
 <section id="bio" class="bio-section" aria-labelledby="bio-title">
@@ -217,27 +228,25 @@
       <p>Comparto clips y canciones en <strong>Instagram</strong>, <strong>YouTube</strong>, <strong>TikTok</strong> y <strong>Facebook</strong></p>
     </div>
 
-    <!-- La foto es decorativa: aria-hidden + alt vacío -->
     <div class="bio-photo" aria-hidden="true">
       <img src="assets/perfil.png" alt="" loading="lazy" decoding="async" />
     </div>
   </div>
 </section>
 
+<hr class="divider" />
 
-    <hr class="divider" />
-
-    <!-- ====== CONTACTO ====== -->
-    <section id="contrataciones" class="contrataciones-section" aria-labelledby="contacto-title">
-      <div class="container">
-        <h2 id="contacto-title">Contrataciones</h2>
-        <p>¿Querés llevar mi show a tu bar, teatro o evento? Escribime y organizamos la fecha.</p>
-        <p><strong>Contacto:</strong>
-          <a href="mailto:bisignanook@gmail.com">bisignanook@gmail.com</a> ·
-          <a href="https://wa.me/5491134652349" target="_blank" rel="noopener">WhatsApp</a>
-        </p>
-      </div>
-    </section>
+<!-- ====== CONTACTO ====== -->
+<section id="contrataciones" class="contrataciones-section" aria-labelledby="contacto-title">
+  <div class="container">
+    <h2 id="contacto-title">Contrataciones</h2>
+    <p>¿Querés llevar mi show a tu bar, teatro o evento? Escribime y organizamos la fecha.</p>
+    <p><strong>Contacto:</strong>
+      <a href="mailto:bisignanook@gmail.com">bisignanook@gmail.com</a> ·
+      <a href="https://wa.me/5491134652349" target="_blank" rel="noopener">WhatsApp</a>
+    </p>
+  </div>
+</section>
   </main>
 
   <footer class="footer" role="contentinfo">© <span id="year"></span> Ricardo Bisignano</footer>
@@ -248,4 +257,3 @@
   </script>
 </body>
 </html>
-
