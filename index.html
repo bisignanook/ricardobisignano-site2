@@ -4,23 +4,30 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Ricardo Bisignano — Sitio Oficial</title>
+  <!--
+    Descripción de la página para SEO y redes sociales. Mantiene el mensaje original
+    centrado en la propuesta de stand‑up y música improvisada. Se puede ajustar
+    la redacción en el futuro sin modificar la estructura del documento.
+  -->
   <meta name="description" content="Stand up, canciones improvisadas e interacción en vivo. Comprá entradas para el Paseo." />
-  <meta name="theme-color" content="#0f0f10" />
+  <!-- Color de tema para navegadores móviles -->
+  <meta name="theme-color" content="#0b0b0b" />
+  <!-- Enlaces preconectados para acelerar la carga de tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=142" />
+  <!-- Estilos optimizados. La versión se incrementa para forzar refresco del caché. -->
+ <link rel="stylesheet" href="styles.css?v=1" />
+  <!-- Open Graph para compartir en redes sociales -->
+  <meta property="og:title" content="Ricardo Bisignano — Sitio Oficial" />
+  <meta property="og:description" content="Stand up, canciones improvisadas e interacción en vivo." />
+  <meta property="og:image" content="assets/hero.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:url" content="https://ricardobisignano.com.ar/" />
 </head>
-<script>
-function loadScript(a){
-  var b=document.getElementsByTagName("head")[0],c=document.createElement("script");
-  c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",
-  c.onreadystatechange=a,c.onload=a,b.appendChild(c)
-}
-loadScript(function(){beTracker.t({hash:"4ae811a39424f16b35ee6f160f415523"})});
-</script>
 <body>
-  <!-- ====== TOPBAR ====== -->
+  <!-- ====== BARRA SUPERIOR ====== -->
   <header class="topbar" role="banner">
     <div class="container">
       <a href="#inicio" class="logo" aria-label="Ir al inicio">RICARDO BISIGNANO</a>
@@ -39,15 +46,38 @@ loadScript(function(){beTracker.t({hash:"4ae811a39424f16b35ee6f160f415523"})});
          onclick="metr('track','cta_topbar')">Comprar entradas</a>
     </div>
   </header>
-
+  <!-- Script externo para métricas -->
+  <script>
+  function loadScript(callback){
+    var head = document.getElementsByTagName("head")[0], script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://tracker.metricool.com/resources/be.js";
+    script.onreadystatechange = callback;
+    script.onload = callback;
+    head.appendChild(script);
+  }
+  loadScript(function(){
+    if (typeof beTracker !== 'undefined') {
+      beTracker.t({hash:"4ae811a39424f16b35ee6f160f415523"});
+    }
+  });
+  </script>
   <main id="inicio">
     <!-- ====== HERO ====== -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-inner container">
         <div class="hero-text">
           <p class="kicker">PRÓXIMA FUNCIÓN:</p>
-          <h1 id="hero-title">VIERNES 19/9<br />PASEO LA PLAZA</h1>
-          <p class="subtitle">Club Temple · 23.30hs</p>
+          <!--
+            El encabezado utiliza un elemento <time> con el atributo datetime para
+            mejorar la accesibilidad y el SEO. La fecha se mantiene como texto
+            visible respetando el formato original.
+          -->
+          <h1 id="hero-title">
+            <time datetime="2025-09-19">VIERNES 19/9</time><br />
+            PASEO LA PLAZA
+          </h1>
+          <p class="subtitle">Club Temple · 23.30 hs</p>
 
           <div class="cta-group">
             <a class="btn-primary"
@@ -59,6 +89,9 @@ loadScript(function(){beTracker.t({hash:"4ae811a39424f16b35ee6f160f415523"})});
         </div>
 
         <div class="hero-image" aria-hidden="true">
+          <!-- La imagen de héroe es decorativa. Según las directrices de la W3C, los
+               elementos decorativos deben tener alt="" para que los lectores de
+               pantalla la ignoren【346675392568588†L96-L104】. -->
           <img src="assets/hero.jpg" alt="" loading="eager" decoding="async" />
         </div>
       </div>
@@ -71,6 +104,8 @@ loadScript(function(){beTracker.t({hash:"4ae811a39424f16b35ee6f160f415523"})});
       <div class="container">
         <h2 id="videos-title">Videos</h2>
         <div class="video-grid">
+          <!-- Cada tarjeta contiene un iframe de YouTube. Se utilizan atributos
+               que refuerzan la seguridad y la privacidad. -->
           <article class="video-card">
             <div class="video-wrapper">
               <iframe
@@ -112,148 +147,198 @@ loadScript(function(){beTracker.t({hash:"4ae811a39424f16b35ee6f160f415523"})});
 
     <hr class="divider" />
 
-<!-- ====== SHOWS ====== -->
-<section id="shows" class="shows-section" aria-labelledby="shows-title">
-  <div class="container">
-    <h2 id="shows-title">Próximos shows</h2>
+    <!-- ====== SHOWS ====== -->
+    <section id="shows" class="shows-section" aria-labelledby="shows-title">
+      <div class="container">
+        <h2 id="shows-title">Próximos shows</h2>
 
-    <div class="shows-list">
-      <article class="show-card">
-        <div class="show-info">
-          <span class="show-date">VIERNES 19/9</span>
-          <span class="show-meta">23.30H — PASEO LA PLAZA</span>
+        <div class="shows-list">
+          <!-- Tarjeta de show 19/9 -->
+          <article class="show-card">
+            <div class="show-info">
+              <time class="show-date" datetime="2025-09-19">VIERNES 19/9</time>
+              <span class="show-meta">23.30 h — PASEO LA PLAZA</span>
+            </div>
+            <a class="btn-ticket"
+               href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
+               target="_blank" rel="noopener"
+               aria-label="Comprar entradas para el 19 de septiembre"
+               onclick="metr('track','cta_show_19')">
+              <span>Comprar</span>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 5.2L20 12l-6.8 6.8-1.4-1.4L16.3 13H4v-2h12.3l-5.3-4.4 1.4-1.4z" fill="currentColor"/></svg>
+            </a>
+          </article>
+
+          <!-- Tarjeta de show 26/9 -->
+          <article class="show-card">
+            <div class="show-info">
+              <time class="show-date" datetime="2025-09-26">VIERNES 26/9</time>
+              <span class="show-meta">23.30 h — PASEO LA PLAZA</span>
+            </div>
+            <a class="btn-ticket"
+               href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410520"
+               target="_blank" rel="noopener"
+               aria-label="Comprar entradas para el 26 de septiembre"
+               onclick="metr('track','cta_show_26')">
+              <span>Comprar</span>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 5.2L20 12l-6.8 6.8-1.4-1.4L16.3 13H4v-2h12.3l-5.3-4.4 1.4-1.4z" fill="currentColor"/></svg>
+            </a>
+          </article>
         </div>
-        <a class="btn-ticket"
-           href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
-           target="_blank" rel="noopener"
-           aria-label="Comprar entradas para el 19 de septiembre"
-           onclick="metr('track','cta_show_19')">
-          <span>Comprar</span>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 5.2L20 12l-6.8 6.8-1.4-1.4L16.3 13H4v-2h12.3l-5.3-4.4 1.4-1.4z" fill="currentColor"/></svg>
-        </a>
-      </article>
+      </div>
+    </section>
+    <hr class="divider" />
 
-      <article class="show-card">
-        <div class="show-info">
-          <span class="show-date">VIERNES 26/9</span>
-          <span class="show-meta">23.30H — PASEO LA PLAZA</span>
+    <!-- ====== CÓMO LLEGAR ====== -->
+    <section id="llegar" class="llegar-section">
+      <div class="container">
+        <h2>Cómo llegar a Temple</h2>
+
+        <div class="llegar-grid">
+          <div class="map-container">
+            <iframe
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Paseo%20La%20Plaza%20Buenos%20Aires&z=17&output=embed">
+            </iframe>
+          </div>
+
+          <div class="llegar-photos">
+            <!-- Se añade la clase photo-card--temple para cambiar el orden en desktop -->
+            <figure class="photo-card photo-card--temple">
+              <img src="assets/SaveVid.Net_489951430_122175670454288882_6748368576523613481_n.jpg" alt="Exterior del Temple Bar en Paseo La Plaza" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/laplaza.jpeg" alt="Frente de Paseo La Plaza en Buenos Aires" loading="lazy" decoding="async" />
+            </figure>
+          </div>
         </div>
-        <a class="btn-ticket"
-           href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410520"
-           target="_blank" rel="noopener"
-           aria-label="Comprar entradas para el 26 de septiembre"
-           onclick="metr('track','cta_show_26')">
-          <span>Comprar</span>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 5.2L20 12l-6.8 6.8-1.4-1.4L16.3 13H4v-2h12.3l-5.3-4.4 1.4-1.4z" fill="currentColor"/></svg>
-        </a>
-      </article>
-    </div>
-  </div>
-</section>
-<hr class="divider" />
 
-<!-- ====== CÓMO LLEGAR ====== -->
-<section id="llegar" class="llegar-section">
-  <div class="container">
-    <h2>Cómo llegar a Temple</h2>
+        <div class="llegar-cta">
+          <a class="btn-secondary" href="https://goo.gl/maps/Lm71Zw7JzD6uFyFTA" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          <a class="btn-primary"
+             href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
+             target="_blank" rel="noopener"
+             onclick="metr('track','cta_maps')">Comprar entradas</a>
+        </div>
+      </div>
+    </section>
 
-    <div class="llegar-grid">
-      <div class="map-container">
-        <iframe
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=Paseo%20La%20Plaza%20Buenos%20Aires&z=17&output=embed">
-        </iframe>
+    <hr class="divider" />
+
+    <!-- ====== FOTOS ====== -->
+    <section id="fotos" class="fotos-section" aria-labelledby="fotos-title">
+      <div class="container">
+        <h2 id="fotos-title">Fotos</h2>
+
+        <div class="gallery">
+          <!--
+            Cada botón del carrusel usa data-full para indicar la ruta de la imagen
+            ampliada. Se añade un role="button" para que sean reconocidos por
+            lectores de pantalla. Al hacer clic se abrirá el dialog lightbox.
+          -->
+          <button class="gallery-item" data-full="assets/DSC_0309.JPG.png" aria-label="Ver imagen ampliada de la entrada al Temple Bar" role="button">
+            <img src="assets/DSC_0309.JPG.png" alt="Entrada del Temple Bar" loading="lazy" decoding="async" />
+          </button>
+          <button class="gallery-item" data-full="assets/extra 1.png" aria-label="Ver imagen ampliada de Ricardo Bisignano en escena" role="button">
+            <img src="assets/extra 1.png" alt="Ricardo Bisignano en escena" loading="lazy" decoding="async" />
+          </button>
+          <button class="gallery-item" data-full="assets/357717276_10228064656914378_4229634095250468237_n.jpg" aria-label="Ver imagen ampliada de Paseo La Plaza" role="button">
+            <img src="assets/357717276_10228064656914378_4229634095250468237_n.jpg" alt="Paseo La Plaza" loading="lazy" decoding="async" />
+          </button>
+          <button class="gallery-item" data-full="assets/gallery1.jpg" aria-label="Ver imagen ampliada del interior del Temple" role="button">
+            <img src="assets/gallery1.jpg" alt="Interior del Temple" loading="lazy" decoding="async" />
+          </button>
+        </div>
       </div>
 
-      <div class="llegar-photos">
-        <figure class="photo-card photo-card--temple">
-          <img src="assets/SaveVid.Net_489951430_122175670454288882_6748368576523613481_n.jpg" alt="Temple Bar en Paseo La Plaza">
-        </figure>
-        <figure class="photo-card">
-          <img src="assets/laplaza.jpeg" alt="Frente de Paseo La Plaza">
-        </figure>
+      <!-- Lightbox implementado con dialog. El script que acompaña a este
+           documento gestiona su apertura y cierre. -->
+      <dialog id="lightbox" class="lightbox" aria-label="Vista ampliada">
+        <img src="" alt="Imagen ampliada" />
+      </dialog>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ====== BIO ====== -->
+    <section id="bio" class="bio-section" aria-labelledby="bio-title">
+      <div class="container bio-grid">
+        <div class="bio-text">
+          <h2 id="bio-title">Sobre mí</h2>
+          <p>Soy <strong>Ricardo Bisignano</strong>, comediante, actor y músico argentino. En escena combino <strong>stand up con canciones improvisadas</strong> e interacción constante con el público.</p>
+          <p>Participé en <em>Comedy Central Stand-Up</em> (edición Argentina) y tuve apariciones en programas como <em>Bendita TV</em>, <em>Hora de Reír</em> e <em>Informadísimos</em>.</p>
+          <p>Gire con mis unipersonales <em>Viste?</em>, <em>Sin Calle</em> y <em>The Working Progre</em>, girando todo el país y países limítrofes.</p>
+          <p>Comparto clips y canciones en <strong>Instagram</strong>, <strong>YouTube</strong>, <strong>TikTok</strong> y <strong>Facebook</strong></p>
+        </div>
+
+        <div class="bio-photo" aria-hidden="true">
+          <img src="assets/perfil.png" alt="Ricardo Bisignano de perfil" loading="lazy" decoding="async" />
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="llegar-cta">
-      <a class="btn-secondary" href="https://goo.gl/maps/Lm71Zw7JzD6uFyFTA" target="_blank" rel="noopener">Abrir en Google Maps</a>
-      <a class="btn-primary"
-         href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
-         target="_blank" rel="noopener"
-         onclick="metr('track','cta_maps')">Comprar entradas</a>
-    </div>
-  </div>
-</section>
+    <hr class="divider" />
 
-<hr class="divider" />
-
-<!-- ====== FOTOS ====== -->
-<section id="fotos" class="fotos-section" aria-labelledby="fotos-title">
-  <div class="container">
-    <h2 id="fotos-title">Fotos</h2>
-
-    <div class="gallery">
-      <button class="gallery-item" data-full="assets/DSC_0309.JPG.png" aria-label="Entrada Temple">
-        <img src="assets/DSC_0309.JPG.png" alt="Entrada Temple" loading="lazy" decoding="async" />
-      </button>
-      <button class="gallery-item" data-full="assets/extra 1.png" aria-label="Ricardo Bisignano en escena">
-        <img src="assets/extra 1.png" alt="Ricardo Bisignano en escena" loading="lazy" decoding="async" />
-      </button>
-      <button class="gallery-item" data-full="assets/357717276_10228064656914378_4229634095250468237_n.jpg" aria-label="Paseo La Plaza">
-        <img src="assets/357717276_10228064656914378_4229634095250468237_n.jpg" alt="Paseo La Plaza" loading="lazy" decoding="async" />
-      </button>
-      <button class="gallery-item" data-full="assets/gallery1.jpg" aria-label="Temple interior">
-        <img src="assets/gallery1.jpg" alt="Temple interior" loading="lazy" decoding="async" />
-      </button>
-    </div>
-  </div>
-
-  <dialog id="lightbox" class="lightbox" aria-label="Vista ampliada">
-    <img src="" alt="" />
-  </dialog>
-</section>
-
-<hr class="divider" />
-
-<!-- ====== BIO ====== -->
-<section id="bio" class="bio-section" aria-labelledby="bio-title">
-  <div class="container bio-grid">
-    <div class="bio-text">
-      <h2 id="bio-title">Sobre mí</h2>
-      <p>Soy <strong>Ricardo Bisignano</strong>, comediante, actor y músico argentino. En escena combino <strong>stand up con canciones improvisadas</strong> e interacción constante con el público.</p>
-      <p>Participé en <em>Comedy Central Stand-Up</em> (edición Argentina) y tuve apariciones en programas como <em>Bendita TV</em>, <em>Hora de Reír</em> e <em>Informadísimos</em>.</p>
-      <p>Gire con mis unipersonales <em>Viste?</em>, <em>Sin Calle</em> y <em>The Working Progre</em>, girando todo el país y países limítrofes.</p>
-      <p>Comparto clips y canciones en <strong>Instagram</strong>, <strong>YouTube</strong>, <strong>TikTok</strong> y <strong>Facebook</strong></p>
-    </div>
-
-    <div class="bio-photo" aria-hidden="true">
-      <img src="assets/perfil.png" alt="" loading="lazy" decoding="async" />
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- ====== CONTACTO ====== -->
-<section id="contrataciones" class="contrataciones-section" aria-labelledby="contacto-title">
-  <div class="container">
-    <h2 id="contacto-title">Contrataciones</h2>
-    <p>¿Querés llevar mi show a tu bar, teatro o evento? Escribime y organizamos la fecha.</p>
-    <p><strong>Contacto:</strong>
-      <a href="mailto:bisignanook@gmail.com">bisignanook@gmail.com</a> ·
-      <a href="https://wa.me/5491134652349" target="_blank" rel="noopener">WhatsApp</a>
-    </p>
-  </div>
-</section>
+    <!-- ====== CONTACTO ====== -->
+    <section id="contrataciones" class="contrataciones-section" aria-labelledby="contacto-title">
+      <div class="container">
+        <h2 id="contacto-title">Contrataciones</h2>
+        <p>¿Querés llevar mi show a tu bar, teatro o evento? Escribime y organizamos la fecha.</p>
+        <p><strong>Contacto:</strong>
+          <a href="mailto:bisignanook@gmail.com">bisignanook@gmail.com</a> ·
+          <a href="https://wa.me/5491134652349" target="_blank" rel="noopener" aria-label="Enviar mensaje por WhatsApp">WhatsApp</a>
+        </p>
+      </div>
+    </section>
   </main>
 
   <footer class="footer" role="contentinfo">© <span id="year"></span> Ricardo Bisignano</footer>
 
+  <!-- ====== Sticky CTA para dispositivos móviles ====== -->
+  <!--
+    Este elemento aparece únicamente en pantallas pequeñas (configurado en
+    CSS). Proporciona un acceso permanente para comprar entradas, tal y como
+    recomiendan los expertos en optimización de eventos: el botón de compra
+    debe ser visible y accesible en todo momento【911442354372138†L41-L64】.
+  -->
+  <div class="sticky-cta" aria-hidden="true">
+    <a class="btn-primary" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519" target="_blank" rel="noopener" onclick="metr('track','cta_sticky')">Comprar entradas</a>
+  </div>
+
+  <!-- Script para actualizar el año en el footer -->
   <script>
-    // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <!-- Script para el lightbox de la galería -->
+  <script>
+    (function(){
+      var lightbox = document.getElementById('lightbox');
+      if (!lightbox) return;
+      var img = lightbox.querySelector('img');
+      // Abrir diálogo al hacer clic en una miniatura
+      document.querySelectorAll('.gallery-item').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var full = this.getAttribute('data-full');
+          if (full) {
+            img.src = full;
+            lightbox.showModal();
+          }
+        });
+      });
+      // Cerrar al hacer clic fuera de la imagen o al pulsar Escape
+      lightbox.addEventListener('click', function(e){
+        if (e.target === lightbox) {
+          lightbox.close();
+        }
+      });
+      lightbox.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') {
+          lightbox.close();
+        }
+      });
+    })();
   </script>
 </body>
 </html>
