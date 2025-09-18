@@ -1,0 +1,540 @@
+/* =========================================================
+   RICARDO BISIGNANO — THEME
+   Mobile-first con CTA de venta
+   v144
+   ========================================================= */
+
+/* ---------- VARIABLES (únicas) ---------- */
+:root{
+  /* Colores base */
+  --bg:#0f0f10;
+  --panel:#15161a;
+  --panel-2:#1b1c22;
+  --text:#eaeaea;
+  --muted:#b6b7bd;
+  --stroke:#2a2b31;
+
+  /* Acentos / sombras */
+  --accent1:#ff8a4c;
+  --accent2:#ff5e3a;
+  --brand:#ff7a45;
+
+  /* Utilitarias */
+  --bg-soft:#131313;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+  --shadow-cta:0 10px 26px rgba(255,122,61,.22), inset 0 -2px 0 rgba(0,0,0,.12);
+}
+
+/* ---------- BASE ---------- */
+*{ box-sizing:border-box }
+html,body{ height:100%; overflow-x:hidden }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+a{ color:inherit; text-decoration:none }
+img{ max-width:100%; display:block }
+.container{ width:min(1100px,92vw); margin:0 auto }
+
+/* ---------- TOPBAR (se oculta en mobile) ---------- */
+.topbar{
+  position:sticky; top:0; z-index:20;
+  background:rgba(15,16,16,.82);
+  backdrop-filter:saturate(160%) blur(8px);
+  border-bottom:1px solid var(--stroke);
+}
+.topbar .container{
+  display:flex; gap:20px; align-items:center; justify-content:space-between;
+  padding:14px 0;
+}
+.logo{ font-family:"Bebas Neue",system-ui; font-size:28px; letter-spacing:.5px }
+nav{ display:flex; gap:18px; flex-wrap:wrap }
+nav a{ color:var(--muted); font-weight:600 }
+nav a:hover{ color:var(--text) }
+.btn-cta{
+  background:linear-gradient(135deg,var(--accent1),var(--accent2)); color:#111;
+  height:40px; padding:0 16px; border-radius:22px; font-weight:800; font-size:.95rem;
+  display:inline-flex; align-items:center; justify-content:center;
+  box-shadow:0 8px 24px rgba(255,122,61,.25); white-space:nowrap;
+}
+
+/* ---------- HERO ---------- */
+.hero{ padding:44px 0 16px; border-bottom:1px solid var(--stroke) }
+.hero-inner{ display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center }
+.kicker{ color:#ffa477; font-weight:800; letter-spacing:.06em }
+h1{
+  font-family:"Bebas Neue";
+  font-size: clamp(42px, 7.2vw, 72px);
+  line-height:.98; margin:8px 0 10px; letter-spacing:.2px;
+}
+.subtitle{ color:var(--muted); margin:0 0 14px }
+.cta-group{ display:flex; gap:16px; flex-wrap:wrap }
+.btn-primary,.btn-secondary{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:48px; padding:0 22px; border-radius:14px;
+  font-weight:800; font-size:1rem; border:1px solid var(--stroke); line-height:1;
+}
+.btn-primary{
+  background:linear-gradient(180deg,var(--accent1) 0%, var(--accent2) 100%);
+  color:#111; border:0; box-shadow:var(--shadow-cta);
+}
+.btn-primary:hover{ transform:translateY(-1px); filter:saturate(110%) }
+.btn-primary:active{ transform:none }
+.btn-primary:focus-visible{ outline:2px solid #ffd1bf; outline-offset:2px }
+.btn-secondary{ background:transparent; color:var(--text) }
+.hero-image{ border-radius:var(--radius); overflow:hidden; box-shadow:0 24px 64px rgba(0,0,0,.35) }
+
+/* =========================================================
+   SHORTS — “pantalla de cine” + carrusel
+   ========================================================= */
+
+/* Contenedor general debajo del hero */
+#shorts-stage { background:#000; padding: 24px 0 8px }
+
+/* Pantalla 9:16 sólida y limpia (sin deformaciones) */
+.shorts-frame{
+  position:relative;
+  margin:0 auto 16px;
+  height: clamp(70vh, 82vh, 900px);
+  width: min(56.25vh, 520px);     /* 9:16 en función de la altura */
+  background:#000;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.45);
+  isolation:isolate;
+}
+
+/* Iframe YouTube “cover” dentro de 9:16 */
+.shorts-frame iframe,
+.shorts-frame .yt-holder{
+  position:absolute; inset:0;
+  height:100%;
+  width:177.78%;                 /* 16/9 => cubre la altura y se recorta a 9:16 */
+  left:50%; transform:translateX(-50%);
+  border:0;
+}
+
+/* Botón activar sonido (navegadores exigen interacción) */
+#unmuteBtn{
+  position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+  background:rgba(0,0,0,.6); color:#fff;
+  border:1px solid rgba(255,255,255,.25); border-radius:999px;
+  padding:10px 16px; font-weight:600; letter-spacing:.3px;
+  cursor:pointer; display:none;
+/* =========================================================
+   RICARDO BISIGNANO — THEME
+   Mobile-first con CTA de venta
+   v144
+   ========================================================= */
+
+/* ---------- VARIABLES (únicas) ---------- */
+:root{
+  /* Colores base */
+  --bg:#0f0f10;
+  --panel:#15161a;
+  --panel-2:#1b1c22;
+  --text:#eaeaea;
+  --muted:#b6b7bd;
+  --stroke:#2a2b31;
+
+  /* Acentos / sombras */
+  --accent1:#ff8a4c;
+  --accent2:#ff5e3a;
+  --brand:#ff7a45;
+
+  /* Utilitarias */
+  --bg-soft:#131313;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+  --shadow-cta:0 10px 26px rgba(255,122,61,.22), inset 0 -2px 0 rgba(0,0,0,.12);
+}
+
+/* ---------- BASE ---------- */
+*{ box-sizing:border-box }
+html,body{ height:100%; overflow-x:hidden }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+a{ color:inherit; text-decoration:none }
+img{ max-width:100%; display:block }
+.container{ width:min(1100px,92vw); margin:0 auto }
+
+/* ---------- TOPBAR (se oculta en mobile) ---------- */
+.topbar{
+  position:sticky; top:0; z-index:20;
+  background:rgba(15,16,16,.82);
+  backdrop-filter:saturate(160%) blur(8px);
+  border-bottom:1px solid var(--stroke);
+}
+.topbar .container{
+  display:flex; gap:20px; align-items:center; justify-content:space-between;
+  padding:14px 0;
+}
+.logo{ font-family:"Bebas Neue",system-ui; font-size:28px; letter-spacing:.5px }
+nav{ display:flex; gap:18px; flex-wrap:wrap }
+nav a{ color:var(--muted); font-weight:600 }
+nav a:hover{ color:var(--text) }
+.btn-cta{
+  background:linear-gradient(135deg,var(--accent1),var(--accent2)); color:#111;
+  height:40px; padding:0 16px; border-radius:22px; font-weight:800; font-size:.95rem;
+  display:inline-flex; align-items:center; justify-content:center;
+  box-shadow:0 8px 24px rgba(255,122,61,.25); white-space:nowrap;
+}
+
+/* ---------- HERO ---------- */
+.hero{ padding:44px 0 16px; border-bottom:1px solid var(--stroke) }
+.hero-inner{ display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center }
+.kicker{ color:#ffa477; font-weight:800; letter-spacing:.06em }
+h1{
+  font-family:"Bebas Neue";
+  font-size: clamp(42px, 7.2vw, 72px);
+  line-height:.98; margin:8px 0 10px; letter-spacing:.2px;
+}
+.subtitle{ color:var(--muted); margin:0 0 14px }
+.cta-group{ display:flex; gap:16px; flex-wrap:wrap }
+.btn-primary,.btn-secondary{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:48px; padding:0 22px; border-radius:14px;
+  font-weight:800; font-size:1rem; border:1px solid var(--stroke); line-height:1;
+}
+.btn-primary{
+  background:linear-gradient(180deg,var(--accent1) 0%, var(--accent2) 100%);
+  color:#111; border:0; box-shadow:var(--shadow-cta);
+}
+.btn-primary:hover{ transform:translateY(-1px); filter:saturate(110%) }
+.btn-primary:active{ transform:none }
+.btn-primary:focus-visible{ outline:2px solid #ffd1bf; outline-offset:2px }
+.btn-secondary{ background:transparent; color:var(--text) }
+.hero-image{ border-radius:var(--radius); overflow:hidden; box-shadow:0 24px 64px rgba(0,0,0,.35) }
+
+/* =========================================================
+   SHORTS — “pantalla de cine” + carrusel
+   ========================================================= */
+
+/* Contenedor general debajo del hero */
+#shorts-stage { background:#000; padding: 24px 0 8px }
+
+/* Pantalla 9:16 sólida y limpia (sin deformaciones) */
+.shorts-frame{
+  position:relative;
+  margin:0 auto 16px;
+  height: clamp(70vh, 82vh, 900px);
+  width: min(56.25vh, 520px);     /* 9:16 en función de la altura */
+  background:#000;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.45);
+  isolation:isolate;
+}
+
+/* Iframe YouTube “cover” dentro de 9:16 */
+.shorts-frame iframe,
+.shorts-frame .yt-holder{
+  position:absolute; inset:0;
+  height:100%;
+  width:177.78%;                 /* 16/9 => cubre la altura y se recorta a 9:16 */
+  left:50%; transform:translateX(-50%);
+  border:0;
+}
+
+/* Botón activar sonido (navegadores exigen interacción) */
+#unmuteBtn{
+  position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+  background:rgba(0,0,0,.6); color:#fff;
+  border:1px solid rgba(255,255,255,.25); border-radius:999px;
+  padding:10px 16px; font-weight:600; letter-spacing:.3px;
+  cursor:pointer; display:none;
+}
+@media (pointer:fine){ #unmuteBtn{ display:inline-flex } }
+
+/* Carrusel de thumbnails (scroll horizontal suave) */
+#shorts-strip{
+  width:min(1100px,92vw); margin:0 auto 8px;
+  display:grid; grid-auto-flow:column; grid-auto-columns: clamp(150px,22vw,220px);
+  gap:12px; overflow-x:auto; padding:0 6px 12px;
+  scroll-snap-type:x mandatory; scrollbar-width:thin;
+}
+#shorts-strip::-webkit-scrollbar{ height:10px }
+#shorts-strip::-webkit-scrollbar-track{ background:transparent }
+#shorts-strip::-webkit-scrollbar-thumb{
+  background:linear-gradient(90deg,#2a2a2a,#1b1b1b); border-radius:999px;
+}
+
+#shorts-strip .thumb{
+  position:relative; aspect-ratio:9/16;
+  border:1px solid #222; border-radius:12px; overflow:hidden;
+  background:#111; scroll-snap-align:start; cursor:pointer;
+  box-shadow:0 6px 16px rgba(0,0,0,.35);
+  transition:transform .15s ease, box-shadow .15s ease, outline-color .15s ease;
+  outline:2px solid transparent;
+}
+#shorts-strip .thumb img{
+  width:100%; height:100%; object-fit:cover; transform:scale(1.02);
+  transition:transform .25s ease;
+}
+#shorts-strip .thumb:hover{
+  transform:translateY(-3px); box-shadow:0 12px 28px rgba(0,0,0,.45);
+  outline-color: color-mix(in oklab, var(--brand) 50%, transparent);
+}
+#shorts-strip .thumb:hover img{ transform:scale(1.06) }
+#shorts-strip .title{
+  position:absolute; left:8px; right:8px; bottom:8px;
+  font:600 12.5px/1.3 system-ui, sans-serif;
+  color:#f1f1f1; text-shadow:0 2px 8px rgba(0,0,0,.9);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* ---------- Secciones generales ---------- */
+section{ padding:36px 0 }
+h2{ font-family:"Bebas Neue"; font-size:40px; letter-spacing:.5px; margin:0 0 16px }
+.divider{
+  border:0; height:1px; margin:20px 0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
+}
+
+/* ====== SHOWS ====== */
+.shows-list{
+  width:min(820px, 100%); margin:0 auto; display:grid; gap:14px;
+}
+.show-card{
+  display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;
+  background:var(--panel); border:1px solid var(--stroke); border-radius:16px; padding:14px 16px;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.show-card:hover{
+  transform:translateY(-1px);
+  border-color:color-mix(in srgb, var(--stroke) 55%, white 45%);
+  box-shadow:0 16px 36px rgba(0,0,0,.24);
+}
+.show-info{ min-width:0; display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+@media (min-width:960px){
+  .show-info{ flex-wrap:nowrap }
+  .show-date{ font-weight:900; letter-spacing:.2px; font-size:1.05rem; white-space:nowrap }
+  .show-meta{ font-weight:800; font-size:1.05rem; color:var(--text); white-space:nowrap }
+}
+.show-date{ font-weight:900; letter-spacing:.15px }
+.show-meta{ color:var(--muted); font-size:1rem }
+.btn-ticket{
+  --h:46px; display:inline-flex; align-items:center; gap:10px;
+  height:var(--h); padding:0 18px; border-radius:999px; font-weight:900; letter-spacing:.02em; border:0;
+  background:linear-gradient(180deg,var(--accent1) 0%, var(--accent2) 100%);
+  color:#111; box-shadow:0 10px 24px rgba(255,122,61,.25), inset 0 -2px 0 rgba(0,0,0,.12);
+  transition:transform .18s ease, filter .18s ease, box-shadow .18s ease;
+}
+.btn-ticket .icon{ width:18px; height:18px; flex:0 0 18px }
+.btn-ticket:hover{ transform:translateY(-1px); filter:saturate(108%) }
+.btn-ticket:active{ transform:none; box-shadow:0 6px 16px rgba(255,122,61,.18) }
+.btn-ticket:focus-visible{ outline:2px solid #ffd1bf; outline-offset:2px }
+@media (max-width:640px){
+  .show-card{ grid-template-columns:1fr; align-items:stretch; gap:10px; padding:12px }
+  .show-info{ flex-direction:column; align-items:flex-start; gap:4px }
+  .show-date{ font-size:1.05rem }
+  .show-meta{ font-size:1.02rem; color:var(--text) }
+  .btn-ticket{ width:100%; justify-content:center; --h:56px; font-size:1.04rem }
+}
+
+/* ---------- VIDEOS (grilla 16:9) ---------- */
+.video-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px }
+.video-card{ background:var(--panel); border:1px solid var(--stroke); border-radius:16px; overflow:hidden }
+.video-wrapper{ position:relative; padding-top:56.25% }
+.video-wrapper iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
+
+/* =========================================================
+   LLEGAR — Mobile-first / Desktop alto
+   ========================================================= */
+.llegar-grid{ display:grid; grid-template-columns:1fr; gap:16px; align-items:start }
+.map-container{
+  border:1px solid var(--stroke); border-radius:16px; overflow:hidden;
+  background:var(--panel); box-shadow:0 16px 40px rgba(0,0,0,.28);
+}
+.map-container iframe{ display:block; width:100%; aspect-ratio:16/9; min-height:300px; border:0 }
+.llegar-photos{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px }
+.photo-card{
+  position:relative; border:1px solid var(--stroke); border-radius:16px; overflow:hidden;
+  background:var(--panel); aspect-ratio:1/1; box-shadow:0 12px 30px rgba(0,0,0,.22);
+}
+.photo-card img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;
+  transform:translateZ(0); transition:transform .25s ease, filter .25s ease;
+}
+.photo-card:hover img{ transform:scale(1.06); filter:saturate(1.06) }
+.llegar-cta{ display:flex; gap:12px; margin-top:14px; flex-wrap:wrap }
+.llegar-cta .btn-secondary{
+  height:52px; padding:0 18px; border-radius:14px; border:1px solid var(--stroke);
+  background:#121214; color:var(--text); font-weight:800;
+}
+.llegar-cta .btn-primary{
+  height:54px; padding:0 22px; border-radius:16px; font-weight:900;
+  box-shadow:0 10px 26px rgba(255,122,61,.22);
+}
+@media (min-width:960px){
+  .llegar-grid{ grid-template-columns:1.15fr .85fr; gap:18px; align-items:stretch }
+  .map-container{ min-height:clamp(520px, 56vh, 720px); height:100% }
+  .map-container iframe{ width:100%; height:100%; aspect-ratio:auto; min-height:inherit }
+  .llegar-photos{
+    grid-template-columns:1fr; grid-template-rows:1.25fr .75fr; gap:16px; height:100%;
+  }
+  .photo-card{ aspect-ratio:auto; min-height:0 }
+  .photo-card--temple{ order:-1 }
+  .photo-card--temple img{ filter:saturate(1.06) }
+}
+@media (min-width:1280px){ .llegar-grid{ gap:22px } }
+
+/* =========================================================
+   GALERÍA — tiles con zoom + lightbox
+   ========================================================= */
+.gallery{ display:grid; grid-template-columns:repeat(4, 1fr); gap:14px }
+.gallery-item{
+  -webkit-appearance:none; appearance:none; background:transparent;
+  border:1px solid var(--stroke); border-radius:16px; padding:0; margin:0; line-height:0;
+  display:block; position:relative; overflow:hidden; cursor:zoom-in;
+}
+.gallery-item::before{ content:""; display:block; padding-top:100% }
+.gallery-item img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center; transform:translateZ(0);
+  transition:transform .25s ease, filter .25s ease;
+}
+.gallery-item:hover img{ transform:scale(1.06); filter:saturate(1.06) }
+.gallery-item:focus{ outline:none }
+.gallery-item:focus-visible{
+  outline:2px solid color-mix(in srgb, var(--accent1) 70%, white 30%); outline-offset:2px;
+}
+.lightbox{ margin:auto; padding:0; border:0; background:transparent; max-width:min(94vw, 1200px) }
+.lightbox::backdrop{ background:rgba(0,0,0,.82); backdrop-filter:blur(2px) }
+.lightbox img{
+  display:block; width:100%; height:auto; border-radius:16px; border:1px solid var(--stroke);
+  box-shadow:0 24px 64px rgba(0,0,0,.5)
+}
+
+/* =========================================================
+   BIO
+   ========================================================= */
+.bio-grid{
+  display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:clamp(16px,3vw,24px); align-items:start;
+}
+.bio-text p{ margin:0 0 12px }
+.bio-photo{
+  position:relative; overflow:hidden; border:1px solid var(--stroke); border-radius:16px;
+  background:var(--panel); box-shadow:0 12px 28px rgba(0,0,0,.28);
+}
+.bio-photo::before{ content:""; display:block; padding-top:125% }
+.bio-photo img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;
+  transform:translateZ(0); transition:transform .25s ease, filter .25s ease;
+}
+.bio-photo:hover img{ transform:scale(1.04); filter:saturate(1.06) }
+@media (max-width:960px){
+  .bio-grid{ grid-template-columns:1fr; gap:16px }
+  .bio-photo{ border:none; background:transparent; box-shadow:none; overflow:visible }
+  .bio-photo::before{ display:none }
+  .bio-photo img{
+    position:static; display:block; width:min(460px,100%); height:auto; margin:0 auto;
+    border:1px solid var(--stroke); border-radius:16px; box-shadow:0 16px 40px rgba(0,0,0,.35);
+    transform:none; filter:none;
+  }
+}
+
+/* =========================================================
+   EFECTO GLOBAL DE IMÁGENES
+   ========================================================= */
+.hero-image{ border-radius:var(--radius); overflow:hidden }
+img:not(.no-zoom){
+  transform:translateZ(0); transition:transform .25s ease, filter .25s ease;
+}
+img:not(.no-zoom):hover,
+img:not(.no-zoom):focus-visible{ transform:scale(1.06); filter:saturate(1.06) }
+.photo-card, .bio-photo, .gallery-item{ overflow:hidden }
+@media (max-width:960px){ .bio-photo img{ transform:none !important; filter:none !important } }
+@media (prefers-reduced-motion:reduce){ img:not(.no-zoom){ transition:none } }
+
+/* =========================================================
+   MOBILE (≤960px)
+   ========================================================= */
+@media (max-width:960px){
+  .container{ padding:0 16px }
+  .topbar{ display:none !important }
+
+  .hero{
+    text-align:center; padding:40px 0 14px;
+    padding-bottom: calc(14px + env(safe-area-inset-bottom));
+  }
+  .hero-inner{ grid-template-columns:1fr; gap:18px }
+  .hero-image{ display:none }
+  .hero-text h1{ font-size: clamp(34px, 11.5vw, 46px); line-height:1.04; margin:6px auto 8px }
+
+  .cta-group{ width:100%; display:block }
+  .cta-group .btn-primary{
+    display:flex; align-items:center; justify-content:center;
+    width:100%; max-width:360px; height:60px; margin:0 auto;
+    padding:0 16px; border-radius:18px; font-size:1.06rem; font-weight:900; letter-spacing:.02em;
+    line-height:1; box-shadow:var(--shadow-cta);
+  }
+
+  .video-grid{ grid-template-columns:1fr; gap:14px }
+  .video-wrapper{ position:relative; padding-top:56.25% }
+  .video-wrapper iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block }
+}
+
+/* =========================================================
+   EXTRA PEQUEÑAS (≤360px)
+   ========================================================= */
+@media (max-width:360px){
+  .cta-group .btn-primary{ font-size:.98rem }
+  .hero-text h1{ font-size:13.5vw }
+}
+:root{
+  --bg:#0b0b0b; --bg-soft:#131313; --text:#f2f2f2; --muted:#b9b9b9;
+  --brand:#ff7a45; --radius:14px; --stroke:#222; --shadow:0 18px 48px rgba(0,0,0,.45);
+}
+
+#shorts-stage{ background:#000; padding:24px 0 8px }
+.shorts-frame{
+  position:relative; margin:0 auto 14px;
+  height:82vh; max-height:920px;
+  width:min(56.25vh, 560px); /* mantiene 9:16 según alto de viewport */
+  border-radius:14px; overflow:hidden; box-shadow:var(--shadow);
+}
+
+/* El iframe de YouTube es 16:9: lo ensanchamos para cubrir el 9:16 */
+.shorts-frame iframe, .shorts-frame #yt-holder{
+  position:absolute; inset:0; height:100%; width:177.78%;
+  left:50%; transform:translateX(-50%); border:0;
+}
+
+/* Botón para habilitar sonido */
+#unmuteBtn{
+  position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+  background:rgba(0,0,0,.55); color:#fff; border:1px solid rgba(255,255,255,.25);
+  border-radius:999px; padding:10px 16px; font-weight:700; letter-spacing:.2px;
+  display:none; cursor:pointer; backdrop-filter:blur(6px);
+}
+@media (pointer:fine){ #unmuteBtn{ display:inline-flex } }
+#unmuteBtn:hover{ background:rgba(0,0,0,.7) }
+
+/* Rail de thumbnails */
+#shorts-strip{
+  display:grid; grid-auto-flow:column; grid-auto-columns:clamp(150px, 22vw, 220px);
+  gap:12px; overflow-x:auto; padding:0 10px 8px; scrollbar-width:thin;
+}
+#shorts-strip .thumb{
+  background:#111; border:1px solid #1e1e1e; border-radius:12px; overflow:hidden;
+  cursor:pointer; box-shadow:0 6px 16px rgba(0,0,0,.35); transition:transform .15s ease;
+}
+#shorts-strip .thumb:hover{ transform:translateY(-3px) }
+#shorts-strip img{ width:100%; height:320px; object-fit:cover; display:block }
+#shorts-strip .title{
+  font:600 13px/1.3 system-ui, sans-serif; color:#eee; padding:8px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+@media (max-width:640px){
+  .shorts-frame{ width:min(58vh, 460px) }
+  #shorts-strip img{ height:280px }
+}
