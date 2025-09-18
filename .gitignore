@@ -1,0 +1,18 @@
+# binarios y backups
+*.zip
+*.rar
+*.7z
+*.gz
+*.tar
+*.exe
+*.log
+Thumbs.db
+.DS_Store
+
+# editores
+.vscode/
+.idea/
+
+# si existiera
+node_modules/
+dist/

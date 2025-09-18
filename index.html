@@ -56,346 +56,6 @@
 
     <hr class="divider" />
 
-    <!-- ===== Player del canal (debajo del hero) ===== -->
-<section id="canal-player" aria-label="Videos del canal">
-  <div class="cp-wrapper">
-    <div class="cp-player">
-      <div id="yt-channel-player"></div>
-      <div class="cp-overlay"></div>
-      <div class="cp-ui">
-        <h2 id="cp-title">Videos</h2>
-      </div>
-    </div>
-
-    <div class="cp-strip" id="cp-strip" aria-label="Lista de videos"></div>
-  </div>
-</section>
-
-<style>
-  #canal-player{background:#000;padding:32px 0}
-  .cp-wrapper{max-width:1200px;margin:0 auto;padding:0 16px}
-  .cp-player{position:relative;aspect-ratio:16/9;background:#111;border-radius:16px;overflow:hidden}
-  .cp-player iframe{width:100%;height:100%}
-  .cp-overlay{
-    position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,.35));
-    pointer-events:none
-  }
-  .cp-ui{position:absolute;inset:auto 0 0 0;z-index:2;padding:18px;color:#fff;
-         background:linear-gradient(180deg,rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.85) 100%)}
-  #cp-title{margin:0;font-size:clamp(18px,3vw,28px);font-weight:700}
-  .cp-strip{display:flex;gap:12px;overflow:auto;padding:18px 4px 6px}
-  .cp-card{flex:0 0 240px;cursor:pointer;color:#fff;text-decoration:none}
-  .cp-thumb{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:#1c1c1c}
-  .cp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-  .cp-meta{margin-top:8px;font-size:.92rem;line-height:1.25}
-  .cp-card.active .cp-thumb{outline:2px solid #fff}
-  @media (max-width:600px){ .cp-card{flex-basis:70vw} }
-</style>
-
-<!-- API de YouTube (player) -->
-<script src="https://www.youtube.com/iframe_api"></script>
-<script>
-  /***** CONFIGURAR ESTO *****/
-  const YT_API_KEY   = "AIzaSyA12aGN_SWtoDilY2U95sC7CVejnKM3s1k";     // crea una API key gratuita en console.cloud.google.com
-  const CHANNEL_ID   = "UC_XpQBSe4wnBb1-NAGFJ7AQ";                    // si lo sabés, ponelo acá (ej: "UCxxxxxxx")
-  const CHANNEL_HANDLE = "";         // si no sabés el ID, poné el @handle del canal
-  const MAX_VIDEOS   = 100;                   // cuántos últimos videos cargar (hasta cientos, pero 50–150 es razonable)
-  /***************************/
-
-  let PLAYER, VIDEO_IDS = [], VIDEO_TITLES = [];
-
-  // 1) Resolver channelId (por ID directo o por handle => search)
-  async function resolveChannelId(){
-    if (CHANNEL_ID) return CHANNEL_ID;
-
-    // Buscar canal por handle / nombre
-    const url = new URL("https://www.googleapis.com/youtube/v3/search");
-    url.search = new URLSearchParams({
-      key: YT_API_KEY, part: "snippet", q: CHANNEL_HANDLE.replace(/^@/,""),
-      type: "channel", maxResults: 1
-    });
-    const r = await fetch(url); const j = await r.json();
-    if (!j.items?.length) throw new Error("No pude encontrar el canal. Revisá el handle o usá CHANNEL_ID.");
-    return j.items[0].snippet.channelId || j.items[0].id.channelId;
-  }
-
-  // 2) Conseguir el "uploads playlistId" del canal
-  async function getUploadsPlaylistId(channelId){
-    const url = new URL("https://www.googleapis.com/youtube/v3/channels");
-    url.search = new URLSearchParams({
-      key: YT_API_KEY, part: "contentDetails", id: channelId
-    });
-    const r = await fetch(url); const j = await r.json();
-    const uploads = j.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
-    if (!uploads) throw new Error("No se encontró la playlist de subidos.");
-    return uploads;
-  }
-
-  // 3) Traer TODOS los videoIds (paginando) y algunos títulos/miniaturas
-  async function getAllUploads(playlistId, limit=MAX_VIDEOS){
-    let ids=[], titles=[], thumbs=[], token=null;
-    while (ids.length < limit){
-      const url = new URL("https://www.googleapis.com/youtube/v3/playlistItems");
-      url.search = new URLSearchParams({
-        key: YT_API_KEY, part: "snippet,contentDetails",
-        playlistId, maxResults: 50, pageToken: token || ""
-      });
-      const r = await fetch(url); const j = await r.json();
-      (j.items||[]).forEach(it=>{
-        const v = it.contentDetails?.videoId; if (v && ids.length < limit){
-          ids.push(v);
-          titles.push(it.snippet?.title || "");
-          thumbs.push(it.snippet?.thumbnails?.medium?.url || it.snippet?.thumbnails?.default?.url || "");
-        }
-      });
-      token = j.nextPageToken;
-      if (!token) break;
-    }
-    return { ids, titles, thumbs };
-  }
-
-  // 4) Construir la tira de miniaturas
-  function renderStrip(ids, titles, thumbs){
-    const strip = document.getElementById("cp-strip");
-    strip.innerHTML = "";
-    ids.forEach((id, i)=>{
-      const a = document.createElement("a");
-      a.className = "cp-card"; a.setAttribute("role","button"); a.href = "javascript:void(0)";
-      a.dataset.index = i;
-      a.innerHTML = `
-      <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Ricardo Bisignano — Sitio Oficial</title>
-  <meta name="description" content="Stand up, canciones improvisadas e interacción en vivo. Comprá entradas para el Paseo." />
-  <meta name="theme-color" content="#0f0f10" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=142" />
-</head>
-
-<body>
-  <!-- ====== TOPBAR ====== -->
-  <header class="topbar" role="banner">
-    <div class="container">
-      <a href="#inicio" class="logo" aria-label="Ir al inicio">RICARDO BISIGNANO</a>
-      <nav aria-label="Secciones del sitio">
-        <a href="#videos">Videos</a>
-        <a href="#shows">Shows</a>
-        <a href="#llegar">Cómo llegar</a>
-        <a href="#fotos">Fotos</a>
-        <a href="#bio">Bio</a>
-        <a href="#contrataciones">Contrataciones</a>
-      </nav>
-      <a class="btn-cta" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519" target="_blank" rel="noopener" aria-label="Comprar entradas ahora">Comprar entradas</a>
-    </div>
-  </header>
-
-  <main id="inicio">
-    <!-- ====== HERO ====== -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-inner container">
-        <div class="hero-text">
-          <p class="kicker">PRÓXIMA FUNCIÓN:</p>
-          <h1 id="hero-title">VIERNES 19/9<br />PASEO LA PLAZA</h1>
-          <p class="subtitle">Club Temple · 23.30hs</p>
-
-          <div class="cta-group">
-            <a class="btn-primary"
-               href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
-               target="_blank" rel="noopener"
-               aria-label="Comprar entradas para Paseo La Plaza">
-              Comprar entradas
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-image" aria-hidden="true">
-          <img src="assets/hero.jpg" alt="" loading="eager" decoding="async" />
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- ===== Player del canal (debajo del hero) ===== -->
-<section id="canal-player" aria-label="Videos del canal">
-  <div class="cp-wrapper">
-    <div class="cp-player">
-      <div id="yt-channel-player"></div>
-      <div class="cp-overlay"></div>
-      <div class="cp-ui">
-        <h2 id="cp-title">Videos</h2>
-      </div>
-    </div>
-
-    <div class="cp-strip" id="cp-strip" aria-label="Lista de videos"></div>
-  </div>
-</section>
-
-<style>
-  #canal-player{background:#000;padding:32px 0}
-  .cp-wrapper{max-width:1200px;margin:0 auto;padding:0 16px}
-  .cp-player{position:relative;aspect-ratio:16/9;background:#111;border-radius:16px;overflow:hidden}
-  .cp-player iframe{width:100%;height:100%}
-  .cp-overlay{
-    position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,.35));
-    pointer-events:none
-  }
-  .cp-ui{position:absolute;inset:auto 0 0 0;z-index:2;padding:18px;color:#fff;
-         background:linear-gradient(180deg,rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.85) 100%)}
-  #cp-title{margin:0;font-size:clamp(18px,3vw,28px);font-weight:700}
-  .cp-strip{display:flex;gap:12px;overflow:auto;padding:18px 4px 6px}
-  .cp-card{flex:0 0 240px;cursor:pointer;color:#fff;text-decoration:none}
-  .cp-thumb{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:#1c1c1c}
-  .cp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-  .cp-meta{margin-top:8px;font-size:.92rem;line-height:1.25}
-  .cp-card.active .cp-thumb{outline:2px solid #fff}
-  @media (max-width:600px){ .cp-card{flex-basis:70vw} }
-</style>
-
-<!-- API de YouTube (player) -->
-<script src="https://www.youtube.com/iframe_api"></script>
-<script>
-  /***** CONFIGURAR ESTO *****/
-  const YT_API_KEY   = "AIzaSyA12aGN_SWtoDilY2U95sC7CVejnKM3s1k";     // crea una API key gratuita en console.cloud.google.com
-  const CHANNEL_ID   = "UC_XpQBSe4wnBb1-NAGFJ7AQ";                    // si lo sabés, ponelo acá (ej: "UCxxxxxxx")
-  const CHANNEL_HANDLE = "";         // si no sabés el ID, poné el @handle del canal
-  const MAX_VIDEOS   = 100;                   // cuántos últimos videos cargar (hasta cientos, pero 50–150 es razonable)
-  /***************************/
-
-  let PLAYER, VIDEO_IDS = [], VIDEO_TITLES = [];
-
-  // 1) Resolver channelId (por ID directo o por handle => search)
-  async function resolveChannelId(){
-    if (CHANNEL_ID) return CHANNEL_ID;
-
-    // Buscar canal por handle / nombre
-    const url = new URL("https://www.googleapis.com/youtube/v3/search");
-    url.search = new URLSearchParams({
-      key: YT_API_KEY, part: "snippet", q: CHANNEL_HANDLE.replace(/^@/,""),
-      type: "channel", maxResults: 1
-    });
-    const r = await fetch(url); const j = await r.json();
-    if (!j.items?.length) throw new Error("No pude encontrar el canal. Revisá el handle o usá CHANNEL_ID.");
-    return j.items[0].snippet.channelId || j.items[0].id.channelId;
-  }
-
-  // 2) Conseguir el "uploads playlistId" del canal
-  async function getUploadsPlaylistId(channelId){
-    const url = new URL("https://www.googleapis.com/youtube/v3/channels");
-    url.search = new URLSearchParams({
-      key: YT_API_KEY, part: "contentDetails", id: channelId
-    });
-    const r = await fetch(url); const j = await r.json();
-    const uploads = j.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
-    if (!uploads) throw new Error("No se encontró la playlist de subidos.");
-    return uploads;
-  }
-
-  // 3) Traer TODOS los videoIds (paginando) y algunos títulos/miniaturas
-  async function getAllUploads(playlistId, limit=MAX_VIDEOS){
-    let ids=[], titles=[], thumbs=[], token=null;
-    while (ids.length < limit){
-      const url = new URL("https://www.googleapis.com/youtube/v3/playlistItems");
-      url.search = new URLSearchParams({
-        key: YT_API_KEY, part: "snippet,contentDetails",
-        playlistId, maxResults: 50, pageToken: token || ""
-      });
-      const r = await fetch(url); const j = await r.json();
-      (j.items||[]).forEach(it=>{
-        const v = it.contentDetails?.videoId; if (v && ids.length < limit){
-          ids.push(v);
-          titles.push(it.snippet?.title || "");
-          thumbs.push(it.snippet?.thumbnails?.medium?.url || it.snippet?.thumbnails?.default?.url || "");
-        }
-      });
-      token = j.nextPageToken;
-      if (!token) break;
-    }
-    return { ids, titles, thumbs };
-  }
-
-  // 4) Construir la tira de miniaturas
-  function renderStrip(ids, titles, thumbs){
-    const strip = document.getElementById("cp-strip");
-    strip.innerHTML = "";
-    ids.forEach((id, i)=>{
-      const a = document.createElement("a");
-      a.className = "cp-card"; a.setAttribute("role","button"); a.href = "javascript:void(0)";
-      a.dataset.index = i;
-      a.innerHTML = `
-        <div class="cp-thumb">
-          <img loading="lazy" src="${thumbs[i] || `https://i.ytimg.com/vi/${id}/mqdefault.jpg`}" alt="">
-        </div>
-        <div class="cp-meta">${escapeHtml(titles[i] || "Video")}</div>
-      `;
-      a.addEventListener("click", ()=> {
-        if (PLAYER && typeof PLAYER.playVideoAt === "function") {
-          PLAYER.playVideoAt(i);
-        }
-        markActive(i);
-      });
-      strip.appendChild(a);
-    });
-    markActive(0);
-  }
-  function markActive(i){
-    document.querySelectorAll(".cp-card").forEach((el,idx)=>{
-      el.classList.toggle("active", idx===i);
-    });
-    const title = VIDEO_TITLES[i] || "Videos";
-    document.getElementById("cp-title").textContent = title;
-  }
-  function escapeHtml(s){
-    return s.replace(/[&<>"']/g, m=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
-  }
-
-  // 5) Iniciar el Iframe Player y cargar playlist vía API (sin límite de URL)
-  window.onYouTubeIframeAPIReady = async function(){
-    try{
-      const channelId = await resolveChannelId();
-      const uploadsId = await getUploadsPlaylistId(channelId);
-      const { ids, titles, thumbs } = await getAllUploads(uploadsId, MAX_VIDEOS);
-      if (!ids.length) throw new Error("El canal no tiene videos públicos.");
-      VIDEO_IDS = ids; VIDEO_TITLES = titles;
-
-      // Render tira
-      renderStrip(ids, titles, thumbs);
-
-      // Crear el player vacío y luego cargar playlist por JS
-      PLAYER = new YT.Player("yt-channel-player", {
-        playerVars: {
-          autoplay: 1, mute: 1, controls: 0, rel: 0, modestbranding: 1,
-          iv_load_policy: 3, cc_load_policy: 0, playsinline: 1, fs: 0, disablekb: 1
-        },
-        events: {
-          onReady: (e)=>{
-            e.target.mute();
-            // cargamos TODA la lista (evita límites de querystring)
-            e.target.cuePlaylist(VIDEO_IDS);
-            e.target.playVideo();
-          },
-          onStateChange: (e)=>{
-            // mantener autoplay si el navegador lo corta
-            if (e.data === YT.PlayerState.PAUSED) e.target.playVideo();
-            // actualizar título/activo
-            if (e.data === YT.PlayerState.PLAYING){
-              const idx = e.target.getPlaylistIndex?.() ?? 0;
-              markActive(idx);
-            }
-          }
-        }
-      });
-    }catch(err){
-      console.error(err);
-      document.getElementById("cp-title").textContent = "No pude cargar los videos (revisá API key/handle).";
-    }
-  };
-</script>
 
     <!-- ====== VIDEOS ====== -->
     <section id="videos" class="videos-section" aria-labelledby="videos-title">
@@ -475,7 +135,7 @@
 </section>
 <hr class="divider" />
 
-
+<!-- ====== CÓMO ====== -->
 
     <hr class="divider" />
 
@@ -497,10 +157,10 @@
       <div class="llegar-photos">
         <!-- Hacemos que TEMPLE luzca más (más grande y primero) -->
         <figure class="photo-card photo-card--temple">
-          <img src="assets/extra2.jpg" alt="Temple Bar en Paseo La Plaza">
+          <img src="assets/SaveVid.Net_489951430_122175670454288882_6748368576523613481_n.jpg" alt="Temple Bar en Paseo La Plaza">
         </figure>
         <figure class="photo-card">
-          <img src="assets/laplaza.jpg" alt="Frente de Paseo La Plaza">
+          <img src="assets/laplaza.jpeg" alt="Frente de Paseo La Plaza">
         </figure>
       </div>
     </div>
@@ -522,20 +182,17 @@
 
     <div class="gallery">
       <!-- Usa data-full para el lightbox (puede ser el mismo src si no tenés versión grande) -->
-      <button class="gallery-item" data-full="assets/gallery1.jpg" aria-label="Temple interior">
+          <button class="gallery-item" data-full="assets/DSC_0309.JPG.png" aria-label="Entrada Temple">
+        <img src="assets/DSC_0309.JPG.png" alt="Entrada Temple" loading="lazy" decoding="async" />
+      
+      <button class="gallery-item" data-full="assets/extra 1.png" aria-label="Ricardo Bisignano en escena">
+        <img src="assets/extra 1.png" alt="Ricardo Bisignano en escena" loading="lazy" decoding="async" />
+      </button>
+      <button class="gallery-item" data-full="assets/357717276_10228064656914378_4229634095250468237_n.jpg" aria-label="Paseo La Plaza">
+        <img src="assets/357717276_10228064656914378_4229634095250468237_n.jpg" alt="Paseo La Plaza" loading="lazy" decoding="async" />
+      </button>
+    </button><button class="gallery-item" data-full="assets/gallery1.jpg" aria-label="Temple interior">
         <img src="assets/gallery1.jpg" alt="Temple interior" loading="lazy" decoding="async" />
-      </button>
-
-      <button class="gallery-item" data-full="assets/extra3.jpg" aria-label="Paseo La Plaza">
-        <img src="assets/extra3.jpg" alt="Paseo La Plaza" loading="lazy" decoding="async" />
-      </button>
-
-      <button class="gallery-item" data-full="assets/extra2.jpg" aria-label="Entrada Temple">
-        <img src="assets/extra2.jpg" alt="Entrada Temple" loading="lazy" decoding="async" />
-      </button>
-
-      <button class="gallery-item" data-full="assets/hero.jpg" aria-label="Ricardo Bisignano en escena">
-        <img src="assets/hero.jpg" alt="Ricardo Bisignano en escena" loading="lazy" decoding="async" />
       </button>
     </div>
   </div>
