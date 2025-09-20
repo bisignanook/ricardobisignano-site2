@@ -191,6 +191,7 @@
 
         <dialog id="lightbox" class="lightbox" aria-label="Vista ampliada">
           <img src="" alt="Imagen ampliada" />
+          <button class="close-btn" aria-label="Cerrar imagen">×</button>
         </dialog>
       </div>
     </section>
@@ -237,6 +238,7 @@
     (function(){
       var lightbox=document.getElementById('lightbox'); if(!lightbox) return;
       var img=lightbox.querySelector('img');
+      var closeBtn = lightbox.querySelector('.close-btn');
       document.querySelectorAll('.gallery-item').forEach(function(btn){
         btn.addEventListener('click',function(){
           var full=this.getAttribute('data-full'); if(full){ img.src=full; lightbox.showModal(); }
@@ -244,6 +246,11 @@
       });
       lightbox.addEventListener('click',function(e){ if(e.target===lightbox){ lightbox.close(); } });
       lightbox.addEventListener('keydown',function(e){ if(e.key==='Escape'){ lightbox.close(); } });
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+          lightbox.close();
+        });
+      }
     })();
   </script>
 </body>
