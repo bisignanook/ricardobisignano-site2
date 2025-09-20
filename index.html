@@ -37,7 +37,7 @@
          href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
          target="_blank" rel="noopener"
          aria-label="Comprar entradas ahora"
-         onclick="metr('track','cta_topbar')">¡Reserva Tu Lugar Ahora!</a>
+         onclick="metr('track','cta_topbar')">Comprá tu entrada</a>
     </div>
   </header>
 
@@ -62,15 +62,14 @@
           <h1 id="hero-title">
             <time datetime="2025-09-26">VIERNES 26/9</time><br />PASEO LA PLAZA
           </h1>
-          <p class="subtitle">
-            Club Temple · 23.30 hs · <span id="countdown" class="urgency"></span>
-          </p>
+          <p class="subtitle">Club Temple · 23.30 hs</p>
+          <p class="countdown-wrapper"><span id="countdown" class="urgency"></span></p>
           <div class="cta-group">
             <a class="btn-primary"
                href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
                target="_blank" rel="noopener"
                aria-label="Comprar entradas para Paseo La Plaza"
-               onclick="metr('track','cta_hero')">¡Reserva Tu Lugar Ahora!</a>
+               onclick="metr('track','cta_hero')">Comprá tu entrada</a>
           </div>
         </div>
         <div class="hero-image" aria-hidden="true" role="img">
@@ -125,10 +124,9 @@
             <div class="show-info">
               <time class="show-date" datetime="2025-09-26">VIERNES 26/9</time>
               <span class="show-meta">23.30&nbsp;h — PASEO LA PLAZA</span>
-              <span id="show-countdown" class="urgency"></span>
-            </div>
+              </div>
             <a class="btn-ticket"
-               href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410520"
+               href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519"
                target="_blank" rel="noopener"
                aria-label="Comprar entradas para el 26 de septiembre"
                onclick="metr('track','cta_show_26')">
@@ -166,7 +164,7 @@
           <a class="btn-secondary"
              href="https://www.google.com/maps/search/?api=1&query=Paseo%20La%20Plaza%2C%20Av.%20Corrientes%201660%2C%20CABA"
              target="_blank" rel="noopener">Abrir en Google&nbsp;Maps</a>
-          <a class="btn-primary" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519" target="_blank" rel="noopener" onclick="metr('track','cta_maps')">¡Reserva Tu Lugar Ahora!</a>
+          <a class="btn-primary" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519" target="_blank" rel="noopener" onclick="metr('track','cta_maps')">Comprá tu entrada</a>
         </div>
       </div>
     </section>
@@ -239,24 +237,26 @@
 
   <footer class="footer" role="contentinfo">
     © <span id="year"></span> Ricardo Bisignano. 
-    <a href="https://www.instagram.com/ricardobisignano" target="_blank" rel="noopener" aria-label="Instagram">IG</a> · 
-    <a href="https://www.youtube.com/@ricardobisignano" target="_blank" rel="noopener" aria-label="YouTube">YT</a> · 
-    <a href="https://www.tiktok.com/@ricardobisignano" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+    <a href="https://www.instagram.com/ricardo.bisignano" target="_blank" rel="noopener" aria-label="Instagram">IG</a> · 
+    <a href="https://www.youtube.com/@Ricardo.Bisignano" target="_blank" rel="noopener" aria-label="YouTube">YT</a> · 
+    <a href="https://www.tiktok.com/@ricardo.bisignano" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
   </footer>
 
   <script>
     // Año actual
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Countdown (sync para hero y shows)
+    // Countdown
     function updateCountdown() {
       const showDate = new Date('2025-09-26T23:30:00');
       const now = new Date();
       const diff = showDate - now;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const text = diff > 0 ? `¡Quedan ${days} días!` : '¡Hoy es el show!';
-      document.getElementById('countdown').textContent = text;
-      document.getElementById('show-countdown').textContent = text;
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('countdown').textContent = `¡Quedan ${days} días!`;
+      } else {
+        document.getElementById('countdown').textContent = '¡Hoy es el show!';
+      }
     }
     updateCountdown();
     setInterval(updateCountdown, 86400000);

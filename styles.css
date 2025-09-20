@@ -31,8 +31,8 @@ img{max-width:100%;display:block}
 .divider{border:0;height:1px;margin:20px 0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
 .urgency { color: var(--accent1); font-weight: 900; }
 
-/* Urgencia Badge (sin estrella, solo para posicionamiento si se necesita) */
-.urgency-badge { position: relative; }
+/* Progress Bar (REMOVIDA, no se usa más) */
+/* .progress-bar y .progress eliminados */
 
 /* Testimonial */
 .testimonial { font-style: italic; border-left: 4px solid var(--accent1); padding-left: 16px; margin: 16px 0; color: var(--muted); }
@@ -41,6 +41,9 @@ img{max-width:100%;display:block}
 .contact-form { display: flex; flex-direction: column; gap: 12px; max-width: 500px; margin: 16px 0; }
 .contact-form input, .contact-form textarea { padding: 12px; border: 1px solid var(--stroke); border-radius: var(--radius); background: var(--panel); color: var(--text); font-family: inherit; }
 .contact-form button { align-self: flex-start; }
+
+/* Countdown wrapper para mobile */
+.countdown-wrapper { margin: 0; }
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -76,10 +79,9 @@ nav a:hover{color:var(--text)}
 .hero{padding:44px 0 16px;border-bottom:1px solid var(--stroke)}
 .hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
 .kicker{color:#ffa477;font-weight:800;letter-spacing:.06em}
-h1{font-family:"Bebas Neue";font-size:clamp(42px,7.2vw,72px);line-height:.98;margin:8px 0 10px;letter-spacing:.2px}
-.subtitle{color:var(--muted);margin:0 0 14px}
-#countdown { margin: 0 0 14px; text-align: center; } /* Countdown separado para mejor flujo */
-.cta-group{display:flex;gap:16px;flex-wrap:wrap}
+h1{font-family:"Bebas Neue";font-size:clamp(42px,7.2vw,72px);line-height:1.0;margin:8px 0 4px;letter-spacing:.2px}
+.subtitle{color:var(--muted);margin:0 0 2px}
+.cta-group{margin-top:4px;display:flex;gap:16px;flex-wrap:wrap}
 .btn-primary,.btn-secondary{
   display:inline-flex;align-items:center;justify-content:center;height:48px;
   padding:0 22px;border-radius:var(--radius);font-weight:800;font-size:1rem;border:1px solid var(--stroke);line-height:1;
@@ -107,6 +109,41 @@ h1{font-family:"Bebas Neue";font-size:clamp(42px,7.2vw,72px);line-height:.98;mar
   filter:saturate(1.06);
 }
 
+/* Fix para espaciado compacto entre subtitle y countdown en hero */
+.hero .hero-text .subtitle {
+  margin: 0 0 2px !important;
+  line-height: 1.18;
+}
+
+.hero .hero-text .countdown-wrapper {
+  display: block;
+  margin: 0 0 4px !important;
+  line-height: 1.05;
+  padding-top: 0;
+}
+
+/* Ajuste fino en mobile */
+@media (max-width: 640px) {
+  .hero .hero-text .subtitle {
+    margin-bottom: 0 !important;
+    line-height: 1.14;
+  }
+  
+  .hero .hero-text .countdown-wrapper {
+    margin-bottom: 2px !important;
+  }
+  
+  .hero-text h1 { margin-bottom: 2px; }
+  
+  .cta-group { margin-top: 2px; }
+}
+
+/* Asegurar que otros márgenes no reabran el hueco */
+.hero .hero-text p.subtitle,
+.hero .hero-text p.countdown-wrapper {
+  margin-block: 0 !important;
+}
+
 /* =========================================================
    SECCIONES
    ========================================================= */
@@ -127,7 +164,7 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 .show-info{min-width:0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;flex-direction:column}
 .show-date{font-weight:900;letter-spacing:.15px}
 .show-meta{color:var(--muted);font-size:1rem}
-#show-countdown { margin-top: 4px; } /* Espaciado para countdown en shows */
+/* .sold REMOVIDO */
 .btn-ticket{
   --h:46px;display:inline-flex;align-items:center;gap:10px;height:var(--h);padding:0 18px;
   border-radius:999px;font-weight:900;letter-spacing:.02em;border:0;
@@ -233,7 +270,7 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
   box-shadow:0 24px 64px rgba(0,0,0,.5);
 }
 .lightbox .close-btn {
-  display: none;
+  display: flex;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -259,9 +296,6 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
   .llegar-photos{grid-template-columns:1fr;gap:16px;margin-top:12px}
   .llegar-photos .photo-card{border-radius:var(--radius);overflow:hidden;aspect-ratio:1/1}
   .llegar-photos .photo-card img{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
-  .lightbox .close-btn {
-    display: flex;
-  }
 }
 @media (max-width:480px){.gallery{grid-template-columns:1fr;gap:10px}}
 
@@ -298,43 +332,24 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 .footer{text-align:center;padding:24px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--stroke)}
 .footer a { color: var(--accent1); margin: 0 8px; }
 
-/* Sticky CTA Mobile */
-.mobile-cta { 
-  display: none; 
-  position: fixed; 
-  bottom: 20px; 
-  right: 20px; 
-  z-index: 100; 
-}
-.mobile-cta a { 
-  width: 56px; 
-  height: 56px; 
-  border-radius: 50%; 
-  font-size: 1.2rem; 
-  box-shadow: var(--shadow-cta); 
-}
-
 /* =========================================================
    MOBILE (≤960px)
    ========================================================= */
 @media (max-width:960px){
   .container{padding:0 16px}
-  .topbar .container { flex-wrap: wrap; justify-content: center; gap: 10px; } /* Visible en mobile con wrap */
+  .topbar { display: none !important; } /* Ocultar topbar en mobile */
   .hero{text-align:center;padding:40px 0 14px;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
   .hero-inner{grid-template-columns:1fr;gap:18px}
   .hero-text{padding:0}
   .hero-image{display:none}
-  .hero-text h1{font-size:clamp(34px,11.5vw,46px);line-height:1.04;margin:6px auto 8px}
-  .cta-group{width:100%;display:block}
+  .hero-text h1{font-size:clamp(34px,11.5vw,46px);line-height:1.04;margin:6px auto 4px}
+  .cta-group{width:100%;display:block;margin-top:2px}
   .cta-group .btn-primary{
     display:flex;align-items:center;justify-content:center;width:100%;max-width:360px;height:60px;
     margin:0 auto;padding:0 16px;border-radius:var(--radius);font-size:1.06rem;font-weight:900;letter-spacing:.02em;line-height:1;
     box-shadow:var(--shadow-cta);
   }
-  #countdown { font-size: 1.1rem; margin-top: 8px; } /* Mejor espaciado en mobile para countdown */
-  .mobile-cta { display: block; } /* Visible en mobile */
 }
-@media (min-width: 961px) { .mobile-cta { display: none !important; } }
 
 /* =========================================================
    EXTRA PEQUEÑAS (≤360px)
