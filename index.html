@@ -138,32 +138,37 @@
 
     <hr class="divider" />
 
-    <!-- ====== CÓMO LLEGAR ====== -->
-    <section id="llegar" class="llegar-section">
-      <div class="container">
-        <h2>Cómo llegar a Temple</h2>
-        <div class="llegar-grid">
-          <div class="map-container">
-            <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=Paseo%20La%20Plaza%20Buenos%20Aires&z=17&output=embed"></iframe>
-          </div>
-          <div class="llegar-photos">
-            <figure class="photo-card photo-card--temple">
-              <img src="assets/SaveVid.Net_489951430_122175670454288882_6748368576523613481_n.jpg" alt="Exterior del Temple Bar en Paseo La Plaza" loading="lazy" decoding="async" />
-            </figure>
-            <figure class="photo-card">
-              <img src="assets/laplaza.jpeg" alt="Frente de Paseo La Plaza en Buenos Aires" loading="lazy" decoding="async" />
-            </figure>
-          </div>
-        </div>
-        <div class="llegar-cta">
-          <a class="btn-secondary" href="https://goo.gl/maps/Lm71Zw7JzD6uFyFTA" target="_blank" rel="noopener">Abrir en Google&nbsp;Maps</a>
-          <a class="btn-primary" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519" target="_blank" rel="noopener" onclick="metr('track','cta_maps')">Comprar entradas</a>
-        </div>
+<!-- ====== CÓMO LLEGAR ====== -->
+<section id="llegar" class="llegar-section">
+  <div class="container">
+    <h2>Cómo llegar a Temple</h2>
+    <div class="llegar-grid">
+      <div class="map-container">
+        <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Paseo%20La%20Plaza%20Buenos%20Aires&z=17&output=embed"></iframe>
       </div>
-    </section>
+      <div class="llegar-photos">
+        <figure class="photo-card photo-card--temple">
+          <img src="assets/SaveVid.Net_489951430_122175670454288882_6748368576523613481_n.jpg" alt="Exterior del Temple Bar en Paseo La Plaza" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="photo-card">
+          <img src="assets/laplaza.jpeg" alt="Frente de Paseo La Plaza en Buenos Aires" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+    </div>
+    <div class="llegar-cta">
+      <!-- SOLO cambiado este href (goo.gl roto -> link directo a Paseo La Plaza) -->
+      <a class="btn-secondary"
+         href="https://www.google.com/maps/search/?api=1&query=Paseo%20La%20Plaza%2C%20Av.%20Corrientes%201660%2C%20CABA"
+         target="_blank" rel="noopener">Abrir en Google&nbsp;Maps</a>
 
-    <hr class="divider" />
+      <a class="btn-primary" href="https://www.passline.com/sitio-evento/anda-a-verlo-a-bisignano-comedy-show-410519" target="_blank" rel="noopener" onclick="metr('track','cta_maps')">Comprar entradas</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
 
     <!-- ====== FOTOS ====== -->
     <section id="fotos" class="fotos-section" aria-labelledby="fotos-title">
