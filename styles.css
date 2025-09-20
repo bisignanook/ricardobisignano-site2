@@ -1,5 +1,5 @@
 /* =========================================================
-   RICARDO BISIGNANO — THEME (Optimizado)
+   RICARDO BISIGNANO — THEME (Optimizado con Mejoras)
    ========================================================= */
 
 /* ---------- VARIABLES ---------- */
@@ -7,9 +7,10 @@
   --bg:#0b0b0b; --bg-soft:#131313;
   --panel:#15161a; --panel-2:#1b1c22; --stroke:#2a2b31;
   --text:#f2f2f2; --muted:#b9b9b9;
-  --accent1:#ff8a4c; --accent2:#ff5e3a; --brand:#ff7a45;
-  --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.45);
-  --shadow-cta:0 10px 26px rgba(255,122,61,.22), inset 0 -2px 0 rgba(0,0,0,.12);
+  --accent1:#ff6b35; --accent2:#ff5e3a; --brand:#ff7a45; /* Naranja más vibrante */
+  --radius:20px; /* Aumentado para look más moderno */
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+  --shadow-cta:0 10px 26px rgba(255,107,53,.22), inset 0 -2px 0 rgba(0,0,0,.12); /* Ajustado al nuevo accent */
 }
 
 /* ---------- BASE ---------- */
@@ -28,6 +29,42 @@ img{max-width:100%;display:block}
 .center{width:min(1100px,92vw);margin-inline:auto}
 .muted{color:var(--muted)}
 .divider{border:0;height:1px;margin:20px 0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
+.urgency { color: var(--accent1); font-weight: 900; }
+
+/* Urgencia Badge */
+/*
+.urgency-badge::before { 
+  content: '★'; 
+  position: absolute; 
+  top: -8px; 
+  right: -8px; 
+  background: var(--accent2); 
+  color: white; 
+  border-radius: 50%; 
+  width: 24px; 
+  height: 24px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 12px; 
+  z-index: 1; 
+}
+*/
+
+/* Progress Bar */
+/*
+.progress-bar { width: 100%; height: 4px; background: var(--stroke); border-radius: 2px; margin-top: 8px; overflow: hidden; }
+.progress { height: 100%; background: var(--accent1); transition: width 0.3s ease; }
+.sold { font-size: 0.85rem; color: var(--accent1); margin: 4px 0 0; }
+*/
+
+/* Testimonial */
+.testimonial { font-style: italic; border-left: 4px solid var(--accent1); padding-left: 16px; margin: 16px 0; color: var(--muted); }
+
+/* Formulario Contacto */
+.contact-form { display: flex; flex-direction: column; gap: 12px; max-width: 500px; margin: 16px 0; }
+.contact-form input, .contact-form textarea { padding: 12px; border: 1px solid var(--stroke); border-radius: var(--radius); background: var(--panel); color: var(--text); font-family: inherit; }
+.contact-form button { align-self: flex-start; }
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -54,7 +91,7 @@ nav a:hover{color:var(--text)}
   background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#111;
   height:40px;padding:0 16px;border-radius:22px;font-weight:800;font-size:.95rem;
   display:inline-flex;align-items:center;justify-content:center;
-  box-shadow:0 8px 24px rgba(255,122,61,.25);white-space:nowrap;
+  box-shadow:0 8px 24px rgba(255,107,53,.25);white-space:nowrap;
 }
 
 /* =========================================================
@@ -68,7 +105,7 @@ h1{font-family:"Bebas Neue";font-size:clamp(42px,7.2vw,72px);line-height:.98;mar
 .cta-group{display:flex;gap:16px;flex-wrap:wrap}
 .btn-primary,.btn-secondary{
   display:inline-flex;align-items:center;justify-content:center;height:48px;
-  padding:0 22px;border-radius:14px;font-weight:800;font-size:1rem;border:1px solid var(--stroke);line-height:1;
+  padding:0 22px;border-radius:var(--radius);font-weight:800;font-size:1rem;border:1px solid var(--stroke);line-height:1;
 }
 .btn-primary{
   background:linear-gradient(180deg,var(--accent1) 0%,var(--accent2) 100%);color:#111;border:0;
@@ -79,12 +116,10 @@ h1{font-family:"Bebas Neue";font-size:clamp(42px,7.2vw,72px);line-height:.98;mar
 .btn-primary:focus-visible{outline:2px solid #ffd1bf;outline-offset:2px}
 .btn-secondary{background:transparent;color:var(--text)}
 .hero-image{border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.35)}
-
-/* ++ AUMENTO 10% Y EFECTO HOVER SOLO PARA LA IMAGEN DEL HERO ++ */
 .hero-image{position:relative}
 .hero-image img{
   display:block;
-  width:110%;                /* +10% */
+  width:110%;
   height:auto;
   transform-origin:center;
   transition:transform .25s ease, filter .25s ease;
@@ -94,10 +129,6 @@ h1{font-family:"Bebas Neue";font-size:clamp(42px,7.2vw,72px);line-height:.98;mar
   transform:scale(1.06);
   filter:saturate(1.06);
 }
-
-/* Sticky CTA (DESACTIVADA globalmente) */
-.sticky-cta{display:none !important}
-
 
 /* =========================================================
    SECCIONES
@@ -111,24 +142,24 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 .shows-list{width:min(820px,100%);margin:0 auto;display:grid;gap:14px}
 .show-card{
   display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;
-  background:var(--panel);border:1px solid var(--stroke);border-radius:16px;
+  background:var(--panel);border:1px solid var(--stroke);border-radius:var(--radius);
   padding:14px 16px;box-shadow:0 10px 24px rgba(0,0,0,.18);
   transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
 }
 .show-card:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--stroke) 55%,white 45%);box-shadow:0 16px 36px rgba(0,0,0,.24)}
-.show-info{min-width:0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.show-info{min-width:0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;flex-direction:column}
 .show-date{font-weight:900;letter-spacing:.15px}
 .show-meta{color:var(--muted);font-size:1rem}
 .btn-ticket{
   --h:46px;display:inline-flex;align-items:center;gap:10px;height:var(--h);padding:0 18px;
   border-radius:999px;font-weight:900;letter-spacing:.02em;border:0;
   background:linear-gradient(180deg,var(--accent1) 0%,var(--accent2) 100%);color:#111;
-  box-shadow:0 10px 24px rgba(255,122,61,.25), inset 0 -2px 0 rgba(0,0,0,.12);
+  box-shadow:0 10px 24px rgba(255,107,53,.25), inset 0 -2px 0 rgba(0,0,0,.12);
   transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;
 }
 .btn-ticket .icon{width:18px;height:18px;flex:0 0 18px}
 .btn-ticket:hover{transform:translateY(-1px);filter:saturate(108%)}
-.btn-ticket:active{transform:none;box-shadow:0 6px 16px rgba(255,122,61,.18)}
+.btn-ticket:active{transform:none;box-shadow:0 6px 16px rgba(255,107,53,.18)}
 .btn-ticket:focus-visible{outline:2px solid #ffd1bf;outline-offset:2px}
 
 @media (max-width:640px){
@@ -143,9 +174,23 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
    VIDEOS
    ========================================================= */
 .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.video-card{background:var(--panel);border:1px solid var(--stroke);border-radius:16px;overflow:hidden}
+.video-card{background:var(--panel);border:1px solid var(--stroke);border-radius:var(--radius);overflow:hidden}
 .video-wrapper{position:relative;padding-top:56.25%}
-.video-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-wrapper::before { 
+  content: '▶'; 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  font-size: 48px; 
+  color: white; 
+  opacity: 0; 
+  transition: opacity 0.3s; 
+  z-index: 1; 
+}
+.video-wrapper:hover::before { opacity: 1; }
+.video-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:0; opacity: 0.8; transition: opacity 0.3s; }
+.video-wrapper:hover iframe { opacity: 1; }
 @media (max-width:960px){.video-grid{grid-template-columns:1fr;gap:14px}}
 
 /* =========================================================
@@ -153,13 +198,13 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
    ========================================================= */
 .llegar-grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:start}
 .map-container{
-  border:1px solid var(--stroke);border-radius:16px;overflow:hidden;background:var(--panel);
+  border:1px solid var(--stroke);border-radius:var(--radius);overflow:hidden;background:var(--panel);
   box-shadow:0 16px 40px rgba(0,0,0,.28);
 }
 .map-container iframe{display:block;width:100%;aspect-ratio:16/9;min-height:300px;border:0}
 .llegar-photos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .photo-card{
-  position:relative;border:1px solid var(--stroke);border-radius:16px;overflow:hidden;background:var(--panel);
+  position:relative;border:1px solid var(--stroke);border-radius:var(--radius);overflow:hidden;background:var(--panel);
   aspect-ratio:1/1;box-shadow:0 12px 30px rgba(0,0,0,.22);
 }
 .photo-card img{
@@ -169,12 +214,12 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 .photo-card:hover img,.photo-card:focus-within img{transform:scale(1.06);filter:saturate(1.06)}
 .llegar-cta{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
 .llegar-cta .btn-secondary{
-  height:52px;padding:0 18px;border-radius:14px;border:1px solid var(--stroke);
+  height:52px;padding:0 18px;border-radius:var(--radius);border:1px solid var(--stroke);
   background:#121214;color:var(--text);font-weight:800;
 }
 .llegar-cta .btn-primary{
-  height:54px;padding:0 22px;border-radius:16px;font-weight:900;
-  box-shadow:0 10px 26px rgba(255,122,61,.22);
+  height:54px;padding:0 22px;border-radius:var(--radius);font-weight:900;
+  box-shadow:0 10px 26px rgba(255,107,53,.22);
 }
 @media (min-width:960px){
   .llegar-grid{grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}
@@ -188,12 +233,12 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 @media (min-width:1280px){.llegar-grid{gap:22px}}
 
 /* =========================================================
-   GALERÍA
+   GALERÍA (Masonry-like con grid ajustado)
    ========================================================= */
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:14px; /* Más flexible */}
 .gallery-item{
   -webkit-appearance:none;appearance:none;background:transparent;border:1px solid var(--stroke);
-  border-radius:16px;padding:0;margin:0;line-height:0;display:block;position:relative;overflow:hidden;cursor:zoom-in;
+  border-radius:var(--radius);padding:0;margin:0;line-height:0;display:block;position:relative;overflow:hidden;cursor:zoom-in;
 }
 .gallery-item::before{content:"";display:block;padding-top:100%}
 .gallery-item img{
@@ -206,7 +251,7 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 .lightbox{margin:auto;padding:0;border:0;background:transparent;max-width:min(94vw,1200px)}
 .lightbox::backdrop{background:rgba(0,0,0,.82);backdrop-filter:blur(2px)}
 .lightbox img{
-  display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--stroke);
+  display:block;width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--stroke);
   box-shadow:0 24px 64px rgba(0,0,0,.5);
 }
 .lightbox .close-btn {
@@ -232,15 +277,15 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
   background: rgba(0,0,0,0.9);
 }
 @media (max-width:640px){
-  .gallery{grid-template-columns:repeat(3,1fr);gap:12px}
+  .gallery{grid-template-columns:repeat(2,1fr);gap:12px} /* Ajustado para mobile */
   .llegar-photos{grid-template-columns:1fr;gap:16px;margin-top:12px}
-  .llegar-photos .photo-card{border-radius:14px;overflow:hidden;aspect-ratio:1/1}
+  .llegar-photos .photo-card{border-radius:var(--radius);overflow:hidden;aspect-ratio:1/1}
   .llegar-photos .photo-card img{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
   .lightbox .close-btn {
     display: flex;
   }
 }
-@media (max-width:480px){.gallery{grid-template-columns:repeat(2,1fr);gap:10px}}
+@media (max-width:480px){.gallery{grid-template-columns:1fr;gap:10px}}
 
 /* =========================================================
    BIO
@@ -248,7 +293,7 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 .bio-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(16px,3vw,24px);align-items:start}
 .bio-text p{margin:0 0 12px}
 .bio-photo{
-  position:relative;overflow:hidden;border:1px solid var(--stroke);border-radius:16px;background:var(--panel);
+  position:relative;overflow:hidden;border:1px solid var(--stroke);border-radius:var(--radius);background:var(--panel);
   box-shadow:0 12px 28px rgba(0,0,0,.28);
 }
 .bio-photo::before{content:"";display:block;padding-top:125%}
@@ -263,7 +308,7 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
   .bio-photo::before{display:none}
   .bio-photo img{
     position:static;display:block;width:min(460px,100%);height:auto;margin:0 auto;
-    border:1px solid var(--stroke);border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.35);
+    border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:0 16px 40px rgba(0,0,0,.35);
     transform:none;filter:none;
   }
 }
@@ -273,13 +318,15 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
    ========================================================= */
 .contrataciones-section a{text-decoration:underline}
 .footer{text-align:center;padding:24px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--stroke)}
+.footer a { color: var(--accent1); margin: 0 8px; }
 
 /* =========================================================
    MOBILE (≤960px)
    ========================================================= */
 @media (max-width:960px){
   .container{padding:0 16px}
-  .topbar{display:none!important}
+  .topbar { display: none; }
+  .topbar .container { flex-wrap: wrap; justify-content: center; gap: 10px; } /* Visible en mobile con wrap */
   .hero{text-align:center;padding:40px 0 14px;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
   .hero-inner{grid-template-columns:1fr;gap:18px}
   .hero-text{padding:0}
@@ -288,10 +335,11 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
   .cta-group{width:100%;display:block}
   .cta-group .btn-primary{
     display:flex;align-items:center;justify-content:center;width:100%;max-width:360px;height:60px;
-    margin:0 auto;padding:0 16px;border-radius:18px;font-size:1.06rem;font-weight:900;letter-spacing:.02em;line-height:1;
+    margin:0 auto;padding:0 16px;border-radius:var(--radius);font-size:1.06rem;font-weight:900;letter-spacing:.02em;line-height:1;
     box-shadow:var(--shadow-cta);
   }
 }
+@media (min-width: 961px) { .mobile-cta { display: none !important; } }
 
 /* =========================================================
    EXTRA PEQUEÑAS (≤360px)
