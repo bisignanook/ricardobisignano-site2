@@ -31,9 +31,6 @@ img{max-width:100%;display:block}
 .divider{border:0;height:1px;margin:20px 0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
 .urgency { color: var(--accent1); font-weight: 900; }
 
-/* Progress Bar (REMOVIDA, no se usa más) */
-/* .progress-bar y .progress eliminados */
-
 /* Testimonial */
 .testimonial { font-style: italic; border-left: 4px solid var(--accent1); padding-left: 16px; margin: 16px 0; color: var(--muted); }
 
@@ -110,39 +107,12 @@ h1{font-family:"Bebas Neue";font-size:clamp(42px,7.2vw,72px);line-height:1.0;mar
 }
 
 /* Fix para espaciado compacto entre subtitle y countdown en hero */
-.hero .hero-text .subtitle {
-  margin: 0 0 2px !important;
-  line-height: 1.18;
-}
-
-.hero .hero-text .countdown-wrapper {
-  display: block;
-  margin: 0 0 4px !important;
-  line-height: 1.05;
-  padding-top: 0;
-}
-
-/* Ajuste fino en mobile */
-@media (max-width: 640px) {
-  .hero .hero-text .subtitle {
-    margin-bottom: 0 !important;
-    line-height: 1.14;
-  }
-  
-  .hero .hero-text .countdown-wrapper {
-    margin-bottom: 2px !important;
-  }
-  
-  .hero-text h1 { margin-bottom: 2px; }
-  
-  .cta-group { margin-top: 2px; }
-}
+.hero .hero-text .subtitle { margin: 0 0 2px !important; line-height: 1.18; }
+.hero .hero-text .countdown-wrapper { display: block; margin: 0 0 4px !important; line-height: 1.05; padding-top: 0; }
 
 /* Asegurar que otros márgenes no reabran el hueco */
 .hero .hero-text p.subtitle,
-.hero .hero-text p.countdown-wrapper {
-  margin-block: 0 !important;
-}
+.hero .hero-text p.countdown-wrapper { margin-block: 0 !important; }
 
 /* =========================================================
    SECCIONES
@@ -151,7 +121,7 @@ section{padding:36px 0}
 h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 
 /* =========================================================
-   SHOWS (estable)
+   SHOWS (estable: 1 línea en desktop, mobile intacto)
    ========================================================= */
 .shows-list{width:min(820px,100%);margin:0 auto;display:grid;gap:14px}
 
@@ -173,14 +143,14 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
   box-shadow:0 16px 36px rgba(0,0,0,.24);
 }
 
-/* Texto en UNA línea en escritorio (sin romper) */
+/* Texto en UNA línea en escritorio (mobile se maneja en su @media) */
 .show-info{
   min-width:0;
   display:flex;
   align-items:center;
   gap:8px;
-  flex-direction:row;
-  flex-wrap:nowrap;
+  flex-direction:row;   /* clave */
+  flex-wrap:nowrap;     /* clave */
   overflow:hidden;
 }
 .show-date{font-weight:900;letter-spacing:.15px;white-space:nowrap}
@@ -208,16 +178,6 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 .btn-ticket:active{transform:none;box-shadow:0 6px 16px rgba(255,107,53,.18)}
 .btn-ticket:focus-visible{outline:2px solid #ffd1bf;outline-offset:2px}
 
-/* Mobile: vuelve a columnas y permite salto de línea */
-@media (max-width:640px){
-  .show-card{grid-template-columns:1fr;align-items:stretch;gap:10px;padding:12px}
-  .show-info{flex-direction:column;align-items:flex-start;gap:4px;flex-wrap:wrap;overflow:visible}
-  .show-date,.show-meta{white-space:normal}
-  .show-date{font-size:1.05rem}
-  .show-meta{font-size:1.02rem;color:var(--text)}
-  .btn-ticket{width:100%;justify-content:center;--h:56px;font-size:1.04rem}
-}
-
 /* =========================================================
    VIDEOS
    ========================================================= */
@@ -233,7 +193,6 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 .video-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:.8;transition:opacity .3s}
 .video-wrapper:hover iframe{opacity:1}
 @media (max-width:960px){.video-grid{grid-template-columns:1fr;gap:14px}}
-
 
 /* =========================================================
    CÓMO LLEGAR
@@ -369,7 +328,6 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
   .hero-inner{grid-template-columns:1fr;gap:18px}
   .hero-text{padding:0}
   .hero-image{display:none}
-  .hero-text h1{font-size:clamp(34px,11.5vw,46px);line-height:1.04;margin:6px auto 4px}
   .cta-group{width:100%;display:block;margin-top:2px}
   .cta-group .btn-primary{
     display:flex;align-items:center;justify-content:center;width:100%;max-width:360px;height:60px;
@@ -379,9 +337,27 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 }
 
 /* =========================================================
+   Ajuste fino en mobile (≤640px) — SOLO compacta hero
+   ========================================================= */
+@media (max-width: 640px) {
+  .hero { padding:28px 0 12px; }
+  .hero-inner { gap:12px; }
+  .hero-text h1 {
+    font-size:clamp(38px,12.8vw,50px);  /* más grande en celu */
+    line-height:.90;                     /* compacta líneas */
+    margin:6px 0 6px;
+    letter-spacing:.3px;
+  }
+  .hero .hero-text .subtitle { margin:0; line-height:1.14; }
+  .hero .hero-text .countdown-wrapper { margin:2px 0 0; line-height:1.05; font-weight:900; }
+  .cta-group { margin-top:8px; }
+  .cta-group .btn-primary { height:62px; border-radius:26px; padding:0 22px; }
+}
+
+/* =========================================================
    EXTRA PEQUEÑAS (≤360px)
    ========================================================= */
 @media (max-width:360px){
-  .cta-group .btn-primary{font-size:.98rem}
-  .hero-text h1{font-size:13.5vw}
+  .cta-group .btn-primary{font-size:1.02rem;height:58px}
+  .hero-text h1{font-size:13vw;line-height:.92}
 }
