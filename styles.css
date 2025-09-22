@@ -1,5 +1,5 @@
 /* =========================================================
-   RICARDO BISIGNANO — THEME (Optimizado con Mejoras)
+   RICARDO BISIGNANO — THEME (Optimizado con Mejoras + Mobile Fix)
    ========================================================= */
 
 /* ---------- VARIABLES ---------- */
@@ -7,10 +7,10 @@
   --bg:#0b0b0b; --bg-soft:#131313;
   --panel:#15161a; --panel-2:#1b1c22; --stroke:#2a2b31;
   --text:#f2f2f2; --muted:#b9b9b9;
-  --accent1:#ff6b35; --accent2:#ff5e3a; --brand:#ff7a45; /* Naranja más vibrante */
-  --radius:20px; /* Aumentado para look más moderno */
+  --accent1:#ff6b35; --accent2:#ff5e3a; --brand:#ff7a45;
+  --radius:20px;
   --shadow:0 10px 30px rgba(0,0,0,.45);
-  --shadow-cta:0 10px 26px rgba(255,107,53,.22), inset 0 -2px 0 rgba(0,0,0,.12); /* Ajustado al nuevo accent */
+  --shadow-cta:0 10px 26px rgba(255,107,53,.22), inset 0 -2px 0 rgba(0,0,0,.12);
 }
 
 /* ---------- BASE ---------- */
@@ -29,18 +29,18 @@ img{max-width:100%;display:block}
 .center{width:min(1100px,92vw);margin-inline:auto}
 .muted{color:var(--muted)}
 .divider{border:0;height:1px;margin:20px 0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
-.urgency { color: var(--accent1); font-weight: 900; }
+.urgency{color:var(--accent1);font-weight:900}
 
 /* Testimonial */
-.testimonial { font-style: italic; border-left: 4px solid var(--accent1); padding-left: 16px; margin: 16px 0; color: var(--muted); }
+.testimonial{font-style:italic;border-left:4px solid var(--accent1);padding-left:16px;margin:16px 0;color:var(--muted)}
 
 /* Formulario Contacto */
-.contact-form { display: flex; flex-direction: column; gap: 12px; max-width: 500px; margin: 16px 0; }
-.contact-form input, .contact-form textarea { padding: 12px; border: 1px solid var(--stroke); border-radius: var(--radius); background: var(--panel); color: var(--text); font-family: inherit; }
-.contact-form button { align-self: flex-start; }
+.contact-form{display:flex;flex-direction:column;gap:12px;max-width:500px;margin:16px 0}
+.contact-form input,.contact-form textarea{padding:12px;border:1px solid var(--stroke);border-radius:var(--radius);background:var(--panel);color:var(--text);font-family:inherit}
+.contact-form button{align-self:flex-start}
 
-/* Countdown wrapper para mobile */
-.countdown-wrapper { margin: 0; }
+/* Countdown wrapper */
+.countdown-wrapper{margin:0}
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -94,25 +94,14 @@ h1{font-family:"Bebas Neue";font-size:clamp(42px,7.2vw,72px);line-height:1.0;mar
 .hero-image{border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.35)}
 .hero-image{position:relative}
 .hero-image img{
-  display:block;
-  width:110%;
-  height:auto;
-  transform-origin:center;
-  transition:transform .25s ease, filter .25s ease;
+  width:110%;height:auto;transform-origin:center;
+  transition:transform .25s ease,filter .25s ease;
 }
-.hero-image:hover img,
-.hero-image:focus-within img{
-  transform:scale(1.06);
-  filter:saturate(1.06);
-}
+.hero-image:hover img,.hero-image:focus-within img{transform:scale(1.06);filter:saturate(1.06)}
 
-/* Fix para espaciado compacto entre subtitle y countdown en hero */
-.hero .hero-text .subtitle { margin: 0 0 2px !important; line-height: 1.18; }
-.hero .hero-text .countdown-wrapper { display: block; margin: 0 0 4px !important; line-height: 1.05; padding-top: 0; }
-
-/* Asegurar que otros márgenes no reabran el hueco */
-.hero .hero-text p.subtitle,
-.hero .hero-text p.countdown-wrapper { margin-block: 0 !important; }
+/* Espaciado compacto entre subtitle y countdown */
+.hero .hero-text .subtitle{margin:0 0 2px!important;line-height:1.18}
+.hero .hero-text .countdown-wrapper{display:block;margin:0 0 4px!important;line-height:1.05}
 
 /* =========================================================
    SECCIONES
@@ -121,18 +110,13 @@ section{padding:36px 0}
 h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 
 /* =========================================================
-   SHOWS (estable: 1 línea en desktop, mobile intacto)
+   SHOWS
    ========================================================= */
 .shows-list{width:min(820px,100%);margin:0 auto;display:grid;gap:14px}
-
 .show-card{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) auto; /* evita que el botón deforme el layout */
-  align-items:center;
-  gap:16px;
-  background:var(--panel);
-  border:1px solid var(--stroke);
-  border-radius:var(--radius);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;gap:16px;background:var(--panel);
+  border:1px solid var(--stroke);border-radius:var(--radius);
   padding:14px 16px;
   box-shadow:0 10px 24px rgba(0,0,0,.18);
   transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
@@ -142,36 +126,19 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
   border-color:color-mix(in srgb,var(--stroke) 55%,white 45%);
   box-shadow:0 16px 36px rgba(0,0,0,.24);
 }
-
-/* Texto en UNA línea en escritorio (mobile se maneja en su @media) */
 .show-info{
-  min-width:0;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex-direction:row;   /* clave */
-  flex-wrap:nowrap;     /* clave */
-  overflow:hidden;
+  min-width:0;display:flex;align-items:center;gap:8px;
+  flex-direction:row;flex-wrap:nowrap;overflow:hidden;
 }
 .show-date{font-weight:900;letter-spacing:.15px;white-space:nowrap}
-.show-meta{
-  color:var(--muted);
-  font-size:1rem;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis; /* si se pasa, “…” */
-}
-
-/* Botón estable (no se achica ni empuja) */
+.show-meta{color:var(--muted);font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .btn-ticket{
-  --h:46px;
-  display:inline-flex;align-items:center;gap:10px;height:var(--h);padding:0 18px;
+  --h:46px;display:inline-flex;align-items:center;gap:10px;height:var(--h);padding:0 18px;
   border-radius:999px;font-weight:900;letter-spacing:.02em;border:0;
   background:linear-gradient(180deg,var(--accent1) 0%,var(--accent2) 100%);color:#111;
   box-shadow:0 10px 24px rgba(255,107,53,.25), inset 0 -2px 0 rgba(0,0,0,.12);
   transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;
-  flex-shrink:0;           /* clave */
-  min-width:fit-content;   /* clave */
+  flex-shrink:0;min-width:fit-content;
 }
 .btn-ticket .icon{width:18px;height:18px;flex:0 0 18px}
 .btn-ticket:hover{transform:translateY(-1px);filter:saturate(108%)}
@@ -185,8 +152,7 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 .video-card{background:var(--panel);border:1px solid var(--stroke);border-radius:var(--radius);overflow:hidden}
 .video-wrapper{position:relative;padding-top:56.25%}
 .video-wrapper::before{
-  content:'▶';
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  content:'▶';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   font-size:48px;color:#fff;opacity:0;transition:opacity .3s;z-index:1;
 }
 .video-wrapper:hover::before{opacity:1}
@@ -234,9 +200,9 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 @media (min-width:1280px){.llegar-grid{gap:22px}}
 
 /* =========================================================
-   GALERÍA (Masonry-like con grid ajustado)
+   GALERÍA
    ========================================================= */
-.gallery{display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:14px; /* Más flexible */}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
 .gallery-item{
   -webkit-appearance:none;appearance:none;background:transparent;border:1px solid var(--stroke);
   border-radius:var(--radius);padding:0;margin:0;line-height:0;display:block;position:relative;overflow:hidden;cursor:zoom-in;
@@ -251,39 +217,12 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 .gallery-item:focus-visible{outline:2px solid color-mix(in srgb,var(--accent1) 70%,white 30%);outline-offset:2px}
 .lightbox{margin:auto;padding:0;border:0;background:transparent;max-width:min(94vw,1200px)}
 .lightbox::backdrop{background:rgba(0,0,0,.82);backdrop-filter:blur(2px)}
-.lightbox img{
-  display:block;width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--stroke);
-  box-shadow:0 24px 64px rgba(0,0,0,.5);
+.lightbox img{display:block;width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--stroke);box-shadow:0 24px 64px rgba(0,0,0,.5)}
+.lightbox .close-btn{
+  display:flex;position:absolute;top:10px;right:10px;background:rgba(0,0,0,.7);color:var(--text);
+  border:none;font-size:24px;cursor:pointer;border-radius:50%;width:40px;height:40px;align-items:center;justify-content:center;font-weight:bold;z-index:1;transition:background .2s ease;
 }
-.lightbox .close-btn {
-  display: flex;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0,0,0,0.7);
-  color: var(--text);
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  z-index: 1;
-  transition: background .2s ease;
-}
-.lightbox .close-btn:hover {
-  background: rgba(0,0,0,0.9);
-}
-@media (max-width:640px){
-  .gallery{grid-template-columns:repeat(2,1fr);gap:12px} /* Ajustado para mobile */
-  .llegar-photos{grid-template-columns:1fr;gap:16px;margin-top:12px}
-  .llegar-photos .photo-card{border-radius:var(--radius);overflow:hidden;aspect-ratio:1/1}
-  .llegar-photos .photo-card img{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
-}
-@media (max-width:480px){.gallery{grid-template-columns:1fr;gap:10px}}
+.lightbox .close-btn:hover{background:rgba(0,0,0,.9)}
 
 /* =========================================================
    BIO
@@ -307,7 +246,6 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
   .bio-photo img{
     position:static;display:block;width:min(460px,100%);height:auto;margin:0 auto;
     border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:0 16px 40px rgba(0,0,0,.35);
-    transform:none;filter:none;
   }
 }
 
@@ -316,14 +254,14 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
    ========================================================= */
 .contrataciones-section a{text-decoration:underline}
 .footer{text-align:center;padding:24px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--stroke)}
-.footer a { color: var(--accent1); margin: 0 8px; }
+.footer a{color:var(--accent1);margin:0 8px}
 
 /* =========================================================
    MOBILE (≤960px)
    ========================================================= */
 @media (max-width:960px){
   .container{padding:0 16px}
-  .topbar { display: none !important; } /* Ocultar topbar en mobile */
+  .topbar{display:none!important}
   .hero{text-align:center;padding:40px 0 14px;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
   .hero-inner{grid-template-columns:1fr;gap:18px}
   .hero-text{padding:0}
@@ -337,21 +275,29 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 }
 
 /* =========================================================
-   Ajuste fino en mobile (≤640px) — SOLO compacta hero
+   Ajuste fino en mobile (≤640px) — HERO + SOMBRAS + ENTRADAS
    ========================================================= */
-@media (max-width: 640px) {
-  .hero { padding:28px 0 12px; }
-  .hero-inner { gap:12px; }
-  .hero-text h1 {
-    font-size:clamp(38px,12.8vw,50px);  /* más grande en celu */
-    line-height:.90;                     /* compacta líneas */
-    margin:6px 0 6px;
-    letter-spacing:.3px;
-  }
-  .hero .hero-text .subtitle { margin:0; line-height:1.14; }
-  .hero .hero-text .countdown-wrapper { margin:2px 0 0; line-height:1.05; font-weight:900; }
-  .cta-group { margin-top:8px; }
-  .cta-group .btn-primary { height:62px; border-radius:26px; padding:0 22px; }
+@media (max-width:640px){
+  /* Hero más compacto */
+  .hero{padding:20px 0 8px;}
+  .hero-inner{gap:10px;}
+  .kicker{margin:0 0 2px;font-size:.9rem;}
+  .hero-text h1{font-size:clamp(34px,11.5vw,46px);line-height:.90;margin:4px 0 4px;letter-spacing:.2px;}
+  .subtitle{margin:0;font-size:14px;}
+  .countdown-wrapper{margin:2px 0 0;line-height:1.05;font-weight:900;}
+  .cta-group{margin-top:6px;}
+  .cta-group .btn-primary{height:56px;border-radius:24px;padding:0 18px;}
+  .btn-secondary{height:44px;padding:0 16px;}
+
+  /* Sombras más sutiles */
+  .btn-primary,.btn-ticket{box-shadow:0 8px 20px rgba(255,107,53,.18), inset 0 -2px 0 rgba(0,0,0,.10);}
+  .show-card{box-shadow:0 8px 18px rgba(0,0,0,.16);}
+
+  /* Tarjeta Entradas más apretada */
+  .shows-list{gap:10px;}
+  .show-card{padding:12px;}
+  .show-meta{font-size:.95rem;}
+  .btn-ticket{height:44px;padding:0 14px;}
 }
 
 /* =========================================================
@@ -360,4 +306,43 @@ h2{font-family:"Bebas Neue";font-size:40px;letter-spacing:.5px;margin:0 0 16px}
 @media (max-width:360px){
   .cta-group .btn-primary{font-size:1.02rem;height:58px}
   .hero-text h1{font-size:13vw;line-height:.92}
+}
+
+/* =========================================================
+   BARRA FIJA DE COMPRA (opcional, usada en show.html)
+   ========================================================= */
+@media (max-width:960px){
+  .buybar{position:fixed;left:0;right:0;bottom:0;z-index:999;background:#111;border-top:1px solid var(--stroke);padding:10px 12px}
+  .buybar-btn{display:block;text-align:center;font-weight:900;padding:14px 16px;border-radius:18px;background:linear-gradient(180deg,var(--accent1) 0%,var(--accent2) 100%);color:#111;box-shadow:0 10px 24px rgba(255,107,53,.20)}
+  body{padding-bottom:72px}
+}
+/* ===== MOBILE FIX ENTRADAS (≤640px): texto full y botón abajo ===== */
+@media (max-width:640px){
+  /* La card pasa a 1 columna */
+  .show-card{
+    grid-template-columns: 1fr !important;
+    align-items: start !important;
+    gap: 10px !important;
+    padding: 12px !important;
+  }
+  /* Texto libre, sin cortes raros */
+  .show-info{
+    min-width: 0 !important;
+    align-items: flex-start !important;
+  }
+  .show-meta{
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    line-height: 1.25 !important;
+  }
+  /* Botón ocupa todo el ancho y no comprime el texto */
+  .btn-ticket{
+    width: 100% !important;
+    justify-content: center !important;
+    height: 48px !important;
+    padding: 0 16px !important;
+    margin-top: 2px !important;
+    flex-shrink: 1 !important;
+  }
 }
