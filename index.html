@@ -1,4 +1,4 @@
-<!DOCTYPE ahtml>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
@@ -25,7 +25,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden; padding-top: 80px;}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
 h1,h2,h3,h4{font-family:"Bebas Neue",sans-serif;letter-spacing:.06em;line-height:1.1;font-weight:400;text-transform:uppercase}
 img{max-width:100%;display:block;height:auto}
 .container{max-width:1200px;margin:auto;padding:0 20px}
@@ -35,39 +35,41 @@ a.btn,button.btn{display:inline-flex;align-items:center;justify-content:center;g
 .btn--primary:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(255,107,53,.4)}
 .btn--ghost{background:transparent;color:var(--txt);border:2px solid var(--acc);box-shadow:none}
 .btn--ghost:hover{background:rgba(255,107,53,.1);color:var(--acc)}
-.section-header{text-align:center;margin-bottom:0}
+.section-header{text-align:center;margin-bottom:70px}
 .section-header h2{font-size:clamp(2.5rem, 5vw, 3.5rem);display:inline-block;position:relative}
 .section-header h2:after{content:"";position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);width:90px;height:4px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
 .section-subtitle{color:var(--mut);font-size:1.05rem;max-width:700px;margin:14px auto 0}
-.section-header__img{display:block;margin:0 auto;width:80%;border-radius:0;box-shadow:none;transition:var(--t)}
-.section-header__img:hover{transform:none;box-shadow:none}
 
-/* Barra de navegación superior */
-.navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:20px 0;transition:all .4s ease}
-.navbar__content{display:flex;justify-content:space-between;align-items:center}
-.navbar__nav{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
-.navbar__nav a{text-decoration:none;color:var(--txt);font-weight:600;font-size:.95rem;padding:8px 12px;border-radius:6px;transition:var(--t)}
-.navbar__nav a:hover{color:var(--acc);background:rgba(255,107,53,.1)}
-.logo{font-family:"Bebas Neue",sans-serif;font-size:2rem;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+/* HERO Section */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background-color:var(--bg);perspective: 1000px;}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%, rgba(255, 107, 53, 0.08) 0%, rgba(0,0,0,0) 70%);opacity:.8;z-index:0;pointer-events:none}
+.hero__grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;position:relative;z-index:1}
+.hero__badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#000;padding:8px 18px;border-radius:50px;font-size:.9rem;font-weight:800;letter-spacing:.06em;margin-bottom:20px}
+.hero__title{font-size:clamp(3rem, 8vw, 4.5rem);margin-bottom:14px;background:linear-gradient(90deg,#fff,var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero__sub{font-size:clamp(1.2rem, 2vw, 1.25rem);color:var(--mut);margin-bottom:14px;font-weight:300}
+.hero__details{font-size:1.15rem;color:var(--acc);font-weight:800;margin-bottom:24px;text-transform:uppercase}
+.countdown{display:flex;gap:18px;margin:8px 0 34px;flex-wrap:wrap;background:none;border:none}
+.countdown__item{text-align:center;padding:12px 0;min-width:70px;border:none}
+.countdown__n{display:block;font-size:clamp(1.8rem, 6vw, 2.5rem);font-weight:800;color:var(--acc);line-height:1}
+.countdown__l{font-size:.82rem;color:var(--mut);letter-spacing:.04em}
+.hero__img, .bio__img{transform-style: preserve-3d; transition: transform .4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .4s ease-out; will-change: transform;}
+.hero__img{border-radius:var(--r2);overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.5);transform:scale(1)}
+.hero__img:hover{transform:translateY(-12px) scale(1.05) rotateX(10deg) rotateY(12deg);box-shadow:0 18px 50px rgba(0,0,0,.8)}
 
 /* VIDEOS Section */
 .videos{background:var(--surf);position:relative}
 .grid-vid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
-.card-vid{background:var(--bg);border-radius:var(--r);overflow:hidden;position:relative;transition:transform .4s ease-out, box-shadow .4s ease; cursor:pointer;}
+.card-vid{background:var(--bg);border-radius:var(--r);overflow:hidden;position:relative;transition:transform .4s ease-out, box-shadow .4s ease}
 .card-vid:hover{transform:translateY(-4px)}
 .thumb{position:relative;padding-top:56.25%;background:#000}
-.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s ease-out, transform .4s ease;}
 .thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.play{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#000;font-size:1.4rem;box-shadow:0 6px 18px rgba(0,0,0,.3);transition:all .3s ease; opacity:1; z-index:1;}
-.card-vid:hover .play{transform: translate(-50%,-50%) scale(1.1); box-shadow:0 8px 20px rgba(0,0,0,.5);}
+.play{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#000;font-size:1.4rem;box-shadow:0 6px 18px rgba(0,0,0,.3)}
 .info{padding:20px}
 .info h3{font-size:1.25rem;margin-bottom:6px}
 .info p{color:var(--mut);font-size:1rem}
-.loaded .play, .loaded .thumb img{opacity:0; pointer-events:none;}
 
 /* SHOWS Section */
-.shows-section { padding-top: 0; }
-.shows-list{display:flex;flex-direction:column;gap:22px; margin-top: 0;}
+.shows-list{display:flex;flex-direction:column;gap:22px}
 .show{display:flex;justify-content:space-between;align-items:center;padding:22px;background:var(--surf);border-radius:var(--r);border-left:5px solid var(--acc);transition:transform .4s ease-out, border-left-color .4s ease}
 .show:hover{transform:translateY(-4px)}
 .show__date{font-size:1.6rem;font-weight:800;color:var(--acc)}
@@ -142,7 +144,6 @@ footer{background:var(--bg);padding:70px 0 40px;border-top:1px solid rgba(255,25
   .hero__grid{gap:32px}
   .bio-grid{gap:40px}
   .contact-grid{gap:32px}
-  .section-header__img{max-width:100%;}
 }
 @media (max-width:768px){
   /* Optimización para móviles */
@@ -156,30 +157,47 @@ footer{background:var(--bg);padding:70px 0 40px;border-top:1px solid rgba(255,25
   .bio-grid{grid-template-columns:1fr; gap:32px;}
 }
 
-.fade{opacity:0;transform:translateY(200px) scale(0.9);}
-.fade.is-in{opacity:1;transform:translateY(0) scale(1);transition:all 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); z-index: 10;}
+.fade{opacity:0;transform:translateY(50px) scale(0.9);}
+.fade.is-in{opacity:1;transform:translateY(0) scale(1);transition:all 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55)}
 </style>
 </head>
 <body>
 
-<!-- Barra de Navegación Fija -->
-<header class="navbar">
-  <div class="container navbar__content">
-    <div class="logo">RICARDO BISIGNANO</div>
-    <nav class="navbar__nav">
-      <a href="#videos">Videos</a>
-      <a href="#shows">Shows</a>
-      <a href="#gallery">Galería</a>
-      <a href="#bio">Biografía</a>
-      <a href="#contact">Contacto</a>
-    </nav>
+<!-- HERO -->
+<section class="hero" id="hero" aria-label="Portada">
+  <div class="container hero__grid">
+    <div>
+      <span class="hero__badge">CLUB TEMPLE</span>
+      <h1 class="hero__title">VIERNES 26/9</h1>
+      <p class="hero__sub">PASEO LA PLAZA</p>
+      <p class="hero__details">
+        Club Temple<br/>VIERNES 26/9 23.30HS PASEO LA PLAZA
+      </p>
+
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="countdown__item"><span id="d" class="countdown__n">00</span><span class="countdown__l">Días</span></div>
+        <div class="countdown__item"><span id="h" class="countdown__n">00</span><span class="countdown__l">Horas</span></div>
+        <div class="countdown__item"><span id="m" class="countdown__n">00</span><span class="countdown__l">Minutos</span></div>
+        <div class="countdown__item"><span id="s" class="countdown__n">00</span><span class="countdown__l">Segundos</span></div>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#shows" class="btn btn--primary" role="button">Ver Próximos Shows</a>
+        <a href="#bio" class="btn btn--ghost" role="button" aria-label="Conocer más sobre Ricardo">Conocer Más</a>
+      </div>
+    </div>
+
+    <figure class="hero__img" aria-label="Foto principal">
+      <img src="https://i.imgur.com/gYN0EVi.jpeg" alt="Ricardo Bisignano en el escenario">
+    </figure>
   </div>
-</header>
+</section>
 
 <!-- SHOWS -->
-<section id="shows" class="shows-section" aria-label="Próximas Fechas">
+<section id="shows" aria-labelledby="shows-title">
   <div class="container section-header">
-    <img src="https://i.imgur.com/YszuYUf.jpeg" alt="Ricardo Bisignano posando para la foto" class="section-header__img fade">
+    <h2 id="shows-title">Próximas Fechas</h2>
+    <p class="section-subtitle">No te pierdas mis shows en vivo. ¡Reservá tu lugar!</p>
   </div>
 
   <div class="container shows-list">
@@ -218,25 +236,43 @@ footer{background:var(--bg);padding:70px 0 40px;border-top:1px solid rgba(255,25
   </div>
 
   <div class="container grid-vid">
-    <article class="card-vid fade" data-video-id="ik9U5Fe7h0Y" data-video-title="RICARDO BISIGNANO - Show en Club Temple">
+    <article class="card-vid fade">
       <div class="thumb">
-        <img src="https://img.youtube.com/vi/ik9U5Fe7h0Y/mqdefault.jpg" alt="Miniatura del video de un show en Club Temple">
+        <iframe
+          src="https://www.youtube.com/embed/ik9U5Fe7h0Y"
+          title="RICARDO BISIGNANO - Show en Club Temple"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
         <div class="play" aria-hidden="true"><i class="fa-solid fa-play"></i></div>
       </div>
       <div class="info"><h3>RICARDO BISIGNANO - Show en Club Temple</h3><p>Un show en el que el stand up, la música y la improvisación se fusionan.</p></div>
     </article>
 
-    <article class="card-vid fade" data-video-id="HWz5htm6BmE" data-video-title="Ricardo Bisignano - TANGO">
+    <article class="card-vid fade">
       <div class="thumb">
-        <img src="https://img.youtube.com/vi/HWz5htm6BmE/mqdefault.jpg" alt="Miniatura del video de TANGO">
+        <iframe
+          src="https://www.youtube.com/embed/HWz5htm6BmE"
+          title="Ricardo Bisignano - TANGO"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
         <div class="play" aria-hidden="true"><i class="fa-solid fa-play"></i></div>
       </div>
       <div class="info"><h3>Ricardo Bisignano - TANGO</h3><p>Un show lleno de humor y música.</p></div>
     </article>
 
-    <article class="card-vid fade" data-video-id="uF0v_gtMUPs" data-video-title="RICARDO BISIGNANO - Show de stand up - Recital de canciones improvisadas">
+    <article class="card-vid fade">
       <div class="thumb">
-        <img src="https://img.youtube.com/vi/uF0v_gtMUPs/mqdefault.jpg" alt="Miniatura del video de un show de stand up">
+        <iframe
+          src="https://www.youtube.com/embed/uF0v_gtMUPs"
+          title="RICARDO BISIGNANO - Show de stand up - Recital de canciones improvisadas"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
         <div class="play" aria-hidden="true"><i class="fa-solid fa-play"></i></div>
       </div>
       <div class="info"><h3>RICARDO BISIGNANO - Show de stand up - Recital de canciones improvisadas</h3><p>Una noche de risas, anécdotas y canciones improvisadas.</p></div>
@@ -325,6 +361,7 @@ footer{background:var(--bg);padding:70px 0 40px;border-top:1px solid rgba(255,25
     <nav class="f-links" aria-label="Navegación del sitio">
       <h3>Navegación</h3>
       <ul>
+        <li><a href="#hero"><i class="fa-solid fa-house" aria-hidden="true"></i> Inicio</a></li>
         <li><a href="#videos"><i class="fa-solid fa-film" aria-hidden="true"></i> Videos</a></li>
         <li><a href="#shows"><i class="fa-solid fa-ticket-alt" aria-hidden="true"></i> Shows</a></li>
         <li><a href="#bio"><i class="fa-solid fa-user" aria-hidden="true"></i> Biografía</a></li>
@@ -348,32 +385,30 @@ footer{background:var(--bg);padding:70px 0 40px;border-top:1px solid rgba(255,25
 <!-- JS -->
 <script>
 document.addEventListener("DOMContentLoaded",()=>{
+  // Countdown — fecha/hora Buenos Aires (GMT-0300)
+  const target = new Date("September 26, 2025 23:30:00 GMT-0300").getTime();
+  const $d=document.getElementById("d"),$h=document.getElementById("h"),$m=document.getElementById("m"),$s=document.getElementById("s"),$wrap=document.getElementById("countdown");
+  function tick(){
+    const diff = target - Date.now();
+    if(diff<=0){
+      clearInterval(int);
+      $wrap.innerHTML = "<span style='font-size:1.5rem;color:var(--acc);font-family:Bebas Neue,sans-serif'>¡El show ya empezó!</span>";
+      return;
+    }
+    const dd=Math.floor(diff/86400000),
+          hh=Math.floor(diff%86400000/3600000),
+          mm=Math.floor(diff%3600000/60000),
+          ss=Math.floor(diff%60000/1000);
+    $d.textContent=String(dd).padStart(2,"0");
+    $h.textContent=String(hh).padStart(2,"0");
+    $m.textContent=String(mm).padStart(2,"0");
+    $s.textContent=String(ss).padStart(2,"0");
+  }
+  tick(); const int=setInterval(tick,1000);
 
   // Fade-in on scroll (sin librerías)
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("is-in");io.unobserve(e.target)}})},{threshold:.12,rootMargin:"0px 0px -60px 0px"});
   document.querySelectorAll(".fade").forEach(el=>io.observe(el));
-
-  // Lógica para reproducir videos al hacer clic
-  document.querySelectorAll(".card-vid").forEach(card => {
-    card.addEventListener("click", () => {
-      const videoId = card.dataset.videoId;
-      if (!videoId) return;
-
-      const iframe = document.createElement("iframe");
-      iframe.setAttribute("src", `https://www.youtube.com/embed/${videoId}?autoplay=1`);
-      iframe.setAttribute("title", card.dataset.videoTitle);
-      iframe.setAttribute("frameborder", "0");
-      iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
-      iframe.setAttribute("allowfullscreen", "");
-
-      const thumb = card.querySelector(".thumb");
-      if (thumb) {
-        thumb.innerHTML = "";
-        thumb.appendChild(iframe);
-        card.classList.add("loaded");
-      }
-    });
-  });
 
   // Formularios demo
   const cf=document.getElementById("contact-form"), msg=document.getElementById("form-msg");
