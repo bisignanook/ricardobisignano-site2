@@ -4,25 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ricardo Bisignano | Stand Up & Canciones Improvisadas</title>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fuentes originales: Bebas Neue para títulos e Inter para cuerpo -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <script src="https://www.youtube.com/iframe_api"></script>
     <style>
+        :root {
+            --bg-primary: #f9fafb; /* gray-50 */
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f3f4f6; /* gray-100 */
+            --bg-footer: #1f2937; /* gray-800 */
+            --text-primary: #1f2937; /* gray-800 */
+            --text-secondary: #374151; /* gray-700 */
+            --text-muted: #6b7280; /* gray-500 */
+            --accent-color: #FF6B35;
+            --border-color: #e5e7eb; /* gray-200 */
+        }
+
+        .dark-mode {
+            --bg-primary: #111827; /* gray-900 */
+            --bg-secondary: #1f2937; /* gray-800 */
+            --bg-tertiary: #374151; /* gray-700 */
+            --bg-footer: #030712; /* gray-950 */
+            --text-primary: #f9fafb; /* gray-50 */
+            --text-secondary: #e5e7eb; /* gray-200 */
+            --text-muted: #9ca3af; /* gray-400 */
+            --accent-color: #FF6B35;
+            --border-color: #4b5563; /* gray-600 */
+        }
+
         body { 
             font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s, color 0.3s;
         }
         .display-font { 
             font-family: 'Bebas Neue', sans-serif; 
         }
-        .accent-orange { color: #FF6B35; }
-        .bg-accent-orange { background-color: #FF6B35; }
+        .accent-orange { color: var(--accent-color); }
+        .bg-accent-orange { background-color: var(--accent-color); }
         
         /* Animación para la onda de sonido */
         .sound-wave { 
@@ -45,7 +67,7 @@
             max-width: 100%;
             height: auto;
             border-radius: 0;
-            transition: transform 0.3s ease-out;
+            transition: transform 0.3s ease-out, opacity 0.5s ease-out;
             /* Estado inicial para la animación de entrada */
             opacity: 0;
             transform: scale(0.95);
@@ -57,6 +79,19 @@
         .hero-img.is-loaded {
             opacity: 1;
             transform: scale(1);
+        }
+
+        /* Imagen para modo oscuro */
+        .hero-img.dark-mode-img {
+            display: none;
+        }
+        
+        .dark-mode .hero-img.light-mode-img {
+            display: none;
+        }
+        
+        .dark-mode .hero-img.dark-mode-img {
+            display: block;
         }
 
         .cta-button {
@@ -117,12 +152,6 @@
             opacity: 1;
             background-color: rgba(255, 255, 255, 0.7);
         }
-        .dark .carousel-button {
-            background-color: rgba(31, 41, 55, 0.5);
-        }
-        .dark .carousel-button:hover {
-            background-color: rgba(31, 41, 55, 0.7);
-        }
         .prev-button { left: 0.5rem; } /* Ajustado para mobile */
         .next-button { right: 0.5rem; }
         
@@ -143,12 +172,6 @@
         .video-mute-button:hover {
             background-color: rgba(255, 255, 255, 0.5);
         }
-        .dark .video-mute-button {
-            background-color: rgba(31, 41, 55, 0.3);
-        }
-        .dark .video-mute-button:hover {
-            background-color: rgba(31, 41, 55, 0.5);
-        }
         .video-mute-button i {
             color: #fff;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -168,6 +191,10 @@
         /* Animación para las tarjetas de show */
         .show-card {
             transition: all 0.3s ease-in-out;
+            background-color: var(--bg-secondary);
+            border-left-color: var(--accent-color);
+            color: var(--text-primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         .show-card:hover {
             transform: scale(1.02) translateY(-5px);
@@ -182,9 +209,46 @@
         .shows-section {
             margin-top: 0 !important;
             padding-top: 0 !important;
+            background-color: var(--bg-primary);
         }
         .shows-section article:first-child {
             margin-top: 0 !important;
+        }
+
+        /* Botón de modo oscuro */
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 50;
+            background-color: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        .theme-toggle i {
+            font-size: 1.25rem;
+            color: var(--accent-color);
+        }
+
+        /* Estilos para inputs y textareas en modo oscuro */
+        input, textarea {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+        input::placeholder, textarea::placeholder {
+            color: var(--text-muted);
         }
 
         /* Optimizaciones para mobile */
@@ -207,61 +271,78 @@
                 padding: 0.75rem 1.5rem; /* Más compacto en mobile */
                 font-size: 1rem;
             }
+            .theme-toggle {
+                top: 0.5rem;
+                right: 0.5rem;
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+            .theme-toggle i {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+<body class="bg-primary text-primary">
+
+    <!-- Botón para cambiar entre modo claro y oscuro -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar modo claro/oscuro">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </button>
 
     <!-- Hero: Imagen principal con degradado inferior y nuevo contenedor para el efecto 3D -->
     <section class="hero-section relative w-full pt-4 pb-0 text-center overflow-hidden"> <!-- Agregado pt-4 para margen superior pequeño -->
         <div class="main-container mx-auto flex flex-col items-center justify-center">
             <div id="hero-image-container" class="hero-perspective-container w-full md:w-4/5 max-w-4xl">
-                <img src="https://i.imgur.com/LlnoNCG.png" alt="Ricardo Bisignano posando para la foto" class="hero-img mx-auto w-full" loading="eager">
+                <!-- Imagen para modo claro -->
+                <img src="https://i.imgur.com/LlnoNCG.png" alt="Ricardo Bisignano posando para la foto" class="hero-img light-mode-img mx-auto w-full" loading="eager">
+                <!-- Imagen para modo oscuro -->
+                <img src="https://i.imgur.com/TZ33cFg.png" alt="Ricardo Bisignano en modo oscuro" class="hero-img dark-mode-img mx-auto w-full" loading="eager">
             </div>
         </div>
     </section>
 
     <!-- Shows: pegado a la imagen principal para un impacto visual inmediato, sin título y sin espacio superior -->
-    <section id="shows" class="shows-section py-8 md:py-12 bg-gray-50 dark:bg-gray-800 pt-0">
+    <section id="shows" class="shows-section py-8 md:py-12 pt-0">
         <div class="max-w-4xl mx-auto px-4">
-            <article class="mt-0 mb-4 md:mb-6 w-full bg-white dark:bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg show-card border-l-8 border-orange-500"> <!-- Reducido padding y mb para mobile -->
+            <article class="mt-0 mb-4 md:mb-6 w-full p-6 md:p-8 rounded-xl shadow-lg show-card border-l-8"> <!-- Reducido padding y mb para mobile -->
                 <div class="text-center">
-                    <h3 class="display-font text-4xl md:text-5xl lg:text-7xl font-bold text-gray-800 dark:text-gray-100 mb-2">VIERNES 26/9</h3> <!-- Ajustado para mobile -->
-                    <p class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-700 dark:text-gray-300 mb-6">PASEO LA PLAZA - BUENOS AIRES</p> <!-- Ajustado para mobile -->
+                    <h3 class="display-font text-4xl md:text-5xl lg:text-7xl font-bold mb-2">VIERNES 26/9</h3> <!-- Ajustado para mobile -->
+                    <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-6">PASEO LA PLAZA - BUENOS AIRES</p> <!-- Ajustado para mobile -->
                     <a href="https://www.passline.com/eventos/anda-a-verlo-a-bisignano-comedy-show-410520" target="_blank" rel="noopener" class="bg-accent-orange text-white px-8 py-4 rounded-full inline-block font-semibold text-lg cta-button">Comprar <i class="fas fa-ticket-alt ml-2"></i></a>
                 </div>
             </article>
-            <article class="mb-4 md:mb-6 w-full bg-white dark:bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg show-card border-l-8 border-orange-500">
+            <article class="mb-4 md:mb-6 w-full p-6 md:p-8 rounded-xl shadow-lg show-card border-l-8">
                 <div class="text-center">
-                    <h3 class="display-font text-4xl md:text-5xl lg:text-7xl font-bold text-gray-800 dark:text-gray-100 mb-2">VIERNES 10/10</h3>
-                    <p class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-700 dark:text-gray-300 mb-6">CELL BLOCK - OLIVOS</p>
-                    <a href="https://www.instagram.com/santiago.leiro/" target="_blank" rel="noopener" class="bg-accent-orange text-white px-8 py-4 rounded-full inline-block font-semibold text-lg cta-button">Reservar <i class="fas fa-calendar-alt ml-2"></i></a>
+                    <h3 class="display-font text-4xl md:text-5xl lg:text-7xl font-bold mb-2">DOMINGO 19/10</h3>
+                    <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-6">SIX BAR - SAN MIGUEL</p>
+                    <a href="https://www.passline.com/eventos/ricardo-bisignano-y-elias-locura-en-san-miguel?srsltid=AfmBOopn7FZJsXWKfmxDw1c-HOY1qOEwa1Imi0Hs1rK0jufLG5-uMs2v" target="_blank" rel="noopener" class="bg-accent-orange text-white px-8 py-4 rounded-full inline-block font-semibold text-lg cta-button">Comprar <i class="fas fa-ticket-alt ml-2"></i></a>
                 </div>
             </article>
-            <article class="mb-4 md:mb-6 w-full bg-white dark:bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg show-card border-l-8 border-orange-500">
+            <article class="mb-4 md:mb-6 w-full p-6 md:p-8 rounded-xl shadow-lg show-card border-l-8">
                 <div class="text-center">
-                    <h3 class="display-font text-4xl md:text-5xl lg:text-7xl font-bold text-gray-800 dark:text-gray-100 mb-2">DOMINGO 19/10</h3>
-                    <p class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-700 dark:text-gray-300 mb-6">SIX BAR - SAN MIGUEL</p>
-                    <a href="https://www.passline.com/eventos/ricardo-bisignano-y-elias-locura-en-san-miguel?srsltid=AfmBOopn7FZJsXWKfmxDw1c-HOY1qOEwa1Imi0Hs1rK0jufLG5-uMs2v" target="_blank" rel="noopener" class="bg-accent-orange text-white px-8 py-4 rounded-full inline-block font-semibold text-lg cta-button">Comprar <i class="fas fa-ticket-alt ml-2"></i></a>
+                    <h3 class="display-font text-4xl md:text-5xl lg:text-7xl font-bold mb-2">VIERNES 10/10</h3>
+                    <p class="text-xl md:text-2xl lg:text-3xl font-bold mb-6">CELL BLOCK - OLIVOS</p>
+                    <a href="https://www.instagram.com/santiago.leiro/" target="_blank" rel="noopener" class="bg-accent-orange text-white px-8 py-4 rounded-full inline-block font-semibold text-lg cta-button">Reservar <i class="fas fa-calendar-alt ml-2"></i></a>
                 </div>
             </article>
         </div>
     </section>
 
     <!-- Sobre Mí: Combinación de la intro y la bio para un flujo más natural -->
-    <section id="about" class="bg-white dark:bg-gray-800 py-8 md:py-12 text-center sound-wave fade-in-section"> <!-- Reducido py para mobile -->
+    <section id="about" class="bg-secondary py-8 md:py-12 text-center sound-wave fade-in-section"> <!-- Reducido py para mobile -->
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="display-font text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-800 dark:text-gray-100">¿Quién soy?</h2> <!-- Ajustado para mobile -->
+            <h2 class="display-font text-3xl md:text-4xl lg:text-5xl font-bold mb-4">¿Quién soy?</h2> <!-- Ajustado para mobile -->
             <img src="https://i.imgur.com/TyaWPbh.jpeg" alt="Ricardo Bisignano en el escenario tocando la guitarra" class="mx-auto my-8 max-w-xs md:max-w-sm lg:max-w-md rounded-xl shadow-lg hover:scale-105 transition-transform duration-300"> <!-- Ajustado max-w para mobile -->
             <!-- Texto de bio actualizado según el análisis de datos -->
-            <p class="text-base md:text-lg mb-8 text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">Soy Ricardo Bisignano, comediante, actor y músico argentino. Arranqué tocando la guitarra en los colectivos en el 2001 y desde ahí me dedico a hacer reír: teatro, stand up, tele, un poco de todo. Formé parte de Comedy Central Stand-Up (edición Argentina) y pasé por programas como Bendita TV, Hora de Reír e Informadísimos. Con mis unipersonales “Viste?”, “Sin Calle” y “The Working Progre” recorrí provincias y países limítrofes. Hoy comparto fragmentos en Instagram, YouTube, TikTok y Facebook, pero la experiencia completa está en el teatro. Podés ver videos en redes, pero la posta está en vivo ;)</p>
+            <p class="text-base md:text-lg mb-8 max-w-3xl mx-auto leading-relaxed">Soy Ricardo Bisignano, comediante, actor y músico argentino. Arranqué tocando la guitarra en los colectivos en el 2001 y desde ahí me dedico a hacer reír: teatro, stand up, tele, un poco de todo. Formé parte de Comedy Central Stand-Up (edición Argentina) y pasé por programas como Bendita TV, Hora de Reír e Informadísimos. Con mis unipersonales "Viste?", "Sin Calle" y "The Working Progre" recorrí provincias y países limítrofes. Hoy comparto fragmentos en Instagram, YouTube, TikTok y Facebook, pero la experiencia completa está en el teatro. Podés ver videos en redes, pero la posta está en vivo ;)</p>
         </div>
     </section>
 
     <!-- Galería de Videos: Nuevo carrusel para videos -->
-    <section id="video-gallery" class="py-12 md:py-16 bg-gray-100 dark:bg-gray-700 fade-in-section"> <!-- Reducido py para mobile -->
+    <section id="video-gallery" class="py-12 md:py-16 bg-tertiary fade-in-section"> <!-- Reducido py para mobile -->
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="display-font text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-gray-800 dark:text-gray-100">Algunos fragmentos.</h2> <!-- Ajustado para mobile -->
+            <h2 class="display-font text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12">Algunos fragmentos.</h2> <!-- Ajustado para mobile -->
             <!-- Video Carousel Container -->
             <div id="video-carousel-container" class="carousel-container">
                 <div id="video-carousel-track" class="carousel-track">
@@ -281,10 +362,10 @@
             </div>
             <!-- Contenedor para los botones de control de video, ahora en una fila separada -->
             <div class="flex justify-center items-center mt-3 md:mt-4 space-x-3 md:space-x-4"> <!-- Ajustado para mobile -->
-                <button id="video-prev-button" class="bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 md:p-4 rounded-full shadow hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-300"> <!-- Reducido p para mobile -->
+                <button id="video-prev-button" class="bg-secondary text-primary p-3 md:p-4 rounded-full shadow hover:bg-opacity-80 transition-colors duration-300"> <!-- Reducido p para mobile -->
                     <i class="fas fa-chevron-left text-lg md:text-xl"></i> <!-- Ajustado icon size -->
                 </button>
-                <button id="video-next-button" class="bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 md:p-4 rounded-full shadow hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-300">
+                <button id="video-next-button" class="bg-secondary text-primary p-3 md:p-4 rounded-full shadow hover:bg-opacity-80 transition-colors duration-300">
                     <i class="fas fa-chevron-right text-lg md:text-xl"></i>
                 </button>
             </div>
@@ -294,9 +375,9 @@
     </section>
 
     <!-- Galería de Fotos: Carrusel para un diseño más limpio y dinámico -->
-    <section id="gallery" class="py-12 md:py-16 bg-white dark:bg-gray-800 fade-in-section"> <!-- Reducido py para mobile -->
+    <section id="gallery" class="py-12 md:py-16 bg-secondary fade-in-section"> <!-- Reducido py para mobile -->
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="display-font text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-gray-800 dark:text-gray-100">Escenas de funciones y giras.</h2> <!-- Ajustado para mobile -->
+            <h2 class="display-font text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12">Escenas de funciones y giras.</h2> <!-- Ajustado para mobile -->
             <div id="photo-carousel-container" class="carousel-container relative">
                 <div id="photo-carousel-track" class="carousel-track">
                     <div class="carousel-slide"><img src="https://imgur.com/apD5MmP.jpeg" alt="Ricardo Bisignano en un show"></div>
@@ -308,10 +389,10 @@
                     <div class="carousel-slide"><img src="https://imgur.com/3DMGUWB.jpeg" alt="Ricardo Bisignano en un show"></div>
                     <div class="carousel-slide"><img src="https://imgur.com/F3ZlhwQ.jpeg" alt="Ricardo Bisignano en un show"></div>
                 </div>
-                <button id="photo-prev-button" class="carousel-button prev-button text-gray-800 dark:text-gray-200 hover:text-accent-orange" aria-label="Anterior">
+                <button id="photo-prev-button" class="carousel-button prev-button hover:text-accent-orange" aria-label="Anterior">
                     <i class="fas fa-chevron-left text-xl md:text-2xl lg:text-4xl"></i> <!-- Ajustado para mobile -->
                 </button>
-                <button id="photo-next-button" class="carousel-button next-button text-gray-800 dark:text-gray-200 hover:text-accent-orange" aria-label="Siguiente">
+                <button id="photo-next-button" class="carousel-button next-button hover:text-accent-orange" aria-label="Siguiente">
                     <i class="fas fa-chevron-right text-xl md:text-2xl lg:text-4xl"></i>
                 </button>
             </div>
@@ -321,15 +402,15 @@
     </section>
 
     <!-- Contrataciones: Formulario con diseño limpio y CTA destacado, sin el texto extra -->
-    <section id="contrataciones" class="py-12 md:py-16 bg-gray-50 dark:bg-gray-800 text-center fade-in-section"> <!-- Reducido py para mobile -->
+    <section id="contrataciones" class="py-12 md:py-16 bg-primary text-center fade-in-section"> <!-- Reducido py para mobile -->
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="display-font text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-gray-800 dark:text-gray-100">Contrataciones</h2> <!-- Ajustado para mobile -->
-            <p class="text-base md:text-lg mb-8 max-w-2xl mx-auto text-gray-600 dark:text-gray-400">Si querés organizar un show, escribime.</p> <!-- Ajustado para mobile -->
+            <h2 class="display-font text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Contrataciones</h2> <!-- Ajustado para mobile -->
+            <p class="text-base md:text-lg mb-8 max-w-2xl mx-auto text-muted">Si querés organizar un show, escribime.</p> <!-- Ajustado para mobile -->
             <!-- Formulario de contacto actualizado con la URL y IDs correctos del análisis -->
             <form id="contact-form" action="https://formspree.io/f/xyznzwog" method="POST" class="max-w-sm md:max-w-md mx-auto space-y-4"> <!-- Ajustado max-w para mobile -->
-                <input id="name" name="name" type="text" placeholder="Nombre" required class="w-full p-3 md:p-4 rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:border-accent-orange focus:outline-none"> <!-- Reducido p para mobile -->
-                <input id="email" name="email" type="email" placeholder="Email" required class="w-full p-3 md:p-4 rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:border-accent-orange focus:outline-none">
-                <textarea id="message" name="message" placeholder="Mensaje (ej: '¡Show en Rosario!')" rows="4" required class="w-full p-3 md:p-4 rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:border-accent-orange focus:outline-none h-28 md:h-32"></textarea>
+                <input id="name" name="name" type="text" placeholder="Nombre" required class="w-full p-3 md:p-4 rounded-lg border-2 focus:border-accent-orange focus:outline-none"> <!-- Reducido p para mobile -->
+                <input id="email" name="email" type="email" placeholder="Email" required class="w-full p-3 md:p-4 rounded-lg border-2 focus:border-accent-orange focus:outline-none">
+                <textarea id="message" name="message" placeholder="Mensaje (ej: '¡Show en Rosario!')" rows="4" required class="w-full p-3 md:p-4 rounded-lg border-2 focus:border-accent-orange focus:outline-none h-28 md:h-32"></textarea>
                 <button type="submit" class="bg-accent-orange text-white px-8 py-4 rounded-full font-semibold text-lg w-full cta-button">Enviar Mensaje <i class="fas fa-paper-plane ml-2"></i></button>
             </form>
             <p id="contact-form-message" class="mt-4"></p>
@@ -337,29 +418,26 @@
     </section>
 
     <!-- Footer: Iconos sociales y un nuevo botón para la suscripción con modal -->
-    <footer class="bg-gray-800 dark:bg-gray-950 text-white py-8 md:py-12 text-center fade-in-section"> <!-- Reducido py para mobile -->
+    <footer class="bg-footer text-secondary py-8 md:py-12 text-center fade-in-section"> <!-- Reducido py para mobile -->
         <div class="max-w-4xl mx-auto px-4">
             <div class="flex justify-center space-x-4 md:space-x-6 mb-6 md:mb-8"> <!-- Ajustado space y mb para mobile -->
                 <a href="https://www.youtube.com/@Ricardo.Bisignano" class="text-xl md:text-2xl hover:text-accent-orange transition-colors duration-300" aria-label="YouTube"><i class="fab fa-youtube"></i></a> <!-- Ajustado text para mobile -->
                 <a href="https://www.instagram.com/ricardo.bisignano/" class="text-xl md:text-2xl hover:text-accent-orange transition-colors duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.facebook.com/BisignanoOK/" class="text-xl md:text-2xl hover:text-accent-orange transition-colors duration-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <button id="theme-toggle" class="text-xl md:text-2xl hover:text-accent-orange transition-colors duration-300" aria-label="Cambiar tema">
-                    <i id="theme-icon" class="fas fa-moon"></i>
-                </button>
             </div>
             <button id="subscribe-button" class="bg-accent-orange text-white px-8 py-3 rounded-full font-semibold mb-4 cta-button">Recibir Info <i class="fas fa-envelope ml-2"></i></button>
-            <p class="text-gray-400 dark:text-gray-300 text-sm md:text-base">&copy; 2025 Ricardo Bisignano. Todos los derechos reservados.</p> <!-- Ajustado text para mobile -->
+            <p class="text-muted text-sm md:text-base">&copy; 2025 Ricardo Bisignano. Todos los derechos reservados.</p> <!-- Ajustado text para mobile -->
         </div>
     </footer>
 
     <!-- Modal para la suscripción -->
-    <div id="subscribe-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-75 hidden items-center justify-center p-4">
-        <div class="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-xl shadow-2xl max-w-sm w-full relative"> <!-- Reducido p para mobile -->
-            <button id="close-modal" class="absolute top-3 right-3 text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-200 text-xl md:text-2xl">&times;</button> <!-- Ajustado para mobile -->
-            <h3 class="display-font text-xl md:text-2xl font-bold mb-4 text-center text-gray-800 dark:text-gray-100">Recibir Novedades</h3> <!-- Ajustado para mobile -->
-            <p class="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-6 text-center">Dejás tu mail y te aviso las próximas fechas.</p>
+    <div id="subscribe-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center p-4">
+        <div class="bg-secondary p-6 md:p-8 rounded-xl shadow-2xl max-w-sm w-full relative"> <!-- Reducido p para mobile -->
+            <button id="close-modal" class="absolute top-3 right-3 text-muted hover:text-primary transition-colors duration-200 text-xl md:text-2xl">&times;</button> <!-- Ajustado para mobile -->
+            <h3 class="display-font text-xl md:text-2xl font-bold mb-4 text-center">Recibir Novedades</h3> <!-- Ajustado para mobile -->
+            <p class="text-xs md:text-sm text-muted mb-6 text-center">Dejás tu mail y te aviso las próximas fechas.</p>
             <form id="subscribe-form" class="space-y-4">
-                <input type="email" placeholder="tu@email.com" required class="w-full p-2 md:p-3 rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:border-accent-orange focus:outline-none text-center"> <!-- Reducido p para mobile -->
+                <input type="email" placeholder="tu@email.com" required class="w-full p-2 md:p-3 rounded-lg border-2 border-border focus:border-accent-orange focus:outline-none text-center bg-secondary text-primary"> <!-- Reducido p para mobile -->
                 <button type="submit" class="bg-accent-orange text-white px-6 py-3 rounded-full font-semibold text-lg w-full cta-button">Suscribirse</button>
             </form>
             <p id="modal-message" class="text-center mt-4 text-sm"></p>
@@ -367,39 +445,48 @@
     </div>
 
     <script>
-        // Lógica para el toggle de tema
-        const html = document.documentElement;
+        // Lógica del modo oscuro
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
-
-        // Cargar preferencia del tema
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        } else {
-            html.classList.remove('dark');
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
+        
+        // Verificar preferencia guardada o del sistema
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
         }
-
-        // Toggle del tema
+        
+        // Cambiar tema
+        function toggleTheme() {
+            if (document.body.classList.contains('dark-mode')) {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+        
+        // Event listener para el botón de tema
         if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                html.classList.toggle('dark');
-                const isDark = html.classList.contains('dark');
-                if (isDark) {
-                    themeIcon.classList.remove('fa-moon');
-                    themeIcon.classList.add('fa-sun');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    themeIcon.classList.remove('fa-sun');
-                    themeIcon.classList.add('fa-moon');
-                    localStorage.setItem('theme', 'light');
-                }
-            });
+            themeToggle.addEventListener('click', toggleTheme);
         }
+        
+        // Cargar tema al inicio
+        document.addEventListener('DOMContentLoaded', loadTheme);
 
         // Lógica de animaciones al hacer scroll
         const fadeInSections = document.querySelectorAll('.fade-in-section');
@@ -424,20 +511,22 @@
         
         // Lógica de la animación de entrada de la imagen principal
         window.onload = function() {
-            const heroImage = document.querySelector('#hero-image-container .hero-img');
-            if (heroImage) {
-                // Agregar una transición para la animación de entrada - más rápida (0.5s)
-                heroImage.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-                // Añadir la clase para activar el estado final de la animación
-                heroImage.classList.add('is-loaded');
+            const heroImages = document.querySelectorAll('.hero-img');
+            if (heroImages) {
+                heroImages.forEach(img => {
+                    // Agregar una transición para la animación de entrada - más rápida (0.5s)
+                    img.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                    // Añadir la clase para activar el estado final de la animación
+                    img.classList.add('is-loaded');
+                });
             }
         };
 
         // Lógica de la animación 3D de la imagen principal
         const heroImageContainer = document.getElementById('hero-image-container');
-        const heroImage = document.querySelector('#hero-image-container .hero-img');
+        const heroImages = document.querySelectorAll('.hero-img');
 
-        if (heroImageContainer && heroImage) {
+        if (heroImageContainer && heroImages.length > 0) {
             heroImageContainer.addEventListener('mousemove', (e) => {
                 const rect = heroImageContainer.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -449,14 +538,17 @@
                 const rotateY = ((x - midX) / midX) * 15; // Mayor inclinación: de 5 a 15 grados
                 const rotateX = ((midY - y) / midY) * 15; // Mayor inclinación: de 5 a 15 grados
 
-                heroImage.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                heroImages.forEach(img => {
+                    img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
             });
 
             heroImageContainer.addEventListener('mouseleave', () => {
-                heroImage.style.transform = `rotateX(0deg) rotateY(0deg)`;
+                heroImages.forEach(img => {
+                    img.style.transform = `rotateX(0deg) rotateY(0deg)`;
+                });
             });
         }
-
 
         // Lógica para el carrusel de fotos
         const photoCarouselTrack = document.getElementById('photo-carousel-track');
@@ -471,7 +563,7 @@
             photoIndicatorsContainer.innerHTML = '';
             photoSlides.forEach((_, index) => {
                 const indicator = document.createElement('div');
-                indicator.classList.add('w-2', 'h-2', 'md:w-3', 'md:h-3', 'rounded-full', 'bg-gray-400 dark:bg-gray-500', 'cursor-pointer', 'transition-all', 'duration-300');
+                indicator.classList.add('w-2', 'h-2', 'md:w-3', 'md:h-3', 'rounded-full', 'bg-gray-400', 'cursor-pointer', 'transition-all', 'duration-300');
                 indicator.setAttribute('data-slide-to', index);
                 photoIndicatorsContainer.appendChild(indicator);
             });
@@ -481,9 +573,9 @@
         function updatePhotoCarousel() {
             if (photoCarouselTrack && photoIndicators.length > 0) {
                 photoCarouselTrack.style.transform = `translateX(-${currentPhotoSlide * 100}%)`;
-                photoIndicators.forEach(indicator => indicator.classList.remove('bg-gray-800', 'dark:bg-gray-200'));
+                photoIndicators.forEach(indicator => indicator.classList.remove('bg-gray-800'));
                 if (photoIndicators[currentPhotoSlide]) {
-                    photoIndicators[currentPhotoSlide].classList.add('bg-gray-800', 'dark:bg-gray-200');
+                    photoIndicators[currentPhotoSlide].classList.add('bg-gray-800');
                 }
             }
         }
@@ -535,11 +627,11 @@
             const indicators = document.querySelectorAll('#video-carousel-indicators div');
             indicators.forEach((indicator, index) => {
                 if (index === currentVideoIndex) {
-                    indicator.classList.remove('bg-gray-400', 'dark:bg-gray-500');
-                    indicator.classList.add('bg-gray-800', 'dark:bg-gray-200');
+                    indicator.classList.remove('bg-gray-400');
+                    indicator.classList.add('bg-gray-800');
                 } else {
-                    indicator.classList.remove('bg-gray-800', 'dark:bg-gray-200');
-                    indicator.classList.add('bg-gray-400', 'dark:bg-gray-500');
+                    indicator.classList.remove('bg-gray-800');
+                    indicator.classList.add('bg-gray-400');
                 }
             });
         }
@@ -577,7 +669,7 @@
                 videoIndicatorsContainer.innerHTML = '';
                 videoIframes.forEach((_, index) => {
                     const indicator = document.createElement('div');
-                    indicator.classList.add('w-2', 'h-2', 'md:w-3', 'md:h-3', 'rounded-full', 'bg-gray-400 dark:bg-gray-500', 'cursor-pointer', 'transition-all', 'duration-300');
+                    indicator.classList.add('w-2', 'h-2', 'md:w-3', 'md:h-3', 'rounded-full', 'bg-gray-400', 'cursor-pointer', 'transition-all', 'duration-300');
                     indicator.setAttribute('data-slide-to', index);
                     videoIndicatorsContainer.appendChild(indicator);
                 });
@@ -614,127 +706,127 @@
 
             if (videoNextButton) {
                 videoNextButton.addEventListener('click', () => {
-                    const nextIndex = (currentVideoIndex + 1) % players.length;
-                    changeVideo(nextIndex);
-                });
-            }
-
-            // Agrega los listeners a los indicadores
-            const videoIndicators = document.querySelectorAll('#video-carousel-indicators div');
-            videoIndicators.forEach(indicator => {
-                indicator.addEventListener('click', (e) => {
-                    const slideIndex = parseInt(e.target.getAttribute('data-slide-to'));
-                    changeVideo(slideIndex);
-                });
-            });
-
-            // Lógica para el botón de mutear/desmutear
-            if (videoMuteButton) {
-                videoMuteButton.addEventListener('click', () => {
-                    isMuted = !isMuted;
-                    if (isMuted) {
-                        players[currentVideoIndex].mute();
-                        muteIcon.classList.remove('fa-volume-up');
-                        muteIcon.classList.add('fa-volume-mute');
-                    } else {
-                        players[currentVideoIndex].unMute();
-                        muteIcon.classList.remove('fa-volume-mute');
-                        muteIcon.classList.add('fa-volume-up');
-                    }
-                });
-            }
-        }
-
-        // Lógica para la suscripción
-        const subscribeButton = document.getElementById('subscribe-button');
-        const subscribeModal = document.getElementById('subscribe-modal');
-        const closeModalButton = document.getElementById('close-modal');
-        const subscribeForm = document.getElementById('subscribe-form');
-        const modalMessage = document.getElementById('modal-message');
-
-        if (subscribeButton) {
-            subscribeButton.addEventListener('click', () => {
-                if (subscribeModal) {
-                    subscribeModal.classList.remove('hidden');
-                    subscribeModal.classList.add('flex');
-                }
+                const nextIndex = (currentVideoIndex + 1) % players.length;
+                changeVideo(nextIndex);
             });
         }
 
-        if (closeModalButton) {
-            closeModalButton.addEventListener('click', () => {
-                if (subscribeModal) {
-                    subscribeModal.classList.add('hidden');
-                    subscribeModal.classList.remove('flex');
-                    if (modalMessage) modalMessage.textContent = '';
-                    if (subscribeForm) subscribeForm.reset();
-                }
-            });
-        }
-
-        if (subscribeForm) {
-            subscribeForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                if (modalMessage) {
-                    modalMessage.style.color = '#4CAF50';
-                    modalMessage.textContent = '¡Gracias por suscribirte!';
-                }
-                subscribeForm.reset();
-            });
-        }
-
-        // Lógica para el formulario de contrataciones
-        const contactForm = document.getElementById('contact-form');
-        const contactFormMessage = document.getElementById('contact-form-message');
-
-        if (contactForm) {
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const formData = new FormData(contactForm);
-                const data = Object.fromEntries(formData.entries());
-                const json = JSON.stringify(data);
-
-                if (contactFormMessage) {
-                    contactFormMessage.textContent = 'Enviando mensaje...';
-                    contactFormMessage.style.color = '#FF6B35';
-                }
-                
-
-                try {
-                    const response = await fetch(contactForm.action, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: json
-                    });
-
-                    if (response.ok) {
-                        if (contactFormMessage) {
-                            contactFormMessage.style.color = '#4CAF50';
-                            contactFormMessage.textContent = '¡Mensaje enviado con éxito!';
-                        }
-                        contactForm.reset();
-                    } else {
-                        if (contactFormMessage) {
-                            contactFormMessage.style.color = '#F44336';
-                            contactFormMessage.textContent = 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.';
-                        }
-                    }
-                } catch (error) {
-                    if (contactFormMessage) {
-                        contactFormMessage.style.color = '#F44336';
-                        contactFormMessage.textContent = 'Hubo un error de conexión. Por favor, verifica tu conexión a internet.';
-                    }
-                }
-            });
-        }
-
-        // Lógica de scroll suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        // Agrega los listeners a los indicadores
+        const videoIndicators = document.querySelectorAll('#video-carousel-indicators div');
+        videoIndicators.forEach(indicator => {
+            indicator.addEventListener('click', (e) => {
+                const slideIndex = parseInt(e.target.getAttribute('data-slide-to'));
+                changeVideo(slideIndex);
             });
         });
+
+        // Lógica para el botón de mutear/desmutear
+        if (videoMuteButton) {
+            videoMuteButton.addEventListener('click', () => {
+                isMuted = !isMuted;
+                if (isMuted) {
+                    players[currentVideoIndex].mute();
+                    muteIcon.classList.remove('fa-volume-up');
+                    muteIcon.classList.add('fa-volume-mute');
+                } else {
+                    players[currentVideoIndex].unMute();
+                    muteIcon.classList.remove('fa-volume-mute');
+                    muteIcon.classList.add('fa-volume-up');
+                }
+            });
+        }
+    }
+
+    // Lógica para la suscripción
+    const subscribeButton = document.getElementById('subscribe-button');
+    const subscribeModal = document.getElementById('subscribe-modal');
+    const closeModalButton = document.getElementById('close-modal');
+    const subscribeForm = document.getElementById('subscribe-form');
+    const modalMessage = document.getElementById('modal-message');
+
+    if (subscribeButton) {
+        subscribeButton.addEventListener('click', () => {
+            if (subscribeModal) {
+                subscribeModal.classList.remove('hidden');
+                subscribeModal.classList.add('flex');
+            }
+        });
+    }
+
+    if (closeModalButton) {
+        closeModalButton.addEventListener('click', () => {
+            if (subscribeModal) {
+                subscribeModal.classList.add('hidden');
+                subscribeModal.classList.remove('flex');
+                if (modalMessage) modalMessage.textContent = '';
+                if (subscribeForm) subscribeForm.reset();
+            }
+        });
+    }
+
+    if (subscribeForm) {
+        subscribeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (modalMessage) {
+                modalMessage.style.color = '#4CAF50';
+                modalMessage.textContent = '¡Gracias por suscribirte!';
+            }
+            subscribeForm.reset();
+        });
+    }
+
+    // Lógica para el formulario de contrataciones
+    const contactForm = document.getElementById('contact-form');
+    const contactFormMessage = document.getElementById('contact-form-message');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+            const json = JSON.stringify(data);
+
+            if (contactFormMessage) {
+                contactFormMessage.textContent = 'Enviando mensaje...';
+                contactFormMessage.style.color = '#FF6B35';
+            }
+            
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: json
+                });
+
+                if (response.ok) {
+                    if (contactFormMessage) {
+                        contactFormMessage.style.color = '#4CAF50';
+                        contactFormMessage.textContent = '¡Mensaje enviado con éxito!';
+                    }
+                    contactForm.reset();
+                } else {
+                    if (contactFormMessage) {
+                        contactFormMessage.style.color = '#F44336';
+                        contactFormMessage.textContent = 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.';
+                    }
+                }
+            } catch (error) {
+                if (contactFormMessage) {
+                    contactFormMessage.style.color = '#F44336';
+                    contactFormMessage.textContent = 'Hubo un error de conexión. Por favor, verifica tu conexión a internet.';
+                }
+            }
+        });
+    }
+
+    // Lógica de scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
     </script>
 </body>
 </html>
