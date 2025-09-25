@@ -315,12 +315,14 @@
         </div>
     </section>
 
-    <!-- Sobre Mí: Combinación de la intro y la bio para un flujo más natural -->
+    <!-- Sobre Mí: Combinación de la intro y la bio con alineación ajustada -->
     <section id="about" class="bg-secondary py-8 md:py-12 text-center sound-wave fade-in-section">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="display-font text-3xl md:text-4xl lg:text-5xl font-bold mb-4">¿Quién soy?</h2>
             <img src="https://i.imgur.com/TyaWPbh.jpeg" alt="Ricardo Bisignano en el escenario tocando la guitarra" class="mx-auto my-8 max-w-xs md:max-w-sm lg:max-w-md rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
-            <p class="text-base md:text-lg mb-8 max-w-3xl mx-auto leading-relaxed">Soy Ricardo Bisignano, comediante, actor y músico argentino. Arranqué tocando la guitarra en los colectivos en el 2001 y desde ahí me dedico a hacer reír: teatro, stand up, tele, un poco de todo. Formé parte de Comedy Central Stand-Up (edición Argentina) y pasé por programas como Bendita TV, Hora de Reír e Informadísimos. Con mis unipersonales "Viste?", "Sin Calle" y "The Working Progre" recorrí provincias y países limítrofes. Hoy comparto fragmentos en Instagram, YouTube, TikTok y Facebook, pero la experiencia completa está en el teatro. Podés ver videos en redes, pero la posta está en vivo ;)</p>
+            <div class="text-left max-w-3xl mx-auto">
+                <p class="text-base md:text-lg mb-8 leading-relaxed px-4 md:px-6">Soy Ricardo Bisignano, comediante, actor y músico argentino. Arranqué tocando la guitarra en los colectivos en el 2001 y desde ahí me dedico a hacer reír: teatro, stand up, tele, un poco de todo. Formé parte de Comedy Central Stand-Up (edición Argentina) y pasé por programas como Bendita TV, Hora de Reír e Informadísimos. Con mis unipersonales "Viste?", "Sin Calle" y "The Working Progre" recorrí provincias y países limítrofes. Hoy comparto fragmentos en Instagram, YouTube, TikTok y Facebook, pero la experiencia completa está en el teatro. Podés ver videos en redes, pero la posta está en vivo ;)</p>
+            </div>
         </div>
     </section>
 
@@ -397,8 +399,7 @@
     <!-- Contrataciones: Formulario con diseño limpio y CTA destacado -->
     <section id="contrataciones" class="py-12 md:py-16 bg-primary text-center fade-in-section">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="display-font text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Contrataciones</h2>
-            <p class="text-base md:text-lg mb-8 max-w-2xl mx-auto text-muted">Si querés organizar un show, escribime.</p>
+            <h2 class="display-font text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Contrataciones</h2>Shows en teatros, bares, eventos privados y empresariales</br>Escribime por acá y arreglamos</p></br> 
             <form id="contact-form" action="https://formspree.io/f/xyznzwog" method="POST" class="max-w-sm md:max-w-md mx-auto space-y-4">
                 <input id="name" name="name" type="text" placeholder="Nombre" required class="w-full p-3 md:p-4 rounded-lg border-2 focus:border-accent-orange focus:outline-none">
                 <input id="email" name="email" type="email" placeholder="Email" required class="w-full p-3 md:p-4 rounded-lg border-2 focus:border-accent-orange focus:outline-none">
@@ -622,26 +623,69 @@
 
         function playCurrentVideo() {
             if (players[currentVideoIndex]) {
-                if (isMuted) {
-                    players[currentVideoIndex].mute();
-                    muteIcon.classList.remove('fa-volume-up');
-                    muteIcon.classList.add('fa-volume-mute');
-                } else {
-                    players[currentVideoIndex].unMute();
-                    muteIcon.classList.remove('fa-volume-mute');
-                    muteIcon.classList.add('fa-volume-up');
+                try {
+                    if (isMuted) {
+                        players[currentVideoIndex].mute();
+                        muteIcon.classList.remove('fa-volume-up');
+                        muteIcon.classList.add('fa-volume-mute');
+                    } else {
+                        players[currentVideoIndex].unMute();
+                        muteIcon.classList.remove('fa-volume-mute');
+                        muteIcon.classList.add('fa-volume-up');
+                    }
+                    players[currentVideoIndex].playVideo();
+                } catch (error) {
+                    console.error('Error playing video:', error);
+                    // Fallback: Move to next video if current one fails
+                    const nextIndex = (currentVideoIndex + 1) % players.length;
+                    changeVideo(nextIndex);
                 }
-                players[currentVideoIndex].playVideo();
             }
         }
-        
+
         function changeVideo(newIndex) {
+            // Ensure the new index is within bounds
+            newIndex = (newIndex + players.length) % players.length;
+            
+            // Stop the current video if it exists and is ready
             if (players[currentVideoIndex]) {
-                players[currentVideoIndex].pauseVideo();
+                try {
+                    players[currentVideoIndex].stopVideo();
+                } catch (error) {
+                    console.error('Error stopping video:', error);
+                }
             }
+            
             currentVideoIndex = newIndex;
             updateVideoCarouselUI();
             playCurrentVideo();
+        }
+
+        function initializePlayers() {
+            videoIframes.forEach((iframe, index) => {
+                const player = new YT.Player(iframe.id, {
+                    events: {
+                        'onReady': (event) => {
+                            players[index] = event.target;
+                            if (index === 0) {
+                                playCurrentVideo();
+                            }
+                        },
+                        'onStateChange': (event) => {
+                            if (event.data === YT.PlayerState.ENDED) {
+                                const nextIndex = (currentVideoIndex + 1) % players.length;
+                                changeVideo(nextIndex);
+                            }
+                        },
+                        'onError': (event) => {
+                            console.error('YouTube Player Error:', event.data);
+                            // Move to the next video on error
+                            const nextIndex = (currentVideoIndex + 1) % players.length;
+                            changeVideo(nextIndex);
+                        }
+                    }
+                });
+            });
         }
 
         function onYouTubeIframeAPIReady() {
@@ -655,24 +699,7 @@
                 });
             }
 
-            videoIframes.forEach((iframe, index) => {
-                const player = new YT.Player(iframe.id, {
-                    events: {
-                        'onReady': (event) => {
-                            if (index === 0) {
-                                playCurrentVideo();
-                            }
-                        },
-                        'onStateChange': (event) => {
-                            if (event.data === YT.PlayerState.ENDED) {
-                                const nextIndex = (currentVideoIndex + 1) % players.length;
-                                changeVideo(nextIndex);
-                            }
-                        }
-                    }
-                });
-                players.push(player);
-            });
+            initializePlayers();
 
             if (videoPrevButton) {
                 videoPrevButton.addEventListener('click', () => {
@@ -699,14 +726,20 @@
             if (videoMuteButton) {
                 videoMuteButton.addEventListener('click', () => {
                     isMuted = !isMuted;
-                    if (isMuted) {
-                        players[currentVideoIndex].mute();
-                        muteIcon.classList.remove('fa-volume-up');
-                        muteIcon.classList.add('fa-volume-mute');
-                    } else {
-                        players[currentVideoIndex].unMute();
-                        muteIcon.classList.remove('fa-volume-mute');
-                        muteIcon.classList.add('fa-volume-up');
+                    if (players[currentVideoIndex]) {
+                        try {
+                            if (isMuted) {
+                                players[currentVideoIndex].mute();
+                                muteIcon.classList.remove('fa-volume-up');
+                                muteIcon.classList.add('fa-volume-mute');
+                            } else {
+                                players[currentVideoIndex].unMute();
+                                muteIcon.classList.remove('fa-volume-mute');
+                                muteIcon.classList.add('fa-volume-up');
+                            }
+                        } catch (error) {
+                            console.error('Error toggling mute:', error);
+                        }
                     }
                 });
             }
