@@ -136,8 +136,8 @@ a.btn,button.btn{display:inline-flex;align-items:center;justify-content:center;g
 .bio__img{border-radius:var(--r2);overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.5)}
 .bio__img:hover{transform:translateY(-12px) scale(1.05) rotateX(10deg) rotateY(-12deg); box-shadow:0 18px 50px rgba(0,0,0,.8);}
 
-/* CONTACTO Section */
-.contact{background:var(--surf);position:relative}
+/* CONTRATACIONES Section */
+.contrataciones{background:var(--surf);position:relative}
 .contact-grid{
   position:relative;
   display:flex;
@@ -324,14 +324,14 @@ section{padding:60px 0}
 </div>
 </section>
 
-<!-- CONTACTO -->
-<section class="contact" id="contact" aria-labelledby="contact-title">
+<!-- CONTRATACIONES -->
+<section class="contrataciones" id="contrataciones" aria-labelledby="contrataciones-title">
 <div class="container section-header">
-<h2 id="contact-title">Contacto</h2>
+<h2 id="contrataciones-title">Contrataciones</h2>
 </div>
 
 <div class="container contact-grid">
-<form class="c-form" id="contact-form" novalidate>
+<form class="c-form" id="contrataciones-form" novalidate>
 <div class="fg"><label for="name">Nombre</label><input id="name" name="name" required autocomplete="name" /></div>
 <div class="fg"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
 <div class="fg"><label for="message">Mensaje</label><textarea id="message" name="message" rows="5" required></textarea></div>
@@ -393,18 +393,58 @@ hasIframe = true;
 });
 });
 
-// Formularios demo
-const cf=document.getElementById("contact-form"), msg=document.getElementById("form-msg");
-cf?.addEventListener("submit",(e)=>{e.preventDefault();msg.style.display="block";msg.textContent="Mensaje enviado. ¡Gracias!";cf.reset()});
+// Formularios
+const cf = document.getElementById("contrataciones-form");
+const msg = document.getElementById("form-msg");
 
-// Lógica para el botón de suscripción
+// La URL de Formspree ahora es única, asegurando que los mensajes se envíen a tu email.
+const formUrl = "https://formspree.io/f/xyznzwog"; 
+
+cf?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    msg.style.display = "block";
+    msg.style.backgroundColor = "rgba(255, 255, 255, 0.1)"; 
+    msg.style.color = "var(--txt)";
+    msg.textContent = "Enviando mensaje...";
+    
+    const formData = new FormData(cf);
+    const object = Object.fromEntries(formData.entries());
+    const json = JSON.stringify(object);
+
+    try {
+        const response = await fetch(formUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        });
+
+        if (response.ok) {
+            msg.style.backgroundColor = "rgba(76, 175, 80, 0.2)"; 
+            msg.style.color = "#4CAF50";
+            msg.textContent = "¡Mensaje enviado con éxito! Gracias por tu interés.";
+            cf.reset();
+        } else {
+            msg.style.backgroundColor = "rgba(244, 67, 54, 0.2)"; 
+            msg.style.color = "#F44336";
+            msg.textContent = "Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.";
+        }
+    } catch (error) {
+        msg.style.backgroundColor = "rgba(244, 67, 54, 0.2)"; 
+        msg.style.color = "#F44336";
+        msg.textContent = "Hubo un error de conexión. Por favor, verifica tu conexión a internet.";
+    }
+});
+
+// Lógica para el botón de suscripción (ejemplo)
 const subscribeBtn = document.getElementById("subscribe-button");
 const newsMsg = document.getElementById("news-msg");
 if(subscribeBtn) {
     subscribeBtn.addEventListener("click", () => {
         const userEmail = prompt("Ingresá tu email para recibir novedades:");
         if (userEmail) {
-            // Aquí se enviaría el email a un servidor
             newsMsg.style.display = "block";
             newsMsg.textContent = `¡Gracias! El email "${userEmail}" ha sido registrado.`;
         } else {
