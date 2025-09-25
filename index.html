@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE ahtml>
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
@@ -232,8 +232,24 @@ section{padding:60px 0}
 .section-header{margin-bottom:40px}
 .bio-grid{grid-template-columns:1fr; gap:32px;}
 .show{flex-direction:column;align-items:center;justify-content:center; text-align: center;} /* Vuelve a apilar para móviles */
-}
 
+/* *NUEVO* Diseño para la lista de shows en móviles */
+.show{
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+.show__details{
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.show .btn--primary {
+  width: 100%; /* El botón se extiende a todo el ancho */
+  margin-top: 10px; /* Separación entre la info y el botón */
+}
+}
 .fade{opacity:0;transform:translateY(200px) scale(0.9);}
 .fade.is-in{opacity:1;transform:translateY(0) scale(1);transition:all 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); z-index: 10;}
 </style>
@@ -245,26 +261,26 @@ section{padding:60px 0}
 <img src="https://i.imgur.com/jPXsuvr.png" alt="Ricardo Bisignano posando para la foto" class="hero-img fade">
 
 <div class="container shows-list">
-<article class="show fade">
+<article class="show">
 <div class="show__details">
 <div class="show__date">VIERNES 26/9</div>
 <div class="show__location"><i class="fa-solid fa-location-dot"></i> PASEO LA PLAZA - BUENOS AIRES</div>
 </div>
-<a href="https://www.passline.com" target="_blank" rel="noopener" class="btn btn--primary" aria-label="Comprar entradas para Paseo La Plaza">Comprar</a>
+<a href="https://www.passline.com/eventos/anda-a-verlo-a-bisignano-comedy-show-410520" target="_blank" rel="noopener" class="btn btn--primary" aria-label="Comprar entradas para Paseo La Plaza">Comprar</a>
 </article>
-<article class="show fade">
+<article class="show">
 <div class="show__details">
 <div class="show__date">DOMINGO 19/10</div>
 <div class="show__location"><i class="fa-solid fa-location-dot"></i> SIX BAR - SAN MIGUEL</div>
 </div>
-<a href="https://www.passline.com" target="_blank" rel="noopener" class="btn btn--primary" aria-label="Comprar entradas para Six Bar">Comprar</a>
+<a href="https://www.passline.com/eventos/ricardo-bisignano-y-elias-locura-en-san-miguel?srsltid=AfmBOopn7FZJsXWKfmxDw1c-HOY1qOEwa1Imi0Hs1rK0jufLG5-uMs2v" target="_blank" rel="noopener" class="btn btn--primary" aria-label="Comprar entradas para Six Bar">Comprar</a>
 </article>
-<article class="show fade">
+<article class="show">
 <div class="show__details">
 <div class="show__date">VIERNES 10/10</div>
 <div class="show__location"><i class="fa-solid fa-location-dot"></i> CELL BLOCK - OLIVOS</div>
 </div>
-<a href="https://www.passline.com" target="_blank" rel="noopener" class="btn btn--primary" aria-label="Reservar entradas para Cell Block">Reservar</a>
+<a href="https://www.instagram.com/santiago.leiro/" target="_blank" rel="noopener" class="btn btn--primary" aria-label="Reservar entradas para Cell Block">Reservar</a>
 </article>
 </div>
 </section>
@@ -320,7 +336,7 @@ section{padding:60px 0}
 <h2 id="bio-title">Mi Historia</h2>
 <p>Soy Ricardo Bisignano, comediante, actor y músico argentino. En escena combino stand up con canciones improvisadas e interacción constante con el público. Participé en Comedy Central Stand-Up (edición Argentina) y tuve apariciones en programas como Bendita TV, Hora de Reír e Informadísimos. Giré con mis unipersonales Viste?, Sin Calle y The Working Progre, recorriendo todo el país y países limítrofes. Comparto clips y canciones en Instagram, YouTube, TikTok y Facebook.</p>
 </div>
-<figure class="bio__img fade"><img src="https://i.imgur.com/TyaWPbh.png" alt="Ricardo Bisignano en el escenario tocando la guitarra"></figure>
+<figure class="bio__img fade"><img src="https://i.imgur.com/TyaVPbh.png" alt="Ricardo Bisignano en el escenario tocando la guitarra"></figure>
 </div>
 </section>
 
