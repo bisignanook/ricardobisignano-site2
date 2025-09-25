@@ -231,25 +231,7 @@ section{padding:60px 0}
 .contact-grid{gap:24px}
 .section-header{margin-bottom:40px}
 .bio-grid{grid-template-columns:1fr; gap:32px;}
-.show{
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 16px; /* Más espacio entre los detalles y el botón */
-}
-.show__details{
-    flex-direction: column; /* Apilar la fecha y la ubicación */
-    align-items: center;
-    text-align: center;
-    gap: 4px;
-}
-.show__date{
-    font-size: 1.25rem; /* Hace que la fecha resalte más */
-}
-.show__location {
-    font-size: 0.95rem; /* Un poco más pequeña la ubicación para balancear */
-}
+.show{flex-direction:column;align-items:center;justify-content:center; text-align: center;} /* Vuelve a apilar para móviles */
 }
 
 .fade{opacity:0;transform:translateY(200px) scale(0.9);}
@@ -260,7 +242,7 @@ section{padding:60px 0}
 
 <!-- SHOWS (Ahora con la imagen dentro de la misma sección) -->
 <section id="shows" aria-label="Próximas Fechas">
-<img src="https://imgur.com/TZ33cFg" alt="Ricardo Bisignano posando para la foto" class="hero-img fade">
+<img src="https://i.imgur.com/jPXsuvr.jpeg" alt="Ricardo Bisignano posando para la foto" class="hero-img fade">
 
 <div class="container shows-list">
 <article class="show fade">
