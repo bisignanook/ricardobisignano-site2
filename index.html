@@ -410,6 +410,30 @@
       .credits { justify-content:center; }
       .booking-grid > div:first-child { text-align:center; }
       .booking-copy { margin-inline:auto; }
+      .booking { overflow:hidden; }
+      .booking-grid {
+        width:calc(100% - 32px);
+        margin-inline:auto;
+        justify-items:center;
+        gap:2rem;
+      }
+      .booking-grid > * { width:100%; min-width:0; }
+      .booking-title {
+        width:100%;
+        margin-inline:auto;
+        font-size:clamp(2rem,9.2vw,2.8rem);
+        line-height:.92;
+        text-align:center;
+        overflow-wrap:anywhere;
+      }
+      .booking-copy { width:min(100%,390px); text-align:center; }
+      .booking .form {
+        width:100%;
+        margin-inline:auto;
+        padding:1.35rem;
+        box-shadow:0 7px 0 var(--ink);
+      }
+      .booking .form .btn { padding-inline:.75rem; text-align:center; }
     }
 
     /* Paleta solicitada: carbón, papel y tintas pastel. */
