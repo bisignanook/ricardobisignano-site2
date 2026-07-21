@@ -110,6 +110,17 @@
     .video-side { aspect-ratio: 9/16; }
     .video-main iframe, .video-side iframe { width: 100%; height: 100%; border: 0; }
     .video-caption { margin-top: 1.2rem; color: rgba(255,255,255,.55); font-size: .82rem; }
+    .channel-player { overflow:hidden; border:1px solid rgba(255,255,255,.16); border-radius:18px; background:#101820; box-shadow:0 24px 60px rgba(0,0,0,.18); }
+    .channel-screen { aspect-ratio:16/9; background:#000; }
+    .channel-screen iframe { width:100%; height:100%; display:block; border:0; }
+    .channel-controls { min-height:76px; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:1.25rem; padding:1rem 1.2rem; }
+    .player-arrow { width:44px; height:44px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.22); border-radius:50%; color:#fff; background:transparent; cursor:pointer; transition:background .2s,border-color .2s; }
+    .player-arrow:hover { background:var(--orange); border-color:var(--orange); }
+    .player-progress { display:flex; justify-content:center; align-items:center; gap:.45rem; }
+    .player-dot { width:7px; height:7px; padding:0; border:0; border-radius:50%; background:rgba(255,255,255,.3); cursor:pointer; transition:width .2s,background .2s; }
+    .player-dot.active { width:25px; border-radius:99px; background:var(--orange); }
+    .player-end { display:flex; align-items:center; gap:.75rem; }
+    .player-count { min-width:52px; color:rgba(255,255,255,.58); font-size:.76rem; font-variant-numeric:tabular-nums; text-align:right; }
 
     .identity { padding: 8rem 0; position: relative; overflow: hidden; background: var(--paper-2); }
     .identity-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 7vw; align-items: center; }
@@ -186,6 +197,12 @@
       .video-grid { grid-template-columns: 1fr; }
       .video-side { display: none; }
       .video-main { aspect-ratio: 4/3; }
+      .channel-player { border-radius:12px; }
+      .channel-screen { aspect-ratio:4/3; }
+      .channel-controls { min-height:68px; gap:.7rem; padding:.75rem; }
+      .player-arrow { width:40px; height:40px; }
+      .player-progress { gap:.32rem; }
+      .player-count { display:none; }
       .identity-grid, .booking-grid { grid-template-columns: 1fr; }
       .portrait-frame { max-width: 470px; }
       .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 300px 190px; }
@@ -328,9 +345,13 @@
           <div><h2 class="section-title black">Videos</h2></div>
           <a class="btn btn-outline" href="https://www.youtube.com/@Ricardo.Bisignano" target="_blank" rel="noopener">Canal completo <i class="fa-brands fa-youtube"></i></a>
         </div>
-        <div class="video-grid reveal">
-          <div class="video-main"><iframe src="https://www.youtube.com/embed/mgwecMhNNtE?rel=0" title="Ricardo Bisignano en escena" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-          <div class="video-side"><iframe src="https://www.youtube.com/embed/ik9U5Fe7h0Y?rel=0" title="Fragmento de Ricardo Bisignano" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="channel-player reveal">
+          <div class="channel-screen"><iframe id="channel-video" src="https://www.youtube.com/embed/mgwecMhNNtE?rel=0&modestbranding=1" title="Videos de Ricardo Bisignano" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="channel-controls">
+            <button id="video-previous" class="player-arrow" type="button" aria-label="Video anterior"><i class="fa-solid fa-arrow-left"></i></button>
+            <div id="video-progress" class="player-progress" aria-label="Seleccionar video"></div>
+            <div class="player-end"><span id="video-count" class="player-count">01 / 08</span><button id="video-next" class="player-arrow" type="button" aria-label="Video siguiente"><i class="fa-solid fa-arrow-right"></i></button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -388,6 +409,29 @@
       if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     }), { threshold: .1 });
     document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+    const channelVideos = ['mgwecMhNNtE','ik9U5Fe7h0Y','r2ao-fpUy88','HWz5htm6BmE','uF0v_gtMUPs','15VzU45AfA8','0rXPMk4u7bE','sfVU02ynAnE'];
+    const channelFrame = document.getElementById('channel-video');
+    const channelProgress = document.getElementById('video-progress');
+    const channelCount = document.getElementById('video-count');
+    let channelIndex = 0;
+    function showChannelVideo(index, autoplay = true) {
+      channelIndex = (index + channelVideos.length) % channelVideos.length;
+      channelFrame.src = `https://www.youtube.com/embed/${channelVideos[channelIndex]}?rel=0&modestbranding=1${autoplay ? '&autoplay=1' : ''}`;
+      [...channelProgress.children].forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === channelIndex));
+      channelCount.textContent = `${String(channelIndex + 1).padStart(2,'0')} / ${String(channelVideos.length).padStart(2,'0')}`;
+    }
+    channelVideos.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'player-dot';
+      dot.setAttribute('aria-label', `Ver video ${index + 1}`);
+      dot.addEventListener('click', () => showChannelVideo(index));
+      channelProgress.appendChild(dot);
+    });
+    document.getElementById('video-previous').addEventListener('click', () => showChannelVideo(channelIndex - 1));
+    document.getElementById('video-next').addEventListener('click', () => showChannelVideo(channelIndex + 1));
+    showChannelVideo(0, false);
   </script>
 </body>
 </html>
