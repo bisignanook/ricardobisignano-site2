@@ -7,7 +7,8 @@
   <title>Ricardo Bisignano — Stand up en vivo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <script>
     function loadMetricool(callback) {
@@ -128,7 +129,7 @@
     .portrait-frame::before { content: ""; position: absolute; inset: 7% -5% -5% 7%; background: var(--orange); }
     .portrait { width: 100%; aspect-ratio: 4/5; position: relative; object-fit: cover; filter: grayscale(100%) contrast(1.08); }
     .identity-title { margin: .6rem 0 1.8rem; font-size: clamp(3.7rem, 7vw, 6.8rem); line-height: .82; }
-    .identity-copy { max-width: 610px; color: var(--muted); font-size: 1.08rem; line-height: 1.75; }
+    .identity-copy { max-width: 610px; margin:0 0 1rem; color: var(--muted); font-size: 1.08rem; line-height: 1.75; }
     .identity-copy strong { color: var(--ink); }
     .credits { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: .6rem; }
     .credit { padding: .55rem .75rem; border: 1px solid var(--line); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
@@ -273,6 +274,147 @@
       .ticker span { padding:.7rem 1rem; text-align:center; }
       .ticker span:nth-child(n+2) { display:none; }
     }
+
+    /* Alternativa limpia: tipografía sans serif y fotografía sin marco ornamental. */
+    body { font-family:"Manrope",sans-serif; }
+    .black { font-family:"Manrope",sans-serif; font-weight:800; letter-spacing:-.055em; }
+    .logo-name { font-family:"Manrope",sans-serif; font-weight:700; }
+    .hero { min-height:680px; }
+    .hero-grid { min-height:610px; grid-template-columns:.88fr 1.12fr; gap:5vw; }
+    .hero-copy { padding:4.5rem 0; }
+    .hero-title { margin:1rem 0 1.5rem; font-family:"Manrope",sans-serif; font-size:clamp(4.2rem,7.6vw,7.4rem); font-weight:800; letter-spacing:-.075em; line-height:.82; }
+    .hero-title .accent { color:var(--orange); font-style:normal; }
+    .hero-line { font-size:1.08rem; }
+    .hero-art { height:580px; border-radius:18px; }
+    .section-title,.identity-title,.booking-title { font-family:"Manrope",sans-serif; font-weight:800; letter-spacing:-.06em; line-height:.92; }
+    .section-title { font-size:clamp(2.9rem,5.6vw,5rem); }
+    .identity-title { font-size:clamp(3rem,5.6vw,5.2rem); }
+    .booking-title { font-size:clamp(3.4rem,6.5vw,6rem); }
+    @media (max-width:700px) {
+      .hero { min-height:auto; }
+      .hero-copy { padding:3rem 0 1.5rem; }
+      .hero-title { font-size:clamp(3.5rem,15vw,4.7rem); line-height:.84; }
+      .hero-art { height:400px; min-height:400px; border-radius:14px; }
+    }
+
+    /* Ritmo visual más orgánico, sin perder claridad. */
+    .hero { position:relative; }
+    .hero::after { content:""; width:190px; height:190px; position:absolute; right:-70px; bottom:-65px; border-radius:50%; background:rgba(230,83,56,.08); pointer-events:none; }
+    .hero-art { border-radius:30px 92px 30px 30px; transform:rotate(.35deg); }
+    .agenda { padding-top:6rem; }
+    .gig-list { border-top:0; display:flex; flex-direction:column; gap:14px; }
+    .gig { padding:1.2rem 1.6rem; border:1px solid var(--line); border-radius:24px; background:rgba(255,255,255,.62); }
+    .gig:nth-child(2) { margin-left:4vw; }
+    .gig:nth-child(3) { margin-right:4vw; }
+    .gig:hover { padding-inline:2rem; border-color:rgba(230,83,56,.35); box-shadow:0 14px 35px rgba(24,33,44,.06); }
+    .channel-player { border-radius:28px 70px 28px 28px; }
+    .portrait-frame::before { border-radius:28px 70px 28px 28px; }
+    .portrait { border-radius:24px 64px 24px 24px; }
+    .gallery-grid figure { border-radius:18px; }
+    .gallery-grid figure:first-child { border-radius:24px 76px 24px 24px; }
+    .form { border-radius:26px 70px 26px 26px; }
+    @media (max-width:700px) {
+      .hero-art { border-radius:22px 58px 22px 22px; transform:none; }
+      .gig { padding:1.35rem; border-radius:20px; }
+      .gig:nth-child(2),.gig:nth-child(3) { margin-inline:0; }
+      .gig:hover { padding-inline:1.35rem; }
+      .channel-player { border-radius:20px 46px 20px 20px; }
+      .form { border-radius:22px 50px 22px 22px; }
+    }
+
+    /* Variante fanzine: publicación independiente, no estética de plantilla. */
+    :root { --orange:#e7462e; --ink:#171715; --paper:#eee9da; --paper-2:#ded8c7; --white:#f8f4e8; --muted:#5d5a51; --line:rgba(23,23,21,.28); }
+    body { font-family:"Space Mono",monospace; background-color:var(--paper); background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.017) 0,rgba(0,0,0,.017) 1px,transparent 1px,transparent 4px); }
+    .black,.hero-title,.section-title,.identity-title,.booking-title { font-family:"Archivo Black",sans-serif; font-weight:400; letter-spacing:-.055em; text-transform:uppercase; }
+    .topbar { background:rgba(238,233,218,.93); border-bottom:2px solid var(--ink); }
+    .logo-mark { border:2px solid var(--ink); box-shadow:3px 3px 0 var(--ink); }
+    .logo-name,.nav-links a:not(.nav-buy),.nav-buy { font-family:"Space Mono",monospace; }
+    .nav-buy,.btn { border-radius:0; }
+    .btn-primary { border:2px solid var(--ink); box-shadow:5px 5px 0 var(--ink); }
+    .btn-primary:hover { transform:translate(2px,2px); box-shadow:3px 3px 0 var(--ink); }
+    .hero { background:transparent; }
+    .hero::after { content:none; }
+    .hero-copy { z-index:3; }
+    .hero-copy .eyebrow { width:max-content; padding:.45rem .65rem; color:var(--white); background:var(--ink); transform:rotate(-1.5deg); }
+    .hero-title { font-size:clamp(4rem,7.2vw,7rem); line-height:.84; transform:rotate(-.7deg); }
+    .hero-title .accent { width:max-content; margin-top:.15rem; padding:0 .25rem .12rem; color:var(--white); background:var(--orange); transform:rotate(1deg); }
+    .hero-line { max-width:470px; font-family:"Space Mono",monospace; font-size:.95rem; }
+    .hero-art { border:3px solid var(--ink); border-radius:0; transform:rotate(1.2deg); box-shadow:11px 12px 0 rgba(23,23,21,.16); clip-path:polygon(1% 0,100% 1%,99% 99%,0 100%); }
+    .hero-photo { filter:saturate(.78) contrast(1.06); }
+    .agenda { position:relative; }
+    .agenda::before { content:"AGENDA / AGENDA / AGENDA"; position:absolute; top:1.4rem; right:-2rem; color:rgba(23,23,21,.035); font-family:"Archivo Black",sans-serif; font-size:4.6rem; transform:rotate(2deg); white-space:nowrap; }
+    .gig-list { gap:22px; }
+    .gig { border:2px solid var(--ink); border-radius:0; background:var(--white); box-shadow:7px 7px 0 var(--ink); }
+    .gig:nth-child(1) { transform:rotate(-.35deg); }
+    .gig:nth-child(2) { transform:rotate(.45deg); }
+    .gig:nth-child(3) { transform:rotate(-.25deg); }
+    .gig:hover { padding-inline:1.6rem; border-color:var(--ink); box-shadow:3px 3px 0 var(--ink); transform:translate(3px,3px) rotate(0); }
+    .gig-date strong,.gig-place { font-family:"Archivo Black",sans-serif; }
+    .gratis { border:1px solid var(--ink); border-radius:0; transform:rotate(-2deg); }
+    .reel { background:var(--ink); }
+    .channel-player { border:2px solid var(--white); border-radius:0; box-shadow:10px 10px 0 var(--orange); transform:rotate(-.25deg); }
+    .identity { background:var(--paper-2); }
+    .portrait-frame::before { inset:15px -15px -15px 15px; border-radius:0; background:var(--orange); transform:rotate(1deg); }
+    .portrait { border:2px solid var(--ink); border-radius:0; filter:grayscale(.2) contrast(1.06); transform:rotate(-.7deg); }
+    .credit { border:2px solid var(--ink); background:var(--white); transform:rotate(-1deg); }
+    .credit:nth-child(even) { transform:rotate(1deg); }
+    .gallery-grid { gap:1rem; }
+    .gallery-grid figure,.gallery-grid figure:first-child { border:2px solid var(--ink); border-radius:0; background:var(--white); box-shadow:5px 5px 0 var(--ink); }
+    .gallery-grid figure:nth-child(2) { transform:rotate(1deg); }
+    .gallery-grid figure:nth-child(3) { transform:rotate(-1deg); }
+    .booking { background:var(--orange); border-top:3px solid var(--ink); }
+    .form { border:3px solid var(--ink); border-radius:0; box-shadow:10px 10px 0 var(--ink); transform:rotate(.4deg); }
+    .field::placeholder { color:rgba(23,23,21,.58); }
+    .footer { border-top:3px solid var(--orange); }
+    .mobile-buy { border-radius:0; }
+    .mobile-buy.is-hidden { opacity:0; pointer-events:none; transform:translateY(130%); }
+    @media (max-width:700px) {
+      .hero-copy .eyebrow { margin-inline:auto; }
+      .hero-title { font-size:clamp(3.1rem,13.5vw,4.25rem); }
+      .hero-title .accent { margin-inline:auto; }
+      .hero-art { border-radius:0; transform:rotate(.6deg); }
+      .gig,.gig:nth-child(1),.gig:nth-child(2),.gig:nth-child(3) { transform:none; }
+      .channel-player,.form { border-radius:0; transform:none; }
+      .agenda::before { display:none; }
+      .booking-title { font-size:clamp(2.45rem,10.5vw,3.15rem); letter-spacing:-.065em; }
+      .booking-copy { max-width:390px; }
+    }
+
+    /* Paleta solicitada: carbón, papel y tintas pastel. */
+    :root {
+      --orange:#dfe7dc;
+      --ink:#151515;
+      --paper:#f3efe7;
+      --paper-2:#dce8ef;
+      --white:#fffdf8;
+      --muted:#655f58;
+      --pastel-blue:#dce8ef;
+      --pastel-sage:#dfe7dc;
+      --pastel-rose:#ead9dc;
+      --pastel-yellow:#eee4bf;
+    }
+    ::selection { color:var(--ink); background:var(--pastel-yellow); }
+    .logo-mark { color:var(--ink); background:var(--pastel-rose); }
+    .nav-buy,.btn-primary,.mobile-buy { color:var(--ink); background:var(--pastel-sage); }
+    .nav-buy:hover,.btn-primary:hover { color:var(--ink); background:var(--pastel-yellow); }
+    .hero-title .accent { color:var(--ink); background:var(--pastel-rose); }
+    .gig:nth-child(1) { background:var(--pastel-yellow); }
+    .gig:nth-child(2) { background:var(--pastel-blue); }
+    .gig:nth-child(3) { background:var(--pastel-rose); }
+    .gig-date strong { color:var(--ink); }
+    .gratis { color:var(--ink); background:var(--pastel-sage); }
+    .channel-player { box-shadow:10px 10px 0 var(--pastel-rose); }
+    .player-arrow:hover,.player-dot.active { color:var(--ink); background:var(--pastel-yellow); border-color:var(--pastel-yellow); }
+    .identity { background:var(--pastel-blue); }
+    .portrait-frame::before { background:var(--pastel-sage); }
+    .credit:nth-child(1) { background:var(--pastel-sage); }
+    .credit:nth-child(2) { background:var(--pastel-blue); }
+    .credit:nth-child(3) { background:var(--pastel-rose); }
+    .credit:nth-child(4) { background:var(--pastel-yellow); }
+    .booking { background:var(--pastel-sage); }
+    .form { background:var(--white); }
+    .form .btn-dark { color:var(--white); background:var(--ink); }
+    .footer { border-top-color:var(--pastel-rose); }
   </style>
 </head>
 <body>
@@ -361,7 +503,9 @@
         <div class="portrait-frame reveal"><img class="portrait" src="https://imgur.com/dKmMeIp.jpeg" alt="Ricardo Bisignano tocando la guitarra en Comedy Central" loading="lazy"></div>
         <div class="reveal">
           <h2 class="identity-title black">Sobre Ricardo</h2>
-          <p class="identity-copy"><strong>Comediante, actor y músico.</strong> Ricardo convirtió la guitarra, la observación cotidiana y la improvisación con el público en una forma propia de hacer stand up.</p>
+          <p class="identity-copy"><strong>Soy Ricardo Bisignano, comediante, actor y músico argentino.</strong> Arranqué tocando la guitarra en los colectivos en el 2001 y desde ahí me dedico a hacer reír: teatro, stand up, tele, un poco de todo.</p>
+          <p class="identity-copy">Formé parte de Comedy Central Stand-Up Argentina y pasé por programas como Bendita TV, Hora de Reír e Informadísimos. Con mis unipersonales <em>“Viste?”</em>, <em>“Sin Calle”</em> y <em>“The Working Progre”</em> recorrí provincias y países limítrofes.</p>
+          <p class="identity-copy">Hoy comparto fragmentos en Instagram, YouTube, TikTok y Facebook, pero la experiencia completa está en el teatro. Podés ver videos en redes, pero la posta está en vivo ;)</p>
           <div class="credits"><span class="credit">Comedy Central</span><span class="credit">Bendita TV</span><span class="credit">Hora de Reír</span><span class="credit">Giras nacionales</span></div>
         </div>
       </div>
@@ -432,6 +576,12 @@
     document.getElementById('video-previous').addEventListener('click', () => showChannelVideo(channelIndex - 1));
     document.getElementById('video-next').addEventListener('click', () => showChannelVideo(channelIndex + 1));
     showChannelVideo(0, false);
+
+    const mobileBuy = document.querySelector('.mobile-buy');
+    const bookingSection = document.getElementById('contrataciones');
+    if (mobileBuy && bookingSection) {
+      new IntersectionObserver(([entry]) => mobileBuy.classList.toggle('is-hidden', entry.isIntersecting), { threshold: .12 }).observe(bookingSection);
+    }
   </script>
 </body>
 </html>
