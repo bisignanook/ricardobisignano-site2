@@ -92,7 +92,7 @@
     .section-title { margin: .45rem 0 0; font-size: clamp(3.4rem, 7vw, 6rem); line-height: .83; }
     .section-side { max-width: 330px; color: var(--muted); line-height: 1.6; }
     .gig-list { border-top: 2px solid var(--ink); }
-    .gig { min-height: 145px; display: grid; grid-template-columns: 135px 1fr 190px 190px; align-items: center; gap: 2rem; border-bottom: 1px solid var(--line); transition: background .2s, padding .2s; }
+    .gig { min-height: 145px; position:relative; display: grid; grid-template-columns: 135px 1fr 190px 190px; align-items: center; gap: 2rem; border-bottom: 1px solid var(--line); cursor:pointer; transition: background .2s, padding .2s; }
     .gig:hover { padding-inline: 1rem; background: var(--white); }
     .gig-date strong { display: block; font-family: "Archivo Black", sans-serif; font-size: 2rem; line-height: 1; text-transform: uppercase; }
     .gig-date span { color: var(--muted); font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
@@ -101,6 +101,7 @@
     .gig-meta strong { display: block; color: var(--ink); }
     .gratis { display: inline-block; margin-top: .5rem; padding: .25rem .5rem; color: #176339; background: #d9f4e3; border-radius: 2px; font-size: .66rem; font-weight: 700; letter-spacing: .08em; }
     .gig .btn { justify-self: stretch; }
+    .gig .btn::after { content:""; position:absolute; inset:0; z-index:2; }
 
     .reel { padding: 7rem 0; color: white; background: var(--ink); }
     .reel-head { margin-bottom: 2.5rem; display: flex; justify-content: space-between; align-items: end; gap: 2rem; }
@@ -421,10 +422,12 @@
       .booking-title {
         width:100%;
         margin:.2rem auto .75rem;
-        font-size:clamp(2rem,9.2vw,2.8rem);
+        font-size:clamp(1.65rem,7.8vw,2.5rem);
         line-height:.92;
+        letter-spacing:-.075em;
         text-align:center;
-        overflow-wrap:anywhere;
+        white-space:nowrap;
+        overflow-wrap:normal;
       }
       .booking-copy { width:min(100%,390px); margin-block:0; font-size:.86rem; line-height:1.45; text-align:center; }
       .booking .form {
