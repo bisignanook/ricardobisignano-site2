@@ -895,6 +895,58 @@
       .story-page-title { font-size:clamp(3.7rem,19vw,6rem); }
       .story-shell .bondi-story { box-shadow:7px 7px 0 var(--shadow-color); }
     }
+/* AJUSTE FINAL HERO + SOBRE MI */
+.hero-art{
+  border:3px solid var(--ink) !important;
+  border-radius:28px !important;
+  box-shadow:12px 12px 0 var(--ink) !important;
+  transform:none !important;
+  background:var(--white) !important;
+  overflow:hidden !important;
+}
+
+.hero-photo{
+  width:100% !important;
+  height:100% !important;
+  left:0 !important;
+  bottom:0 !important;
+  object-fit:cover !important;
+}
+
+@media (min-width:701px){
+  .identity-grid{
+    grid-template-columns:1.12fr .88fr !important;
+    gap:4vw !important;
+    align-items:start !important;
+  }
+
+  .portrait-frame{
+    width:100% !important;
+    max-width:700px !important;
+  }
+
+  .portrait-frame::before{
+    inset:22px -22px -22px 22px !important;
+    border-radius:28px !important;
+  }
+
+  .portrait{
+    width:100% !important;
+    aspect-ratio:4 / 5 !important;
+    min-height:720px !important;
+    object-fit:cover !important;
+    object-position:center 18% !important;
+    border-radius:28px !important;
+  }
+}
+
+@media (max-width:700px){
+  .hero-art{
+    border-radius:18px !important;
+    box-shadow:8px 8px 0 var(--ink) !important;
+  }
+}
+/* FIN AJUSTE FINAL HERO + SOBRE MI */
 </style>
 </head>
 <body>
