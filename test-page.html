@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#11100f">
+  <title>Ricardo Bisignano — Prueba mobile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #f14b23;
+      --orange-deep: #d73e15;
+      --ink: #1b1a17;
+      --paper: #f5efe4;
+      --paper-2: #efe4d2;
+      --white: #fffaf2;
+      --muted: #6e6558;
+      --line: rgba(27,26,23,.14);
+      --shadow: 0 14px 34px rgba(27,26,23,.12);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Manrope", sans-serif;
+      background:
+        linear-gradient(180deg, rgba(241,75,35,.08), transparent 24%),
+        var(--paper);
+      color: var(--ink);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      width: min(100%, 420px);
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(245,239,228,.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(27,26,23,.08);
+    }
+
+    .topbar .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+    .hero {
+      padding: 18px 0 6px;
+    }
+
+    .hero-panel {
+      padding: 16px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, #fffaf2 0%, #f3eadb 100%);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-portrait {
+      overflow: hidden;
+      margin-bottom: 12px;
+      border-radius: 24px;
+      background: #e8ddc9;
+    }
+
+    .hero-portrait img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--orange-deep);
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: 2.7rem;
+      line-height: .84;
+      letter-spacing: -.07em;
+      font-weight: 900;
+    }
+
+    .hero-title span {
+      display: block;
+      color: var(--orange);
+    }
+
+    .hero-copy {
+      margin: 10px 0 14px;
+      color: var(--muted);
+      font-size: .98rem;
+      line-height: 1.55;
+    }
+
+    .quote {
+      margin: 0 0 14px;
+      padding: 12px 14px;
+      border-left: 3px solid var(--orange);
+      background: rgba(255,255,255,.65);
+      color: var(--ink);
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+    .cta-row {
+      display: grid;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      min-height: 48px;
+      padding: .82rem 1rem;
+      border-radius: 14px;
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+      box-shadow: 0 10px 20px rgba(241,75,35,.26);
+    }
+
+    .btn-dark {
+      background: var(--ink);
+      color: white;
+    }
+
+    .section {
+      padding: 18px 0;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 1.7rem;
+      line-height: .96;
+      letter-spacing: -.05em;
+      font-weight: 900;
+    }
+
+    .subcopy {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.5;
+    }
+
+    .gig-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .gig {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border-radius: 20px;
+      background: #fffdf9;
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 18px rgba(27,26,23,.06);
+    }
+
+    .gig-date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 6px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #fff 0%, #f2e9db 100%);
+      border: 1px solid rgba(27,26,23,.12);
+      text-align: center;
+    }
+
+    .gig-date strong {
+      font-size: 1.28rem;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .gig-date span {
+      color: var(--muted);
+      font-size: .6rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .gig-place {
+      margin: 0 0 3px;
+      font-size: 1.14rem;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: -.03em;
+    }
+
+    .gig-meta {
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.45;
+    }
+
+    .gratis {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 4px 8px;
+      background: #d8f0de;
+      color: #1f6e40;
+      border-radius: 999px;
+      font-size: .6rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .final-cta {
+      position: sticky;
+      bottom: 10px;
+      z-index: 4;
+      margin: 14px 0 24px;
+    }
+
+    .final-cta .btn {
+      width: 100%;
+    }
+
+    .footer-note {
+      padding-bottom: 22px;
+      color: var(--muted);
+      font-size: .75rem;
+      text-align: center;
+    }
+
+    @media (min-width: 700px) {
+      .wrap { width: min(100%, 700px); }
+      .hero-panel { padding: 18px; }
+      .hero-title { font-size: 3.4rem; }
+      .cta-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <span class="brand-mark">RB</span>
+        <span>Ricardo Bisignano</span>
+      </div>
+      <a class="btn btn-dark" href="#funciones">Entradas</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-panel">
+        <div class="hero-portrait">
+          <img src="../ricardobisignano-site2-publish/assets/ricardo-portada.jpg" alt="Ricardo Bisignano en una función">
+        </div>
+        <p class="eyebrow">Stand up · guitarra · improvisación</p>
+        <h1 class="hero-title">Ricardo <span>Bisignano</span></h1>
+        <p class="hero-copy">Cuando Ricardo se sube al escenario, la posta no es solo una función: es una reunión con humor, guitarra y un poco de caos muy bien controlado.</p>
+        <p class="quote">“Si pensabas que un show tenía que ser de una sola manera, te invitamos a verlo en vivo.”</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#funciones">Ver funciones</a>
+          <a class="btn btn-dark" href="#detalle">Qué esperar</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="funciones">
+      <h2 class="section-title">Próximas fechas</h2>
+      <p class="subcopy">La agenda, pero sin perder la sensación de que es un show real.</p>
+      <div class="gig-list">
+        <a class="gig" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2629" target="_blank" rel="noopener">
+          <div class="gig-date"><strong>07 AGO</strong><span>Viernes</span></div>
+          <div>
+            <h3 class="gig-place">Taburete Comedia, CABA</h3>
+            <div class="gig-meta"><strong>20:30 hs</strong> · Palermo</div>
+            <span class="btn btn-primary" style="margin-top:8px; width:100%;">Comprar</span>
+          </div>
+        </a>
+
+        <a class="gig" href="https://www.instagram.com/valinor.irishbar/" target="_blank" rel="noopener">
+          <div class="gig-date"><strong>20 AGO</strong><span>Jueves</span></div>
+          <div>
+            <h3 class="gig-place">Valinor, Ramos Mejía</h3>
+            <div class="gig-meta"><strong>21:00 hs</strong> · Con reserva</div>
+            <span class="gratis">Gratis</span>
+            <span class="btn btn-dark" style="margin-top:8px; width:100%;">Reservar</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="detalle">
+      <h2 class="section-title">Qué te espera</h2>
+      <p class="subcopy">Ni una promo genérica ni un bloque de texto vacío: una página hecha para invitar a entrar al show.</p>
+    </section>
+
+    <div class="final-cta">
+      <a class="btn btn-primary" href="#funciones">Reservá tu entrada <i class="fa-solid fa-ticket"></i></a>
+    </div>
+
+    <p class="footer-note">Versión móvil más cercana a Ricardo: foto, frase y agenda.</p>
+  </main>
+</body>
+</html>
