@@ -41,8 +41,8 @@
       --max: 1240px;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; overflow-x: hidden; }
+    html { scroll-behavior: auto; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; }
     a { color: inherit; text-decoration: none; }
     button, input, textarea { font: inherit; }
     img { display: block; max-width: 100%; }
@@ -597,9 +597,18 @@
         text-transform:uppercase;
       }
       .agenda .gig .btn,
-      .agenda .gratis,
-      .mobile-buy { display:none; }
-      body { padding-bottom:0; }
+      .agenda .gratis { display:none; }
+      /* Barra fija mobile: visible para ir a funciones */
+      .mobile-buy {
+        display: flex !important;
+        min-height: 54px;
+        position: fixed;
+        z-index: 70;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+      }
+      body { padding-bottom: 72px; }
 
       /* Recorte discreto para que la nueva foto funcione dentro del marco original. */
       .hero-photo { object-position:center 25%; }
@@ -1007,8 +1016,8 @@
     /* FIN CORRECCION VISUAL FINAL */
 
     /* ---- Fixes de desborde y layout ---- */
-    html { overflow-x: hidden; }
-    body { overflow-x: hidden; }
+    html { overflow-x: clip; max-width: 100%; }
+    body { max-width: 100%; position: relative; }
 
     /* El accent con width:max-content hacía desbordar "BISIGNANO" y generaba scroll horizontal. */
     .hero-title {
@@ -1192,12 +1201,12 @@
 <span class="logo-name">Ricardo<br/>Bisignano</span>
 </a>
 <div class="nav-links">
-<a href="#funciones">Funciones</a>
-<a href="#en-escena">En escena</a>
-<a href="#ricardo">Sobre mí</a>
-<a href="#el-pibe-del-bondi">El pibe del bondi</a>
-<a href="#contrataciones">Contrataciones</a>
-<a class="nav-buy" href="#funciones">Comprar entradas</a>
+<a href="#funciones" data-scroll-to="funciones">Funciones</a>
+<a href="#en-escena" data-scroll-to="en-escena">En escena</a>
+<a href="#ricardo" data-scroll-to="ricardo">Sobre mí</a>
+<a href="#el-pibe-del-bondi" data-scroll-to="el-pibe-del-bondi">El pibe del bondi</a>
+<a href="#contrataciones" data-scroll-to="contrataciones">Contrataciones</a>
+<a class="nav-buy" href="#funciones" data-scroll-to="funciones">Comprar entradas</a>
 </div>
 </nav>
 </header><main>
@@ -1208,7 +1217,7 @@
 <h1 class="hero-title black">Ricardo<span class="accent">Bisignano</span></h1>
 <p class="hero-line">Stand up y canciones improvisadas.</p>
 <div class="hero-actions">
-<a class="btn btn-primary" href="#funciones">Próximas funciones <i class="fa-solid fa-arrow-down"></i></a>
+<a class="btn btn-primary" href="#funciones" data-scroll-to="funciones">Próximas funciones <i class="fa-solid fa-arrow-down"></i></a>
 </div>
 </div>
 <div class="hero-art reveal">
@@ -1314,7 +1323,7 @@
 <div class="socials"><a aria-label="Instagram" class="social" href="https://www.instagram.com/ricardo.bisignano/" rel="noopener" target="_blank"><i class="fa-brands fa-instagram"></i></a><a aria-label="YouTube" class="social" href="https://www.youtube.com/@Ricardo.Bisignano" rel="noopener" target="_blank"><i class="fa-brands fa-youtube"></i></a><a aria-label="Facebook" class="social" href="https://www.facebook.com/BisignanoOK/" rel="noopener" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></div>
 <p class="copyright">© 2026 Ricardo Bisignano</p>
 </div>
-</footer><a class="mobile-buy btn btn-primary" href="#funciones">Ver funciones y entradas <i class="fa-solid fa-ticket"></i></a></div><div aria-hidden="true" class="app-view story-shell" hidden="" id="story-view"><header class="story-topbar">
+</footer><a class="mobile-buy btn btn-primary" href="#funciones" data-scroll-to="funciones">Ver funciones y entradas <i class="fa-solid fa-ticket"></i></a></div><div aria-hidden="true" class="app-view story-shell" hidden="" id="story-view"><header class="story-topbar">
 <nav aria-label="Navegación del relato" class="story-nav wrap">
 <a aria-label="Volver al sitio de Ricardo Bisignano" class="logo" data-close-story="" href="#inicio">
 <span class="logo-mark">RB</span>
@@ -1403,17 +1412,23 @@
       const storyHash = '#leer-el-pibe-del-bondi';
       let homeScrollY = 0;
 
+      function isStoryOpen() {
+        return document.body.classList.contains('story-open');
+      }
+
       function setStoryOpen(open, { restoreScroll = true } = {}) {
         if (!homeView || !storyView) return;
+        const wasOpen = isStoryOpen();
+        if (open === wasOpen) return;
 
         if (open) {
-          homeScrollY = window.scrollY;
+          homeScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
           homeView.hidden = true;
           storyView.hidden = false;
           storyView.setAttribute('aria-hidden', 'false');
           document.body.classList.add('story-open');
           document.title = 'El Pibe del Bondi — Ricardo Bisignano';
-          window.scrollTo({ top: 0, behavior: 'instant' });
+          window.scrollTo(0, 0);
           const article = document.getElementById('capitulo-uno');
           if (article) article.classList.add('visible');
         } else {
@@ -1422,42 +1437,119 @@
           homeView.hidden = false;
           document.body.classList.remove('story-open');
           document.title = 'Ricardo Bisignano — Stand up en vivo';
-          if (restoreScroll) {
-            requestAnimationFrame(() => window.scrollTo({ top: homeScrollY, behavior: 'instant' }));
+          if (restoreScroll && wasOpen) {
+            const y = homeScrollY;
+            setTimeout(function () { window.scrollTo(0, y); }, 0);
           }
         }
       }
 
-      function renderFromHash({ restoreScroll = false } = {}) {
-        setStoryOpen(location.hash === storyHash, { restoreScroll });
+      function getScrollTop() {
+        return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
       }
 
-      document.addEventListener('click', event => {
-        const openLink = event.target.closest('[data-open-story]');
+      function scrollToSection(id) {
+        var target = document.getElementById(id);
+        if (!target) return false;
+
+        if (isStoryOpen()) {
+          setStoryOpen(false, { restoreScroll: false });
+        }
+
+        var topbar = document.querySelector('.topbar');
+        var offset = topbar ? topbar.offsetHeight : 0;
+        var rect = target.getBoundingClientRect();
+        var y = Math.round(rect.top + getScrollTop() - offset - 4);
+
+        // Triple fallback para iOS / Android / desktop
+        document.documentElement.scrollTop = y;
+        document.body.scrollTop = y;
+        window.scrollTo(0, y);
+
+        setTimeout(function () {
+          var now = target.getBoundingClientRect().top;
+          if (now > offset + 30 || now < -10) {
+            var y2 = Math.round(target.getBoundingClientRect().top + getScrollTop() - offset - 4);
+            document.documentElement.scrollTop = y2;
+            document.body.scrollTop = y2;
+            window.scrollTo(0, y2);
+          }
+        }, 50);
+
+        setTimeout(function () {
+          target.scrollIntoView(true);
+          var y3 = getScrollTop() - offset;
+          if (offset) window.scrollTo(0, Math.max(0, getScrollTop() - 0));
+          // re-ajustar por topbar fijo
+          var adj = target.getBoundingClientRect().top - offset - 4;
+          if (Math.abs(adj) > 4) {
+            window.scrollTo(0, getScrollTop() + adj);
+          }
+        }, 100);
+
+        return true;
+      }
+
+      // Expone por si se necesita desde HTML
+      window.scrollToSection = scrollToSection;
+
+      document.addEventListener('click', function (event) {
+        var openLink = event.target.closest('[data-open-story]');
         if (openLink) {
           event.preventDefault();
-          homeScrollY = window.scrollY;
+          homeScrollY = getScrollTop();
           history.pushState({ view: 'story' }, '', storyHash);
           setStoryOpen(true);
           return;
         }
 
-        const closeLink = event.target.closest('[data-close-story]');
+        var closeLink = event.target.closest('[data-close-story]');
         if (closeLink) {
           event.preventDefault();
-          const targetHash = closeLink.getAttribute('href') || '#el-pibe-del-bondi';
+          var targetHash = closeLink.getAttribute('href') || '#el-pibe-del-bondi';
           history.pushState({ view: 'home' }, '', targetHash);
-          setStoryOpen(false);
-          requestAnimationFrame(() => {
-            const target = document.querySelector(targetHash);
-            if (target) target.scrollIntoView({ block: 'start' });
-          });
+          setStoryOpen(false, { restoreScroll: false });
+          var closeId = targetHash.replace(/^#/, '');
+          setTimeout(function () { scrollToSection(closeId); }, 0);
+          return;
+        }
+
+        var link = event.target.closest('[data-scroll-to], a[href^="#"]');
+        if (!link) return;
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+        var id = link.getAttribute('data-scroll-to');
+        if (!id) {
+          var href = link.getAttribute('href') || '';
+          if (!href || href.charAt(0) !== '#' || href === '#' || href === storyHash) return;
+          id = href.slice(1);
+        }
+        if (!id || !document.getElementById(id)) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        try {
+          if (location.hash !== '#' + id) history.pushState({ view: 'home' }, '', '#' + id);
+        } catch (err) {}
+        scrollToSection(id);
+      }, true);
+
+      window.addEventListener('popstate', function () {
+        if (location.hash === storyHash) {
+          setStoryOpen(true, { restoreScroll: false });
+        } else {
+          var wasOpen = isStoryOpen();
+          setStoryOpen(false, { restoreScroll: wasOpen });
+          var id = (location.hash || '').replace(/^#/, '');
+          if (id && document.getElementById(id)) {
+            setTimeout(function () { scrollToSection(id); }, 0);
+          }
         }
       });
 
-      window.addEventListener('popstate', () => renderFromHash({ restoreScroll: true }));
-      window.addEventListener('hashchange', () => renderFromHash({ restoreScroll: true }));
-      renderFromHash();
+      if (location.hash === storyHash) {
+        setStoryOpen(true, { restoreScroll: false });
+      }
     })();
 </script></body>
 </html>
