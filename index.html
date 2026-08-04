@@ -754,7 +754,7 @@
       padding:1.6rem 2.2rem 1.8rem;
       background:var(--pastel-yellow);
       border:2px solid var(--ink);
-      box-shadow:5px 5px 0 var(--pastel-rose);
+      box-shadow:5px 5px 0 var(--ink);
       font:700 clamp(1.25rem,2.3vw,1.75rem)/1.35 "Fraunces",serif;
       transform:rotate(-.45deg);
     }
@@ -895,58 +895,288 @@
       .story-page-title { font-size:clamp(3.7rem,19vw,6rem); }
       .story-shell .bondi-story { box-shadow:7px 7px 0 var(--shadow-color); }
     }
-/* AJUSTE FINAL HERO + SOBRE MI */
-.hero-art{
-  border:3px solid var(--ink) !important;
-  border-radius:28px !important;
-  box-shadow:12px 12px 0 var(--ink) !important;
-  transform:none !important;
-  background:var(--white) !important;
-  overflow:hidden !important;
-}
 
-.hero-photo{
-  width:100% !important;
-  height:100% !important;
-  left:0 !important;
-  bottom:0 !important;
-  object-fit:cover !important;
-}
 
-@media (min-width:701px){
-  .identity-grid{
-    grid-template-columns:1.12fr .88fr !important;
-    gap:4vw !important;
-    align-items:start !important;
-  }
+    /* CORRECCION VISUAL FINAL */
+    section[id] { scroll-margin-top:82px; }
 
-  .portrait-frame{
-    width:100% !important;
-    max-width:700px !important;
-  }
+    .hero-grid > *,
+    .identity-grid > *,
+    .booking-grid > * { min-width:0; }
 
-  .portrait-frame::before{
-    inset:22px -22px -22px 22px !important;
-    border-radius:28px !important;
-  }
+    /* Hero: marco regular, sin silueta inclinada y con sombra negra real. */
+    .hero-art {
+      height:580px;
+      min-height:580px;
+      margin:0 10px 12px 0;
+      overflow:hidden;
+      background:var(--white);
+      border:3px solid var(--ink);
+      border-radius:0;
+      box-shadow:10px 10px 0 var(--ink);
+      clip-path:none;
+      filter:none;
+      transform:none;
+    }
 
-  .portrait{
-    width:100% !important;
-    aspect-ratio:4 / 5 !important;
-    min-height:720px !important;
-    object-fit:cover !important;
-    object-position:center 18% !important;
-    border-radius:28px !important;
-  }
-}
+    .hero-photo {
+      position:static;
+      width:100%;
+      height:100%;
+      max-width:none;
+      object-fit:cover;
+      object-position:center 18%;
+      filter:none;
+    }
 
-@media (max-width:700px){
-  .hero-art{
-    border-radius:18px !important;
-    box-shadow:8px 8px 0 var(--ink) !important;
-  }
-}
-/* FIN AJUSTE FINAL HERO + SOBRE MI */
+    .hero-title,
+    .hero-title .accent { max-width:100%; }
+
+    /* Sobre mí: más presencia fotográfica en escritorio, sin forzar un recorte vertical. */
+    @media (min-width:921px) {
+      .identity-grid {
+        grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);
+        gap:clamp(2.5rem,4.5vw,4.75rem);
+        align-items:center;
+      }
+
+      .portrait-frame {
+        width:100%;
+        max-width:none;
+      }
+
+      .portrait-frame::before {
+        inset:14px -14px -14px 14px;
+        border-radius:0;
+        background:var(--ink);
+        transform:none;
+      }
+
+      .portrait {
+        width:100%;
+        min-height:0;
+        aspect-ratio:16 / 11;
+        border-radius:0;
+        object-fit:cover;
+        object-position:center;
+        transform:none;
+      }
+    }
+
+    /* Evita que la navegación se comprima o se monte sobre el logo. */
+    @media (max-width:1100px) and (min-width:901px) {
+      .nav-links { gap:.9rem; }
+      .nav-links a:not(.nav-buy) { font-size:.64rem; letter-spacing:.06em; }
+      .nav-buy { padding:.62rem .72rem; font-size:.64rem; }
+    }
+
+    @media (max-width:900px) {
+      .nav { justify-content:center; }
+      .nav-links { display:none; }
+
+      .hero-grid {
+        grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+        gap:2rem;
+      }
+
+      .hero-title { font-size:clamp(3.3rem,7vw,4.7rem); }
+    }
+
+    @media (max-width:700px) {
+      section[id] { scroll-margin-top:68px; }
+
+      .hero-art {
+        width:100%;
+        height:400px;
+        min-height:400px;
+        margin:0 6px 9px 0;
+        border-radius:0;
+        box-shadow:6px 6px 0 var(--ink);
+        clip-path:none;
+        filter:none;
+        transform:none;
+      }
+
+      .hero-photo {
+        position:static;
+        width:100%;
+        height:100%;
+        object-position:center 25%;
+      }
+    }
+    /* FIN CORRECCION VISUAL FINAL */
+
+    /* ---- Fixes de desborde y layout ---- */
+    html { overflow-x: hidden; }
+    body { overflow-x: hidden; }
+
+    /* El accent con width:max-content hacía desbordar "BISIGNANO" y generaba scroll horizontal. */
+    .hero-title {
+      max-width: 100%;
+      font-size: clamp(3.2rem, 6.2vw, 5.6rem);
+      line-height: .86;
+      transform: none;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .hero-title .accent {
+      display: inline-block;
+      width: auto;
+      max-width: 100%;
+      box-sizing: border-box;
+      transform: none;
+      padding: 0 .2em .08em;
+    }
+    .hero-copy {
+      min-width: 0;
+      overflow: hidden;
+    }
+    .hero-grid {
+      gap: clamp(1.5rem, 3vw, 3.5rem);
+      align-items: center;
+    }
+
+    @media (min-width: 901px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      }
+      .hero-title {
+        font-size: clamp(3.4rem, 5.4vw, 5.4rem);
+      }
+    }
+
+    @media (max-width: 900px) and (min-width: 701px) {
+      .hero-title {
+        font-size: clamp(2.8rem, 6vw, 4rem);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero-title {
+        font-size: clamp(2.9rem, 12.5vw, 4rem);
+        transform: none;
+      }
+      .hero-title .accent {
+        margin-inline: auto;
+      }
+    }
+
+    /* Evitar que márgenes asimétricos de gigs generen overflow horizontal */
+    .gig-list,
+    .bondi-feature .wrap,
+    .gallery-grid,
+    .booking-grid,
+    .identity-grid {
+      max-width: 100%;
+    }
+
+    .gig:nth-child(2),
+    .gig:nth-child(3) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    @media (min-width: 701px) {
+      .gig:nth-child(2) { margin-left: 2vw; }
+      .gig:nth-child(3) { margin-right: 2vw; }
+    }
+
+    /* Galería: contraste legible */
+    .gallery-grid figure {
+      background: var(--ink);
+    }
+    .gallery-grid img {
+      opacity: 1;
+      filter: grayscale(15%);
+    }
+
+    .identity-title {
+      color: var(--ink);
+    }
+
+    .bondi-title {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .nav { min-width: 0; }
+    .logo-name { white-space: nowrap; }
+
+    .form,
+    .form-grid {
+      max-width: 100%;
+      min-width: 0;
+    }
+    .field {
+      max-width: 100%;
+    }
+
+    /* ---- Fix grave: título CONTRATACIONES cortado por el formulario ---- */
+    .booking {
+      overflow: hidden;
+    }
+    .booking-grid {
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 1fr);
+      gap: clamp(1.75rem, 4vw, 3.5rem);
+      align-items: center;
+    }
+    .booking-grid > div:first-child {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .booking-title {
+      width: 100%;
+      max-width: 100%;
+      margin: .35rem 0 1rem;
+      /* Escala para que "CONTRATACIONES" entre en una sola línea en la columna */
+      font-size: clamp(1.85rem, 3.35vw + 0.4rem, 3.55rem);
+      line-height: .92;
+      letter-spacing: -.055em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+    .booking-copy {
+      max-width: 28rem;
+    }
+    .booking .form {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      transform: none;
+    }
+
+    /* Tablet y menos: apilar para no comprimir el título */
+    @media (max-width: 980px) {
+      .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+        justify-items: center;
+      }
+      .booking-grid > div:first-child {
+        text-align: center;
+      }
+      .booking-title {
+        font-size: clamp(2rem, 7vw, 3.1rem);
+        white-space: nowrap;
+        text-align: center;
+      }
+      .booking-copy {
+        margin-inline: auto;
+        text-align: center;
+      }
+      .booking .form {
+        width: min(100%, 560px);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .booking-title {
+        font-size: clamp(1.55rem, 7.2vw, 2.35rem);
+        letter-spacing: -.05em;
+      }
+    }
+
 </style>
 </head>
 <body>
