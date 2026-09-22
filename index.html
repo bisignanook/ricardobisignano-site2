@@ -1198,25 +1198,6 @@
       }
     }
 
-
-/* BLOQUE BRUTO EN DIAMANTE: imagen de afiche + enlaces reales por encima */
-.bruto-afiche{background:linear-gradient(to bottom,var(--paper) 0 6%,#080808 6% 100%);overflow:hidden;position:relative;isolation:isolate}
-.bruto-afiche-inner{position:relative;width:100%;max-width:1440px;margin:0 auto}
-.bruto-afiche-img{display:block;width:100%;height:auto;max-width:none}
-.bruto-afiche-link{position:absolute;display:block;z-index:2;background:transparent;border-radius:4px;cursor:pointer}
-.bruto-afiche-link.merlo{left:48.45%;top:81.15%;width:17.4%;height:6.4%}
-.bruto-afiche-link.palermo{left:51.3%;top:89.55%;width:17.7%;height:6.4%}
-.bruto-afiche-link:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px #ed2028}
-.bruto-afiche-mobile{display:none}
-@media(max-width:700px){
-  .bruto-afiche{background:linear-gradient(to bottom,var(--paper) 0 6%,#080808 6% 100%)}
-  .bruto-afiche-link{display:none}
-  .bruto-afiche-mobile{display:grid;gap:12px;padding:15px 16px 32px;background:#080808}
-  .bruto-afiche-mobile a{min-height:52px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:14px;color:#fff;background:#df171c;border:1px solid #fc5151;border-radius:3px;text-decoration:none;font:700 .93rem/1.25 "DM Sans",sans-serif}
-  .bruto-afiche-mobile a span{font-size:.75rem;font-weight:500}
-  .bruto-afiche-mobile a:focus-visible{outline:3px solid #fff;outline-offset:3px}
-}
-
 </style>
 </head>
 <body>
@@ -1296,22 +1277,6 @@
 </div>
 </div>
 </section>
-
-<!-- BRUTO EN DIAMANTE: pieza gráfica original con dos enlaces superpuestos.
-     El archivo assets/bruto-seccion.webp debe existir antes de publicar este bloque. -->
-<section class="bruto-afiche" id="bruto-en-diamante" aria-label="Bruto en Diamante: próximas funciones">
-  <div class="bruto-afiche-inner">
-    <img class="bruto-afiche-img" src="assets/bruto-seccion.webp" width="1112" height="762" loading="lazy" decoding="async" alt="Ricardo Bisignano presenta Bruto en Diamante. Stand Up en tiempo real. 10 de octubre: Merlo, La Positiva Bar, 22:00 hs. 16 de octubre: Palermo, Taburete Comedia, 20:30 hs."/>
-    <a class="bruto-afiche-link merlo" href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-san-miguel-tickets-2002015599551?aff=ebdssbdestsearch" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas de Bruto en Diamante en Merlo, 10 de octubre"></a>
-    <a class="bruto-afiche-link palermo" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2754" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas de Bruto en Diamante en Palermo, 16 de octubre"></a>
-  </div>
-  <div class="bruto-afiche-mobile" aria-label="Enlaces a las funciones de Bruto en Diamante">
-    <a href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-san-miguel-tickets-2002015599551?aff=ebdssbdestsearch" target="_blank" rel="noopener noreferrer">10 OCT · MERLO <span>ENTRADAS ↗</span></a>
-    <a href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2754" target="_blank" rel="noopener noreferrer">16 OCT · PALERMO <span>ENTRADAS ↗</span></a>
-  </div>
-</section>
-<!-- FIN BRUTO EN DIAMANTE -->
-
 <section class="reel" id="en-escena">
 <div class="wrap">
 <div class="reel-head reveal">
