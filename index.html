@@ -1247,31 +1247,31 @@
 <div class="gig-date"><strong>03 OCT</strong><span>Sábado</span></div>
 <h3 class="gig-place">San Miguel · Bodegón Alexis</h3>
 <div class="gig-meta"><strong>22:00 hs</strong>Reservas: 11 2697-7495</div>
-<a class="btn btn-primary" href="https://wa.me/541126977495?text=Hola%2C%20quiero%20reservar%20para%20el%20show%20de%20Ricardo%20Bisignano%20del%20s%C3%A1bado%203%20de%20octubre%20en%20Bodeg%C3%B3n%20Alexis." target="_blank" rel="noopener noreferrer" aria-label="Reservar por WhatsApp en Bodegón Alexis para el show del 3 de octubre">Reservar por WhatsApp <i class="fa-brands fa-whatsapp"></i></a>
+<a class="btn btn-primary" href="https://wa.me/541126977495?text=Hola%2C%20quiero%20reservar%20para%20el%20show%20de%20Ricardo%20Bisignano%20del%20s%C3%A1bado%203%20de%20octubre%20en%20Bodeg%C3%B3n%20Alexis." data-analytics-event="ClickEntradas_03Oct_SanMiguel" target="_blank" rel="noopener noreferrer" aria-label="Reservar por WhatsApp en Bodegón Alexis para el show del 3 de octubre">Reservar por WhatsApp <i class="fa-brands fa-whatsapp"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>04 OCT</strong><span>Domingo</span></div>
 <h3 class="gig-place">El Stand Up Improvisa</h3>
 <div class="gig-meta"><strong>20:00 hs</strong>La Sodería · Belgrano · Vidal 2549</div>
-<a class="btn btn-primary" href="https://www.alternativa.ar/obra102987-el-stand-up-improvisa" target="_blank" rel="noopener noreferrer" aria-label="Ver entradas del show El stand up improvisa del 4 de octubre en Alternativa">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary" href="https://www.alternativa.ar/obra102987-el-stand-up-improvisa" data-analytics-event="ClickEntradas_04Oct_Belgrano" target="_blank" rel="noopener noreferrer" aria-label="Ver entradas del show El stand up improvisa del 4 de octubre en Alternativa">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>10 OCT</strong><span>Sábado</span></div>
 <h3 class="gig-place">Merlo · La Positiva Bar</h3>
 <div class="gig-meta"><strong>22:00 hs</strong>Riobamba 742, Merlo</div>
-<a class="btn btn-primary" href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-san-miguel-tickets-2002015599551?aff=ebdssbdestsearch" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 10 de octubre en La Positiva Bar en Eventbrite">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary" href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-san-miguel-tickets-2002015599551?aff=ebdssbdestsearch" data-analytics-event="ClickEntradas_10Oct_Merlo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 10 de octubre en La Positiva Bar en Eventbrite">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>15 OCT</strong><span>Jueves</span></div>
 <h3 class="gig-place">Ramos Mejía · Valinor</h3>
 <div class="gig-meta"><strong>21:00 hs</strong>Entrada gratuita · Reservá por FlashPass</div>
-<a class="btn btn-primary" href="https://events.flashpass.com.ar/eventos/ricardo-bisignano-en-valinor-9966" target="_blank" rel="noopener noreferrer" aria-label="Reservar entrada para el 15 de octubre en Valinor por FlashPass">Reservar <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary" href="https://events.flashpass.com.ar/eventos/ricardo-bisignano-en-valinor-9966" data-analytics-event="ClickEntradas_15Oct_RamosMejia" target="_blank" rel="noopener noreferrer" aria-label="Reservar entrada para el 15 de octubre en Valinor por FlashPass">Reservar <i class="fa-solid fa-ticket"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>16 OCT</strong><span>Viernes</span></div>
 <h3 class="gig-place">Palermo · Taburete Comedia</h3>
 <div class="gig-meta"><strong>20:30 hs</strong>Thames 1511, Palermo</div>
-<a class="btn btn-primary" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2754" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 16 de octubre en Taburete Comedia">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2754" data-analytics-event="ClickEntradas_16Oct_Palermo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 16 de octubre en Taburete Comedia">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
 </div>
 </div>
@@ -1580,5 +1580,13 @@
         setStoryOpen(true, { restoreScroll: false });
       }
     })();
+</script>
+<script>
+    // Cuenta clics por función con el Meta Pixel existente; no registra ventas.
+    document.addEventListener('click', function (event) {
+      const link = event.target.closest('#funciones .gig a[data-analytics-event]');
+      if (!link || typeof window.fbq !== 'function') return;
+      window.fbq('trackCustom', link.getAttribute('data-analytics-event'));
+    }, true);
 </script></body>
 </html>
