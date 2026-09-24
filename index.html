@@ -6,6 +6,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+    function loadMetricool(callback) {
+      const script = document.createElement('script');
+      script.src = 'https://tracker.metricool.com/resources/be.js';
+      script.onload = callback;
+      document.head.appendChild(script);
+    }
+    loadMetricool(() => beTracker.t({ hash: '4ae811a39424f16b35ee6f160f415523' }));
+  </script>
+<script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1321535622403852');fbq('track','PageView');
+  </script>
 <style>
 /* EDITABLE: colores y medidas generales */
 :root{--paper:#f9f0df;--paper2:#f2e3cb;--ink:#211c18;--rust:#bc4829;--rustdark:#94331b;--line:#d2bea1;--max:1180px}
@@ -152,6 +169,8 @@ dialog.media-dialog::backdrop{background:rgba(0,0,0,.9)}
 .footer-inner{align-items:flex-start;flex-direction:column}.footer-inner nav{gap:12px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+ .contact-copy .stamp-title{font-size:clamp(49px,5.1vw,77px);max-width:100%;overflow-wrap:anywhere}
+@media(max-width:640px){.contact-copy .stamp-title{font-size:clamp(41px,10.6vw,65px)}}
 </style></head><body>
 <header class="site-header"><nav class="site-nav wrap" aria-label="Navegación principal">
 <a class="brand" href="#inicio" aria-label="Ricardo Bisignano, inicio"><span>Ricardo</span><span>Bisignano</span></a>
@@ -243,6 +262,13 @@ dialog.media-dialog::backdrop{background:rgba(0,0,0,.9)}
 <dialog class="media-dialog" id="video-dialog" aria-label="Reproductor de video"><div class="media-inner"><button class="close-dialog" type="button" data-close>✕ Cerrar video</button><iframe id="selected-video" title="Video de Ricardo Bisignano" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></dialog>
 <dialog class="media-dialog" id="photo-dialog" aria-label="Fotografía ampliada"><div class="media-inner"><button class="close-dialog" type="button" data-close>✕ Cerrar foto</button><img id="selected-photo" alt="" src="assets/ricardo-guitarra-galeria.webp"></div></dialog>
 <script>
+// Conservar los eventos de clic por función configurados en la web original.
+document.addEventListener("click",function(event){
+ const link=event.target.closest('#funciones a[data-analytics-event]');
+ if(link && typeof window.fbq==="function"){
+   window.fbq('trackCustom',link.getAttribute('data-analytics-event'));
+ }
+},true);
 const videoDialog=document.getElementById("video-dialog");
 const selectedVideo=document.getElementById("selected-video");
 document.querySelectorAll("[data-video]").forEach(button=>button.addEventListener("click",()=>{
