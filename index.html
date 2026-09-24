@@ -1491,6 +1491,14 @@
       .agenda .gig .btn { border-radius: 8px; }
     }
 
+
+    #home-view img[role="button"] { cursor: zoom-in; }
+    #home-view img[role="button"]:focus-visible { outline: 3px solid var(--orange); outline-offset: 5px; }
+    .photo-lightbox { width: calc(100% - 24px); max-width: 1400px; max-height: none; padding: 64px 0 16px; border: 0; background: transparent; overflow: visible; }
+    .photo-lightbox::backdrop { background: rgba(0,0,0,.9); }
+    .photo-lightbox img { width: auto; height: auto; max-width: 100%; max-height: calc(100vh - 100px); max-height: calc(100dvh - 100px); margin: auto; object-fit: contain; }
+    .photo-lightbox-close { position: fixed; top: 16px; right: 16px; width: 48px; height: 48px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--white); color: var(--ink); font: 32px/1 sans-serif; cursor: pointer; }
+    .photo-lightbox-close:focus-visible { outline: 3px solid var(--button-amber); outline-offset: 4px; }
 </style>
 </head>
 <body>
@@ -1930,5 +1938,50 @@
       if (!link || typeof window.fbq !== 'function') return;
       window.fbq('trackCustom', link.getAttribute('data-analytics-event'));
     }, true);
-</script></body>
+</script>
+<dialog class="photo-lightbox" id="photo-lightbox" aria-label="Foto ampliada">
+<button class="photo-lightbox-close" type="button" aria-label="Cerrar foto ampliada" autofocus>×</button>
+<img alt="" id="photo-lightbox-image"/>
+</dialog>
+<script>
+(() => {
+  const dialog = document.getElementById('photo-lightbox');
+  const enlarged = document.getElementById('photo-lightbox-image');
+  const closeButton = dialog.querySelector('button');
+  let previousOverflow = '';
+  let opener = null;
+  function openPhoto(photo) {
+    if (dialog.open) return;
+    opener = photo;
+    enlarged.src = photo.currentSrc || photo.src;
+    enlarged.alt = photo.alt;
+    previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    dialog.showModal();
+  }
+  document.querySelectorAll('#home-view img').forEach(photo => {
+    photo.tabIndex = 0;
+    photo.setAttribute('role', 'button');
+    photo.setAttribute('aria-haspopup', 'dialog');
+    photo.setAttribute('aria-label', 'Ampliar foto: ' + photo.alt);
+    photo.addEventListener('click', () => openPhoto(photo));
+    photo.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openPhoto(photo);
+      }
+    });
+  });
+  closeButton.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => {
+    document.body.style.overflow = previousOverflow;
+    if (opener) opener.focus({ preventScroll: true });
+    enlarged.removeAttribute('src');
+  });
+})();
+</script>
+</body>
 </html>
