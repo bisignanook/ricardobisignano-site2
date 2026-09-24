@@ -485,6 +485,8 @@
     .copyright { color:rgba(255,255,255,.58); }
     .social:hover { color:var(--pastel-yellow); border-color:var(--pastel-yellow); }
 
+    /* Toda la tarjeta abre el mismo enlace que su botón, sin cambiar el diseño. */
+    #funciones .gig { cursor: pointer; }
     /* Agenda uniforme: fecha, ubicación y acción son la jerarquía principal. */
     .agenda .gig-list { gap: .75rem; }
     .agenda .gig,
@@ -1932,6 +1934,15 @@
     })();
 </script>
 <script>
+    // Al tocar el resto de la tarjeta, usar el enlace real del botón.
+    // El clic del botón sigue funcionando por sí mismo y solo se contabiliza una vez.
+    document.querySelectorAll('#funciones .gig').forEach(function (card) {
+      card.addEventListener('click', function (event) {
+        if (event.target.closest('a, button, input, select, textarea')) return;
+        const link = card.querySelector('a.btn[href]');
+        if (link) link.click();
+      });
+    });
     // Cuenta clics por función con el Meta Pixel existente; no registra ventas.
     document.addEventListener('click', function (event) {
       const link = event.target.closest('#funciones .gig a[data-analytics-event]');
