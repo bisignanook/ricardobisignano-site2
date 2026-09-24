@@ -1499,6 +1499,178 @@
     .photo-lightbox img { width: auto; height: auto; max-width: 100%; max-height: calc(100vh - 100px); max-height: calc(100dvh - 100px); margin: auto; object-fit: contain; }
     .photo-lightbox-close { position: fixed; top: 16px; right: 16px; width: 48px; height: 48px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--white); color: var(--ink); font: 32px/1 sans-serif; cursor: pointer; }
     .photo-lightbox-close:focus-visible { outline: 3px solid var(--button-amber); outline-offset: 4px; }
+
+    /* Diseño editorial personal · propuesta visual (la agenda, enlaces, fotos y JS siguen intactos). */
+    :root {
+      --orange:#c44b2b;
+      --orange-dark:#993619;
+      --ink:#24201c;
+      --paper:#f7f0e2;
+      --paper-2:#efe4d1;
+      --white:#fffaf0;
+      --muted:#62594e;
+      --line:rgba(36,32,28,.24);
+      --shadow-color:#24201c;
+    }
+    body {
+      background-color:var(--paper);
+      background-image:radial-gradient(rgba(71,43,23,.045) .6px,transparent .6px);
+      background-size:7px 7px;
+      font-family:"Manrope",sans-serif;
+      color:var(--ink);
+    }
+    .topbar { color:var(--ink); background:rgba(255,250,240,.97); border-bottom:1px solid var(--ink); backdrop-filter:blur(10px); }
+    .nav { min-height:70px; }
+    .logo-mark { border-radius:0; background:var(--orange); color:#fff; box-shadow:3px 3px 0 var(--ink); transform:rotate(-5deg); }
+    .logo-name { font-family:"Archivo Black",sans-serif; font-size:.95rem; letter-spacing:-.055em; line-height:.91; }
+    .nav-links a:not(.nav-buy) { color:var(--ink); letter-spacing:.035em; }
+    .nav-links a:not(.nav-buy):hover { color:var(--orange-dark); }
+    .nav-buy { background:var(--orange); color:white; border:1px solid var(--ink); box-shadow:2px 2px 0 var(--ink); }
+    .nav-buy:hover { background:var(--orange-dark); color:#fff; }
+
+    /* Portada: tipografía hecha para la web + la fotografía original de Ricardo. */
+    .hero { color:var(--ink); background:transparent; min-height:0; overflow:hidden; }
+    .hero::before { width:39vw; right:-9vw; top:7rem; box-shadow:none; border:none; background:#ebd1ae; opacity:.55; }
+    .hero::after { content:none; }
+    .hero-grid { grid-template-columns:minmax(0,1fr) minmax(0,.92fr); gap:clamp(1.5rem,4vw,5rem); min-height:660px; }
+    .hero-copy { padding:4.5rem 0 4rem; overflow:visible; }
+    .hero-copy .eyebrow {
+      width:max-content; max-width:100%; margin:0 0 1.7rem; padding:.45rem .7rem;
+      font:700 .7rem/1.35 "Space Mono",monospace; letter-spacing:.06em;
+      color:var(--white); background:var(--ink); transform:rotate(-1deg);
+    }
+    .hero-title {
+      display:block; width:100%; max-width:100%; margin:0 0 1.5rem; padding:.06em 0 .2em;
+      font-family:"Archivo Black",sans-serif; font-size:clamp(3rem,5.75vw,6.3rem);
+      line-height:.95; letter-spacing:-.07em; text-transform:uppercase;
+      overflow-wrap:normal; word-break:normal; transform:none;
+    }
+    .hero-title .name-first,.hero-title .accent {
+      display:block; position:relative; width:max-content; max-width:100%;
+      margin:0; padding:0; background:none; color:var(--ink);
+      font:inherit; font-style:normal; transform:none;
+    }
+    .hero-title .accent { color:var(--orange); }
+    .hero-title .accent::after {
+      content:""; display:block; width:87%; height:clamp(3px,.65vw,8px);
+      margin:.12em 0 0 .11em; background:var(--ink); transform:rotate(-1.5deg);
+    }
+    .hero-line { margin-bottom:1.9rem; color:var(--ink); font:600 clamp(1rem,1.5vw,1.15rem)/1.55 "Manrope",sans-serif; }
+    .hero-actions .btn { padding-inline:1.25rem; }
+    .btn-primary { color:white; background:var(--orange); border:1px solid var(--ink); border-radius:2px; box-shadow:4px 4px 0 var(--ink); }
+    .btn-primary:hover { color:white; background:var(--orange-dark); box-shadow:2px 2px 0 var(--ink); }
+    .hero-art {
+      min-height:0; height:clamp(440px,51vw,620px); margin:0 10px 14px 0;
+      border:3px solid var(--ink); border-radius:3px; background:#e8d7c0;
+      box-shadow:9px 9px 0 var(--ink); clip-path:none; transform:rotate(.6deg); overflow:hidden;
+    }
+    .hero-art::before { content:none; }
+    .hero-photo {
+      position:static; width:100%; height:100%; max-width:100%; object-fit:contain;
+      object-position:center bottom; filter:none; background:#e8d7c0;
+    }
+    .hero-stamp { display:none; }
+
+    /* Títulos de imprenta: cada bloque comparte el lenguaje, sin convertirlos en imágenes borrosas. */
+    .agenda,.identity,.gallery,.booking,.reel { position:relative; }
+    .agenda { padding:clamp(4rem,7vw,7rem) 0; background:transparent; }
+    .reel { padding:clamp(4rem,7vw,7rem) 0; background:var(--ink); color:var(--white); }
+    .identity { padding:clamp(4rem,7vw,7rem) 0; background:var(--paper-2); }
+    .gallery { padding:clamp(4rem,7vw,7rem) 0; background:var(--paper); }
+    .booking { padding:clamp(4rem,7vw,7rem) 0; color:var(--ink); background:var(--paper-2); border-top:2px solid var(--ink); }
+    .agenda::before,.identity::before,.gallery::before,.booking::before {
+      content:""; position:absolute; top:2.1rem; left:0; width:min(17vw,180px); height:22px;
+      background:var(--orange); opacity:.83; transform:rotate(-2deg); pointer-events:none;
+    }
+    .section-head { margin-bottom:2rem; }
+    .section-title,.identity-title,.booking-title {
+      display:table; position:relative; width:fit-content; max-width:100%;
+      margin:0 0 1.2rem; padding:.02em .04em .16em 0;
+      font-family:"Archivo Black",sans-serif; font-size:clamp(2.6rem,5.4vw,5.2rem);
+      line-height:1.06; letter-spacing:-.065em; font-weight:400; text-transform:uppercase;
+      color:var(--ink); overflow-wrap:normal; word-break:normal; transform:none;
+    }
+    .section-title::after,.identity-title::after,.booking-title::after {
+      content:""; position:absolute; z-index:0; left:5%; bottom:0;
+      width:79%; height:clamp(4px,.65vw,8px); background:var(--orange);
+      transform:rotate(-1.6deg); pointer-events:none;
+    }
+    .reel .section-title { color:var(--white); }
+    .reel .section-title::after { background:#e98957; }
+    .identity-title,.booking-title { font-size:clamp(2.65rem,5.2vw,5.1rem); }
+    .booking-title { font-size:clamp(2.45rem,4.85vw,4.6rem); }
+    .identity-copy { color:#453e36; }
+    .identity .portrait-frame::before { display:none; }
+    .identity .portrait { border:2px solid var(--ink); border-radius:2px; box-shadow:8px 8px 0 var(--orange); filter:none; transform:none; object-fit:contain; height:auto; aspect-ratio:auto; }
+    .bondi-feature { background:var(--paper); }
+    .bondi-title { font-family:"Archivo Black",sans-serif; letter-spacing:-.065em; }
+    .bondi-title span:last-child { color:var(--orange); }
+    .gallery .gallery-grid figure,.gallery .gallery-grid figure:first-child,
+    .gallery .gallery-grid figure:nth-child(n+4) {
+      padding:5px; border:1px solid #d2bfa6; border-radius:2px;
+      background:var(--white); box-shadow:4px 5px 0 rgba(36,32,28,.23);
+    }
+    .gallery .gallery-grid img { display:block; filter:none; object-fit:contain; }
+    .form { color:var(--ink); background:var(--white); border:2px solid var(--ink); border-radius:3px; box-shadow:7px 7px 0 var(--ink); transform:none; }
+    .booking-copy { color:#494035; }
+    .footer { background:var(--ink); color:var(--white); border-top:3px solid var(--orange); }
+
+    /* La agenda sigue siendo un botón grande por función en celulares. */
+    .agenda .gig,.agenda .gig:nth-child(1),.agenda .gig:nth-child(2),.agenda .gig:nth-child(3) {
+      transform:none; margin-inline:0; background:var(--white); border:1px solid rgba(36,32,28,.33);
+      border-left:4px solid var(--orange); box-shadow:0 4px 0 rgba(36,32,28,.15);
+    }
+    .agenda .gig-date strong { color:var(--orange); }
+    .agenda .gig:hover { background:var(--white); }
+    @media (max-width:900px) {
+      .nav-compact-buy { display:inline-flex; }
+      .hero-grid { grid-template-columns:minmax(0,1fr) minmax(0,.95fr); }
+      .hero-title { font-size:clamp(2.7rem,5.9vw,5.4rem); }
+    }
+    @media (max-width:700px) {
+      .wrap { width:calc(100% - 32px); }
+      .hero { padding-top:62px; }
+      .hero-grid { display:flex; flex-direction:column; gap:0; min-height:0; }
+      .hero-copy { order:0; width:100%; padding:3.1rem 0 1.8rem; text-align:left; }
+      .hero-copy .eyebrow { margin:0 0 1.4rem; }
+      .hero-title { margin:0 0 1.2rem; font-size:clamp(2.4rem,11.3vw,4.8rem); line-height:.98; }
+      .hero-title .name-first,.hero-title .accent { margin-inline:0; }
+      .hero-title .accent::after { height:5px; }
+      .hero-line { margin:0 0 1.35rem; text-align:left; }
+      .hero-actions { justify-content:flex-start; }
+      .hero-art {
+        order:1; width:calc(100% - 10px); height:clamp(300px,89vw,490px); min-height:0;
+        margin:0 10px 16px 0; border:2px solid var(--ink); border-radius:2px;
+        box-shadow:7px 7px 0 var(--ink); transform:none;
+      }
+      .hero-photo { width:100%; height:100%; object-fit:contain; object-position:center bottom; }
+      .agenda,.reel,.identity,.gallery,.booking { padding:3.8rem 0; }
+      .section-head { text-align:left; margin-bottom:1.6rem; }
+      .agenda .section-head { text-align:left; }
+      .section-title,.agenda .section-title,.identity-title,.booking-title {
+        font-size:clamp(2.15rem,9.1vw,3.3rem); line-height:1.07;
+        margin:0 0 1rem; text-align:left; word-break:normal;
+      }
+      .booking-title { font-size:clamp(1.9rem,8.1vw,3rem); }
+      .agenda .gig,.agenda .gig:nth-child(1),.agenda .gig:nth-child(2),.agenda .gig:nth-child(3),
+      .agenda .gig:hover {
+        background:var(--pastel-yellow); border:2px solid var(--ink);
+        border-radius:10px; box-shadow:0 4px 0 var(--ink); padding:.95rem 2rem .95rem .8rem;
+      }
+      .agenda .gig:focus-within { outline:3px solid var(--orange); outline-offset:4px; }
+      .identity .portrait { width:100%; height:auto; object-fit:contain; aspect-ratio:auto; }
+      .gallery .gallery-grid figure,.gallery .gallery-grid figure:first-child,
+      .gallery .gallery-grid figure:nth-child(n+4) {
+        padding:4px; height:auto; transform:none; border-radius:2px; box-shadow:3px 4px 0 rgba(36,32,28,.25);
+      }
+      .gallery .gallery-grid img { width:100%; height:auto; object-fit:contain; }
+      .booking-grid > div:first-child { text-align:left; }
+      .booking-copy { text-align:left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-art,.gallery .gallery-grid figure { transform:none; }
+    }
+
 </style>
 </head>
 <body>
@@ -1528,7 +1700,7 @@
 <div class="hero-grid wrap">
 <div class="hero-copy reveal">
 <p class="eyebrow">Comediante · actor · músico</p>
-<h1 class="hero-title black">Ricardo<span class="accent">Bisignano</span></h1>
+<h1 class="hero-title black"><span class="name-first">Ricardo</span><span class="accent">Bisignano</span></h1>
 <p class="hero-line">Stand up y canciones improvisadas.</p>
 <div class="hero-actions">
 <a class="btn btn-primary" href="#funciones" data-scroll-to="funciones">Ver funciones y entradas <i class="fa-solid fa-arrow-down"></i></a>
@@ -1626,7 +1798,7 @@
 </section>
 <section aria-labelledby="galeria-titulo" class="gallery">
 <div class="wrap">
-<div class="section-head reveal"><div><h2 class="section-title black" id="galeria-titulo">Fotos</h2></div></div>
+<div class="section-head reveal"><div><h2 class="section-title black" id="galeria-titulo">Galería</h2></div></div>
 <div aria-label="Galería de fotos de Ricardo Bisignano" class="gallery-grid reveal" id="photo-gallery" role="region" tabindex="0">
 <figure><img alt="Ricardo Bisignano con su guitarra" decoding="async" height="1445" loading="lazy" src="assets/ricardo-guitarra-galeria.webp" width="1089"/></figure>
 <figure><img alt="Ricardo Bisignano tocando la guitarra en Comedy Central" decoding="async" height="1066" loading="lazy" src="assets/ricardo-comedy-central.webp" width="1600"/></figure>
