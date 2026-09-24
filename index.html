@@ -482,6 +482,7 @@
     .form .btn-dark { color:var(--white); background:var(--ink); }
     .reel,.footer { background:var(--photo-night); }
     .footer { border-top-color:var(--pastel-rose); }
+    .copyright { color:rgba(255,255,255,.58); }
     .social:hover { color:var(--pastel-yellow); border-color:var(--pastel-yellow); }
 
     /* Agenda uniforme: fecha, ubicación y acción son la jerarquía principal. */
@@ -1123,6 +1124,8 @@
       .gig:nth-child(2) { margin-left: 2vw; }
       .gig:nth-child(3) { margin-right: 2vw; }
     }
+    .agenda .gig:nth-child(2),
+    .agenda .gig:nth-child(3) { margin-inline: 0; }
 
     /* Galería: contraste legible */
     .gallery-grid figure {
