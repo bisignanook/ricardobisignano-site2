@@ -1308,6 +1308,87 @@
       .gallery-count { min-width: 5rem; font: 700 .9rem/1 "Space Mono", monospace; text-align: center; }
     }
 
+    /* Retrato completo y limpio, sin el recorte del escenario. */
+    .identity .portrait-frame { width: min(100%, 470px); max-width: 470px; margin-inline: auto; }
+    .identity .portrait-frame::before { display: none; }
+    .identity .portrait {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      aspect-ratio: auto;
+      object-fit: contain;
+      border: 0;
+      border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(28,39,51,.16);
+      transform: none;
+    }
+
+    @media (max-width: 700px) {
+      /* Cada función vuelve a ser una sola tarjeta tocable y simple. */
+      .agenda .gig,
+      .agenda .gig:nth-child(1),
+      .agenda .gig:nth-child(2),
+      .agenda .gig:nth-child(3) {
+        grid-template-columns: 74px minmax(0,1fr);
+        grid-template-rows: auto auto;
+        gap: .2rem .85rem;
+        min-height: 92px;
+        padding: .95rem;
+        box-shadow: none;
+      }
+      .agenda .gig:hover { padding: .95rem; box-shadow: none; }
+      .agenda .gig-date { grid-column: 1; grid-row: 1 / 3; padding-right: .65rem; }
+      .agenda .gig-date strong { font-size: 1.22rem; }
+      .agenda .gig-place { grid-column: 2; grid-row: 1; padding-right: .25rem; font-size: clamp(1.1rem, 4.8vw, 1.35rem); line-height: 1.05; }
+      .agenda .gig-meta { grid-column: 2; grid-row: 2; font-size: 0; }
+      .agenda .gig-meta strong { display: block; margin: 0; font-size: .76rem; line-height: 1.15; }
+      .agenda .gig .btn {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        grid-column: auto;
+        grid-row: auto;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        opacity: 0;
+      }
+      .agenda .gig:focus-within { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+      /* Galería actual: fotos intactas, bordes suaves y controles claros. */
+      .gallery { background: #f5f7f8; }
+      .gallery .gallery-grid figure,
+      .gallery .gallery-grid figure:first-child,
+      .gallery .gallery-grid figure:nth-child(n+4) {
+        height: clamp(320px, 108vw, 470px);
+        border: 0;
+        border-radius: 14px;
+        background: var(--photo-night);
+        box-shadow: 0 8px 24px rgba(28,39,51,.14);
+        transform: none;
+      }
+      .gallery .gallery-grid img { object-fit: contain; filter: none; }
+      .gallery .gallery-grid figure:hover img { transform: none; }
+      .gallery .gallery-controls button {
+        width: 48px;
+        height: 48px;
+        border: 0;
+        border-radius: 50%;
+        color: var(--white);
+        background: var(--photo-night);
+        box-shadow: none;
+      }
+      .gallery .gallery-controls button:disabled { opacity: .45; }
+      .gallery .gallery-count { font: 700 .95rem/1 "DM Sans", sans-serif; }
+    }
+
 </style>
 </head>
 <body>
@@ -1370,7 +1451,7 @@
 <div class="gig-date"><strong>10 OCT</strong><span>Sábado</span></div>
 <h3 class="gig-place">Merlo · La Positiva Bar</h3>
 <div class="gig-meta"><strong>22:00 hs</strong>Riobamba 742, Merlo</div>
-<a class="btn btn-primary" href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-san-miguel-tickets-2002015599551?aff=ebdssbdestsearch" data-analytics-event="ClickEntradas_10Oct_Merlo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 10 de octubre en La Positiva Bar en Eventbrite">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary" href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-merlo-tickets-2002015599551" data-analytics-event="ClickEntradas_10Oct_Merlo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 10 de octubre en La Positiva Bar en Eventbrite">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>15 OCT</strong><span>Jueves</span></div>
@@ -1405,7 +1486,7 @@
 </section>
 <section class="identity" id="ricardo">
 <div class="identity-grid wrap">
-<div class="portrait-frame reveal"><img alt="Ricardo Bisignano tocando la guitarra en Comedy Central" class="portrait" decoding="async" height="1066" loading="lazy" src="assets/ricardo-comedy-central.webp" width="1600"/></div>
+<div class="portrait-frame reveal"><img alt="Ricardo Bisignano sonriendo con su guitarra" class="portrait" decoding="async" height="1445" loading="lazy" src="assets/ricardo-guitarra-galeria.webp" width="1089"/></div>
 <div class="reveal">
 <h2 class="identity-title black">Sobre mí</h2>
 <p class="identity-copy"><strong>Soy Ricardo Bisignano, comediante, actor y músico argentino.</strong> Arranqué tocando la guitarra en los colectivos en el 2001 y desde ahí me dedico a hacer reír: teatro, stand up, tele, un poco de todo.</p>
