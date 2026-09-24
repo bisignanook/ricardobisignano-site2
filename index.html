@@ -1,1687 +1,211 @@
 <!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="Ricardo Bisignano. Stand up y canciones improvisadas. Próximas funciones y entradas." name="description"/>
-<title>Ricardo Bisignano — Stand up en vivo</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,850;1,9..144,650&amp;display=swap" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
-<script>
-    function loadMetricool(callback) {
-      const script = document.createElement('script');
-      script.src = 'https://tracker.metricool.com/resources/be.js';
-      script.onload = callback;
-      document.head.appendChild(script);
-    }
-    loadMetricool(() => beTracker.t({ hash: '4ae811a39424f16b35ee6f160f415523' }));
-  </script>
-<script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','1321535622403852');fbq('track','PageView');
-  </script>
+<html lang="es-AR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ricardo Bisignano, comediante, actor y músico argentino. Funciones, entradas y videos de sus shows.">
+<title>Ricardo Bisignano — Funciones y entradas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-    :root {
-      --orange: #ff4f1f;
-      --orange-dark: #dd3510;
-      --ink: #11100f;
-      --paper: #f4f0e8;
-      --paper-2: #e8e1d5;
-      --white: #fffdf8;
-      --muted: #6c665e;
-      --line: rgba(17,16,15,.16);
-      --max: 1240px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: auto; }
-    body { margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; }
-    a { color: inherit; text-decoration: none; }
-    button, input, textarea { font: inherit; }
-    img { display: block; max-width: 100%; }
-    .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
-    .black { font-family: "Archivo Black", sans-serif; font-weight: 400; letter-spacing: -.045em; text-transform: uppercase; }
-    .eyebrow { margin: 0; color: var(--orange); font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
-    .btn { min-height: 54px; display: inline-flex; align-items: center; justify-content: center; gap: .7rem; padding: .85rem 1.35rem; border: 1px solid transparent; border-radius: 3px; font-size: .84rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; transition: transform .18s, background .18s, color .18s, box-shadow .18s; }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { color: white; background: var(--orange); box-shadow: 7px 7px 0 var(--ink); }
-    .btn-primary:hover { background: var(--orange-dark); box-shadow: 4px 4px 0 var(--ink); }
-    .btn-dark { color: white; background: var(--ink); }
-    .btn-dark:hover { color: var(--ink); background: white; }
-    .btn-outline { border-color: currentColor; }
-
-    .topbar { position: fixed; inset: 0 0 auto; z-index: 50; color: white; background: rgba(17,16,15,.94); border-bottom: 1px solid rgba(255,255,255,.15); backdrop-filter: blur(14px); }
-    .nav { height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-    .logo { display: flex; align-items: center; gap: .75rem; }
-    .logo-mark { width: 39px; height: 39px; display: grid; place-items: center; background: var(--orange); border-radius: 50%; font-family: "Archivo Black", sans-serif; font-size: .8rem; transform: rotate(-7deg); }
-    .logo-name { font-family: "Archivo Black", sans-serif; font-size: 1rem; line-height: .9; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 1.8rem; }
-    .nav-links a:not(.nav-buy) { color: rgba(255,255,255,.66); font-size: .73rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-    .nav-links a:hover { color: white; }
-    .nav-buy { padding: .7rem 1rem; color: white; background: var(--orange); border-radius: 2px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-
-    .hero { min-height: 790px; padding-top: 70px; position: relative; color: white; background: var(--ink); overflow: hidden; }
-    .hero::before { content: ""; width: 56vw; aspect-ratio: 1; position: absolute; top: 5%; right: -10%; border: 2px solid rgba(255,79,31,.38); border-radius: 50%; box-shadow: 0 0 0 95px rgba(255,79,31,.055), 0 0 0 190px rgba(255,79,31,.035); }
-    .hero-grid { min-height: 720px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; position: relative; }
-    .hero-copy { position: relative; z-index: 3; padding: 5rem 0; }
-    .hero-title { margin: .8rem 0 1.5rem; font-size: clamp(5rem, 9.7vw, 9.4rem); line-height: .76; }
-    .hero-title .accent { display: block; color: var(--orange); }
-    .hero-line { width: min(540px, 100%); margin: 0 0 2rem; color: rgba(255,255,255,.72); font-size: clamp(1rem, 1.7vw, 1.28rem); line-height: 1.5; }
-    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
-    .hero-note { color: rgba(255,255,255,.48); font-size: .73rem; letter-spacing: .06em; text-transform: uppercase; }
-    .hero-art { height: 100%; min-height: 650px; position: relative; align-self: end; }
-    .hero-art::before { content: ""; position: absolute; width: 78%; height: 63%; left: 8%; bottom: 4%; background: var(--orange); clip-path: polygon(7% 8%, 100% 0, 91% 100%, 0 91%); }
-    .hero-photo { width: 126%; max-width: none; position: absolute; z-index: 2; left: -20%; bottom: 0; filter: drop-shadow(0 25px 25px rgba(0,0,0,.28)); }
-    .hero-stamp { width: 120px; height: 120px; position: absolute; z-index: 4; right: 1%; bottom: 12%; display: grid; place-items: center; color: var(--ink); background: var(--paper); border-radius: 50%; text-align: center; font-family: "Archivo Black", sans-serif; font-size: .73rem; line-height: 1.1; text-transform: uppercase; transform: rotate(8deg); box-shadow: 0 0 0 7px var(--ink), 0 0 0 9px var(--paper); }
-    .hero-stamp i { display: block; margin-bottom: .35rem; color: var(--orange); font-size: 1.25rem; }
-
-    .ticker { overflow: hidden; color: var(--ink); background: var(--orange); border-block: 2px solid var(--ink); }
-    .ticker-track { width: max-content; display: flex; animation: ticker 24s linear infinite; }
-    .ticker span { padding: .9rem 1.5rem; font-family: "Archivo Black", sans-serif; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
-    .ticker span::after { content: "✦"; margin-left: 3rem; }
-    @keyframes ticker { to { transform: translateX(-50%); } }
-
-    .agenda { padding: 7rem 0 8rem; }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 3rem; }
-    .section-title { margin: .45rem 0 0; font-size: clamp(3.4rem, 7vw, 6rem); line-height: .83; }
-    .section-side { max-width: 330px; color: var(--muted); line-height: 1.6; }
-    .gig-list { border-top: 2px solid var(--ink); }
-    .gig { min-height: 145px; position:relative; display: grid; grid-template-columns: 135px 1fr 190px 190px; align-items: center; gap: 2rem; border-bottom: 1px solid var(--line); cursor:pointer; transition: background .2s, padding .2s; }
-    .gig:hover { padding-inline: 1rem; background: var(--white); }
-    .gig-date strong { display: block; font-family: "Archivo Black", sans-serif; font-size: 2rem; line-height: 1; text-transform: uppercase; }
-    .gig-date span { color: var(--muted); font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-    .gig-place { margin: 0; font-family: "Archivo Black", sans-serif; font-size: clamp(1.8rem, 3vw, 3rem); line-height: .92; text-transform: uppercase; }
-    .gig-meta { color: var(--muted); }
-    .gig-meta strong { display: block; color: var(--ink); }
-    .gratis { display: inline-block; margin-top: .5rem; padding: .25rem .5rem; color: #176339; background: #d9f4e3; border-radius: 2px; font-size: .66rem; font-weight: 700; letter-spacing: .08em; }
-    .gig .btn { justify-self: stretch; }
-
-    .reel { padding: 7rem 0; color: white; background: var(--ink); }
-    .reel-head { margin-bottom: 2.5rem; display: flex; justify-content: space-between; align-items: end; gap: 2rem; }
-    .reel .section-title { max-width: 690px; }
-    .video-grid { display: grid; grid-template-columns: 1.55fr .65fr; gap: 1rem; }
-    .video-main, .video-side { position: relative; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,.14); }
-    .video-main { aspect-ratio: 16/9; }
-    .video-side { aspect-ratio: 9/16; }
-    .video-main iframe, .video-side iframe { width: 100%; height: 100%; border: 0; }
-    .video-caption { margin-top: 1.2rem; color: rgba(255,255,255,.55); font-size: .82rem; }
-    .channel-player { overflow:hidden; border:1px solid rgba(255,255,255,.16); border-radius:18px; background:#101820; box-shadow:0 24px 60px rgba(0,0,0,.18); }
-    .channel-screen { aspect-ratio:16/9; background:#000; }
-    .channel-screen iframe { width:100%; height:100%; display:block; border:0; }
-    .channel-controls { min-height:76px; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:1.25rem; padding:1rem 1.2rem; }
-    .player-arrow { width:44px; height:44px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.22); border-radius:50%; color:#fff; background:transparent; cursor:pointer; transition:background .2s,border-color .2s; }
-    .player-arrow:hover { background:var(--orange); border-color:var(--orange); }
-    .player-progress { display:flex; justify-content:center; align-items:center; gap:.45rem; }
-    .player-dot { width:7px; height:7px; padding:0; border:0; border-radius:50%; background:rgba(255,255,255,.3); cursor:pointer; transition:width .2s,background .2s; }
-    .player-dot.active { width:25px; border-radius:99px; background:var(--orange); }
-    .player-end { display:flex; align-items:center; gap:.75rem; }
-    .player-count { min-width:52px; color:rgba(255,255,255,.58); font-size:.76rem; font-variant-numeric:tabular-nums; text-align:right; }
-
-    .identity { padding: 8rem 0; position: relative; overflow: hidden; background: var(--paper-2); }
-    .identity-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 7vw; align-items: center; }
-    .portrait-frame { position: relative; }
-    .portrait-frame::before { content: ""; position: absolute; inset: 7% -5% -5% 7%; background: var(--orange); }
-    .portrait { width: 100%; aspect-ratio: 4/5; position: relative; object-fit: cover; filter: grayscale(100%) contrast(1.08); }
-    .identity-title { margin: .6rem 0 1.8rem; font-size: clamp(3.7rem, 7vw, 6.8rem); line-height: .82; }
-    .identity-copy { max-width: 610px; margin:0 0 1rem; color: var(--muted); font-size: 1.08rem; line-height: 1.75; }
-    .identity-copy strong { color: var(--ink); }
-    .credits { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: .6rem; }
-    .credit { padding: .55rem .75rem; border: 1px solid var(--line); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-
-    .gallery { padding: 7rem 0; background: var(--paper); }
-    .gallery-grid { display: grid; grid-template-columns: 1.25fr .75fr .75fr; grid-template-rows: 290px 290px; gap: .75rem; }
-    .gallery-grid figure { margin: 0; overflow: hidden; background: var(--ink); }
-    .gallery-grid figure:first-child { grid-row: 1 / 3; }
-    .gallery-grid img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: transform .5s, filter .5s; }
-    .gallery-grid figure:hover img { transform: scale(1.035); filter: grayscale(0); }
-    .gallery-controls { display: none; }
-
-    .booking { padding: 8rem 0; color: white; background: var(--orange); }
-    .booking-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 7vw; align-items: start; }
-    .booking .eyebrow { color: var(--ink); }
-    .booking-title { margin: .6rem 0 1.5rem; font-size: clamp(4rem, 8vw, 7.5rem); line-height: .8; }
-    .booking-copy { max-width: 480px; color: rgba(17,16,15,.7); font-weight: 600; line-height: 1.6; }
-    .form { padding: 2rem; color: var(--ink); background: var(--paper); box-shadow: 12px 12px 0 var(--ink); }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .field { width: 100%; padding: .95rem 0; border: 0; border-bottom: 1px solid var(--line); outline: 0; color: var(--ink); background: transparent; }
-    textarea.field { min-height: 110px; resize: vertical; }
-    .field:focus { border-color: var(--orange); }
-    .form .btn { width: 100%; margin-top: 1.5rem; }
-
-    .footer { padding: 3rem 0; color: white; background: var(--ink); }
-    .footer-grid { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-    .socials { display: flex; gap: .7rem; }
-    .social { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; }
-    .social:hover { color: var(--orange); border-color: var(--orange); }
-    .copyright { color: rgba(255,255,255,.44); font-size: .74rem; }
-    .mobile-buy { display: none; }
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    @media (max-width: 920px) {
-      .hero-grid { grid-template-columns: 1fr .75fr; }
-      .hero-art { min-height: 560px; }
-      .gig { grid-template-columns: 105px 1fr 150px; }
-      .gig .btn { grid-column: 2 / 4; margin-bottom: 1.5rem; }
-      .identity-grid, .booking-grid { gap: 3rem; }
-    }
-    @media (max-width: 700px) {
-      .wrap { width: min(100% - 28px, var(--max)); }
-      .nav { height: 62px; }
-      .nav-links { display: none; }
-      .hero { min-height: auto; padding-top: 62px; }
-      .hero-grid { min-height: 0; display: flex; flex-direction: column; }
-      .hero-copy { width: 100%; padding: 3.5rem 0 .5rem; text-align: center; }
-      .hero-title { margin-top: 1rem; font-size: clamp(3.7rem, 15vw, 4.8rem); }
-      .hero-line { margin-inline: auto; font-size: 1rem; }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .hero-actions .btn { width: 100%; }
-      .hero-note { display: none; }
-      .hero-art { width: 100%; min-height: 430px; }
-      .hero-photo { width: 118%; left: -10%; }
-      .hero-stamp { width: 92px; height: 92px; right: 3%; bottom: 9%; font-size: .58rem; }
-      .ticker span { padding-block: .75rem; }
-      .agenda, .reel, .identity, .gallery, .booking { padding: 5rem 0; }
-      .section-head, .reel-head { display: block; }
-      .section-side { margin-top: 1rem; }
-      .gig { padding: 1.6rem 0; display: grid; grid-template-columns: 78px 1fr; gap: .8rem 1rem; }
-      .gig:hover { padding-inline: 0; }
-      .gig-date strong { font-size: 1.45rem; }
-      .gig-place { font-size: 2rem; }
-      .gig-meta { grid-column: 2; }
-      .gig .btn { grid-column: 1 / 3; margin: .5rem 0 0; }
-      .video-grid { grid-template-columns: 1fr; }
-      .video-side { display: none; }
-      .video-main { aspect-ratio: 4/3; }
-      .channel-player { border-radius:12px; }
-      .channel-screen { aspect-ratio:4/3; }
-      .channel-controls { min-height:68px; gap:.7rem; padding:.75rem; }
-      .player-arrow { width:40px; height:40px; }
-      .player-progress { gap:.32rem; }
-      .player-count { display:none; }
-      .identity-grid, .booking-grid { grid-template-columns: 1fr; }
-      .portrait-frame { max-width: 470px; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 300px 190px; }
-      .gallery-grid figure:first-child { grid-column: 1 / 3; grid-row: auto; }
-      .gallery-grid figure:nth-child(n+4) { display: none; }
-      .form-grid { grid-template-columns: 1fr; }
-      .footer-grid { flex-direction: column; text-align: center; }
-      .mobile-buy { min-height: 54px; position: fixed; z-index: 70; left: 12px; right: 12px; bottom: 12px; display: flex; box-shadow: 7px 7px 0 var(--ink); }
-      body { padding-bottom: 72px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
-      .reveal { opacity: 1; transform: none; }
-    }
-
-    /* Dirección editorial: luminosa, cercana y centrada en el artista. */
-    :root { --orange:#e65338; --orange-dark:#c94028; --ink:#18212c; --paper:#f5f3ee; --paper-2:#ebe9e3; --white:#fff; --muted:#69717a; --line:rgba(24,33,44,.14); }
-    .black { font-family:"Instrument Serif", serif; font-weight:400; letter-spacing:-.035em; text-transform:none; }
-    .btn { min-height:52px; border-radius:999px; letter-spacing:.035em; }
-    .btn-primary { box-shadow:none; }
-    .btn-primary:hover { box-shadow:none; }
-    .topbar { color:var(--ink); background:rgba(245,243,238,.92); border-color:var(--line); }
-    .logo-mark { font-family:"DM Sans",sans-serif; color:#fff; font-weight:700; transform:none; }
-    .logo-name { font-family:"DM Sans",sans-serif; font-size:.85rem; line-height:1.05; letter-spacing:.04em; }
-    .nav-links a:not(.nav-buy) { color:var(--muted); }
-    .nav-links a:hover { color:var(--ink); }
-    .nav-buy { border-radius:999px; }
-    .hero { min-height:720px; color:var(--ink); background:var(--paper); }
-    .hero::before { content:none; }
-    .hero-grid { min-height:650px; grid-template-columns:.9fr 1.1fr; gap:4vw; }
-    .hero-copy { padding:5rem 0; }
-    .hero-title { margin:.8rem 0 1.7rem; font-family:"Instrument Serif",serif; font-size:clamp(5.2rem,9.2vw,9rem); font-weight:400; letter-spacing:-.055em; line-height:.74; text-transform:none; }
-    .hero-title .accent { color:var(--orange); font-style:italic; }
-    .hero-line { color:var(--muted); font-size:clamp(1.05rem,1.55vw,1.24rem); }
-    .hero-note { color:var(--muted); }
-    .hero-art { height:650px; min-height:0; overflow:hidden; align-self:end; background:#d8d7dc; border-radius:180px 180px 14px 14px; }
-    .hero-art::before { content:none; }
-    .hero-photo { width:100%; height:100%; max-width:100%; left:0; bottom:0; object-fit:cover; object-position:center 12%; filter:none; }
-    .hero-stamp { display:none; }
-    .ticker { color:var(--ink); background:var(--white); border-color:var(--line); }
-    .ticker-track { width:100%; justify-content:center; animation:none; }
-    .ticker span { padding:1.05rem 2.2rem; font-family:"DM Sans",sans-serif; color:var(--muted); font-size:.72rem; font-weight:700; }
-    .ticker span::after { color:var(--orange); }
-    .ticker span:nth-child(n+4) { display:none; }
-    .section-title { line-height:.88; }
-    .gig-list { border-color:var(--ink); }
-    .gig:hover { background:rgba(255,255,255,.68); }
-    .gig-date strong,.gig-place { font-family:"DM Sans",sans-serif; letter-spacing:-.04em; }
-    .gig-date strong { color:var(--orange); }
-    .gig-place { font-weight:700; text-transform:none; }
-    .reel { background:#243448; }
-    .reel .eyebrow { color:#ff8068; }
-    .identity { background:var(--white); }
-    .portrait-frame::before { inset:18px -18px -18px 18px; background:var(--paper-2); }
-    .portrait { aspect-ratio:16/11; object-position:center; filter:none; }
-    .booking { color:var(--ink); background:#e9b7aa; }
-    .booking-copy { color:rgba(24,33,44,.68); }
-    .form { box-shadow:none; border-radius:16px; }
-    .footer { background:#18212c; }
-    .mobile-buy { box-shadow:0 12px 30px rgba(24,33,44,.24); }
-    @media (max-width:700px) {
-      .hero-grid { display:flex; gap:0; }
-      .hero-copy { padding:3.25rem 0 1.5rem; }
-      .hero-title { font-size:clamp(4rem,18vw,5.6rem); line-height:.78; }
-      .hero-art { height:430px; min-height:430px; border-radius:110px 110px 8px 8px; }
-      .hero-photo { width:100%; left:0; object-position:center 14%; }
-      .ticker-track { display:grid; grid-template-columns:1fr; }
-      .ticker span { padding:.7rem 1rem; text-align:center; }
-      .ticker span:nth-child(n+2) { display:none; }
-    }
-
-    /* Alternativa limpia: tipografía sans serif y fotografía sin marco ornamental. */
-    body { font-family:"Manrope",sans-serif; }
-    .black { font-family:"Manrope",sans-serif; font-weight:800; letter-spacing:-.055em; }
-    .logo-name { font-family:"Manrope",sans-serif; font-weight:700; }
-    .hero { min-height:680px; }
-    .hero-grid { min-height:610px; grid-template-columns:.88fr 1.12fr; gap:5vw; }
-    .hero-copy { padding:4.5rem 0; }
-    .hero-title { margin:1rem 0 1.5rem; font-family:"Manrope",sans-serif; font-size:clamp(4.2rem,7.6vw,7.4rem); font-weight:800; letter-spacing:-.075em; line-height:.82; }
-    .hero-title .accent { color:var(--orange); font-style:normal; }
-    .hero-line { font-size:1.08rem; }
-    .hero-art { height:580px; border-radius:18px; }
-    .section-title,.identity-title,.booking-title { font-family:"Manrope",sans-serif; font-weight:800; letter-spacing:-.06em; line-height:.92; }
-    .section-title { font-size:clamp(2.9rem,5.6vw,5rem); }
-    .identity-title { font-size:clamp(3rem,5.6vw,5.2rem); }
-    .booking-title { font-size:clamp(3.4rem,6.5vw,6rem); }
-    @media (max-width:700px) {
-      .hero { min-height:auto; }
-      .hero-copy { padding:3rem 0 1.5rem; }
-      .hero-title { font-size:clamp(3.5rem,15vw,4.7rem); line-height:.84; }
-      .hero-art { height:400px; min-height:400px; border-radius:14px; }
-    }
-
-    /* Ritmo visual más orgánico, sin perder claridad. */
-    .hero { position:relative; }
-    .hero::after { content:""; width:190px; height:190px; position:absolute; right:-70px; bottom:-65px; border-radius:50%; background:rgba(230,83,56,.08); pointer-events:none; }
-    .hero-art { border-radius:30px 92px 30px 30px; transform:rotate(.35deg); }
-    .agenda { padding-top:6rem; }
-    .gig-list { border-top:0; display:flex; flex-direction:column; gap:14px; }
-    .gig { padding:1.2rem 1.6rem; border:1px solid var(--line); border-radius:24px; background:rgba(255,255,255,.62); }
-    .gig:nth-child(2) { margin-left:4vw; }
-    .gig:nth-child(3) { margin-right:4vw; }
-    .gig:hover { padding-inline:2rem; border-color:rgba(230,83,56,.35); box-shadow:0 14px 35px rgba(24,33,44,.06); }
-    .channel-player { border-radius:28px 70px 28px 28px; }
-    .portrait-frame::before { border-radius:28px 70px 28px 28px; }
-    .portrait { border-radius:24px 64px 24px 24px; }
-    .gallery-grid figure { border-radius:18px; }
-    .gallery-grid figure:first-child { border-radius:24px 76px 24px 24px; }
-    .form { border-radius:26px 70px 26px 26px; }
-    @media (max-width:700px) {
-      .hero-art { border-radius:22px 58px 22px 22px; transform:none; }
-      .gig { padding:1.35rem; border-radius:20px; }
-      .gig:nth-child(2),.gig:nth-child(3) { margin-inline:0; }
-      .gig:hover { padding-inline:1.35rem; }
-      .channel-player { border-radius:20px 46px 20px 20px; }
-      .form { border-radius:22px 50px 22px 22px; }
-    }
-
-    /* Variante fanzine: publicación independiente, no estética de plantilla. */
-    :root { --orange:#e7462e; --ink:#171715; --paper:#eee9da; --paper-2:#ded8c7; --white:#f8f4e8; --muted:#5d5a51; --line:rgba(23,23,21,.28); }
-    body { font-family:"Space Mono",monospace; background-color:var(--paper); background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.017) 0,rgba(0,0,0,.017) 1px,transparent 1px,transparent 4px); }
-    .black,.hero-title,.section-title,.identity-title,.booking-title { font-family:"Archivo Black",sans-serif; font-weight:400; letter-spacing:-.055em; text-transform:uppercase; }
-    .topbar { background:rgba(243,238,229,.96); border-bottom:2px solid var(--ink); }
-    .logo-mark { border:2px solid var(--ink); box-shadow:3px 3px 0 var(--shadow-color); }
-    .logo-name,.nav-links a:not(.nav-buy),.nav-buy { font-family:"Space Mono",monospace; }
-    .nav-buy,.btn { border-radius:0; }
-    .btn-primary { border:2px solid var(--ink); box-shadow:5px 5px 0 var(--shadow-color); }
-    .btn-primary:hover { transform:translate(2px,2px); box-shadow:3px 3px 0 var(--shadow-color); }
-    .hero { background:transparent; }
-    .hero::after { content:none; }
-    .hero-copy { z-index:3; }
-    .hero-copy .eyebrow { width:max-content; padding:.45rem .65rem; color:var(--white); background:var(--ink); transform:rotate(-1.5deg); }
-    .hero-title { font-size:clamp(4rem,7.2vw,7rem); line-height:.84; transform:rotate(-.7deg); }
-    .hero-title .accent { width:max-content; margin-top:.15rem; padding:0 .25rem .12rem; color:var(--white); background:var(--orange); transform:rotate(1deg); }
-    .hero-line { max-width:470px; font-family:"Space Mono",monospace; font-size:.95rem; }
-    .hero-art { border:3px solid var(--ink); border-radius:0; transform:rotate(1.2deg); box-shadow:11px 12px 0 var(--shadow-color); clip-path:polygon(1% 0,100% 1%,99% 99%,0 100%); }
-    .hero-photo { filter:none; }
-    .agenda { position:relative; }
-    .gig-list { gap:22px; }
-    .gig { border:2px solid var(--ink); border-radius:0; background:var(--white); box-shadow:7px 7px 0 var(--shadow-color); }
-    .gig:nth-child(1) { transform:rotate(-.35deg); }
-    .gig:nth-child(2) { transform:rotate(.45deg); }
-    .gig:nth-child(3) { transform:rotate(-.25deg); }
-    .gig:hover { padding-inline:1.6rem; border-color:var(--ink); box-shadow:3px 3px 0 var(--shadow-color); transform:translate(3px,3px) rotate(0); }
-    .gig-date strong,.gig-place { font-family:"Archivo Black",sans-serif; }
-    .gratis { border:1px solid var(--ink); border-radius:0; transform:rotate(-2deg); }
-    .reel { background:var(--ink); }
-    .channel-player { border:2px solid var(--white); border-radius:0; box-shadow:10px 10px 0 var(--shadow-color); transform:rotate(-.25deg); }
-    .identity { background:var(--paper-2); }
-    .portrait-frame::before { inset:15px -15px -15px 15px; border-radius:0; background:var(--orange); transform:rotate(1deg); }
-    .portrait { border:2px solid var(--ink); border-radius:0; filter:grayscale(.2) contrast(1.06); transform:rotate(-.7deg); }
-    .credit { border:2px solid var(--ink); background:var(--white); transform:rotate(-1deg); }
-    .credit:nth-child(even) { transform:rotate(1deg); }
-    .gallery-grid { gap:1rem; }
-    .gallery-grid figure,.gallery-grid figure:first-child { border:2px solid var(--ink); border-radius:0; background:var(--white); box-shadow:5px 5px 0 var(--shadow-color); }
-    .gallery-grid figure:nth-child(2) { transform:rotate(1deg); }
-    .gallery-grid figure:nth-child(3) { transform:rotate(-1deg); }
-    .booking { background:var(--orange); border-top:3px solid var(--ink); }
-    .form { border:3px solid var(--ink); border-radius:0; box-shadow:10px 10px 0 var(--shadow-color); transform:rotate(.4deg); }
-    .field::placeholder { color:rgba(23,23,21,.58); }
-    .footer { border-top:3px solid var(--orange); }
-    .mobile-buy { border-radius:0; }
-    .mobile-buy.is-hidden { opacity:0; pointer-events:none; transform:translateY(130%); }
-    @media (max-width:700px) {
-      .hero-copy .eyebrow { margin-inline:auto; }
-      .hero-title { font-size:clamp(3.1rem,13.5vw,4.25rem); }
-      .hero-title .accent { margin-inline:auto; }
-      .hero-art { border-radius:0; transform:rotate(.6deg); }
-      .gig,.gig:nth-child(1),.gig:nth-child(2),.gig:nth-child(3) { transform:none; }
-      .channel-player,.form { border-radius:0; transform:none; }
-      .agenda::before { display:none; }
-      .booking-title { font-size:clamp(2.45rem,10.5vw,3.15rem); letter-spacing:-.065em; }
-      .booking-copy { max-width:390px; }
-      .nav { justify-content:center; }
-      .logo { text-align:left; }
-      .agenda { padding:3.4rem 0 4rem; }
-      .agenda .section-head { margin-bottom:1.5rem; text-align:center; }
-      .agenda .section-title { font-size:clamp(2.35rem,11vw,3.2rem); }
-      .gig-list { gap:8px; }
-      .gig,.gig:nth-child(1),.gig:nth-child(2),.gig:nth-child(3) {
-        min-height:88px;
-        display:grid;
-        grid-template-columns:58px minmax(0,1fr) 82px;
-        grid-template-rows:auto auto;
-        gap:.25rem .55rem;
-        padding:.7rem .65rem;
-        align-items:center;
-        text-align:center;
-        box-shadow:4px 4px 0 var(--ink);
-      }
-      .gig-date { grid-row:1 / 3; text-align:center; }
-      .gig-date strong { font-size:1.18rem; line-height:1.05; }
-      .gig-date span { display:block; margin-top:.12rem; font-size:.56rem; line-height:1.15; }
-      .gig-place { padding:0; font-size:1.12rem; line-height:.96; text-align:center; }
-      .gig-meta { grid-column:2; font-size:.61rem; text-align:center; }
-      .gig-meta strong { display:inline; margin-right:.35rem; }
-      .gig .btn { grid-column:3; grid-row:1 / 3; min-height:38px; margin:0; padding:.4rem .25rem; font-size:.56rem; line-height:1.1; box-shadow:2px 2px 0 var(--ink); }
-      .gratis { margin-top:.2rem; padding:.14rem .3rem; font-size:.48rem; }
-      .reel-head,.gallery .section-head { text-align:center; }
-      .reel-head .btn { margin:1rem auto 0; }
-      .identity-grid { text-align:center; }
-      .identity-copy { margin-inline:auto; text-align:left; }
-      .credits { justify-content:center; }
-      .booking-grid > div:first-child { text-align:center; }
-      .booking-copy { margin-inline:auto; }
-      .booking { padding:3.25rem 0 3.5rem; overflow:hidden; }
-      .booking-grid {
-        width:calc(100% - 32px);
-        margin-inline:auto;
-        justify-items:center;
-        gap:1.25rem;
-      }
-      .booking-grid > * { width:100%; min-width:0; }
-      .booking-title {
-        width:100%;
-        margin:.2rem auto .75rem;
-        font-size:clamp(1.65rem,7.8vw,2.5rem);
-        line-height:.92;
-        letter-spacing:-.075em;
-        text-align:center;
-        white-space:nowrap;
-        overflow-wrap:normal;
-      }
-      .booking-copy { width:min(100%,390px); margin-block:0; font-size:.86rem; line-height:1.45; text-align:center; }
-      .booking .form {
-        width:100%;
-        margin-inline:auto;
-        padding:1rem 1.2rem 1.15rem;
-        box-shadow:0 7px 0 var(--ink);
-      }
-      .booking .form-grid { gap:.55rem; }
-      .booking .field { padding:.68rem 0; }
-      .booking textarea.field { min-height:76px; }
-      .booking .form .btn { min-height:46px; margin-top:1rem; padding:.65rem .75rem; text-align:center; }
-    }
-
-    /* Papel, tinta, madera de guitarra y azul de las fotos. */
-    :root {
-      --orange:#994a32;
-      --ink:#1b1c1e;
-      --paper:#f3eee5;
-      --paper-2:#e6ded3;
-      --white:#fffbf4;
-      --muted:#595651;
-      --pastel-blue:#d8e0e0;
-      --pastel-sage:#dadbd2;
-      --pastel-rose:#e7c8b6;
-      --pastel-yellow:#eadbb8;
-      --button-amber:#d1ad72;
-      --photo-night:#1c2733;
-      --shadow-color: var(--ink);
-    }
-    ::selection { color:var(--ink); background:var(--pastel-yellow); }
-    .logo-mark { color:var(--ink); background:var(--pastel-rose); box-shadow:3px 3px 0 var(--shadow-color); }
-    .nav-buy,.btn-primary,.mobile-buy { color:var(--ink); background:var(--button-amber); }
-    .nav-buy:hover,.btn-primary:hover { color:var(--ink); background:var(--pastel-yellow); }
-    .hero-title .accent { color:var(--ink); background:var(--pastel-rose); }
-    .gig:nth-child(1) { background:var(--pastel-yellow); box-shadow:7px 7px 0 var(--shadow-color); }
-    .gig:nth-child(2) { background:var(--pastel-blue); box-shadow:7px 7px 0 var(--shadow-color); }
-    .gig:nth-child(3) { background:var(--pastel-rose); box-shadow:7px 7px 0 var(--shadow-color); }
-    .gig-date strong { color:var(--ink); }
-    .gratis { color:var(--ink); background:var(--pastel-sage); }
-    .channel-player { box-shadow:10px 10px 0 var(--shadow-color); }
-    .player-arrow:hover,.player-dot.active { color:var(--ink); background:var(--pastel-yellow); border-color:var(--pastel-yellow); }
-    .identity { background:var(--paper-2); }
-    .portrait-frame::before { background:var(--ink); }
-    .portrait { filter:none; }
-    .credit:nth-child(1) { background:var(--pastel-sage); }
-    .credit:nth-child(2) { background:var(--pastel-blue); }
-    .credit:nth-child(3) { background:var(--pastel-rose); }
-    .credit:nth-child(4) { background:var(--pastel-yellow); }
-    .booking { background:var(--pastel-rose); }
-    .form { background:var(--white); }
-    .form .btn-dark { color:var(--white); background:var(--ink); }
-    .reel,.footer { background:var(--photo-night); }
-    .footer { border-top-color:var(--pastel-rose); }
-    .copyright { color:rgba(255,255,255,.58); }
-    .social:hover { color:var(--pastel-yellow); border-color:var(--pastel-yellow); }
-
-    /* Agenda uniforme: fecha, ubicación y acción son la jerarquía principal. */
-    .agenda .gig-list { gap: .75rem; }
-    .agenda .gig,
-    .agenda .gig:nth-child(1),
-    .agenda .gig:nth-child(2),
-    .agenda .gig:nth-child(3) {
-      background: var(--white);
-      border: 1px solid rgba(27,28,30,.3);
-      border-left: 4px solid var(--orange);
-      box-shadow: none;
-      transform: none;
-    }
-    .agenda .gig:hover { padding-inline: 1.6rem; background: var(--white); border-color: var(--ink); box-shadow: 0 5px 0 rgba(27,28,30,.13); transform: none; }
-    .agenda .gig-date strong { color: var(--orange); }
-    .agenda .gig .btn { box-shadow: none; }
-    .agenda .gig .btn:hover { box-shadow: none; }
-
-    /* Entrada editorial a El pibe del bondi. */
-    .bondi-feature {
-      position:relative;
-      padding:clamp(5.5rem,9vw,9rem) 0;
-      overflow:hidden;
-      background:var(--pastel-yellow);
-      border-block:3px solid var(--ink);
-    }
-    .bondi-card {
-      display:grid;
-      grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
-      min-height:580px;
-      color:var(--ink);
-      background:var(--white);
-      border:3px solid var(--ink);
-      box-shadow:14px 14px 0 var(--shadow-color);
-      transition:transform .22s,box-shadow .22s;
-    }
-    .bondi-card:hover { transform:translate(-3px,-3px); box-shadow:18px 18px 0 var(--shadow-color); }
-    .bondi-visual { position:relative; min-height:100%; overflow:hidden; background:#17343b; }
-    .bondi-visual img { width:100%; height:100%; object-fit:cover; object-position:50% 25%; }
-    .bondi-visual::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent 70%,rgba(23,52,59,.2)); pointer-events:none; }
-    .bondi-year {
-      position:absolute;
-      z-index:2;
-      left:22px;
-      bottom:22px;
-      padding:.58rem .72rem;
-      color:#fff;
-      background:#17343b;
-      border:2px solid #fff;
-      font:700 .67rem/1 "Space Mono",monospace;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
-    .bondi-copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(3rem,6vw,6.5rem); }
-    .bondi-kicker { margin:0 0 1.6rem; color:#7d3e2d; font:700 .7rem/1.3 "Space Mono",monospace; letter-spacing:.16em; text-transform:uppercase; }
-    .bondi-title { margin:0; font:850 clamp(4.7rem,8.2vw,8rem)/.72 "Fraunces",serif; letter-spacing:-.065em; }
-    .bondi-title span { display:block; }
-    .bondi-title span:first-child { margin-left:.04em; font-size:.58em; font-style:italic; font-weight:650; }
-    .bondi-excerpt { max-width:29rem; margin:2.4rem 0 0; font-size:clamp(1.02rem,1.5vw,1.22rem); line-height:1.65; }
-    .bondi-cta { align-self:flex-start; min-height:52px; margin-top:2.2rem; padding:0 1.2rem; display:inline-flex; align-items:center; gap:.7rem; color:#fff; background:var(--ink); border:2px solid var(--ink); font:700 .72rem/1 "Space Mono",monospace; letter-spacing:.08em; text-transform:uppercase; }
-    .bondi-card:focus-visible { outline:4px solid #fff; outline-offset:6px; }
-
-    @media (max-width:820px) {
-      .bondi-feature { padding:5rem 0 calc(5rem + 8px); }
-      .bondi-card { grid-template-columns:1fr; min-height:0; box-shadow:8px 8px 0 var(--ink); }
-      .bondi-card:hover { transform:none; box-shadow:8px 8px 0 var(--ink); }
-      .bondi-visual { min-height:clamp(330px,94vw,520px); }
-      .bondi-visual::after { background:linear-gradient(0deg,rgba(23,52,59,.2),transparent 40%); }
-      .bondi-copy { padding:3rem 28px 3.4rem; }
-      .bondi-title { font-size:clamp(4.4rem,21vw,7rem); }
-      .bondi-excerpt { margin-top:1.8rem; font-size:1.02rem; }
-      .bondi-cta { width:100%; justify-content:center; }
-    }
-  
-
-    /* Funciones compactas para pantallas chicas. */
-    @media (max-width:700px) {
-      /* Ciudad, sala y enlace visibles sin depender de hover. */
-      .agenda .gig-list { gap:12px; }
-      .agenda .gig,
-      .agenda .gig:nth-child(1),
-      .agenda .gig:nth-child(2),
-      .agenda .gig:nth-child(3) {
-        min-height:0;
-        display:grid;
-        grid-template-columns:82px minmax(0,1fr);
-        grid-template-rows:auto auto;
-        gap:.38rem .9rem;
-        padding:1rem;
-        align-items:center;
-        text-align:left;
-        transform:none;
-        box-shadow:5px 5px 0 var(--ink);
-      }
-      .agenda .gig:hover {
-        padding:1rem;
-        transform:none;
-        box-shadow:5px 5px 0 var(--ink);
-      }
-      .agenda .gig-date {
-        grid-column:1;
-        grid-row:1 / 3;
-        padding-right:.8rem;
-        border-right:2px solid var(--ink);
-        text-align:center;
-      }
-      .agenda .gig-date strong {
-        font-size:1.38rem;
-        line-height:.92;
-      }
-      .agenda .gig-date span { display:none; }
-      .agenda .gig-place {
-        grid-column:2;
-        grid-row:1;
-        padding:0;
-        font-size:clamp(1.18rem,5.4vw,1.48rem);
-        line-height:1.02;
-        text-align:left;
-      }
-      .agenda .gig-meta {
-        grid-column:2;
-        grid-row:2;
-        font-size:0;
-        line-height:1;
-        text-align:left;
-      }
-      .agenda .gig-meta strong {
-        display:block;
-        margin:0;
-        font-family:"Space Mono",monospace;
-        font-size:.78rem;
-        line-height:1.1;
-        letter-spacing:.04em;
-        text-transform:uppercase;
-      }
-      /* El botón conserva el enlace directo a cada reserva o ticketera. */
-      .agenda .gratis { display:none; }
-      .agenda .gig .btn {
-        display:block;
-        position:absolute;
-        inset:0;
-        z-index:5;
-        grid-column:auto;
-        grid-row:auto;
-        width:100%;
-        height:100%;
-        min-height:0;
-        margin:0;
-        padding:0;
-        border:0;
-        border-radius:inherit;
-        box-shadow:none;
-        transform:none;
-        opacity:0;
-      }
-      .agenda .gig .btn:hover,
-      .agenda .gig .btn:focus-visible { transform:none; box-shadow:none; }
-      .agenda .gig:focus-within { outline:3px solid var(--ink); outline-offset:3px; }
-      .mobile-buy { display: none !important; }
-      body { padding-bottom: 0; }
-
-      /* Recorte discreto para que la nueva foto funcione dentro del marco original. */
-      .hero-photo { object-position:center 25%; }
-    }
-
-  
-
-    /* Sistema único de sombras: color de la paleta actual, borde duro y desplazamiento diagonal. */
-    :root {
-      --shadow-color: var(--ink);
-      --shadow-main: 8px 8px 0 var(--shadow-color);
-      --shadow-pressed: 4px 4px 0 var(--shadow-color);
-      --shadow-small: 4px 4px 0 var(--shadow-color);
-    }
-
-    /* Elementos principales: misma dirección, color y dureza. */
-    .gig,
-    .channel-player,
-    .gallery-grid figure,
-    .gallery-grid figure:first-child,
-    .form,
-    .bondi-card {
-      box-shadow: var(--shadow-main);
-    }
-
-    /* La portada conserva su silueta irregular y suma la misma sombra dura. */
-    .hero-art {
-      margin-bottom: 8px;
-      box-shadow: none;
-      filter: drop-shadow(8px 8px 0 var(--shadow-color));
-    }
-
-    /* Elementos compactos: misma sombra en una escala menor. */
-    .logo-mark,
-    .btn-primary,
-    .mobile-buy {
-      box-shadow: var(--shadow-small);
-    }
-
-    .gig:hover,
-    .bondi-card:hover {
-      box-shadow: var(--shadow-pressed);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 2px 2px 0 var(--ink);
-    }
-
-    @media (max-width:820px) {
-      :root {
-        --shadow-main: 5px 5px 0 var(--shadow-color);
-        --shadow-pressed: 5px 5px 0 var(--shadow-color);
-      }
-
-      .bondi-card,
-      .bondi-card:hover {
-        box-shadow: var(--shadow-main);
-      }
-    }
-
-    @media (max-width:700px) {
-      .hero-art {
-        margin-bottom: 5px;
-        filter: drop-shadow(5px 5px 0 var(--shadow-color));
-      }
-
-      .agenda .gig,
-      .agenda .gig:nth-child(1),
-      .agenda .gig:nth-child(2),
-      .agenda .gig:nth-child(3),
-      .agenda .gig:hover {
-        box-shadow: var(--shadow-main);
-      }
-
-      .channel-player,
-      .gallery-grid figure,
-      .gallery-grid figure:first-child,
-      .form,
-      .booking .form {
-        box-shadow: var(--shadow-main);
-      }
-    }
-
-
-    /* Capítulo completo: lectura larga dentro del mismo sistema editorial. */
-    .bondi-card { margin-bottom:clamp(4rem,8vw,7rem); }
-    .bondi-cta { text-decoration:none; transition:transform .18s,background .18s,color .18s; }
-    .bondi-cta:hover { transform:translateY(-2px); color:var(--ink); background:var(--pastel-rose); }
-
-    .bondi-story {
-      position:relative;
-      width:min(900px,100%);
-      margin-inline:auto;
-      color:var(--ink);
-      background:var(--white);
-      border:3px solid var(--ink);
-      box-shadow:var(--shadow-main);
-    }
-    .bondi-story::before {
-      content:"01";
-      position:absolute;
-      top:-2.4rem;
-      right:clamp(1rem,4vw,3rem);
-      color:var(--ink);
-      font:400 clamp(5.5rem,14vw,10rem)/1 "Archivo Black",sans-serif;
-      letter-spacing:-.08em;
-      opacity:.08;
-      pointer-events:none;
-    }
-    .bondi-story-head {
-      position:relative;
-      padding:clamp(2.2rem,6vw,4.8rem) clamp(1.35rem,6vw,5.4rem) clamp(1.8rem,4vw,3rem);
-      background:var(--pastel-blue);
-      border-bottom:3px solid var(--ink);
-    }
-    .bondi-story-index {
-      width:max-content;
-      margin:0 0 1rem;
-      padding:.45rem .62rem;
-      color:var(--white);
-      background:var(--ink);
-      font:700 .66rem/1 "Space Mono",monospace;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      transform:rotate(-1deg);
-    }
-    .bondi-chapter-title {
-      max-width:700px;
-      margin:0;
-      font:850 clamp(3rem,8vw,6.5rem)/.82 "Fraunces",serif;
-      letter-spacing:-.06em;
-    }
-    .bondi-chapter-title em { color:#7d3e2d; font-weight:650; }
-    .bondi-story-deck {
-      max-width:610px;
-      margin:1.5rem 0 0;
-      font:600 clamp(1rem,1.5vw,1.18rem)/1.6 "Manrope",sans-serif;
-    }
-    .bondi-prose {
-      padding:clamp(2.2rem,6vw,5.2rem) clamp(1.35rem,7vw,6.4rem) clamp(3rem,7vw,6.5rem);
-      font:500 clamp(1.04rem,1.35vw,1.19rem)/1.82 "Manrope",sans-serif;
-    }
-    .bondi-prose p { margin:0 0 1.55em; }
-    .bondi-prose p:first-child::first-letter {
-      float:left;
-      margin:.08em .12em 0 0;
-      color:#7d3e2d;
-      font:850 4.9em/.72 "Fraunces",serif;
-    }
-    .bondi-pullquote {
-      margin:2.2rem -2.2rem;
-      padding:1.6rem 2.2rem 1.8rem;
-      background:var(--pastel-yellow);
-      border:2px solid var(--ink);
-      box-shadow:5px 5px 0 var(--ink);
-      font:700 clamp(1.25rem,2.3vw,1.75rem)/1.35 "Fraunces",serif;
-      transform:rotate(-.45deg);
-    }
-    .bondi-money {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:.65rem;
-      margin:2rem 0 2.4rem;
-    }
-    .bondi-money span {
-      padding:1rem .6rem;
-      text-align:center;
-      background:var(--pastel-rose);
-      border:2px solid var(--ink);
-      font:700 .78rem/1.25 "Space Mono",monospace;
-      text-transform:uppercase;
-    }
-    .bondi-money strong { display:block; margin-bottom:.35rem; font-size:1.45rem; }
-    .bondi-ending {
-      margin:2.8rem -2.2rem 0 !important;
-      padding:2rem 2.2rem;
-      color:var(--white);
-      background:var(--ink);
-      border:3px solid var(--ink);
-      font:700 clamp(1.35rem,2.7vw,2rem)/1.38 "Fraunces",serif;
-      letter-spacing:-.02em;
-    }
-    .bondi-ending strong { color:var(--pastel-yellow); }
-
-    @media (max-width:820px) {
-      .bondi-card { margin-bottom:4rem; }
-      .bondi-story { box-shadow:var(--shadow-main); }
-      .bondi-pullquote,.bondi-ending { margin-inline:-.45rem !important; }
-    }
-    @media (max-width:560px) {
-      .bondi-story::before { top:-1.35rem; right:.75rem; }
-      .bondi-story-head { padding:2rem 1.35rem 1.7rem; }
-      .bondi-chapter-title { font-size:clamp(2.8rem,15vw,4.4rem); }
-      .bondi-prose { padding:2.2rem 1.35rem 3.2rem; font-size:1.01rem; line-height:1.75; }
-      .bondi-pullquote { margin-block:1.8rem; padding:1.3rem 1.15rem 1.45rem; }
-      .bondi-money { grid-template-columns:1fr; }
-      .bondi-money span { display:flex; align-items:center; justify-content:space-between; text-align:left; }
-      .bondi-money strong { margin:0; }
-      .bondi-ending { padding:1.5rem 1.2rem; }
-    }
-
-
-
-    /* Un solo HTML, dos vistas: sitio y relato. */
-    .app-view[hidden] { display:none !important; }
-    body.story-open { padding-bottom:0; }
-    body.story-open .mobile-buy { display:none !important; }
-
-    .story-shell {
-      min-height:100vh;
-      color:var(--ink);
-      background:var(--pastel-yellow);
-    }
-    .story-topbar {
-      position:sticky;
-      top:0;
-      z-index:90;
-      color:var(--ink);
-      background:rgba(243,238,229,.96);
-      border-bottom:2px solid var(--ink);
-      backdrop-filter:blur(12px);
-    }
-    .story-nav {
-      min-height:70px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-    }
-    .story-back-top,
-    .story-back {
-      display:inline-flex;
-      align-items:center;
-      gap:.65rem;
-      font:700 .72rem/1 "Space Mono",monospace;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .story-back-top:hover,
-    .story-back:hover { text-decoration:underline; }
-    .story-page { padding:clamp(2rem,5vw,4.5rem) 0 clamp(5rem,9vw,8rem); }
-    .story-reading-wrap { width:min(920px,calc(100% - 40px)); }
-    .story-back { margin-bottom:clamp(2rem,5vw,4rem); }
-    .story-intro {
-      margin:0 auto clamp(3rem,7vw,5.5rem);
-      padding:clamp(2rem,5vw,4.6rem);
-      background:var(--white);
-      border:3px solid var(--ink);
-      box-shadow:12px 12px 0 var(--shadow-color);
-      text-align:center;
-    }
-    .story-intro .bondi-kicker { margin-bottom:1.5rem; }
-    .story-page-title {
-      margin:0;
-      font:850 clamp(4.5rem,12vw,8.5rem)/.72 "Fraunces",serif;
-      letter-spacing:-.07em;
-    }
-    .story-page-title em { color:#7d3e2d; font-weight:650; }
-    .story-page-deck {
-      width:max-content;
-      margin:2rem auto 0;
-      padding:.6rem .8rem;
-      color:var(--white);
-      background:var(--ink);
-      border:2px solid var(--ink);
-      font:700 .7rem/1 "Space Mono",monospace;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
-    .story-shell .bondi-story { margin-inline:auto; }
-    .article-footer-link { display:flex; justify-content:center; margin-top:2.8rem; }
-    .article-footer-link a {
-      display:inline-flex;
-      align-items:center;
-      gap:.65rem;
-      padding:.95rem 1.25rem;
-      color:var(--white);
-      background:var(--ink);
-      border:2px solid var(--ink);
-      font:700 .72rem/1 "Space Mono",monospace;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .article-footer-link a:hover { color:var(--ink); background:var(--pastel-rose); }
-    .story-footer { border-top:3px solid var(--ink); }
-
-    @media (max-width:700px) {
-      .story-nav { min-height:62px; }
-      .story-nav .logo-name { display:none; }
-      .story-back-top { font-size:.62rem; }
-      .story-reading-wrap { width:min(100% - 28px,920px); }
-      .story-intro { padding:2.5rem 1.1rem; box-shadow:7px 7px 0 var(--shadow-color); }
-      .story-page-title { font-size:clamp(3.7rem,19vw,6rem); }
-      .story-shell .bondi-story { box-shadow:7px 7px 0 var(--shadow-color); }
-    }
-
-
-    /* CORRECCION VISUAL FINAL */
-    section[id] { scroll-margin-top:82px; }
-
-    .hero-grid > *,
-    .identity-grid > *,
-    .booking-grid > * { min-width:0; }
-
-    /* Hero: marco regular, sin silueta inclinada y con sombra negra real. */
-    .hero-art {
-      height:580px;
-      min-height:580px;
-      margin:0 10px 12px 0;
-      overflow:hidden;
-      background:var(--white);
-      border:3px solid var(--ink);
-      border-radius:0;
-      box-shadow:10px 10px 0 var(--ink);
-      clip-path:none;
-      filter:none;
-      transform:none;
-    }
-
-    .hero-photo {
-      position:static;
-      width:100%;
-      height:100%;
-      max-width:none;
-      object-fit:cover;
-      object-position:center 18%;
-      filter:none;
-    }
-
-    .hero-title,
-    .hero-title .accent { max-width:100%; }
-
-    /* Sobre mí: más presencia fotográfica en escritorio, sin forzar un recorte vertical. */
-    @media (min-width:921px) {
-      .identity-grid {
-        grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);
-        gap:clamp(2.5rem,4.5vw,4.75rem);
-        align-items:center;
-      }
-
-      .portrait-frame {
-        width:100%;
-        max-width:none;
-      }
-
-      .portrait-frame::before {
-        inset:14px -14px -14px 14px;
-        border-radius:0;
-        background:var(--ink);
-        transform:none;
-      }
-
-      .portrait {
-        width:100%;
-        min-height:0;
-        aspect-ratio:16 / 11;
-        border-radius:0;
-        object-fit:cover;
-        object-position:center;
-        transform:none;
-      }
-    }
-
-    /* Evita que la navegación se comprima o se monte sobre el logo. */
-    @media (max-width:1100px) and (min-width:901px) {
-      .nav-links { gap:.9rem; }
-      .nav-links a:not(.nav-buy) { font-size:.64rem; letter-spacing:.06em; }
-      .nav-buy { padding:.62rem .72rem; font-size:.64rem; }
-    }
-
-    @media (max-width:900px) {
-      .nav { justify-content:center; }
-      .nav-links { display:none; }
-
-      .hero-grid {
-        grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
-        gap:2rem;
-      }
-
-      .hero-title { font-size:clamp(3.3rem,7vw,4.7rem); }
-    }
-
-    @media (max-width:700px) {
-      section[id] { scroll-margin-top:68px; }
-
-      .hero-art {
-        width:100%;
-        height:400px;
-        min-height:400px;
-        margin:0 6px 9px 0;
-        border-radius:0;
-        box-shadow:6px 6px 0 var(--ink);
-        clip-path:none;
-        filter:none;
-        transform:none;
-      }
-
-      .hero-photo {
-        position:static;
-        width:100%;
-        height:100%;
-        object-position:center 25%;
-      }
-    }
-    /* FIN CORRECCION VISUAL FINAL */
-
-    /* ---- Fixes de desborde y layout ---- */
-    html { overflow-x: clip; max-width: 100%; }
-    body { max-width: 100%; position: relative; }
-
-    /* El accent con width:max-content hacía desbordar "BISIGNANO" y generaba scroll horizontal. */
-    .hero-title {
-      max-width: 100%;
-      font-size: clamp(3.2rem, 6.2vw, 5.6rem);
-      line-height: .86;
-      transform: none;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-    }
-    .hero-title .accent {
-      display: inline-block;
-      width: auto;
-      max-width: 100%;
-      box-sizing: border-box;
-      transform: none;
-      padding: 0 .2em .08em;
-    }
-    .hero-copy {
-      min-width: 0;
-      overflow: hidden;
-    }
-    .hero-grid {
-      gap: clamp(1.5rem, 3vw, 3.5rem);
-      align-items: center;
-    }
-
-    @media (min-width: 901px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-      }
-      .hero-title {
-        font-size: clamp(3.4rem, 5.4vw, 5.4rem);
-      }
-    }
-
-    @media (max-width: 900px) and (min-width: 701px) {
-      .hero-title {
-        font-size: clamp(2.8rem, 6vw, 4rem);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .hero-title {
-        font-size: clamp(2rem, 10.5vw, 4rem);
-        transform: none;
-      }
-      .hero-title .accent {
-        margin-inline: auto;
-      }
-    }
-
-    /* Evitar que márgenes asimétricos de gigs generen overflow horizontal */
-    .gig-list,
-    .bondi-feature .wrap,
-    .gallery-grid,
-    .booking-grid,
-    .identity-grid {
-      max-width: 100%;
-    }
-
-    .gig:nth-child(2),
-    .gig:nth-child(3) {
-      margin-left: 0;
-      margin-right: 0;
-    }
-
-    @media (min-width: 701px) {
-      .gig:nth-child(2) { margin-left: 2vw; }
-      .gig:nth-child(3) { margin-right: 2vw; }
-    }
-    .agenda .gig:nth-child(2),
-    .agenda .gig:nth-child(3) { margin-inline: 0; }
-
-    /* Galería: contraste legible */
-    .gallery-grid figure {
-      background: var(--ink);
-    }
-    .gallery-grid img {
-      opacity: 1;
-      filter: none;
-    }
-
-    .identity-title {
-      color: var(--ink);
-    }
-
-    .bondi-title {
-      overflow-wrap: anywhere;
-      word-break: break-word;
-    }
-
-    .nav { min-width: 0; }
-    .logo-name { white-space: nowrap; }
-
-    .form,
-    .form-grid {
-      max-width: 100%;
-      min-width: 0;
-    }
-    .field {
-      max-width: 100%;
-    }
-
-    /* ---- Fix grave: título CONTRATACIONES cortado por el formulario ---- */
-    .booking {
-      overflow: hidden;
-    }
-    .booking-grid {
-      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 1fr);
-      gap: clamp(1.75rem, 4vw, 3.5rem);
-      align-items: center;
-    }
-    .booking-grid > div:first-child {
-      min-width: 0;
-      max-width: 100%;
-    }
-    .booking-title {
-      width: 100%;
-      max-width: 100%;
-      margin: .35rem 0 1rem;
-      /* Escala para que "CONTRATACIONES" entre en una sola línea en la columna */
-      font-size: clamp(1.85rem, 3.35vw + 0.4rem, 3.55rem);
-      line-height: .92;
-      letter-spacing: -.055em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: clip;
-    }
-    .booking-copy {
-      max-width: 28rem;
-    }
-    .booking .form {
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      transform: none;
-    }
-
-    /* Tablet y menos: apilar para no comprimir el título */
-    @media (max-width: 980px) {
-      .booking-grid {
-        grid-template-columns: 1fr;
-        gap: 1.75rem;
-        justify-items: center;
-      }
-      .booking-grid > div:first-child {
-        text-align: center;
-      }
-      .booking-title {
-        font-size: clamp(2rem, 7vw, 3.1rem);
-        white-space: nowrap;
-        text-align: center;
-      }
-      .booking-copy {
-        margin-inline: auto;
-        text-align: center;
-      }
-      .booking .form {
-        width: min(100%, 560px);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .booking-title {
-        font-size: clamp(1.55rem, 7.2vw, 2.35rem);
-        letter-spacing: -.05em;
-      }
-
-      .agenda .gig,
-      .agenda .gig:nth-child(1),
-      .agenda .gig:nth-child(2),
-      .agenda .gig:nth-child(3) { grid-template-rows: auto auto auto; box-shadow: none; }
-      .agenda .gig:hover { padding: 1rem; box-shadow: none; }
-      .agenda .gig-date strong { color: var(--orange); }
-      .agenda .gig-meta { font-size: .74rem; line-height: 1.35; overflow-wrap: anywhere; }
-      .agenda .gig-meta strong { margin-bottom: .3rem; }
-      .agenda .gig .btn {
-        position: relative;
-        inset: auto;
-        z-index: auto;
-        display: inline-flex;
-        grid-column: 1 / -1;
-        grid-row: 3;
-        width: 100%;
-        height: auto;
-        min-height: 46px;
-        margin: .55rem 0 0;
-        padding: .65rem .85rem;
-        border: 2px solid var(--ink);
-        border-radius: 0;
-        color: var(--ink);
-        background: var(--button-amber);
-        font-size: .7rem;
-        line-height: 1.2;
-        opacity: 1;
-      }
-      .agenda .gig .btn:hover { background: var(--pastel-yellow); }
-      .agenda .gig .btn:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
-
-      /* En celular se pueden recorrer las cinco fotos sin recortar la escena. */
-      .gallery-grid {
-        display: flex;
-        align-items: stretch;
-        gap: .75rem;
-        grid-template-columns: none;
-        grid-template-rows: none;
-        margin-inline: -6px;
-        padding: 6px 6px 12px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        scroll-padding-inline: 6px;
-        overscroll-behavior-x: contain;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-      }
-      .gallery-grid::-webkit-scrollbar { display: none; }
-      .gallery-grid figure,
-      .gallery-grid figure:first-child,
-      .gallery-grid figure:nth-child(n+4) {
-        display: block;
-        flex: 0 0 calc(100% - 36px);
-        height: clamp(320px, 102vw, 440px);
-        grid-column: auto;
-        grid-row: auto;
-        scroll-snap-align: start;
-        transform: none;
-      }
-      .gallery-grid figure:nth-child(2),
-      .gallery-grid figure:nth-child(3) { transform: none; }
-      .gallery-grid img { object-fit: contain; }
-      .gallery-grid figure:hover img { transform: none; }
-      .gallery-grid:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-      .gallery-controls {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5rem;
-        margin-top: 1rem;
-      }
-      .gallery-controls button {
-        width: 46px;
-        height: 46px;
-        border: 2px solid var(--ink);
-        color: var(--ink);
-        background: var(--white);
-        box-shadow: 3px 3px 0 var(--ink);
-        cursor: pointer;
-      }
-      .gallery-controls button:disabled { opacity: .45; cursor: default; box-shadow: none; }
-      .gallery-controls button:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
-      .gallery-count { min-width: 5rem; font: 700 .9rem/1 "Space Mono", monospace; text-align: center; }
-    }
-
-    /* Retrato completo y limpio, sin el recorte del escenario. */
-    .identity .portrait-frame { width: min(100%, 470px); max-width: 470px; margin-inline: auto; }
-    .identity .portrait-frame::before { display: none; }
-    .identity .portrait {
-      display: block;
-      width: 100%;
-      height: auto;
-      min-height: 0;
-      aspect-ratio: auto;
-      object-fit: contain;
-      border: 0;
-      border-radius: 12px;
-      box-shadow: 0 12px 28px rgba(28,39,51,.16);
-      transform: none;
-    }
-
-    @media (max-width: 700px) {
-      /* Cada función vuelve a ser una sola tarjeta tocable y simple. */
-      .agenda .gig,
-      .agenda .gig:nth-child(1),
-      .agenda .gig:nth-child(2),
-      .agenda .gig:nth-child(3) {
-        grid-template-columns: 74px minmax(0,1fr);
-        grid-template-rows: auto auto;
-        gap: .2rem .85rem;
-        min-height: 92px;
-        padding: .95rem;
-        box-shadow: none;
-      }
-      .agenda .gig:hover { padding: .95rem; box-shadow: none; }
-      .agenda .gig-date { grid-column: 1; grid-row: 1 / 3; padding-right: .65rem; }
-      .agenda .gig-date strong { font-size: 1.22rem; }
-      .agenda .gig-place { grid-column: 2; grid-row: 1; padding-right: .25rem; font-size: clamp(1.1rem, 4.8vw, 1.35rem); line-height: 1.05; }
-      .agenda .gig-meta { grid-column: 2; grid-row: 2; font-size: 0; }
-      .agenda .gig-meta strong { display: block; margin: 0; font-size: .76rem; line-height: 1.15; }
-      .agenda .gig .btn {
-        display: block;
-        position: absolute;
-        inset: 0;
-        z-index: 5;
-        grid-column: auto;
-        grid-row: auto;
-        width: 100%;
-        height: 100%;
-        min-height: 0;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-        box-shadow: none;
-        opacity: 0;
-      }
-      .agenda .gig:focus-within { outline: 3px solid var(--orange); outline-offset: 3px; }
-
-      /* Galería actual: fotos intactas, bordes suaves y controles claros. */
-      .gallery { background: #f5f7f8; }
-      .gallery .gallery-grid figure,
-      .gallery .gallery-grid figure:first-child,
-      .gallery .gallery-grid figure:nth-child(n+4) {
-        height: clamp(320px, 108vw, 470px);
-        border: 0;
-        border-radius: 14px;
-        background: var(--photo-night);
-        box-shadow: 0 8px 24px rgba(28,39,51,.14);
-        transform: none;
-      }
-      .gallery .gallery-grid img { object-fit: contain; filter: none; }
-      .gallery .gallery-grid figure:hover img { transform: none; }
-      .gallery .gallery-controls button {
-        width: 48px;
-        height: 48px;
-        border: 0;
-        border-radius: 50%;
-        color: var(--white);
-        background: var(--photo-night);
-        box-shadow: none;
-      }
-      .gallery .gallery-controls button:disabled { opacity: .45; }
-      .gallery .gallery-count { font: 700 .95rem/1 "DM Sans", sans-serif; }
-    }
-
-    /* Mantener las fotos completas también fuera del carrusel móvil. */
-    .gallery .gallery-grid img { object-fit: contain; filter: none; }
-    .gallery .gallery-grid figure,
-    .gallery .gallery-grid figure:first-child { background: var(--photo-night); }
-    .gallery .gallery-grid figure:hover img { transform: none; }
-    .identity .portrait { filter: none; }
-    #photo-gallery { scroll-margin-top: 86px; }
-
-    /* Foco perceptible sobre fondos claros y oscuros. */
-    .field::placeholder { color: var(--muted); opacity: 1; }
-    a:focus-visible, button:focus-visible, .field:focus-visible {
-      outline: 3px solid var(--orange);
-      outline-offset: 4px;
-    }
-    .footer a:focus-visible, .reel button:focus-visible {
-      outline-color: var(--pastel-yellow);
-    }
-    .nav-compact-buy { display: none; }
-    @media (max-width: 900px) {
-      .nav { justify-content: space-between; gap: .5rem; }
-      .nav-compact-buy {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-        padding: .65rem .75rem;
-        flex-shrink: 0;
-      }
-    }
-
-
-    /* Cada foto ocupa sólo su altura natural, sin bandas de relleno. */
-    .gallery .gallery-grid { grid-template-rows: auto auto; align-items: start; }
-    .gallery .gallery-grid figure,
-    .gallery .gallery-grid figure:first-child,
-    .gallery .gallery-grid figure:nth-child(n+4) {
-      height: auto;
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-      transform: none;
-    }
-    .gallery .gallery-grid img { display: block; width: 100%; height: auto; }
-    @media (max-width: 700px) {
-      .gallery .gallery-grid { align-items: center; }
-    }
-
-
-    /* Fotos equilibradas, completas y sin espacios de relleno. */
-    .gallery { overflow-anchor: none; }
-    @media (min-width: 701px) {
-      .gallery .gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-      .gallery .gallery-grid figure,
-      .gallery .gallery-grid figure:first-child,
-      .gallery .gallery-grid figure:nth-child(n+4) { flex: 0 0 auto; width: auto; border-radius: 12px; }
-      .gallery .gallery-grid img { height: clamp(180px, 24vw, 300px); width: auto; }
-    }
-    @media (max-width: 700px) {
-      .gallery .gallery-grid { align-items: flex-start; }
-    }
-    .identity .identity-grid { grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
-    .identity .portrait-frame { width: 100%; max-width: none; }
-    @media (max-width: 980px) {
-      .identity .identity-grid { grid-template-columns: 1fr; }
-      .identity .portrait-frame { max-width: 640px; }
-      .identity .identity-copy { max-width: none; }
-    }
-
-
-    /* Una sola tarjeta-botón por función en móvil. */
-    @media (max-width: 700px) {
-      .agenda .gig,
-      .agenda .gig:nth-child(1),
-      .agenda .gig:nth-child(2),
-      .agenda .gig:nth-child(3),
-      .agenda .gig:hover {
-        border: 2px solid var(--ink);
-        border-radius: 10px;
-        background: var(--pastel-yellow);
-        box-shadow: 0 4px 0 var(--ink);
-        padding: .95rem 2rem .95rem .8rem;
-        margin-bottom: 1rem;
-        transition: transform .15s, box-shadow .15s, background .15s;
-      }
-      .agenda .gig::after {
-        content: "↗";
-        position: absolute;
-        right: .65rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--ink);
-        font: 700 1.1rem/1 sans-serif;
-        pointer-events: none;
-      }
-      .agenda .gig:hover { background: var(--button-amber); }
-      .agenda .gig:active {
-        transform: translateY(3px);
-        box-shadow: 0 1px 0 var(--ink);
-      }
-      .agenda .gig .btn { border-radius: 8px; }
-    }
-
-
-    #home-view img[role="button"] { cursor: zoom-in; }
-    #home-view img[role="button"]:focus-visible { outline: 3px solid var(--orange); outline-offset: 5px; }
-    .photo-lightbox { width: calc(100% - 24px); max-width: 1400px; max-height: none; padding: 64px 0 16px; border: 0; background: transparent; overflow: visible; }
-    .photo-lightbox::backdrop { background: rgba(0,0,0,.9); }
-    .photo-lightbox img { width: auto; height: auto; max-width: 100%; max-height: calc(100vh - 100px); max-height: calc(100dvh - 100px); margin: auto; object-fit: contain; }
-    .photo-lightbox-close { position: fixed; top: 16px; right: 16px; width: 48px; height: 48px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--white); color: var(--ink); font: 32px/1 sans-serif; cursor: pointer; }
-    .photo-lightbox-close:focus-visible { outline: 3px solid var(--button-amber); outline-offset: 4px; }
-</style>
-</head>
-<body>
-<noscript><img alt="" height="1" src="https://www.facebook.com/tr?id=1321535622403852&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
-
-
-
-
-<div class="app-view" id="home-view"><header class="topbar">
-<nav aria-label="Navegación principal" class="nav wrap">
-<a aria-label="Ricardo Bisignano, inicio" class="logo" href="#inicio">
-<span class="logo-mark">RB</span>
-<span class="logo-name">Ricardo<br/>Bisignano</span>
-</a>
-<div class="nav-links">
-<a href="#funciones" data-scroll-to="funciones">Funciones</a>
-<a href="#en-escena" data-scroll-to="en-escena">En escena</a>
-<a href="#ricardo" data-scroll-to="ricardo">Sobre mí</a>
-<a href="#el-pibe-del-bondi" data-scroll-to="el-pibe-del-bondi">El pibe del bondi</a>
-<a href="#contrataciones" data-scroll-to="contrataciones">Contrataciones</a>
-<a class="nav-buy" href="#funciones" data-scroll-to="funciones">Comprar entradas</a>
-</div>
-<a class="nav-buy nav-compact-buy" href="#funciones" data-scroll-to="funciones">Entradas</a>
-</nav>
-</header><main>
-<section class="hero" id="inicio">
+/* EDITABLE: colores y medidas generales */
+:root{--paper:#f9f0df;--paper2:#f2e3cb;--ink:#211c18;--rust:#bc4829;--rustdark:#94331b;--line:#d2bea1;--max:1180px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 16px/1.6 Manrope,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.19;background-image:radial-gradient(#a88e67 .38px,transparent .52px);background-size:6px 6px}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+button,input,textarea{font:inherit}button,a{touch-action:manipulation}
+button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--rust);outline-offset:4px}
+.wrap{width:min(calc(100% - 44px),var(--max));margin-inline:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+header.site-header{position:relative;z-index:30;background:rgba(249,240,223,.97);border-bottom:1px solid var(--line)}
+.site-nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font:900 25px/.78 'Barlow Condensed',Impact,sans-serif;letter-spacing:-.035em;text-transform:uppercase;transform:rotate(-2deg)}
+.brand span{display:block}.brand span:last-child{color:var(--rust)}
+.site-links{display:flex;gap:clamp(14px,2.2vw,34px);align-items:center;font-size:13px;font-weight:800}
+.site-links>a:hover{color:var(--rust)}
+.small-cta,.cta,.ticket,.send{background:var(--rust);color:#fff;border:1px solid var(--rustdark);font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-transform:uppercase;letter-spacing:.01em;box-shadow:3px 3px 0 var(--ink)}
+.small-cta{padding:11px 20px;font-size:13px;white-space:nowrap}
+.cta{padding:13px 23px;min-height:51px;font-size:13px}
+.cta:hover,.small-cta:hover,.ticket:hover,.send:hover{background:var(--rustdark);color:#fff}
+.cta-secondary{background:transparent;color:var(--ink);box-shadow:none;border:2px solid var(--rust);padding:12px 20px}
+.cta-secondary:hover{background:var(--paper2);color:var(--ink)}
+/* Portada: la foto es la foto original del repositorio, no un retrato generado. */
+.hero{position:relative;overflow:hidden;isolation:isolate}
+.hero:before{content:"";position:absolute;left:-7%;right:48%;top:30%;height:130px;background:var(--rust);opacity:.11;clip-path:polygon(0 19%,32% 8%,62% 24%,100% 0,100% 60%,65% 72%,18% 100%,0 78%);transform:rotate(-4deg);z-index:-1}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.96fr);min-height:560px;align-items:center;gap:clamp(18px,4vw,64px)}
+.hero-copy{padding:68px 0 80px;position:relative;z-index:2}
+.hero-kicker{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin:0 0 12px}
+.hero-name{font:900 clamp(70px,8.9vw,132px)/.78 'Barlow Condensed',Impact,sans-serif;letter-spacing:-.045em;text-transform:uppercase;margin:0;transform:rotate(-1.6deg);text-shadow:.5px .5px 0 currentColor}
+.hero-name span{display:block}
+.hero-name span:last-child{color:var(--rust);font-size:.88em;margin-top:7px;position:relative}
+.hero-name span:last-child:after{content:"";height:7px;width:81%;position:absolute;bottom:-20px;left:9%;background:var(--ink);clip-path:polygon(0 30%,100% 0,96% 85%,2% 100%);transform:rotate(-1deg)}
+.hero-description{font:700 clamp(16px,2vw,21px)/1.5 Manrope,sans-serif;max-width:460px;margin:48px 0 23px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:13px}
+.hero-art{position:relative;margin:36px 4px 38px 0;align-self:stretch;display:flex;align-items:flex-end;justify-content:center}
+.hero-art:before{content:"";position:absolute;inset:10% -7% 11% 4%;background:var(--rust);clip-path:polygon(0 8%,74% 0,100% 18%,90% 91%,8% 100%,3% 70%);transform:rotate(-6deg);opacity:.9}
+.hero-art:after{content:"";position:absolute;inset:3% 0 8% 10%;border-radius:50% 50% 3% 3%;background:var(--paper2);z-index:-1;transform:rotate(7deg)}
+.photo-cut{position:relative;z-index:1;width:95%;max-width:520px;max-height:525px;object-fit:contain;object-position:center bottom;filter:drop-shadow(8px 12px 7px rgba(32,26,20,.18))}
+/* Títulos artísticos siguen siendo texto HTML seleccionable y editable. */
+.section{padding:72px 0 83px;position:relative}
+.section:before{content:"";position:absolute;top:37px;left:0;width:clamp(74px,13vw,210px);height:32px;background:var(--rust);opacity:.85;clip-path:polygon(0 18%,100% 0,97% 88%,0 78%);transform:rotate(-5deg)}
+.section-top{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:28px}
+.stamp-title{font:900 clamp(51px,6.6vw,94px)/.83 'Barlow Condensed',Impact,sans-serif;letter-spacing:-.035em;text-transform:uppercase;transform:rotate(-2deg);margin:0 0 16px;position:relative;width:fit-content;max-width:100%}
+.stamp-title span{color:var(--rust)}
+.stamp-title:after{content:"";position:absolute;left:3%;right:4%;bottom:-11px;height:4px;background:var(--ink);transform:rotate(-1deg);opacity:.85}
+.split-title{max-width:640px}
+.text-link{white-space:nowrap;text-decoration:underline;text-decoration-color:var(--rust);text-underline-offset:5px;text-decoration-thickness:2px;font-size:12px;font-weight:800;text-transform:uppercase}
+.text-link:hover{color:var(--rust)}
+/* La agenda conserva fechas, horarios y enlaces de compra reales. */
+.shows{border-top:1px solid var(--line)}
+.show-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.show-card{display:grid;grid-template-columns:76px minmax(0,1fr);min-height:184px;background:rgba(255,251,242,.83);border:1px solid #cfb99c;box-shadow:3px 4px 0 rgba(66,46,30,.10);padding:16px 14px;gap:13px}
+.show-date{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;border-right:1px solid var(--line);padding:4px 10px 0 0;text-transform:uppercase}
+.date-month{font:800 17px/.9 'Barlow Condensed',sans-serif}
+.show-date strong{font:900 51px/.9 'Barlow Condensed',sans-serif}
+.show-date small{font:800 13px/1.2 'Barlow Condensed',sans-serif}
+.show-info{min-width:0;display:flex;flex-direction:column}
+.show-info h3{font:900 clamp(20px,2vw,25px)/1.06 'Barlow Condensed',sans-serif;text-transform:uppercase;margin:1px 0 9px;overflow-wrap:anywhere}
+.show-info p{margin:0 0 15px;font-size:12px;line-height:1.4;color:#5b4f40;overflow-wrap:anywhere}
+.show-sep{color:var(--rust);font-weight:900}
+.ticket{min-height:42px;margin-top:auto;align-self:flex-start;font-size:11px;padding:8px 11px;box-shadow:none;max-width:100%}
+.ticket span{font-size:15px}
+.video-section{border-block:1px solid var(--line);background:var(--paper2)}
+.video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.video-card p{font-size:13px;font-weight:800;margin:10px 0 0}
+.video-thumb{position:relative;border:2px solid var(--ink);border-radius:3px;padding:0;width:100%;aspect-ratio:16/9;background:var(--ink);overflow:hidden;box-shadow:4px 4px 0 rgba(33,28,24,.2)}
+.video-thumb img{width:100%;height:100%;object-fit:cover;opacity:.87}
+.video-thumb:hover img{opacity:1;transform:scale(1.025);transition:transform .2s}
+.play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:56px;height:56px;border:2px solid #fff;border-radius:50%;background:#211c1888;color:white;font-size:22px;padding-left:4px}
+.bio-section{background:var(--paper)}
+.bio-grid{display:grid;grid-template-columns:1fr .88fr;gap:clamp(26px,6vw,75px);align-items:center}
+.bio-copy{font-size:16px;line-height:1.75;max-width:575px}
+.bio-copy p{margin:0 0 16px}
+.bio-photo{position:relative;max-width:470px;margin:10px 12px 20px 15px;background:white;padding:12px 12px 30px;transform:rotate(2deg);border:1px solid #d2bea3;box-shadow:7px 9px 0 rgba(40,30,20,.2)}
+.bio-photo:before,.bio-photo:after{content:"";position:absolute;z-index:3;width:88px;height:26px;background:rgba(193,149,96,.45);top:-14px;left:35%;transform:rotate(-9deg)}
+.bio-photo:after{top:auto;left:auto;bottom:7px;right:-26px;transform:rotate(-30deg)}
+.bio-photo img{width:100%;max-height:440px;object-fit:contain;background:var(--ink)}
+.story-section{padding-top:30px;background:var(--paper)}
+.story-card{display:grid;grid-template-columns:minmax(0,.68fr) minmax(0,1fr);gap:30px;align-items:center;padding:25px;border:2px solid var(--ink);background:#f4e5cf;box-shadow:7px 7px 0 var(--rust)}
+.story-card>img{width:100%;max-height:350px;object-fit:contain;background:#24201c}
+.story-card p{font-size:15px}
+.story-card .stamp-title{font-size:clamp(41px,4.6vw,71px)}
+.story-body{max-width:850px;margin:22px auto 0;background:#fffaf0;padding:clamp(18px,4vw,44px);border:1px solid var(--line);font-size:16px;line-height:1.85}
+.story-body p{margin:0 0 1.3em}
+.story-body summary{font-weight:800;cursor:pointer}
+.gallery-section{background:var(--paper2);border-top:1px solid var(--line)}
+.gallery-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;padding:18px 0}
+.polaroid{display:block;min-width:0;align-self:start;background:#fffaf1;padding:8px 8px 13px;border:1px solid #d6c4aa;box-shadow:3px 5px 0 rgba(40,25,14,.17);transform:rotate(var(--tilt,0deg));transition:transform .18s;text-align:left}
+.polaroid:nth-child(1){--tilt:-3deg}.polaroid:nth-child(2){--tilt:2deg}.polaroid:nth-child(3){--tilt:-1.5deg}.polaroid:nth-child(4){--tilt:2.7deg}.polaroid:nth-child(5){--tilt:-1deg}
+.polaroid:hover{transform:rotate(0) translateY(-4px)}
+.polaroid img{width:100%;height:clamp(120px,16vw,204px);object-fit:contain;background:var(--ink)}
+.polaroid span{display:block;font:700 11px/1.2 Manrope,sans-serif;margin-top:9px;color:#6d5d4d}
+.contact-section{border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,6vw,80px);align-items:start}
+.contact-copy p{max-width:440px;margin:10px 0 0;font-size:16px}
+.contact-form{padding:23px;background:#fffaf1;border:1px solid var(--line);box-shadow:4px 5px 0 rgba(33,28,24,.14);display:grid;gap:11px}
+.contact-form label{font-weight:700;font-size:12px}
+.contact-form input,.contact-form textarea{width:100%;border:1px solid var(--line);background:transparent;padding:12px;font-size:14px;border-radius:2px;min-height:45px}
+.contact-form textarea{min-height:116px;resize:vertical}
+.send{min-height:48px;cursor:pointer;font-size:13px}
+footer{background:var(--ink);color:#f9f0df}
+.footer-inner{min-height:102px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;padding-block:20px}
+.footer-inner nav{display:flex;flex-wrap:wrap;gap:17px;font-size:12px}
+.footer-inner p{font-size:11px;margin:0}
+dialog.media-dialog{border:0;padding:0;max-width:min(1050px,calc(100vw - 28px));width:100%;max-height:calc(100dvh - 24px);background:var(--ink);color:#fff}
+dialog.media-dialog::backdrop{background:rgba(0,0,0,.9)}
+.media-inner{padding:10px;position:relative}
+.media-inner img{max-height:calc(100dvh - 85px);width:100%;object-fit:contain}
+.media-inner iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+.close-dialog{display:block;margin-left:auto;margin-bottom:9px;color:#fff;background:transparent;border:1px solid #fff;min-height:43px;padding:7px 14px}
+@media(max-width:920px){
+.site-links{gap:12px;font-size:11px}.site-links a:nth-child(4){display:none}
+.hero-grid{grid-template-columns:1fr .9fr;min-height:480px;gap:15px}.hero-name{font-size:clamp(57px,9vw,90px)}
+.show-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.gallery-grid{gap:11px}
+}
+@media(max-width:640px){
+.wrap{width:calc(100% - 30px)}
+.site-nav{min-height:67px}.site-links{display:none}.small-cta{padding:10px 15px}
+.hero-grid{display:flex;flex-direction:column;align-items:stretch;min-height:0}
+.hero-copy{padding:48px 0 18px}
+.hero-name{font-size:clamp(66px,14.5vw,99px)}.hero-name span:last-child{font-size:.88em}
+.hero-description{margin:36px 0 22px;font-size:15px}
+.hero-actions{gap:11px}.cta{font-size:12px;padding:10px 15px;min-height:48px}
+.hero-art{height:350px;margin:10px 10px 35px 0;align-self:auto}
+.hero-art:before{inset:7% -5% 4% 4%}.photo-cut{max-height:350px;height:100%}
+.section{padding:55px 0 64px}.section:before{top:27px;height:21px}
+.section-top{align-items:start}.stamp-title{font-size:clamp(54px,12vw,78px);line-height:.88}
+.split-title{font-size:clamp(49px,11vw,73px)}
+.section-top>.text-link{display:none}
+.show-grid,.video-grid,.bio-grid,.story-card,.contact-grid{grid-template-columns:minmax(0,1fr)}
+.show-card{min-height:155px;grid-template-columns:69px minmax(0,1fr);padding:14px}
+.show-info h3{font-size:24px}.show-date strong{font-size:47px}
+.video-grid{gap:28px}
+.bio-photo{margin-inline:10px 16px;max-width:420px}
+.story-card{padding:13px;gap:20px}
+.story-card>img{max-height:260px}.story-card .stamp-title{font-size:60px}
+.gallery-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:15px 5px 22px;gap:16px}
+.polaroid{flex:0 0 min(70vw,260px);scroll-snap-align:center;transform:none}
+.polaroid img{height:240px}
+.contact-form{padding:16px}
+.footer-inner{align-items:flex-start;flex-direction:column}.footer-inner nav{gap:12px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+</style></head><body>
+<header class="site-header"><nav class="site-nav wrap" aria-label="Navegación principal">
+<a class="brand" href="#inicio" aria-label="Ricardo Bisignano, inicio"><span>Ricardo</span><span>Bisignano</span></a>
+<div class="site-links"><a href="#funciones">Funciones</a><a href="#videos">Videos</a><a href="#sobre-mi">Sobre mí</a><a href="#galeria">Galería</a><a href="#contrataciones">Contrataciones</a></div>
+<a class="small-cta" href="#funciones">Entradas <span aria-hidden="true">→</span></a>
+</nav></header>
+<main>
+<section class="hero" id="inicio" aria-labelledby="principal-titulo">
 <div class="hero-grid wrap">
-<div class="hero-copy reveal">
-<p class="eyebrow">Comediante · actor · músico</p>
-<h1 class="hero-title black">Ricardo<span class="accent">Bisignano</span></h1>
-<p class="hero-line">Stand up y canciones improvisadas.</p>
-<div class="hero-actions">
-<a class="btn btn-primary" href="#funciones" data-scroll-to="funciones">Ver funciones y entradas <i class="fa-solid fa-arrow-down"></i></a>
-</div>
-</div>
-<div class="hero-art reveal">
-<img alt="Ricardo Bisignano sentado con su guitarra" class="hero-photo" decoding="async" height="1542" src="assets/ricardo-guitarra-85.webp" fetchpriority="high" width="1020"/>
-<div class="hero-stamp"><span><i class="fa-solid fa-microphone-lines"></i>La posta<br/>está en vivo</span></div>
-</div>
-</div>
-</section>
-<section class="agenda" id="funciones">
-<div class="wrap">
-<div class="section-head reveal">
-<div><h2 class="section-title black">Funciones y entradas</h2></div>
-</div>
-<div class="gig-list">
-<div class="gig reveal">
-<div class="gig-date"><strong>03 OCT</strong><span>Sábado</span></div>
-<h3 class="gig-place">San Miguel · Bodegón Alexis</h3>
-<div class="gig-meta"><strong>22:00 hs</strong>Reservas: 11 2697-7495</div>
-<a class="btn btn-primary" href="https://wa.me/541126977495?text=Hola%2C%20quiero%20reservar%20para%20el%20show%20de%20Ricardo%20Bisignano%20del%20s%C3%A1bado%203%20de%20octubre%20en%20Bodeg%C3%B3n%20Alexis." data-analytics-event="ClickEntradas_03Oct_SanMiguel" target="_blank" rel="noopener noreferrer" aria-label="Reservar por WhatsApp en Bodegón Alexis para el show del 3 de octubre">Reservar por WhatsApp <i class="fa-brands fa-whatsapp"></i></a>
-</div>
-<div class="gig reveal">
-<div class="gig-date"><strong>04 OCT</strong><span>Domingo</span></div>
-<h3 class="gig-place">Belgrano · El Stand Up Improvisa</h3>
-<div class="gig-meta"><strong>20:00 hs</strong>La Sodería · Belgrano · Vidal 2549</div>
-<a class="btn btn-primary" href="https://www.alternativa.ar/obra102987-el-stand-up-improvisa" data-analytics-event="ClickEntradas_04Oct_Belgrano" target="_blank" rel="noopener noreferrer" aria-label="Ver entradas del show El stand up improvisa del 4 de octubre en Alternativa">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
-</div>
-<div class="gig reveal">
-<div class="gig-date"><strong>10 OCT</strong><span>Sábado</span></div>
-<h3 class="gig-place">Merlo · La Positiva Bar</h3>
-<div class="gig-meta"><strong>22:00 hs</strong>Riobamba 742, Merlo</div>
-<a class="btn btn-primary" href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-merlo-tickets-2002015599551" data-analytics-event="ClickEntradas_10Oct_Merlo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 10 de octubre en La Positiva Bar en Eventbrite">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
-</div>
-<div class="gig reveal">
-<div class="gig-date"><strong>15 OCT</strong><span>Jueves</span></div>
-<h3 class="gig-place">Ramos Mejía · Valinor</h3>
-<div class="gig-meta"><strong>21:00 hs</strong>Entrada gratuita · Reservá por FlashPass</div>
-<a class="btn btn-primary" href="https://events.flashpass.com.ar/eventos/ricardo-bisignano-en-valinor-9966" data-analytics-event="ClickEntradas_15Oct_RamosMejia" target="_blank" rel="noopener noreferrer" aria-label="Reservar entrada para el 15 de octubre en Valinor por FlashPass">Reservar <i class="fa-solid fa-ticket"></i></a>
-</div>
-<div class="gig reveal">
-<div class="gig-date"><strong>16 OCT</strong><span>Viernes</span></div>
-<h3 class="gig-place">Palermo · Taburete Comedia</h3>
-<div class="gig-meta"><strong>20:30 hs</strong>Thames 1511, Palermo</div>
-<a class="btn btn-primary" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2754" data-analytics-event="ClickEntradas_16Oct_Palermo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 16 de octubre en Taburete Comedia">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
-</div>
-</div>
-</div>
-</section>
-<section class="reel" id="en-escena">
-<div class="wrap">
-<div class="reel-head reveal">
-<div><h2 class="section-title black">Videos</h2></div>
-<a class="btn btn-outline" href="https://www.youtube.com/@Ricardo.Bisignano" rel="noopener" target="_blank">Canal completo <i class="fa-brands fa-youtube"></i></a>
-</div>
-<div class="channel-player reveal">
-<div class="channel-screen"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" id="channel-video" loading="lazy" src="https://www.youtube.com/embed/mgwecMhNNtE?rel=0&amp;modestbranding=1" title="Videos de Ricardo Bisignano"></iframe></div>
-<div class="channel-controls">
-<button aria-label="Video anterior" class="player-arrow" id="video-previous" type="button"><i class="fa-solid fa-arrow-left"></i></button>
-<div aria-label="Seleccionar video" class="player-progress" id="video-progress"></div>
-<div class="player-end"><span class="player-count" id="video-count">01 / 08</span><button aria-label="Video siguiente" class="player-arrow" id="video-next" type="button"><i class="fa-solid fa-arrow-right"></i></button></div>
-</div>
-</div>
-</div>
-</section>
-<section class="identity" id="ricardo">
-<div class="identity-grid wrap">
-<div class="portrait-frame reveal"><img alt="Ricardo Bisignano tocando la guitarra en Comedy Central" class="portrait" decoding="async" height="1066" loading="lazy" src="assets/ricardo-comedy-central.webp" width="1600"/></div>
-<div class="reveal">
-<h2 class="identity-title black">Sobre mí</h2>
-<p class="identity-copy"><strong>Soy Ricardo Bisignano, comediante, actor y músico argentino.</strong> Arranqué tocando la guitarra en los colectivos en el 2001 y desde ahí me dedico a hacer reír: teatro, stand up, tele, un poco de todo.</p>
-<p class="identity-copy">Formé parte de Comedy Central Stand-Up Argentina y pasé por programas como Bendita TV, Hora de Reír e Informadísimos. Con mis unipersonales <em>“Viste?”</em> y <em>“Sin Calle”</em> recorrí provincias y países limítrofes.</p>
-<p class="identity-copy">Hoy comparto fragmentos en Instagram, YouTube, TikTok y Facebook, pero la experiencia completa está en el teatro. Podés ver videos en redes, pero la posta está en vivo ;)</p>
-<div class="credits"><span class="credit">Comedy Central</span><span class="credit">Bendita TV</span><span class="credit">Hora de Reír</span><span class="credit">Giras nacionales</span></div>
-</div>
-</div>
-</section>
-<section aria-labelledby="bondi-titulo" class="bondi-feature" id="el-pibe-del-bondi">
-<div class="wrap">
-<div aria-label="El pibe del bondi" class="bondi-card reveal">
-<div class="bondi-visual">
-<img alt="Ricardo Bisignano joven con su guitarra" decoding="async" height="1254" loading="lazy" src="assets/pibe-del-bondi.webp" width="1254"/>
-<span class="bondi-year">Buenos Aires · 2001</span>
-</div>
-<div class="bondi-copy">
-<p class="bondi-kicker">Historia en cuatro capítulos</p>
-<h2 class="bondi-title" id="bondi-titulo"><span>El pibe</span><span>del bondi</span></h2>
-<p class="bondi-excerpt">Toqué la guitarra en los colectivos durante más de 10 años.</p>
-<a aria-label="Leer el capítulo uno de El Pibe del Bondi" class="bondi-cta" data-open-story="" href="#leer-el-pibe-del-bondi">Leer capítulo 1 <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>
-</div>
-</div>
-
-</div>
-</section>
-<section aria-labelledby="galeria-titulo" class="gallery">
-<div class="wrap">
-<div class="section-head reveal"><div><h2 class="section-title black" id="galeria-titulo">Fotos</h2></div></div>
-<div aria-label="Galería de fotos de Ricardo Bisignano" class="gallery-grid reveal" id="photo-gallery" role="region" tabindex="0">
-<figure><img alt="Ricardo Bisignano con su guitarra" decoding="async" height="1445" loading="lazy" src="assets/ricardo-guitarra-galeria.webp" width="1089"/></figure>
-<figure><img alt="Ricardo Bisignano tocando la guitarra en Comedy Central" decoding="async" height="1066" loading="lazy" src="assets/ricardo-comedy-central.webp" width="1600"/></figure>
-<figure><img alt="Ricardo Bisignano con micrófono en Comedy Central" decoding="async" height="1311" loading="lazy" src="assets/ricardo-comedy-central-microfono.webp" width="1200"/></figure>
-<figure><img alt="Ricardo Bisignano con micrófono en escena" decoding="async" height="1029" loading="lazy" src="assets/ricardo-en-escena.webp" width="1000"/></figure>
-<figure><img alt="Ricardo Bisignano tocando la guitarra en vivo" decoding="async" height="933" loading="lazy" src="assets/ricardo-gira-guitarra.webp" width="1400"/></figure>
-</div>
-<div aria-label="Controles de la galería" class="gallery-controls">
-<button aria-controls="photo-gallery" aria-label="Foto anterior" disabled id="gallery-previous" type="button"><i aria-hidden="true" class="fa-solid fa-arrow-left"></i></button>
-<span aria-live="polite" class="gallery-count" id="gallery-count">01 / 05</span>
-<button aria-controls="photo-gallery" aria-label="Foto siguiente" id="gallery-next" type="button"><i aria-hidden="true" class="fa-solid fa-arrow-right"></i></button>
-</div>
-</div>
-</section>
-<section class="booking" id="contrataciones">
-<div class="booking-grid wrap">
-<div class="reveal">
-<h2 class="booking-title black">Contrataciones</h2>
-<p class="booking-copy">Shows para teatros, bares, eventos privados y empresariales.</p>
-</div>
-<form action="https://formspree.io/f/xyznzwog" class="form reveal" method="post">
-<div class="form-grid"><input aria-label="Nombre" class="field" name="name" placeholder="Nombre" required="" type="text"/><input aria-label="Email" class="field" name="email" placeholder="Email" required="" type="email"/></div>
-<textarea aria-label="Mensaje" class="field" name="message" placeholder="Contanos sobre el evento" required=""></textarea>
-<button class="btn btn-dark" type="submit">Consultar disponibilidad <i class="fa-solid fa-paper-plane"></i></button>
-</form>
-</div>
-</section>
-</main><footer class="footer">
-<div class="footer-grid wrap">
-<a class="logo" href="#inicio"><span class="logo-mark">RB</span><span class="logo-name">Ricardo<br/>Bisignano</span></a>
-<div class="socials"><a aria-label="Instagram" class="social" href="https://www.instagram.com/ricardo.bisignano/" rel="noopener" target="_blank"><i class="fa-brands fa-instagram"></i></a><a aria-label="YouTube" class="social" href="https://www.youtube.com/@Ricardo.Bisignano" rel="noopener" target="_blank"><i class="fa-brands fa-youtube"></i></a><a aria-label="Facebook" class="social" href="https://www.facebook.com/BisignanoOK/" rel="noopener" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></div>
-<p class="copyright">© 2026 Ricardo Bisignano</p>
-</div>
-</footer></div><div aria-hidden="true" class="app-view story-shell" hidden="" id="story-view"><header class="story-topbar">
-<nav aria-label="Navegación del relato" class="story-nav wrap">
-<a aria-label="Volver al sitio de Ricardo Bisignano" class="logo" data-close-story="" href="#inicio">
-<span class="logo-mark">RB</span>
-<span class="logo-name">Ricardo<br/>Bisignano</span>
-</a>
-<a class="story-back-top" data-close-story="" href="#el-pibe-del-bondi">
-<i aria-hidden="true" class="fa-solid fa-arrow-left"></i> Volver al sitio
-    </a>
-</nav>
-</header><main class="story-page" id="historia-el-pibe-del-bondi"><div class="wrap story-reading-wrap"><a class="story-back" data-close-story="" href="#el-pibe-del-bondi">
-<i aria-hidden="true" class="fa-solid fa-arrow-left"></i> Volver
-</a><header aria-labelledby="story-page-title" class="story-intro">
-<p class="bondi-kicker">Historia en cuatro capítulos · Buenos Aires, 2001</p>
-<h1 class="story-page-title" id="story-page-title">El pibe<br/><em>del bondi</em></h1>
-<p class="story-page-deck">Capítulo uno</p>
-</header><article aria-labelledby="capitulo-uno-titulo" class="bondi-story visible" id="capitulo-uno">
-<header class="bondi-story-head">
-<p class="bondi-story-index">Capítulo 1 de 4</p>
-<h3 class="bondi-chapter-title" id="capitulo-uno-titulo">Capítulo <em>uno</em></h3>
-</header>
-<div class="bondi-prose">
+<div class="hero-copy"><p class="hero-kicker">Comediante · actor · músico</p>
+<h1 class="hero-name" id="principal-titulo"><span>Ricardo</span><span>Bisignano</span></h1>
+<p class="hero-description">Stand up y canciones improvisadas.</p>
+<div class="hero-actions"><a class="cta" href="#funciones">Ver funciones <span aria-hidden="true">→</span></a><a class="cta cta-secondary" href="#sobre-mi">Sobre mí <span aria-hidden="true">↓</span></a></div></div>
+<div class="hero-art"><img class="photo-cut" src="assets/ricardo-guitarra-85.webp" width="1020" height="1542" fetchpriority="high" alt="Fotografía original de Ricardo Bisignano con su guitarra"></div>
+</div></section>
+<section class="section shows" id="funciones"><div class="wrap">
+<div class="section-top"><h2 class="stamp-title split-title">Funciones y<br><span>entradas</span></h2></div>
+<div class="show-grid"><article class="show-card">
+<div class="show-date"><span class="date-month">OCT</span><strong>03</strong><small>Sábado</small></div>
+<div class="show-info"><h3>San Miguel · Bodegón Alexis</h3><p>22:00 hs <span class="show-sep">·</span> Reservas: 11 2697-7495</p><a class="ticket" href="https://wa.me/541126977495?text=Hola%2C%20quiero%20reservar%20para%20el%20show%20de%20Ricardo%20Bisignano%20del%20s%C3%A1bado%203%20de%20octubre%20en%20Bodeg%C3%B3n%20Alexis." data-analytics-event="ClickEntradas_03Oct_SanMiguel" aria-label="Reservar por WhatsApp en Bodegón Alexis para el show del 3 de octubre" target="_blank" rel="noopener noreferrer">Reservar por WhatsApp <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="show-card">
+<div class="show-date"><span class="date-month">OCT</span><strong>04</strong><small>Domingo</small></div>
+<div class="show-info"><h3>Belgrano · El Stand Up Improvisa</h3><p>20:00 hs <span class="show-sep">·</span> La Sodería · Belgrano · Vidal 2549</p><a class="ticket" href="https://www.alternativa.ar/obra102987-el-stand-up-improvisa" data-analytics-event="ClickEntradas_04Oct_Belgrano" aria-label="Ver entradas del show El stand up improvisa del 4 de octubre en Alternativa" target="_blank" rel="noopener noreferrer">Comprar entradas <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="show-card">
+<div class="show-date"><span class="date-month">OCT</span><strong>10</strong><small>Sábado</small></div>
+<div class="show-info"><h3>Merlo · La Positiva Bar</h3><p>22:00 hs <span class="show-sep">·</span> Riobamba 742, Merlo</p><a class="ticket" href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-merlo-tickets-2002015599551" data-analytics-event="ClickEntradas_10Oct_Merlo" aria-label="Comprar entradas para el 10 de octubre en La Positiva Bar en Eventbrite" target="_blank" rel="noopener noreferrer">Comprar entradas <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="show-card">
+<div class="show-date"><span class="date-month">OCT</span><strong>15</strong><small>Jueves</small></div>
+<div class="show-info"><h3>Ramos Mejía · Valinor</h3><p>21:00 hs <span class="show-sep">·</span> Entrada gratuita · Reservá por FlashPass</p><a class="ticket" href="https://events.flashpass.com.ar/eventos/ricardo-bisignano-en-valinor-9966" data-analytics-event="ClickEntradas_15Oct_RamosMejia" aria-label="Reservar entrada para el 15 de octubre en Valinor por FlashPass" target="_blank" rel="noopener noreferrer">Reservar <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="show-card">
+<div class="show-date"><span class="date-month">OCT</span><strong>16</strong><small>Viernes</small></div>
+<div class="show-info"><h3>Palermo · Taburete Comedia</h3><p>20:30 hs <span class="show-sep">·</span> Thames 1511, Palermo</p><a class="ticket" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2754" data-analytics-event="ClickEntradas_16Oct_Palermo" aria-label="Comprar entradas para el 16 de octubre en Taburete Comedia" target="_blank" rel="noopener noreferrer">Comprar entradas <span aria-hidden="true">↗</span></a></div>
+</article></div>
+</div></section>
+<section class="section video-section" id="videos"><div class="wrap">
+<div class="section-top"><h2 class="stamp-title">Vid<span>eos</span></h2><a class="text-link" href="https://www.youtube.com/@Ricardo.Bisignano" target="_blank" rel="noopener noreferrer">Canal completo →</a></div>
+<div class="video-grid"><article class="video-card"><button class="video-thumb" type="button" data-video="mgwecMhNNtE" aria-label="Reproducir video 1 de Ricardo Bisignano"><img loading="lazy" decoding="async" width="480" height="270" src="https://i.ytimg.com/vi/mgwecMhNNtE/hqdefault.jpg" alt="Fotograma real del video 1 de Ricardo Bisignano"><span class="play" aria-hidden="true">▶</span></button><p>Video 01 · Ricardo Bisignano</p></article>
+<article class="video-card"><button class="video-thumb" type="button" data-video="ik9U5Fe7h0Y" aria-label="Reproducir video 2 de Ricardo Bisignano"><img loading="lazy" decoding="async" width="480" height="270" src="https://i.ytimg.com/vi/ik9U5Fe7h0Y/hqdefault.jpg" alt="Fotograma real del video 2 de Ricardo Bisignano"><span class="play" aria-hidden="true">▶</span></button><p>Video 02 · Ricardo Bisignano</p></article>
+<article class="video-card"><button class="video-thumb" type="button" data-video="r2ao-fpUy88" aria-label="Reproducir video 3 de Ricardo Bisignano"><img loading="lazy" decoding="async" width="480" height="270" src="https://i.ytimg.com/vi/r2ao-fpUy88/hqdefault.jpg" alt="Fotograma real del video 3 de Ricardo Bisignano"><span class="play" aria-hidden="true">▶</span></button><p>Video 03 · Ricardo Bisignano</p></article></div>
+</div></section>
+<section class="section bio-section" id="sobre-mi"><div class="wrap">
+<div class="bio-grid"><div class="bio-copy"><h2 class="stamp-title">Sobre <span>mí</span></h2>
+<p><strong>Soy Ricardo Bisignano, comediante, actor y músico argentino.</strong> Arranqué tocando la guitarra en los colectivos en el 2001 y desde ahí me dedico a hacer reír: teatro, stand up, tele, un poco de todo.</p>
+<p>Formé parte de Comedy Central Stand-Up Argentina y pasé por programas como Bendita TV, Hora de Reír e Informadísimos. Con mis unipersonales <em>“Viste?”</em> y <em>“Sin Calle”</em> recorrí provincias y países limítrofes.</p>
+</div><figure class="bio-photo"><img src="assets/ricardo-comedy-central.webp" width="1600" height="1066" alt="Fotografía original de Ricardo Bisignano tocando la guitarra en Comedy Central" loading="lazy" decoding="async"></figure></div>
+</div></section>
+<section class="section story-section" id="pibe-del-bondi"><div class="wrap">
+<div class="story-card"><img src="assets/pibe-del-bondi.webp" width="1254" height="1254" alt="Fotografía original de Ricardo Bisignano de joven con su guitarra" loading="lazy" decoding="async"><div>
+<h2 class="stamp-title">El pibe<br><span>del bondi</span></h2><p>Toqué la guitarra en los colectivos durante más de 10 años.</p><a href="#leer-historia" class="cta cta-secondary">Leer la historia ↓</a></div></div>
+<details class="story-body" id="leer-historia"><summary>El pibe del bondi · Leer el capítulo 1</summary>
 <p>Toqué la guitarra en los colectivos durante más de 10 años. Empecé en el 2001, había bajado 35 kilos con la dieta de De La Rúa y Duhalde y se me dio por agregarle algo de ejercicio.</p>
 <p>Vivía con mi vieja y ni ella ni yo teníamos laburo, no había laburo. Habíamos intentado poner un delivery de comida casera para la gente del barrio y con eso tiramos unos meses medio a regañadientes, hasta que un día no nos llamó más nadie para hacer pedidos.</p>
 <p>“¡Cómo bajó el laburo de golpe!” Dijo mi vieja. Nos habían cortado el teléfono. La deuda era impagable. Estábamos desesperados y fue justo ahí cuando surgió lo de los bondis.</p>
@@ -1696,292 +220,44 @@
 <p>A los pocos días conocí a Mate Cocido, otro pibe que toca en los bondis, muy conocido en la calle, otros lo conocen como Jeremías, o Javier, es flaco, con bigote, cara de culo y una actitud muy Charly García. Lo primero que hizo fue aplicarme la mafia...</p>
 <p>“Somos muchos acá”, me dijo, pero al ver que seguía yendo cada día a la misma parada se dió por vencido y pegamos buena onda. Me dijo algo que me sirvió muchísimo “La diferencia de una gorra de mierda como las que hacés vos y una gorra copada de $10 como las que hago no está en si cantás bien o mal, si cantás bien mejor, la clave está en que la gente “cranee” que “flashee”, que se quede pensando” (En esa época él hacía gorras de $5 promedio)</p>
 <p class="bondi-ending">Me subí al primer bondi y empecé a tratar de llamarles la atención, de hacer que se rían, y lo logré, empezaron a reír, de a 2 0 3 personas, seguí improvisando, ya se reían como 10, era un colectivo de 15 personas, me bajé con $5,40 y ese día empecé a vivir del humor, <strong>como el culo pero vivir al fin.</strong></p>
-</div>
-</article><div class="article-footer-link">
-<a data-close-story="" href="#el-pibe-del-bondi">
-<i aria-hidden="true" class="fa-solid fa-arrow-left"></i> Volver al sitio
-  </a>
-</div></div></main><footer class="footer story-footer">
-<div class="footer-grid wrap">
-<a class="logo" data-close-story="" href="#inicio"><span class="logo-mark">RB</span><span class="logo-name">Ricardo<br/>Bisignano</span></a>
-<div class="socials"><a aria-label="Instagram" class="social" href="https://www.instagram.com/ricardo.bisignano/" rel="noopener" target="_blank"><i class="fa-brands fa-instagram"></i></a><a aria-label="YouTube" class="social" href="https://www.youtube.com/@Ricardo.Bisignano" rel="noopener" target="_blank"><i class="fa-brands fa-youtube"></i></a><a aria-label="Facebook" class="social" href="https://www.facebook.com/BisignanoOK/" rel="noopener" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></div>
-<p class="copyright">© 2026 Ricardo Bisignano</p>
-</div>
-</footer></div><script>
-    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-    }), { threshold: .1 });
-    document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
-
-    const channelVideos = ['mgwecMhNNtE','ik9U5Fe7h0Y','r2ao-fpUy88','HWz5htm6BmE','uF0v_gtMUPs','15VzU45AfA8','0rXPMk4u7bE','sfVU02ynAnE'];
-    const channelFrame = document.getElementById('channel-video');
-    const channelProgress = document.getElementById('video-progress');
-    const channelCount = document.getElementById('video-count');
-    let channelIndex = 0;
-    function showChannelVideo(index, autoplay = true) {
-      channelIndex = (index + channelVideos.length) % channelVideos.length;
-      channelFrame.src = `https://www.youtube.com/embed/${channelVideos[channelIndex]}?rel=0&modestbranding=1${autoplay ? '&autoplay=1' : ''}`;
-      [...channelProgress.children].forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === channelIndex));
-      channelCount.textContent = `${String(channelIndex + 1).padStart(2,'0')} / ${String(channelVideos.length).padStart(2,'0')}`;
-    }
-    channelVideos.forEach((_, index) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'player-dot';
-      dot.setAttribute('aria-label', `Ver video ${index + 1}`);
-      dot.addEventListener('click', () => showChannelVideo(index));
-      channelProgress.appendChild(dot);
-    });
-    document.getElementById('video-previous').addEventListener('click', () => showChannelVideo(channelIndex - 1));
-    document.getElementById('video-next').addEventListener('click', () => showChannelVideo(channelIndex + 1));
-    showChannelVideo(0, false);
-
-    const photoGallery = document.getElementById('photo-gallery');
-    const photoSlides = [...photoGallery.querySelectorAll('figure')];
-    const galleryPrevious = document.getElementById('gallery-previous');
-    const galleryNext = document.getElementById('gallery-next');
-    const galleryCount = document.getElementById('gallery-count');
-    let galleryIndex = 0;
-    const photoOffset = slide => slide.getBoundingClientRect().left - photoGallery.getBoundingClientRect().left + photoGallery.scrollLeft;
-
-    function updateGallery() {
-      galleryIndex = photoSlides.reduce((best, slide, index) =>
-        Math.abs(photoOffset(slide) - photoGallery.scrollLeft) < Math.abs(photoOffset(photoSlides[best]) - photoGallery.scrollLeft) ? index : best, 0);
-      galleryCount.textContent = `${String(galleryIndex + 1).padStart(2, '0')} / ${String(photoSlides.length).padStart(2, '0')}`;
-      galleryPrevious.disabled = galleryIndex === 0;
-      galleryNext.disabled = galleryIndex === photoSlides.length - 1;
-      photoGallery.style.height = window.matchMedia('(max-width: 700px)').matches
-        ? `${photoSlides[galleryIndex].offsetHeight + 18}px` : '';
-    }
-
-    function showGalleryPhoto(index) {
-      const nextIndex = Math.max(0, Math.min(photoSlides.length - 1, index));
-      photoGallery.scrollTo({
-        left: photoOffset(photoSlides[nextIndex]),
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
-      });
-    }
-
-    galleryPrevious.addEventListener('click', () => showGalleryPhoto(galleryIndex - 1));
-    galleryNext.addEventListener('click', () => showGalleryPhoto(galleryIndex + 1));
-    photoGallery.addEventListener('keydown', event => {
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-        event.preventDefault();
-        showGalleryPhoto(galleryIndex + (event.key === 'ArrowRight' ? 1 : -1));
-      }
-    });
-    let galleryFrame = 0;
-    photoGallery.addEventListener('scroll', () => {
-      if (!galleryFrame) galleryFrame = requestAnimationFrame(() => { galleryFrame = 0; updateGallery(); });
-    }, { passive: true });
-    photoSlides.forEach(slide => slide.querySelector('img').addEventListener('load', updateGallery));
-    window.addEventListener('resize', updateGallery);
-    updateGallery();
-
-    const mobileBuy = document.querySelector('.mobile-buy');
-    const bookingSection = document.getElementById('contrataciones');
-    if (mobileBuy && bookingSection) {
-      new IntersectionObserver(([entry]) => mobileBuy.classList.toggle('is-hidden', entry.isIntersecting), { threshold: .12 }).observe(bookingSection);
-    }
-  </script>
+</details>
+</div></section>
+<section class="section gallery-section" id="galeria"><div class="wrap">
+<div class="section-top"><h2 class="stamp-title">Galer<span>ía</span></h2></div>
+<div class="gallery-grid" aria-label="Galería de cinco fotografías originales de Ricardo Bisignano"><button class="polaroid" type="button" data-photo="assets/ricardo-guitarra-galeria.webp" data-caption="Ricardo Bisignano con guitarra en escena" aria-label="Ampliar foto 1: Ricardo Bisignano con guitarra en escena"><img src="assets/ricardo-guitarra-galeria.webp" alt="Ricardo Bisignano con guitarra en escena" loading="lazy" decoding="async"><span>01 / 05</span></button>
+<button class="polaroid" type="button" data-photo="assets/ricardo-comedy-central.webp" data-caption="Ricardo Bisignano tocando en Comedy Central" aria-label="Ampliar foto 2: Ricardo Bisignano tocando en Comedy Central"><img src="assets/ricardo-comedy-central.webp" alt="Ricardo Bisignano tocando en Comedy Central" loading="lazy" decoding="async"><span>02 / 05</span></button>
+<button class="polaroid" type="button" data-photo="assets/ricardo-comedy-central-microfono.webp" data-caption="Ricardo Bisignano con micrófono en Comedy Central" aria-label="Ampliar foto 3: Ricardo Bisignano con micrófono en Comedy Central"><img src="assets/ricardo-comedy-central-microfono.webp" alt="Ricardo Bisignano con micrófono en Comedy Central" loading="lazy" decoding="async"><span>03 / 05</span></button>
+<button class="polaroid" type="button" data-photo="assets/ricardo-en-escena.webp" data-caption="Ricardo Bisignano en el escenario" aria-label="Ampliar foto 4: Ricardo Bisignano en el escenario"><img src="assets/ricardo-en-escena.webp" alt="Ricardo Bisignano en el escenario" loading="lazy" decoding="async"><span>04 / 05</span></button>
+<button class="polaroid" type="button" data-photo="assets/ricardo-gira-guitarra.webp" data-caption="Ricardo Bisignano tocando la guitarra en vivo" aria-label="Ampliar foto 5: Ricardo Bisignano tocando la guitarra en vivo"><img src="assets/ricardo-gira-guitarra.webp" alt="Ricardo Bisignano tocando la guitarra en vivo" loading="lazy" decoding="async"><span>05 / 05</span></button></div>
+</div></section>
+<section class="section contact-section" id="contrataciones"><div class="wrap">
+<div class="contact-grid"><div class="contact-copy"><h2 class="stamp-title">Contra<span>taciones</span></h2><p>Shows para teatros, bares, eventos privados y empresariales.</p></div>
+<form class="contact-form" action="https://formspree.io/f/xyznzwog" method="post">
+<label for="nombre">Nombre</label><input id="nombre" name="name" autocomplete="name" required placeholder="Nombre">
+<label for="email">Email</label><input id="email" type="email" name="email" autocomplete="email" required placeholder="Email">
+<label for="mensaje">Mensaje</label><textarea id="mensaje" name="message" required placeholder="Contanos sobre el evento"></textarea>
+<button class="send" type="submit">Consultar disponibilidad →</button></form></div>
+</div></section>
+</main>
+<footer><div class="footer-inner wrap"><a class="brand" href="#inicio"><span>Ricardo</span><span>Bisignano</span></a><nav aria-label="Navegación de pie de página"><a href="#funciones">Funciones</a><a href="#videos">Videos</a><a href="#sobre-mi">Sobre mí</a><a href="#galeria">Galería</a><a href="#contrataciones">Contrataciones</a><a href="https://www.instagram.com/ricardo.bisignano/" rel="noopener noreferrer" target="_blank">Instagram</a></nav><p>© 2026 Ricardo Bisignano</p></div></footer>
+<dialog class="media-dialog" id="video-dialog" aria-label="Reproductor de video"><div class="media-inner"><button class="close-dialog" type="button" data-close>✕ Cerrar video</button><iframe id="selected-video" title="Video de Ricardo Bisignano" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></dialog>
+<dialog class="media-dialog" id="photo-dialog" aria-label="Fotografía ampliada"><div class="media-inner"><button class="close-dialog" type="button" data-close>✕ Cerrar foto</button><img id="selected-photo" alt="" src="assets/ricardo-guitarra-galeria.webp"></div></dialog>
 <script>
-    (() => {
-      const homeView = document.getElementById('home-view');
-      const storyView = document.getElementById('story-view');
-      const storyHash = '#leer-el-pibe-del-bondi';
-      let homeScrollY = 0;
-
-      function isStoryOpen() {
-        return document.body.classList.contains('story-open');
-      }
-
-      function setStoryOpen(open, { restoreScroll = true } = {}) {
-        if (!homeView || !storyView) return;
-        const wasOpen = isStoryOpen();
-        if (open === wasOpen) return;
-
-        if (open) {
-          homeScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-          homeView.hidden = true;
-          storyView.hidden = false;
-          storyView.setAttribute('aria-hidden', 'false');
-          document.body.classList.add('story-open');
-          document.title = 'El Pibe del Bondi — Ricardo Bisignano';
-          window.scrollTo(0, 0);
-          const article = document.getElementById('capitulo-uno');
-          if (article) article.classList.add('visible');
-        } else {
-          storyView.hidden = true;
-          storyView.setAttribute('aria-hidden', 'true');
-          homeView.hidden = false;
-          document.body.classList.remove('story-open');
-          document.title = 'Ricardo Bisignano — Stand up en vivo';
-          if (restoreScroll && wasOpen) {
-            const y = homeScrollY;
-            setTimeout(function () { window.scrollTo(0, y); }, 0);
-          }
-        }
-      }
-
-      function getScrollTop() {
-        return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      }
-
-      function scrollToSection(id) {
-        var target = document.getElementById(id);
-        if (!target) return false;
-
-        if (isStoryOpen()) {
-          setStoryOpen(false, { restoreScroll: false });
-        }
-
-        var topbar = document.querySelector('.topbar');
-        var offset = topbar ? topbar.offsetHeight : 0;
-        var rect = target.getBoundingClientRect();
-        var y = Math.round(rect.top + getScrollTop() - offset - 4);
-
-        // Triple fallback para iOS / Android / desktop
-        document.documentElement.scrollTop = y;
-        document.body.scrollTop = y;
-        window.scrollTo(0, y);
-
-        setTimeout(function () {
-          var now = target.getBoundingClientRect().top;
-          if (now > offset + 30 || now < -10) {
-            var y2 = Math.round(target.getBoundingClientRect().top + getScrollTop() - offset - 4);
-            document.documentElement.scrollTop = y2;
-            document.body.scrollTop = y2;
-            window.scrollTo(0, y2);
-          }
-        }, 50);
-
-        setTimeout(function () {
-          target.scrollIntoView(true);
-          var y3 = getScrollTop() - offset;
-          if (offset) window.scrollTo(0, Math.max(0, getScrollTop() - 0));
-          // re-ajustar por topbar fijo
-          var adj = target.getBoundingClientRect().top - offset - 4;
-          if (Math.abs(adj) > 4) {
-            window.scrollTo(0, getScrollTop() + adj);
-          }
-        }, 100);
-
-        return true;
-      }
-
-      // Expone por si se necesita desde HTML
-      window.scrollToSection = scrollToSection;
-
-      document.addEventListener('click', function (event) {
-        var openLink = event.target.closest('[data-open-story]');
-        if (openLink) {
-          event.preventDefault();
-          homeScrollY = getScrollTop();
-          history.pushState({ view: 'story' }, '', storyHash);
-          setStoryOpen(true);
-          return;
-        }
-
-        var closeLink = event.target.closest('[data-close-story]');
-        if (closeLink) {
-          event.preventDefault();
-          var targetHash = closeLink.getAttribute('href') || '#el-pibe-del-bondi';
-          history.pushState({ view: 'home' }, '', targetHash);
-          setStoryOpen(false, { restoreScroll: false });
-          var closeId = targetHash.replace(/^#/, '');
-          setTimeout(function () { scrollToSection(closeId); }, 0);
-          return;
-        }
-
-        var link = event.target.closest('[data-scroll-to], a[href^="#"]');
-        if (!link) return;
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-
-        var id = link.getAttribute('data-scroll-to');
-        if (!id) {
-          var href = link.getAttribute('href') || '';
-          if (!href || href.charAt(0) !== '#' || href === '#' || href === storyHash) return;
-          id = href.slice(1);
-        }
-        if (!id || !document.getElementById(id)) return;
-
-        event.preventDefault();
-        event.stopPropagation();
-        try {
-          if (location.hash !== '#' + id) history.pushState({ view: 'home' }, '', '#' + id);
-        } catch (err) {}
-        scrollToSection(id);
-      }, true);
-
-      window.addEventListener('popstate', function () {
-        if (location.hash === storyHash) {
-          setStoryOpen(true, { restoreScroll: false });
-        } else {
-          var wasOpen = isStoryOpen();
-          setStoryOpen(false, { restoreScroll: wasOpen });
-          var id = (location.hash || '').replace(/^#/, '');
-          if (id && document.getElementById(id)) {
-            setTimeout(function () { scrollToSection(id); }, 0);
-          }
-        }
-      });
-
-      if (location.hash === storyHash) {
-        setStoryOpen(true, { restoreScroll: false });
-      }
-    })();
-</script>
-<script>
-    // Cuenta clics por función con el Meta Pixel existente; no registra ventas.
-    document.addEventListener('click', function (event) {
-      const link = event.target.closest('#funciones .gig a[data-analytics-event]');
-      if (!link || typeof window.fbq !== 'function') return;
-      window.fbq('trackCustom', link.getAttribute('data-analytics-event'));
-    }, true);
-</script>
-<dialog class="photo-lightbox" id="photo-lightbox" aria-label="Foto ampliada">
-<button class="photo-lightbox-close" type="button" aria-label="Cerrar foto ampliada" autofocus>×</button>
-<img alt="" id="photo-lightbox-image"/>
-</dialog>
-<script>
-(() => {
-  const dialog = document.getElementById('photo-lightbox');
-  const enlarged = document.getElementById('photo-lightbox-image');
-  const closeButton = dialog.querySelector('button');
-  let previousOverflow = '';
-  let opener = null;
-  function openPhoto(photo) {
-    if (dialog.open) return;
-    opener = photo;
-    enlarged.src = photo.currentSrc || photo.src;
-    enlarged.alt = photo.alt;
-    previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    dialog.showModal();
-  }
-  document.querySelectorAll('#home-view img').forEach(photo => {
-    photo.tabIndex = 0;
-    photo.setAttribute('role', 'button');
-    photo.setAttribute('aria-haspopup', 'dialog');
-    photo.setAttribute('aria-label', 'Ampliar foto: ' + photo.alt);
-    photo.addEventListener('click', () => openPhoto(photo));
-    photo.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        openPhoto(photo);
-      }
-    });
-  });
-  closeButton.addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => {
-    if (event.target === dialog) dialog.close();
-  });
-  dialog.addEventListener('close', () => {
-    document.body.style.overflow = previousOverflow;
-    if (opener) opener.focus({ preventScroll: true });
-    enlarged.removeAttribute('src');
-  });
-})();
-</script>
-</body>
-</html>
+const videoDialog=document.getElementById("video-dialog");
+const selectedVideo=document.getElementById("selected-video");
+document.querySelectorAll("[data-video]").forEach(button=>button.addEventListener("click",()=>{
+ const id=button.dataset.video;
+ if(!/^[A-Za-z0-9_-]{11}$/.test(id))return;
+ selectedVideo.src="https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1&rel=0";
+ videoDialog.showModal();
+}));
+videoDialog.addEventListener("close",()=>{selectedVideo.removeAttribute("src")});
+const photoDialog=document.getElementById("photo-dialog");
+const selectedPhoto=document.getElementById("selected-photo");
+document.querySelectorAll("[data-photo]").forEach(button=>button.addEventListener("click",()=>{
+ selectedPhoto.src=button.dataset.photo;selectedPhoto.alt=button.dataset.caption;photoDialog.showModal();
+}));
+document.querySelectorAll("[data-close]").forEach(button=>button.addEventListener("click",()=>button.closest("dialog").close()));
+[videoDialog,photoDialog].forEach(dialog=>dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close()}));
+document.querySelector('a[href="#leer-historia"]').addEventListener("click",()=>document.getElementById("leer-historia").open=true);
+</script></body></html>
