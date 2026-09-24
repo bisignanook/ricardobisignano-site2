@@ -1389,6 +1389,35 @@
       .gallery .gallery-count { font: 700 .95rem/1 "DM Sans", sans-serif; }
     }
 
+    /* Mantener las fotos completas también fuera del carrusel móvil. */
+    .gallery .gallery-grid img { object-fit: contain; filter: none; }
+    .gallery .gallery-grid figure,
+    .gallery .gallery-grid figure:first-child { background: var(--photo-night); }
+    .gallery .gallery-grid figure:hover img { transform: none; }
+    .identity .portrait { filter: none; }
+    #photo-gallery { scroll-margin-top: 86px; }
+
+    /* Foco perceptible sobre fondos claros y oscuros. */
+    a:focus-visible, button:focus-visible, .field:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 4px;
+    }
+    .footer a:focus-visible, .reel button:focus-visible {
+      outline-color: var(--pastel-yellow);
+    }
+    .nav-compact-buy { display: none; }
+    @media (max-width: 900px) {
+      .nav { justify-content: space-between; gap: .5rem; }
+      .nav-compact-buy {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: .65rem .75rem;
+        flex-shrink: 0;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -1411,6 +1440,7 @@
 <a href="#contrataciones" data-scroll-to="contrataciones">Contrataciones</a>
 <a class="nav-buy" href="#funciones" data-scroll-to="funciones">Comprar entradas</a>
 </div>
+<a class="nav-buy nav-compact-buy" href="#funciones" data-scroll-to="funciones">Entradas</a>
 </nav>
 </header><main>
 <section class="hero" id="inicio">
@@ -1826,3 +1856,4 @@
     }, true);
 </script></body>
 </html>
+
