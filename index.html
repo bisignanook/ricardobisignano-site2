@@ -141,6 +141,7 @@
     .gallery-grid figure:first-child { grid-row: 1 / 3; }
     .gallery-grid img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: transform .5s, filter .5s; }
     .gallery-grid figure:hover img { transform: scale(1.035); filter: grayscale(0); }
+    .gallery-controls { display: none; }
 
     .booking { padding: 8rem 0; color: white; background: var(--orange); }
     .booking-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 7vw; align-items: start; }
@@ -327,7 +328,7 @@
     :root { --orange:#e7462e; --ink:#171715; --paper:#eee9da; --paper-2:#ded8c7; --white:#f8f4e8; --muted:#5d5a51; --line:rgba(23,23,21,.28); }
     body { font-family:"Space Mono",monospace; background-color:var(--paper); background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.017) 0,rgba(0,0,0,.017) 1px,transparent 1px,transparent 4px); }
     .black,.hero-title,.section-title,.identity-title,.booking-title { font-family:"Archivo Black",sans-serif; font-weight:400; letter-spacing:-.055em; text-transform:uppercase; }
-    .topbar { background:rgba(238,233,218,.93); border-bottom:2px solid var(--ink); }
+    .topbar { background:rgba(243,238,229,.96); border-bottom:2px solid var(--ink); }
     .logo-mark { border:2px solid var(--ink); box-shadow:3px 3px 0 var(--shadow-color); }
     .logo-name,.nav-links a:not(.nav-buy),.nav-buy { font-family:"Space Mono",monospace; }
     .nav-buy,.btn { border-radius:0; }
@@ -441,23 +442,25 @@
       .booking .form .btn { min-height:46px; margin-top:1rem; padding:.65rem .75rem; text-align:center; }
     }
 
-    /* Paleta solicitada: carbón, papel y tintas pastel. */
+    /* Papel, tinta, madera de guitarra y azul de las fotos. */
     :root {
-      --orange:#dfe7dc;
-      --ink:#151515;
-      --paper:#f3efe7;
-      --paper-2:#dce8ef;
-      --white:#fffdf8;
-      --muted:#655f58;
-      --pastel-blue:#dce8ef;
-      --pastel-sage:#dfe7dc;
-      --pastel-rose:#ead9dc;
-      --pastel-yellow:#eee4bf;
+      --orange:#994a32;
+      --ink:#1b1c1e;
+      --paper:#f3eee5;
+      --paper-2:#e6ded3;
+      --white:#fffbf4;
+      --muted:#595651;
+      --pastel-blue:#d8e0e0;
+      --pastel-sage:#dadbd2;
+      --pastel-rose:#e7c8b6;
+      --pastel-yellow:#eadbb8;
+      --button-amber:#d1ad72;
+      --photo-night:#1c2733;
       --shadow-color: var(--ink);
     }
     ::selection { color:var(--ink); background:var(--pastel-yellow); }
     .logo-mark { color:var(--ink); background:var(--pastel-rose); box-shadow:3px 3px 0 var(--shadow-color); }
-    .nav-buy,.btn-primary,.mobile-buy { color:var(--ink); background:var(--pastel-sage); }
+    .nav-buy,.btn-primary,.mobile-buy { color:var(--ink); background:var(--button-amber); }
     .nav-buy:hover,.btn-primary:hover { color:var(--ink); background:var(--pastel-yellow); }
     .hero-title .accent { color:var(--ink); background:var(--pastel-rose); }
     .gig:nth-child(1) { background:var(--pastel-yellow); box-shadow:7px 7px 0 var(--shadow-color); }
@@ -467,16 +470,36 @@
     .gratis { color:var(--ink); background:var(--pastel-sage); }
     .channel-player { box-shadow:10px 10px 0 var(--shadow-color); }
     .player-arrow:hover,.player-dot.active { color:var(--ink); background:var(--pastel-yellow); border-color:var(--pastel-yellow); }
-    .identity { background:var(--pastel-blue); }
+    .identity { background:var(--paper-2); }
     .portrait-frame::before { background:var(--ink); }
+    .portrait { filter:none; }
     .credit:nth-child(1) { background:var(--pastel-sage); }
     .credit:nth-child(2) { background:var(--pastel-blue); }
     .credit:nth-child(3) { background:var(--pastel-rose); }
     .credit:nth-child(4) { background:var(--pastel-yellow); }
-    .booking { background:var(--pastel-sage); }
+    .booking { background:var(--pastel-rose); }
     .form { background:var(--white); }
     .form .btn-dark { color:var(--white); background:var(--ink); }
+    .reel,.footer { background:var(--photo-night); }
     .footer { border-top-color:var(--pastel-rose); }
+    .social:hover { color:var(--pastel-yellow); border-color:var(--pastel-yellow); }
+
+    /* Agenda uniforme: fecha, ubicación y acción son la jerarquía principal. */
+    .agenda .gig-list { gap: .75rem; }
+    .agenda .gig,
+    .agenda .gig:nth-child(1),
+    .agenda .gig:nth-child(2),
+    .agenda .gig:nth-child(3) {
+      background: var(--white);
+      border: 1px solid rgba(27,28,30,.3);
+      border-left: 4px solid var(--orange);
+      box-shadow: none;
+      transform: none;
+    }
+    .agenda .gig:hover { padding-inline: 1.6rem; background: var(--white); border-color: var(--ink); box-shadow: 0 5px 0 rgba(27,28,30,.13); transform: none; }
+    .agenda .gig-date strong { color: var(--orange); }
+    .agenda .gig .btn { box-shadow: none; }
+    .agenda .gig .btn:hover { box-shadow: none; }
 
     /* Entrada editorial a El pibe del bondi. */
     .bondi-feature {
@@ -535,9 +558,9 @@
     }
   
 
-    /* Ajustes mínimos: se conserva íntegramente la dirección visual original. */
+    /* Funciones compactas para pantallas chicas. */
     @media (max-width:700px) {
-      /* La función completa ya es el enlace: se elimina el botón redundante. */
+      /* Ciudad, sala y enlace visibles sin depender de hover. */
       .agenda .gig-list { gap:12px; }
       .agenda .gig,
       .agenda .gig:nth-child(1),
@@ -595,7 +618,7 @@
         letter-spacing:.04em;
         text-transform:uppercase;
       }
-      /* En móvil toda la tarjeta activa su enlace de reservas o entradas. */
+      /* El botón conserva el enlace directo a cada reserva o ticketera. */
       .agenda .gratis { display:none; }
       .agenda .gig .btn {
         display:block;
@@ -838,7 +861,7 @@
       top:0;
       z-index:90;
       color:var(--ink);
-      background:rgba(243,239,231,.96);
+      background:rgba(243,238,229,.96);
       border-bottom:2px solid var(--ink);
       backdrop-filter:blur(12px);
     }
@@ -1107,7 +1130,7 @@
     }
     .gallery-grid img {
       opacity: 1;
-      filter: grayscale(15%);
+      filter: none;
     }
 
     .identity-title {
@@ -1195,6 +1218,91 @@
         font-size: clamp(1.55rem, 7.2vw, 2.35rem);
         letter-spacing: -.05em;
       }
+
+      .agenda .gig,
+      .agenda .gig:nth-child(1),
+      .agenda .gig:nth-child(2),
+      .agenda .gig:nth-child(3) { grid-template-rows: auto auto auto; box-shadow: none; }
+      .agenda .gig:hover { padding: 1rem; box-shadow: none; }
+      .agenda .gig-date strong { color: var(--orange); }
+      .agenda .gig-meta { font-size: .74rem; line-height: 1.35; overflow-wrap: anywhere; }
+      .agenda .gig-meta strong { margin-bottom: .3rem; }
+      .agenda .gig .btn {
+        position: relative;
+        inset: auto;
+        z-index: auto;
+        display: inline-flex;
+        grid-column: 1 / -1;
+        grid-row: 3;
+        width: 100%;
+        height: auto;
+        min-height: 46px;
+        margin: .55rem 0 0;
+        padding: .65rem .85rem;
+        border: 2px solid var(--ink);
+        border-radius: 0;
+        color: var(--ink);
+        background: var(--button-amber);
+        font-size: .7rem;
+        line-height: 1.2;
+        opacity: 1;
+      }
+      .agenda .gig .btn:hover { background: var(--pastel-yellow); }
+      .agenda .gig .btn:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+      /* En celular se pueden recorrer las cinco fotos sin recortar la escena. */
+      .gallery-grid {
+        display: flex;
+        align-items: stretch;
+        gap: .75rem;
+        grid-template-columns: none;
+        grid-template-rows: none;
+        margin-inline: -6px;
+        padding: 6px 6px 12px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 6px;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .gallery-grid::-webkit-scrollbar { display: none; }
+      .gallery-grid figure,
+      .gallery-grid figure:first-child,
+      .gallery-grid figure:nth-child(n+4) {
+        display: block;
+        flex: 0 0 calc(100% - 36px);
+        height: clamp(320px, 102vw, 440px);
+        grid-column: auto;
+        grid-row: auto;
+        scroll-snap-align: start;
+        transform: none;
+      }
+      .gallery-grid figure:nth-child(2),
+      .gallery-grid figure:nth-child(3) { transform: none; }
+      .gallery-grid img { object-fit: contain; }
+      .gallery-grid figure:hover img { transform: none; }
+      .gallery-grid:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+      .gallery-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+      .gallery-controls button {
+        width: 46px;
+        height: 46px;
+        border: 2px solid var(--ink);
+        color: var(--ink);
+        background: var(--white);
+        box-shadow: 3px 3px 0 var(--ink);
+        cursor: pointer;
+      }
+      .gallery-controls button:disabled { opacity: .45; cursor: default; box-shadow: none; }
+      .gallery-controls button:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+      .gallery-count { min-width: 5rem; font: 700 .9rem/1 "Space Mono", monospace; text-align: center; }
     }
 
 </style>
@@ -1228,7 +1336,7 @@
 <h1 class="hero-title black">Ricardo<span class="accent">Bisignano</span></h1>
 <p class="hero-line">Stand up y canciones improvisadas.</p>
 <div class="hero-actions">
-<a class="btn btn-primary" href="#funciones" data-scroll-to="funciones">Próximas funciones <i class="fa-solid fa-arrow-down"></i></a>
+<a class="btn btn-primary" href="#funciones" data-scroll-to="funciones">Ver funciones y entradas <i class="fa-solid fa-arrow-down"></i></a>
 </div>
 </div>
 <div class="hero-art reveal">
@@ -1240,7 +1348,7 @@
 <section class="agenda" id="funciones">
 <div class="wrap">
 <div class="section-head reveal">
-<div><h2 class="section-title black">Próximas funciones</h2></div>
+<div><h2 class="section-title black">Funciones y entradas</h2></div>
 </div>
 <div class="gig-list">
 <div class="gig reveal">
@@ -1251,7 +1359,7 @@
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>04 OCT</strong><span>Domingo</span></div>
-<h3 class="gig-place">El Stand Up Improvisa</h3>
+<h3 class="gig-place">Belgrano · El Stand Up Improvisa</h3>
 <div class="gig-meta"><strong>20:00 hs</strong>La Sodería · Belgrano · Vidal 2549</div>
 <a class="btn btn-primary" href="https://www.alternativa.ar/obra102987-el-stand-up-improvisa" data-analytics-event="ClickEntradas_04Oct_Belgrano" target="_blank" rel="noopener noreferrer" aria-label="Ver entradas del show El stand up improvisa del 4 de octubre en Alternativa">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
@@ -1294,7 +1402,7 @@
 </section>
 <section class="identity" id="ricardo">
 <div class="identity-grid wrap">
-<div class="portrait-frame reveal"><img alt="Ricardo Bisignano tocando la guitarra en Comedy Central" class="portrait" loading="lazy" src="https://imgur.com/dKmMeIp.jpeg"/></div>
+<div class="portrait-frame reveal"><img alt="Ricardo Bisignano tocando la guitarra en Comedy Central" class="portrait" decoding="async" height="1066" loading="lazy" src="assets/ricardo-comedy-central.webp" width="1600"/></div>
 <div class="reveal">
 <h2 class="identity-title black">Sobre mí</h2>
 <p class="identity-copy"><strong>Soy Ricardo Bisignano, comediante, actor y músico argentino.</strong> Arranqué tocando la guitarra en los colectivos en el 2001 y desde ahí me dedico a hacer reír: teatro, stand up, tele, un poco de todo.</p>
@@ -1308,7 +1416,7 @@
 <div class="wrap">
 <div aria-label="El pibe del bondi" class="bondi-card reveal">
 <div class="bondi-visual">
-<img alt="Ricardo Bisignano joven con su guitarra" decoding="async" height="1080" loading="lazy" src="assets/pibe-del-bondi.webp" width="1080"/>
+<img alt="Ricardo Bisignano joven con su guitarra" decoding="async" height="1254" loading="lazy" src="assets/pibe-del-bondi.webp" width="1254"/>
 <span class="bondi-year">Buenos Aires · 2001</span>
 </div>
 <div class="bondi-copy">
@@ -1324,12 +1432,17 @@
 <section aria-labelledby="galeria-titulo" class="gallery">
 <div class="wrap">
 <div class="section-head reveal"><div><h2 class="section-title black" id="galeria-titulo">Fotos</h2></div></div>
-<div class="gallery-grid reveal">
-<figure><img alt="Ricardo Bisignano con su guitarra" loading="lazy" src="assets/ricardo-guitarra-galeria.webp"/></figure>
-<figure><img alt="Ricardo Bisignano frente al público" loading="lazy" src="https://imgur.com/dKmMeIp.jpeg"/></figure>
-<figure><img alt="Escena de una función" loading="lazy" src="https://imgur.com/yHAAdlG.jpeg"/></figure>
-<figure><img alt="Ricardo Bisignano durante una gira" loading="lazy" src="https://imgur.com/UJc5c2F.jpeg"/></figure>
-<figure><img alt="Show de Ricardo Bisignano" loading="lazy" src="https://imgur.com/cyzTFVe.jpeg"/></figure>
+<div aria-label="Galería de fotos de Ricardo Bisignano" class="gallery-grid reveal" id="photo-gallery" role="region" tabindex="0">
+<figure><img alt="Ricardo Bisignano con su guitarra" decoding="async" height="1445" loading="lazy" src="assets/ricardo-guitarra-galeria.webp" width="1089"/></figure>
+<figure><img alt="Ricardo Bisignano tocando la guitarra en Comedy Central" decoding="async" height="1066" loading="lazy" src="assets/ricardo-comedy-central.webp" width="1600"/></figure>
+<figure><img alt="Ricardo Bisignano con micrófono en Comedy Central" decoding="async" height="1311" loading="lazy" src="assets/ricardo-comedy-central-microfono.webp" width="1200"/></figure>
+<figure><img alt="Ricardo Bisignano con micrófono en escena" decoding="async" height="1029" loading="lazy" src="assets/ricardo-en-escena.webp" width="1000"/></figure>
+<figure><img alt="Ricardo Bisignano tocando la guitarra en vivo" decoding="async" height="933" loading="lazy" src="assets/ricardo-gira-guitarra.webp" width="1400"/></figure>
+</div>
+<div aria-label="Controles de la galería" class="gallery-controls">
+<button aria-controls="photo-gallery" aria-label="Foto anterior" disabled id="gallery-previous" type="button"><i aria-hidden="true" class="fa-solid fa-arrow-left"></i></button>
+<span aria-live="polite" class="gallery-count" id="gallery-count">01 / 05</span>
+<button aria-controls="photo-gallery" aria-label="Foto siguiente" id="gallery-next" type="button"><i aria-hidden="true" class="fa-solid fa-arrow-right"></i></button>
 </div>
 </div>
 </section>
@@ -1427,6 +1540,45 @@
     document.getElementById('video-previous').addEventListener('click', () => showChannelVideo(channelIndex - 1));
     document.getElementById('video-next').addEventListener('click', () => showChannelVideo(channelIndex + 1));
     showChannelVideo(0, false);
+
+    const photoGallery = document.getElementById('photo-gallery');
+    const photoSlides = [...photoGallery.querySelectorAll('figure')];
+    const galleryPrevious = document.getElementById('gallery-previous');
+    const galleryNext = document.getElementById('gallery-next');
+    const galleryCount = document.getElementById('gallery-count');
+    let galleryIndex = 0;
+    const photoOffset = slide => slide.getBoundingClientRect().left - photoGallery.getBoundingClientRect().left + photoGallery.scrollLeft;
+
+    function updateGallery() {
+      galleryIndex = photoSlides.reduce((best, slide, index) =>
+        Math.abs(photoOffset(slide) - photoGallery.scrollLeft) < Math.abs(photoOffset(photoSlides[best]) - photoGallery.scrollLeft) ? index : best, 0);
+      galleryCount.textContent = `${String(galleryIndex + 1).padStart(2, '0')} / ${String(photoSlides.length).padStart(2, '0')}`;
+      galleryPrevious.disabled = galleryIndex === 0;
+      galleryNext.disabled = galleryIndex === photoSlides.length - 1;
+    }
+
+    function showGalleryPhoto(index) {
+      const nextIndex = Math.max(0, Math.min(photoSlides.length - 1, index));
+      photoGallery.scrollTo({
+        left: photoOffset(photoSlides[nextIndex]),
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      });
+    }
+
+    galleryPrevious.addEventListener('click', () => showGalleryPhoto(galleryIndex - 1));
+    galleryNext.addEventListener('click', () => showGalleryPhoto(galleryIndex + 1));
+    photoGallery.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        showGalleryPhoto(galleryIndex + (event.key === 'ArrowRight' ? 1 : -1));
+      }
+    });
+    let galleryFrame = 0;
+    photoGallery.addEventListener('scroll', () => {
+      if (!galleryFrame) galleryFrame = requestAnimationFrame(() => { galleryFrame = 0; updateGallery(); });
+    }, { passive: true });
+    window.addEventListener('resize', updateGallery);
+    updateGallery();
 
     const mobileBuy = document.querySelector('.mobile-buy');
     const bookingSection = document.getElementById('contrataciones');
