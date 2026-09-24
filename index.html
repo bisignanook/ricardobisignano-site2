@@ -1457,6 +1457,40 @@
       .identity .identity-copy { max-width: none; }
     }
 
+
+    /* Una sola tarjeta-botón por función en móvil. */
+    @media (max-width: 700px) {
+      .agenda .gig,
+      .agenda .gig:nth-child(1),
+      .agenda .gig:nth-child(2),
+      .agenda .gig:nth-child(3),
+      .agenda .gig:hover {
+        border: 2px solid var(--ink);
+        border-radius: 10px;
+        background: var(--pastel-yellow);
+        box-shadow: 0 4px 0 var(--ink);
+        padding: .95rem 2rem .95rem .8rem;
+        margin-bottom: 1rem;
+        transition: transform .15s, box-shadow .15s, background .15s;
+      }
+      .agenda .gig::after {
+        content: "↗";
+        position: absolute;
+        right: .65rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--ink);
+        font: 700 1.1rem/1 sans-serif;
+        pointer-events: none;
+      }
+      .agenda .gig:hover { background: var(--button-amber); }
+      .agenda .gig:active {
+        transform: translateY(3px);
+        box-shadow: 0 1px 0 var(--ink);
+      }
+      .agenda .gig .btn { border-radius: 8px; }
+    }
+
 </style>
 </head>
 <body>
