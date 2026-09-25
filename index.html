@@ -1555,6 +1555,18 @@
     }
     /* Portada sin trazo: conservar únicamente la sombra suave. */
     #home-view .hero-art { border: 0; outline: 0; }
+    /* Trazo fino y consistente para todas las fotografías visibles. */
+    #home-view .hero-art,
+    #home-view .identity .portrait,
+    #home-view .gallery .gallery-grid figure,
+    #home-view .gallery .gallery-grid figure:first-child,
+    #home-view .gallery .gallery-grid figure:nth-child(n+4),
+    #home-view .bondi-visual img {
+      border: 1px solid rgba(17,16,15,.44);
+    }
+    .photo-lightbox img {
+      border: 1px solid rgba(255,255,255,.55);
+    }
 </style>
 </head>
 <body>
