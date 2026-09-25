@@ -1650,6 +1650,42 @@
         transform: none;
       }
     }
+    /* Botón de entradas del menú con el mismo acabado que los botones principales. */
+    #home-view .nav-buy,
+    #home-view .nav-compact-buy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: .7rem 1rem;
+      color: var(--ink);
+      background: var(--button-amber);
+      border: 2px solid #000;
+      border-radius: 0;
+      box-shadow: var(--shadow-uniform);
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: transform .18s, background .18s, box-shadow .18s;
+    }
+    #home-view .nav-buy:hover,
+    #home-view .nav-compact-buy:hover {
+      color: var(--ink);
+      background: var(--pastel-yellow);
+      box-shadow: var(--shadow-uniform);
+    }
+    #home-view .nav-buy:active,
+    #home-view .nav-compact-buy:active {
+      transform: translate(2px, 2px);
+      box-shadow: 3px 3px 0 rgba(0,0,0,.96);
+    }
+    @media (min-width: 901px) and (max-width: 1100px) {
+      #home-view .nav-links .nav-buy { padding: .62rem .72rem; }
+    }
+    #home-view .nav-compact-buy { display: none; }
+    @media (max-width: 900px) {
+      #home-view .nav-compact-buy { display: inline-flex; }
+    }
 </style>
 </head>
 <body>
