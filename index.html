@@ -1686,6 +1686,83 @@
     @media (max-width: 900px) {
       #home-view .nav-compact-buy { display: inline-flex; }
     }
+
+    /* CTA de entradas inspirado en los controles circulares del reproductor y redes. */
+    @media (min-width: 701px) {
+      #home-view .agenda .gig a.ticket-cta,
+      #home-view .agenda .gig a.ticket-cta:hover {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: .55rem;
+        justify-self: stretch;
+        min-width: 0;
+        min-height: 58px;
+        padding: .6rem .55rem;
+        color: var(--ink);
+        background: var(--button-amber);
+        border: 2px solid #000;
+        border-radius: 999px;
+        box-shadow: var(--shadow-uniform);
+        font-family: "DM Sans", sans-serif;
+        font-size: .72rem;
+        font-weight: 800;
+        line-height: 1.2;
+        letter-spacing: .01em;
+        text-align: center;
+        text-transform: none;
+        text-wrap: balance;
+        transition: background .18s, transform .18s, box-shadow .18s;
+      }
+      #home-view .agenda .gig a.ticket-cta i {
+        display: inline-grid;
+        flex: 0 0 30px;
+        width: 30px;
+        height: 30px;
+        place-items: center;
+        color: var(--white);
+        background: var(--ink);
+        border: 2px solid #000;
+        border-radius: 50%;
+        font-size: .76rem;
+      }
+      #home-view .agenda .gig a.ticket-cta:hover {
+        background: var(--pastel-yellow);
+        transform: translateY(-2px);
+      }
+      #home-view .agenda .gig a.ticket-cta:active {
+        transform: translate(3px, 3px);
+        box-shadow: 2px 2px 0 rgba(0,0,0,.96);
+      }
+    }
+    @media (max-width: 700px) {
+      /* La tarjeta sigue siendo un único botón táctil: la flecha es su indicador visual. */
+      #home-view .agenda .gig,
+      #home-view .agenda .gig:nth-child(1),
+      #home-view .agenda .gig:nth-child(2),
+      #home-view .agenda .gig:nth-child(3),
+      #home-view .agenda .gig:hover {
+        padding-right: 3rem;
+      }
+      #home-view .agenda .gig::after {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        right: .55rem;
+        color: var(--ink);
+        background: var(--button-amber);
+        border: 2px solid #000;
+        border-radius: 50%;
+        box-shadow: 2px 2px 0 rgba(0,0,0,.96);
+        font-size: 1.05rem;
+        pointer-events: none;
+      }
+      #home-view .agenda .gig:active::after {
+        box-shadow: none;
+        transform: translate(2px, calc(-50% + 2px));
+      }
+    }
 </style>
 </head>
 <body>
@@ -1737,31 +1814,31 @@
 <div class="gig-date"><strong>03 OCT</strong><span>Sábado</span></div>
 <h3 class="gig-place">San Miguel · Bodegón Alexis</h3>
 <div class="gig-meta"><strong>22:00 hs</strong>Reservas: 11 2697-7495</div>
-<a class="btn btn-primary" href="https://wa.me/541126977495?text=Hola%2C%20quiero%20reservar%20para%20el%20show%20de%20Ricardo%20Bisignano%20del%20s%C3%A1bado%203%20de%20octubre%20en%20Bodeg%C3%B3n%20Alexis." data-analytics-event="ClickEntradas_03Oct_SanMiguel" target="_blank" rel="noopener noreferrer" aria-label="Reservar por WhatsApp en Bodegón Alexis para el show del 3 de octubre">Reservar por WhatsApp <i class="fa-brands fa-whatsapp"></i></a>
+<a class="btn btn-primary ticket-cta" href="https://wa.me/541126977495?text=Hola%2C%20quiero%20reservar%20para%20el%20show%20de%20Ricardo%20Bisignano%20del%20s%C3%A1bado%203%20de%20octubre%20en%20Bodeg%C3%B3n%20Alexis." data-analytics-event="ClickEntradas_03Oct_SanMiguel" target="_blank" rel="noopener noreferrer" aria-label="Reservar por WhatsApp en Bodegón Alexis para el show del 3 de octubre">Reservar por WhatsApp <i class="fa-brands fa-whatsapp"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>04 OCT</strong><span>Domingo</span></div>
 <h3 class="gig-place">Belgrano · El Stand Up Improvisa</h3>
 <div class="gig-meta"><strong>20:00 hs</strong>La Sodería · Belgrano · Vidal 2549</div>
-<a class="btn btn-primary" href="https://www.alternativa.ar/obra102987-el-stand-up-improvisa" data-analytics-event="ClickEntradas_04Oct_Belgrano" target="_blank" rel="noopener noreferrer" aria-label="Ver entradas del show El stand up improvisa del 4 de octubre en Alternativa">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary ticket-cta" href="https://www.alternativa.ar/obra102987-el-stand-up-improvisa" data-analytics-event="ClickEntradas_04Oct_Belgrano" target="_blank" rel="noopener noreferrer" aria-label="Ver entradas del show El stand up improvisa del 4 de octubre en Alternativa">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>10 OCT</strong><span>Sábado</span></div>
 <h3 class="gig-place">Merlo · La Positiva Bar</h3>
 <div class="gig-meta"><strong>22:00 hs</strong>Riobamba 742, Merlo</div>
-<a class="btn btn-primary" href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-merlo-tickets-2002015599551" data-analytics-event="ClickEntradas_10Oct_Merlo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 10 de octubre en La Positiva Bar en Eventbrite">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary ticket-cta" href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-merlo-tickets-2002015599551" data-analytics-event="ClickEntradas_10Oct_Merlo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 10 de octubre en La Positiva Bar en Eventbrite">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>15 OCT</strong><span>Jueves</span></div>
 <h3 class="gig-place">Ramos Mejía · Valinor</h3>
 <div class="gig-meta"><strong>21:00 hs</strong>Entrada gratuita · Reservá por FlashPass</div>
-<a class="btn btn-primary" href="https://events.flashpass.com.ar/eventos/ricardo-bisignano-en-valinor-9966" data-analytics-event="ClickEntradas_15Oct_RamosMejia" target="_blank" rel="noopener noreferrer" aria-label="Reservar entrada para el 15 de octubre en Valinor por FlashPass">Reservar <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary ticket-cta" href="https://events.flashpass.com.ar/eventos/ricardo-bisignano-en-valinor-9966" data-analytics-event="ClickEntradas_15Oct_RamosMejia" target="_blank" rel="noopener noreferrer" aria-label="Reservar entrada para el 15 de octubre en Valinor por FlashPass">Reservar <i class="fa-solid fa-ticket"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>16 OCT</strong><span>Viernes</span></div>
 <h3 class="gig-place">Palermo · Taburete Comedia</h3>
 <div class="gig-meta"><strong>20:30 hs</strong>Thames 1511, Palermo</div>
-<a class="btn btn-primary" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2754" data-analytics-event="ClickEntradas_16Oct_Palermo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 16 de octubre en Taburete Comedia">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary ticket-cta" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2754" data-analytics-event="ClickEntradas_16Oct_Palermo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 16 de octubre en Taburete Comedia">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
 </div>
 </div>
