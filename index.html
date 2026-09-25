@@ -1567,6 +1567,85 @@
     .photo-lightbox img {
       border: 2px solid rgba(255,255,255,.55);
     }
+    /* Estilo compartido para compra y reserva de entradas. */
+    .btn-entradas {
+      background-color: #d6b586;
+      color: #000000;
+      border: 2px solid #000000;
+      box-shadow: 4px 4px 0px #000000;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+    }
+    .btn-entradas:active {
+      box-shadow: 0px 0px 0px #000000;
+      transform: translate(4px, 4px);
+    }
+    /* Prioridad sobre estilos previos de botones, tarjetas y sombras globales. */
+    #home-view a.btn-entradas,
+    #home-view .agenda .gig a.btn-entradas,
+    #home-view a.btn-entradas.btn-primary:hover {
+      background-color: #d6b586;
+      color: #000000;
+      border: 2px solid #000000;
+      border-radius: 0;
+      box-shadow: 4px 4px 0px #000000;
+      padding: 12px 24px;
+      opacity: 1;
+    }
+    #home-view a.btn-entradas:active,
+    #home-view .agenda .gig a.btn-entradas:active,
+    #home-view .agenda .gig a.btn-entradas:focus-visible:active {
+      box-shadow: 0 0 0 #000000;
+      transform: translate(4px, 4px);
+    }
+    #home-view .agenda .gig a.btn-entradas {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      justify-self: stretch;
+      text-align: center;
+      min-height: 48px;
+    }
+    #home-view .nav-compact-buy.btn-entradas { display: none; }
+    @media (max-width: 900px) {
+      #home-view .nav-compact-buy.btn-entradas {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 16px;
+      }
+    }
+    @media (max-width: 700px) {
+      /* Botón visible debajo de cada función; la tarjeta completa sigue siendo clickeable. */
+      #home-view .agenda .gig a.btn-entradas {
+        position: static;
+        inset: auto;
+        z-index: auto;
+        grid-column: 1 / -1;
+        grid-row: auto;
+        width: 100%;
+        height: auto;
+        min-height: 48px;
+        margin: .8rem 0 0;
+        border-radius: 0;
+        opacity: 1;
+      }
+      #home-view .agenda .gig a.btn-entradas:hover {
+        box-shadow: 4px 4px 0px #000000;
+        transform: none;
+      }
+      #home-view .agenda .gig a.btn-entradas:active {
+        box-shadow: 0 0 0 #000000;
+        transform: translate(4px, 4px);
+      }
+    }
 </style>
 </head>
 <body>
@@ -1587,9 +1666,9 @@
 <a href="#ricardo" data-scroll-to="ricardo">Sobre mí</a>
 <a href="#el-pibe-del-bondi" data-scroll-to="el-pibe-del-bondi">El pibe del bondi</a>
 <a href="#contrataciones" data-scroll-to="contrataciones">Contrataciones</a>
-<a class="nav-buy" href="#funciones" data-scroll-to="funciones">Comprar entradas</a>
+<a class="nav-buy btn-entradas" href="#funciones" data-scroll-to="funciones">Comprar entradas</a>
 </div>
-<a class="nav-buy nav-compact-buy" href="#funciones" data-scroll-to="funciones">Entradas</a>
+<a class="nav-buy nav-compact-buy btn-entradas" href="#funciones" data-scroll-to="funciones">Entradas</a>
 </nav>
 </header><main>
 <section class="hero" id="inicio">
@@ -1599,7 +1678,7 @@
 <h1 class="hero-title black">Ricardo<span class="accent">Bisignano</span></h1>
 <p class="hero-line">Stand up y canciones improvisadas.</p>
 <div class="hero-actions">
-<a class="btn btn-primary" href="#funciones" data-scroll-to="funciones">Ver funciones y entradas <i class="fa-solid fa-arrow-down"></i></a>
+<a class="btn btn-primary btn-entradas" href="#funciones" data-scroll-to="funciones">Ver funciones y entradas <i class="fa-solid fa-arrow-down"></i></a>
 </div>
 </div>
 <div class="hero-art reveal">
@@ -1618,31 +1697,31 @@
 <div class="gig-date"><strong>03 OCT</strong><span>Sábado</span></div>
 <h3 class="gig-place">San Miguel · Bodegón Alexis</h3>
 <div class="gig-meta"><strong>22:00 hs</strong>Reservas: 11 2697-7495</div>
-<a class="btn btn-primary" href="https://wa.me/541126977495?text=Hola%2C%20quiero%20reservar%20para%20el%20show%20de%20Ricardo%20Bisignano%20del%20s%C3%A1bado%203%20de%20octubre%20en%20Bodeg%C3%B3n%20Alexis." data-analytics-event="ClickEntradas_03Oct_SanMiguel" target="_blank" rel="noopener noreferrer" aria-label="Reservar por WhatsApp en Bodegón Alexis para el show del 3 de octubre">Reservar por WhatsApp <i class="fa-brands fa-whatsapp"></i></a>
+<a class="btn btn-primary btn-entradas" href="https://wa.me/541126977495?text=Hola%2C%20quiero%20reservar%20para%20el%20show%20de%20Ricardo%20Bisignano%20del%20s%C3%A1bado%203%20de%20octubre%20en%20Bodeg%C3%B3n%20Alexis." data-analytics-event="ClickEntradas_03Oct_SanMiguel" target="_blank" rel="noopener noreferrer" aria-label="Reservar por WhatsApp en Bodegón Alexis para el show del 3 de octubre">Reservar por WhatsApp <i class="fa-brands fa-whatsapp"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>04 OCT</strong><span>Domingo</span></div>
 <h3 class="gig-place">Belgrano · El Stand Up Improvisa</h3>
 <div class="gig-meta"><strong>20:00 hs</strong>La Sodería · Belgrano · Vidal 2549</div>
-<a class="btn btn-primary" href="https://www.alternativa.ar/obra102987-el-stand-up-improvisa" data-analytics-event="ClickEntradas_04Oct_Belgrano" target="_blank" rel="noopener noreferrer" aria-label="Ver entradas del show El stand up improvisa del 4 de octubre en Alternativa">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary btn-entradas" href="https://www.alternativa.ar/obra102987-el-stand-up-improvisa" data-analytics-event="ClickEntradas_04Oct_Belgrano" target="_blank" rel="noopener noreferrer" aria-label="Ver entradas del show El stand up improvisa del 4 de octubre en Alternativa">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>10 OCT</strong><span>Sábado</span></div>
 <h3 class="gig-place">Merlo · La Positiva Bar</h3>
 <div class="gig-meta"><strong>22:00 hs</strong>Riobamba 742, Merlo</div>
-<a class="btn btn-primary" href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-merlo-tickets-2002015599551" data-analytics-event="ClickEntradas_10Oct_Merlo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 10 de octubre en La Positiva Bar en Eventbrite">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary btn-entradas" href="https://www.eventbrite.com/e/ricardo-bisignano-en-la-positiva-merlo-tickets-2002015599551" data-analytics-event="ClickEntradas_10Oct_Merlo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 10 de octubre en La Positiva Bar en Eventbrite">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>15 OCT</strong><span>Jueves</span></div>
 <h3 class="gig-place">Ramos Mejía · Valinor</h3>
 <div class="gig-meta"><strong>21:00 hs</strong>Entrada gratuita · Reservá por FlashPass</div>
-<a class="btn btn-primary" href="https://events.flashpass.com.ar/eventos/ricardo-bisignano-en-valinor-9966" data-analytics-event="ClickEntradas_15Oct_RamosMejia" target="_blank" rel="noopener noreferrer" aria-label="Reservar entrada para el 15 de octubre en Valinor por FlashPass">Reservar <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary btn-entradas" href="https://events.flashpass.com.ar/eventos/ricardo-bisignano-en-valinor-9966" data-analytics-event="ClickEntradas_15Oct_RamosMejia" target="_blank" rel="noopener noreferrer" aria-label="Reservar entrada para el 15 de octubre en Valinor por FlashPass">Reservar <i class="fa-solid fa-ticket"></i></a>
 </div>
 <div class="gig reveal">
 <div class="gig-date"><strong>16 OCT</strong><span>Viernes</span></div>
 <h3 class="gig-place">Palermo · Taburete Comedia</h3>
 <div class="gig-meta"><strong>20:30 hs</strong>Thames 1511, Palermo</div>
-<a class="btn btn-primary" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2754" data-analytics-event="ClickEntradas_16Oct_Palermo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 16 de octubre en Taburete Comedia">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary btn-entradas" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2754" data-analytics-event="ClickEntradas_16Oct_Palermo" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 16 de octubre en Taburete Comedia">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
 </div>
 </div>
