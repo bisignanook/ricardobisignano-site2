@@ -1794,6 +1794,88 @@
         box-shadow: 2px 2px 0 #080b0e;
       }
     }
+    /* Tipografía legible: Manrope para lectura y llamadas a la acción. */
+    body {
+      font-family: "Manrope", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    #home-view .hero-line,
+    #home-view .identity-copy,
+    #home-view .booking-copy,
+    #home-view .gig-meta,
+    #home-view .video-caption,
+    #home-view .copyright,
+    #home-view .channel-controls,
+    #home-view .credit,
+    #home-view .footer {
+      font-family: "Manrope", Arial, sans-serif;
+    }
+    #home-view .hero-line { font-size: clamp(1.05rem, 1.5vw, 1.22rem); line-height: 1.6; }
+    #home-view .identity-copy,
+    #home-view .booking-copy { font-size: 1.02rem; line-height: 1.7; }
+    #home-view .gig-place {
+      font-family: "Manrope", Arial, sans-serif;
+      font-weight: 800;
+      letter-spacing: -.035em;
+      line-height: 1.13;
+    }
+    #home-view .gig-date strong {
+      font-family: "Manrope", Arial, sans-serif;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+    #home-view .copyright { font-size: .83rem; }
+    #home-view .nav-links a:not(.nav-buy) {
+      font-family: "Manrope", Arial, sans-serif;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .025em;
+    }
+    #home-view .nav-buy,
+    #home-view .nav-compact-buy,
+    #home-view .hero-actions .btn-primary {
+      font-family: "Manrope", Arial, sans-serif;
+      font-size: .84rem;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: .025em;
+    }
+    #home-view .nav-compact-buy { font-size: .8rem; }
+    #home-view .hero-actions .btn-primary { font-size: .92rem; }
+    @media (min-width: 701px) {
+      #home-view .gig-meta { font-size: .91rem; line-height: 1.45; }
+      #home-view .agenda .gig a.ticket-cta,
+      #home-view .agenda .gig a.ticket-cta:hover {
+        min-height: 60px;
+        padding: .65rem .55rem;
+        gap: .38rem;
+        font-family: "Manrope", Arial, sans-serif;
+        font-size: .85rem;
+        font-weight: 800;
+        line-height: 1.27;
+        letter-spacing: .006em;
+        text-transform: none;
+      }
+      #home-view .agenda .gig a.ticket-cta i { font-size: .92rem; }
+    }
+    @media (min-width: 901px) and (max-width: 1100px) {
+      #home-view .nav-links { gap: .8rem; }
+      #home-view .nav-links a:not(.nav-buy) { font-size: .7rem; }
+      #home-view .nav-links .nav-buy { font-size: .73rem; }
+    }
+    @media (max-width: 700px) {
+      #home-view .agenda .gig-place {
+        font-size: clamp(1.09rem, 4.7vw, 1.3rem);
+        line-height: 1.18;
+      }
+      #home-view .agenda .gig-meta strong {
+        font-family: "Manrope", Arial, sans-serif;
+        font-size: .82rem;
+        line-height: 1.3;
+      }
+      #home-view .nav-compact-buy { font-size: .8rem; }
+    }
 </style>
 </head>
 <body>
