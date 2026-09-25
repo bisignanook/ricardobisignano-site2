@@ -1539,6 +1539,20 @@
       #home-view .agenda .gig .btn,
       #home-view .agenda .gig .btn:hover { box-shadow: none; }
     }
+    /* Fotografías: sombra suave que se desvanece, sin el desplazamiento duro de la interfaz. */
+    :root {
+      --photo-shadow: 0 10px 22px rgba(17,16,15,.17), 0 22px 44px rgba(17,16,15,.09);
+    }
+    #home-view .hero-art,
+    #home-view .identity .portrait,
+    #home-view .gallery .gallery-grid figure,
+    #home-view .gallery .gallery-grid figure:first-child,
+    #home-view .gallery .gallery-grid figure:nth-child(n+4) {
+      box-shadow: var(--photo-shadow);
+    }
+    @media (max-width: 700px) {
+      :root { --photo-shadow: 0 7px 16px rgba(17,16,15,.16), 0 16px 30px rgba(17,16,15,.08); }
+    }
 </style>
 </head>
 <body>
