@@ -1501,6 +1501,44 @@
     .photo-lightbox img { width: auto; height: auto; max-width: 100%; max-height: calc(100vh - 100px); max-height: calc(100dvh - 100px); margin: auto; object-fit: contain; }
     .photo-lightbox-close { position: fixed; top: 16px; right: 16px; width: 48px; height: 48px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--white); color: var(--ink); font: 32px/1 sans-serif; cursor: pointer; }
     .photo-lightbox-close:focus-visible { outline: 3px solid var(--button-amber); outline-offset: 4px; }
+
+    /* Sombra consistente en las superficies visuales e interactivas. */
+    :root { --shadow-uniform: 5px 5px 0 var(--ink); }
+    #home-view .hero-art,
+    #home-view .identity .portrait,
+    #home-view .gallery .gallery-grid figure,
+    #home-view .gallery .gallery-grid figure:first-child,
+    #home-view .gallery .gallery-grid figure:nth-child(n+4),
+    #home-view .agenda .gig,
+    #home-view .agenda .gig:nth-child(1),
+    #home-view .agenda .gig:nth-child(2),
+    #home-view .agenda .gig:nth-child(3),
+    #home-view .agenda .gig:hover,
+    #home-view .channel-player,
+    #home-view .bondi-card,
+    #home-view .bondi-card:hover,
+    #home-view .booking .form,
+    #home-view .credit,
+    #home-view .logo-mark,
+    #home-view .nav-buy,
+    #home-view .nav-compact-buy,
+    #home-view .btn,
+    #home-view .btn:hover,
+    #home-view .social,
+    #home-view .player-arrow,
+    #home-view .gallery-controls button:not(:disabled),
+    #home-view .gallery-controls button:not(:disabled):hover,
+    #home-view .mobile-buy,
+    .story-shell .story-intro,
+    .story-shell .bondi-story,
+    .photo-lightbox-close {
+      box-shadow: var(--shadow-uniform);
+    }
+    /* La tarjeta móvil ya es el botón: evitar sombra duplicada del enlace invisible. */
+    @media (max-width: 700px) {
+      #home-view .agenda .gig .btn,
+      #home-view .agenda .gig .btn:hover { box-shadow: none; }
+    }
 </style>
 </head>
 <body>
