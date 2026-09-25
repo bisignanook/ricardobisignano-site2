@@ -1554,6 +1554,111 @@
     .photo-lightbox img {
       border: 2px solid rgba(255,255,255,.55);
     }
+
+    /* Paleta simplificada y sombras sólidas */
+    :root {
+      --ink: #111111;
+      --shadow-color: #111111;
+      --shadow-uniform: 5px 5px 0 rgba(0,0,0,.96);
+      --shadow-main: var(--shadow-uniform);
+      --shadow-small: var(--shadow-uniform);
+      --shadow-pressed: var(--shadow-uniform);
+      --paper: #f5f1e8;
+      --paper-2: #ece5d9;
+      --white: #fffdf8;
+      --muted: #514c45;
+      --line: #111111;
+      --orange: #111111;
+      --orange-dark: #111111;
+      --pastel-blue: #ece5d9;
+      --pastel-sage: #ece5d9;
+      --pastel-rose: #d6b586;
+      --pastel-yellow: #ece5d9;
+      --button-amber: #d6b586;
+      --photo-night: #111111;
+    }
+    body { background: var(--paper); background-image: none; }
+    .topbar { background: rgba(245,241,232,.98); border-bottom: 2px solid #000; }
+    #home-view .hero,
+    #home-view .agenda,
+    #home-view .gallery { background: var(--paper); }
+    #home-view .identity,
+    #home-view .bondi-feature,
+    #home-view .booking { background: var(--paper-2); }
+    #home-view .reel { color: var(--ink); background: var(--paper-2); }
+    #home-view .reel .eyebrow { color: var(--ink); }
+    #home-view .video-caption { color: var(--muted); }
+    #home-view .channel-player { background: var(--ink); color: var(--white); }
+    #home-view .footer { background: var(--ink); border-top-color: #000; }
+    #home-view .hero-title .accent,
+    #home-view .nav-buy,
+    #home-view .btn-primary,
+    #home-view .mobile-buy { color: #000; background: var(--button-amber); }
+    #home-view .nav-buy:hover,
+    #home-view .btn-primary:hover { color: #000; background: var(--button-amber); }
+    #home-view .logo-mark { background: var(--button-amber); }
+    #home-view .agenda .gig,
+    #home-view .agenda .gig:nth-child(1),
+    #home-view .agenda .gig:nth-child(2),
+    #home-view .agenda .gig:nth-child(3),
+    #home-view .agenda .gig:hover { color: var(--ink); background: var(--white); border: 2px solid #000; }
+    #home-view .agenda .gig-date strong { color: var(--ink); }
+    #home-view .credit,
+    #home-view .credit:nth-child(1),
+    #home-view .credit:nth-child(2),
+    #home-view .credit:nth-child(3),
+    #home-view .credit:nth-child(4) { color: var(--ink); background: var(--white); border: 2px solid #000; }
+    #home-view .bondi-story-head { background: var(--paper-2); }
+    #home-view .bondi-visual::after { background: none; }
+    #home-view .hero-art,
+    #home-view .identity .portrait,
+    #home-view .gallery .gallery-grid figure,
+    #home-view .gallery .gallery-grid figure:first-child,
+    #home-view .gallery .gallery-grid figure:nth-child(n+4),
+    #home-view .bondi-visual img,
+    .photo-lightbox img { border: 2px solid #000; }
+    #home-view .channel-player,
+    #home-view .bondi-card,
+    #home-view .booking .form,
+    #home-view .bondi-story,
+    #home-view .btn-primary,
+    #home-view .nav-buy,
+    #home-view .nav-compact-buy,
+    #home-view .mobile-buy { border: 2px solid #000; }
+    #home-view .hero-art,
+    #home-view .identity .portrait,
+    #home-view .gallery .gallery-grid figure,
+    #home-view .gallery .gallery-grid figure:first-child,
+    #home-view .gallery .gallery-grid figure:nth-child(n+4),
+    #home-view .agenda .gig,
+    #home-view .agenda .gig:nth-child(1),
+    #home-view .agenda .gig:nth-child(2),
+    #home-view .agenda .gig:nth-child(3),
+    #home-view .agenda .gig:hover,
+    #home-view .channel-player,
+    #home-view .bondi-card,
+    #home-view .bondi-card:hover,
+    #home-view .booking .form,
+    #home-view .credit,
+    #home-view .nav-buy,
+    #home-view .nav-compact-buy,
+    #home-view .logo-mark,
+    #home-view .btn,
+    #home-view .btn:hover,
+    #home-view .mobile-buy,
+    #home-view .player-arrow,
+    #home-view .gallery-controls button:not(:disabled),
+    .story-shell .story-intro,
+    .story-shell .bondi-story,
+    .photo-lightbox-close { box-shadow: var(--shadow-uniform); }
+    @media (max-width: 700px) {
+      /* El enlace superpuesto es invisible: no proyectar una segunda sombra. */
+      #home-view .agenda .gig .btn,
+      #home-view .agenda .gig .btn:hover { box-shadow: none; }
+      #home-view .agenda .gig:active { box-shadow: var(--shadow-uniform); transform: none; }
+      #home-view .agenda .gig,
+      #home-view .agenda .gig:hover { background: var(--white); }
+    }
 </style>
 </head>
 <body>
