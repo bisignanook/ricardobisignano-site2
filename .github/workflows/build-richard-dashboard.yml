@@ -37,7 +37,7 @@ jobs:
           gradle-version: '8.9'
       - name: Build APK
         working-directory: android-build/work/RichardDashboard
-        run: gradle assembleDebug --stacktrace
+        run: gradle assembleDebug --stacktrace -Pandroid.useAndroidX=true -Pandroid.enableJetifier=true
       - name: Collect APK
         run: cp android-build/work/RichardDashboard/app/build/outputs/apk/debug/app-debug.apk RichardDashboard.apk
       - uses: actions/upload-artifact@v4
