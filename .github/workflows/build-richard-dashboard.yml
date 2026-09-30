@@ -32,6 +32,66 @@ jobs:
         run: |
           base64 -d android-build/RichardDashboard-v2.zip.b64 > /tmp/app.zip
           unzip -q /tmp/app.zip -d android-build/work
+      - name: Replace launcher with stable WebView
+        run: |
+          cat > android-build/work/RichardDashboard/app/src/main/AndroidManifest.xml <<'EOF'
+          <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+              <uses-permission android:name="android.permission.INTERNET" />
+              <application
+                  android:allowBackup="true"
+                  android:label="Richard Dashboard"
+                  android:theme="@style/AppTheme"
+                  android:usesCleartextTraffic="false">
+                  <activity
+                      android:name=".MainActivity"
+                      android:exported="true">
+                      <intent-filter>
+                          <action android:name="android.intent.action.MAIN" />
+                          <category android:name="android.intent.category.LAUNCHER" />
+                      </intent-filter>
+                  </activity>
+              </application>
+          </manifest>
+          EOF
+          cat > android-build/work/RichardDashboard/app/src/main/java/com/ricardobisignano/dashboard/MainActivity.kt <<'EOF'
+          package com.ricardobisignano.dashboard
+
+          import android.app.Activity
+          import android.os.Bundle
+          import android.webkit.WebChromeClient
+          import android.webkit.WebView
+          import android.webkit.WebViewClient
+
+          class MainActivity : Activity() {
+              private lateinit var webView: WebView
+
+              override fun onCreate(savedInstanceState: Bundle?) {
+                  super.onCreate(savedInstanceState)
+                  webView = WebView(this)
+                  webView.settings.javaScriptEnabled = true
+                  webView.settings.domStorageEnabled = true
+                  webView.settings.loadsImagesAutomatically = true
+                  webView.webViewClient = WebViewClient()
+                  webView.webChromeClient = WebChromeClient()
+                  setContentView(webView)
+                  if (savedInstanceState == null) {
+                      webView.loadUrl("https://ricardobisignano.com.ar/dashboard.html")
+                  } else {
+                      webView.restoreState(savedInstanceState)
+                  }
+              }
+
+              override fun onSaveInstanceState(outState: Bundle) {
+                  webView.saveState(outState)
+                  super.onSaveInstanceState(outState)
+              }
+
+              @Deprecated("Deprecated in Java")
+              override fun onBackPressed() {
+                  if (webView.canGoBack()) webView.goBack() else super.onBackPressed()
+              }
+          }
+          EOF
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
@@ -41,6 +101,11 @@ jobs:
       - name: Build APK
         working-directory: android-build/work/RichardDashboard
         run: gradle assembleDebug --stacktrace -Pandroid.useAndroidX=true -Pandroid.enableJetifier=true
+      - name: Verify launcher
+        run: |
+          APK=android-build/work/RichardDashboard/app/build/outputs/apk/debug/app-debug.apk
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep "launchable-activity"
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
       - name: Collect APK
         run: cp android-build/work/RichardDashboard/app/build/outputs/apk/debug/app-debug.apk RichardDashboard.apk
       - uses: actions/upload-artifact@v4
