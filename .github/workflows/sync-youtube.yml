@@ -1,0 +1,90 @@
+name: Sync latest YouTube video
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect latest upload and update site
+        shell: bash
+        run: |
+          python - <<'PY'
+          import re
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          HANDLE_URL = "https://www.youtube.com/@Ricardo.Bisignano"
+          ua = {"User-Agent": "Mozilla/5.0"}
+
+          def get(url):
+              req = urllib.request.Request(url, headers=ua)
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return r.read().decode("utf-8", "ignore")
+
+          html = get(HANDLE_URL)
+          m = re.search(r'"channelId":"(UC[^"]+)"', html) or re.search(r'"browseId":"(UC[^"]+)"', html)
+          if not m:
+              raise SystemExit("No pude detectar el channel ID de YouTube.")
+
+          channel_id = m.group(1)
+          feed = get(f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}")
+          root = ET.fromstring(feed)
+
+          ns = {
+              "atom": "http://www.w3.org/2005/Atom",
+              "yt": "http://www.youtube.com/xml/schemas/2015",
+          }
+          entry = root.find("atom:entry", ns)
+          if entry is None:
+              raise SystemExit("El feed de YouTube no devolvió videos.")
+
+          latest = entry.find("yt:videoId", ns)
+          if latest is None or not latest.text:
+              raise SystemExit("No pude leer el ID del último video.")
+
+          latest_id = latest.text.strip()
+          path = Path("index.html")
+          text = path.read_text(encoding="utf-8")
+
+          pattern = r"const channelVideos = \[(.*?)\];"
+          match = re.search(pattern, text)
+          if not match:
+              raise SystemExit("No encontré channelVideos en index.html.")
+
+          current = re.findall(r"'([^']+)'", match.group(1))
+          videos = [latest_id] + [v for v in current if v != latest_id]
+          videos = videos[:12]
+
+          replacement = "const channelVideos = [" + ",".join(repr(v) for v in videos) + "];"
+          new_text = text[:match.start()] + replacement + text[match.end():]
+
+          if new_text != text:
+              path.write_text(new_text, encoding="utf-8")
+              print(f"Nuevo video detectado: {latest_id}")
+          else:
+              print(f"Sin cambios. Último video: {latest_id}")
+          PY
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No hay cambios."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Auto-update latest YouTube video"
+          git push
