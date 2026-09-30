@@ -35,6 +35,9 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
+      - name: Align JVM targets
+        working-directory: android-build/work/RichardDashboard
+        run: sed -i 's/compileSdk = 35/compileSdk = 35; compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }/' app/build.gradle.kts
       - name: Build APK
         working-directory: android-build/work/RichardDashboard
         run: gradle assembleDebug --stacktrace -Pandroid.useAndroidX=true -Pandroid.enableJetifier=true
