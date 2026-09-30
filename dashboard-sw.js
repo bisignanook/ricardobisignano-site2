@@ -1,0 +1,1 @@
+const C='richard-dashboard-v2';self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(['/dashboard.html','/dashboard-manifest.json']))));self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))));
