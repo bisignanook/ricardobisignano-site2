@@ -1,3 +1,4 @@
+# Rebuild after Android launcher/theme fix
 name: Build Richard Dashboard APK
 on:
   workflow_dispatch:
