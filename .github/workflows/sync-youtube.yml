@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "*/15 * * * *"
+  push:
+    paths:
+      - '.github/workflows/sync-youtube.yml'
 
 permissions:
   contents: write
@@ -18,42 +21,33 @@ jobs:
       - name: Detect latest upload and update site
         shell: bash
         run: |
+          python -m pip install --quiet --disable-pip-version-check yt-dlp
           python - <<'PY'
           import re
-          import urllib.request
-          import xml.etree.ElementTree as ET
+          import subprocess
           from pathlib import Path
 
-          HANDLE_URL = "https://www.youtube.com/@Ricardo.Bisignano"
-          ua = {"User-Agent": "Mozilla/5.0"}
+          CHANNEL_URL = "https://www.youtube.com/@Ricardo.Bisignano/videos"
 
-          def get(url):
-              req = urllib.request.Request(url, headers=ua)
-              with urllib.request.urlopen(req, timeout=30) as r:
-                  return r.read().decode("utf-8", "ignore")
+          try:
+              latest_id = subprocess.check_output(
+                  [
+                      "yt-dlp",
+                      "--flat-playlist",
+                      "--playlist-end", "1",
+                      "--print", "id",
+                      "--no-warnings",
+                      CHANNEL_URL,
+                  ],
+                  text=True,
+                  timeout=90,
+              ).strip().splitlines()[0]
+          except Exception as exc:
+              raise SystemExit(f"No pude detectar el último video de YouTube: {exc}")
 
-          html = get(HANDLE_URL)
-          m = re.search(r'"channelId":"(UC[^"]+)"', html) or re.search(r'"browseId":"(UC[^"]+)"', html)
-          if not m:
-              raise SystemExit("No pude detectar el channel ID de YouTube.")
+          if not re.fullmatch(r"[A-Za-z0-9_-]{11}", latest_id):
+              raise SystemExit(f"ID de video inválido recibido: {latest_id!r}")
 
-          channel_id = m.group(1)
-          feed = get(f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}")
-          root = ET.fromstring(feed)
-
-          ns = {
-              "atom": "http://www.w3.org/2005/Atom",
-              "yt": "http://www.youtube.com/xml/schemas/2015",
-          }
-          entry = root.find("atom:entry", ns)
-          if entry is None:
-              raise SystemExit("El feed de YouTube no devolvió videos.")
-
-          latest = entry.find("yt:videoId", ns)
-          if latest is None or not latest.text:
-              raise SystemExit("No pude leer el ID del último video.")
-
-          latest_id = latest.text.strip()
           path = Path("index.html")
           text = path.read_text(encoding="utf-8")
 
