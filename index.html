@@ -1835,6 +1835,32 @@
     @media (max-width: 900px) {
       #home-view .nav-compact-buy { font-size: .91rem; }
     }
+    /* Quilmes sin reservas: mostrar el estado, no una capa invisible de enlace. */
+    @media (max-width: 700px) {
+      #home-view .agenda .gig.gig-upcoming {
+        grid-template-rows: auto auto auto;
+        cursor: default;
+      }
+      #home-view .agenda .gig.gig-upcoming .ticket-cta {
+        position: static;
+        inset: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        grid-column: 1 / -1;
+        grid-row: 3;
+        width: 100%;
+        height: auto;
+        min-height: 46px;
+        margin: .5rem 0 0;
+        padding: .65rem .85rem;
+        border: 2px solid var(--ink);
+        opacity: 1;
+        pointer-events: none;
+        font-size: .84rem;
+        background: var(--button-amber);
+      }
+    }
 </style>
 </head>
 <body>
