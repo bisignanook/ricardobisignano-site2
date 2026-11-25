@@ -2289,6 +2289,26 @@
 
       if (location.hash === storyHash) {
         setStoryOpen(true, { restoreScroll: false });
+      } else if (location.hash === '#funciones' ||
+                 new URLSearchParams(location.search).get('entradas') === '1') {
+        // Enlaces externos: aplicar el ancla también al cargar la página.
+        var userNavigated = false;
+        ['touchstart', 'wheel', 'pointerdown', 'keydown'].forEach(function (type) {
+          window.addEventListener(type, function () { userNavigated = true; },
+            { once: true, passive: true });
+        });
+        function openAgenda() {
+          if (userNavigated || isStoryOpen() ||
+              (location.hash && location.hash !== '#funciones')) return;
+          var agenda = document.getElementById('funciones');
+          if (!agenda) return;
+          var bar = document.querySelector('.topbar');
+          var top = agenda.getBoundingClientRect().top + getScrollTop() - (bar ? bar.offsetHeight : 0) - 4;
+          window.scrollTo(0, Math.max(0, Math.round(top)));
+        }
+        requestAnimationFrame(openAgenda);
+        window.addEventListener('load', openAgenda, { once: true });
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(openAgenda);
       }
     })();
 </script>
