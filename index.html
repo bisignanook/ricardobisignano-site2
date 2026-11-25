@@ -1901,37 +1901,42 @@
       html.entry-agenda #funciones .section-head { margin-bottom: 1rem; }
     }
 
-    /* Portada móvil editorial: fotografía protagonista, identidad y venta directa. */
+    /* Portada móvil: composición fotográfica y editorial, con una acción de venta. */
     @media (max-width: 700px) {
       #home-view > .topbar { display: none; }
       #home-view > main { display: block; padding: 0; }
-      #home-view #inicio { min-height: 0; padding: 0 0 1.4rem; overflow: hidden; background: var(--paper); }
+      #home-view #inicio { min-height: 0; padding: 0; background: var(--photo-night); overflow: hidden; }
       #home-view #inicio .hero-grid {
         display: flex; flex-direction: column; align-items: stretch;
         width: 100%; max-width: 560px; min-height: 0; margin: 0 auto; gap: 0;
       }
       #home-view #inicio .hero-art {
-        order: -1; align-self: stretch; width: 100%; height: clamp(175px, 33vh, 300px);
-        height: clamp(175px, 33svh, 300px); min-height: 0; max-height: none;
-        aspect-ratio: auto; margin: 0; border: 0; border-radius: 0;
-        box-shadow: none; filter: none; clip-path: none; transform: none;
-        overflow: hidden; opacity: 1; background: #d8d7dc;
+        order: -1; position: relative; align-self: stretch; width: 100%;
+        height: clamp(190px, 34vh, 310px); height: clamp(190px, 34svh, 310px);
+        min-height: 0; max-height: none; aspect-ratio: auto; margin: 0;
+        border: 0; border-radius: 0; box-shadow: none; filter: none;
+        clip-path: none; transform: none; overflow: hidden; opacity: 1;
+        background: #d8d7dc;
       }
+      #home-view #inicio .hero-art::before { content: none; }
       #home-view #inicio .hero-photo {
-        position: static; display: block; width: 100%; height: 100%;
-        max-width: 100%; object-fit: cover; object-position: center 16%; filter: none;
+        position: static; display: block; width: 100%; height: 100%; max-width: 100%;
+        object-fit: cover; object-position: center 16%; filter: none;
       }
       #home-view #inicio .hero-stamp,
       #home-view #inicio .hero-copy > .eyebrow,
       #home-view #inicio .hero-actions { display: none; }
       #home-view #inicio .hero-copy {
-        position: relative; width: 100%; padding: 1.15rem clamp(18px, 5vw, 28px) .35rem;
+        position: relative; width: 100%; box-sizing: border-box;
+        padding: 1.15rem clamp(20px, 6vw, 34px) 1.4rem;
         text-align: left; overflow: visible; opacity: 1; transform: none;
+        background: var(--photo-night);
       }
       #home-view #inicio .hero-title {
-        margin: 0 0 .45rem; color: var(--ink); font-family: "Archivo Black", "Inter", Arial, sans-serif;
-        font-size: clamp(1.95rem, 9.2vw, 3.25rem); font-weight: 400;
-        line-height: .98; letter-spacing: -.045em; text-transform: uppercase;
+        margin: 0 0 .55rem; color: var(--white);
+        font-family: "Archivo Black", "Inter", Arial, sans-serif;
+        font-size: clamp(1.9rem, 10.2vw, 3.45rem); font-weight: 400;
+        line-height: .99; letter-spacing: -.045em; text-transform: uppercase;
         transform: none; overflow-wrap: normal; word-break: normal;
       }
       #home-view #inicio .hero-title .accent {
@@ -1940,10 +1945,13 @@
       }
       #home-view #inicio .hero-title .accent::before { content: none; }
       #home-view #inicio .hero-line {
-        width: 100%; margin: 0 0 1.15rem; color: var(--muted);
-        font-family: "Inter", Arial, sans-serif; font-size: .92rem; line-height: 1.45; font-weight: 600;
+        width: 100%; margin: 0 0 1.15rem; color: #e2e1df;
+        font-family: "Inter", Arial, sans-serif; font-size: .92rem; font-weight: 500; line-height: 1.4;
       }
-      #home-view #inicio #funciones { padding: 0; margin: 0; scroll-margin-top: 12px; }
+      #home-view #inicio #funciones {
+        padding: 1rem 0 0; margin: 0; border: 0; border-top: 1px solid rgba(255,255,255,.2);
+        background: transparent; scroll-margin-top: 12px;
+      }
       #home-view #inicio #funciones > .wrap { width: 100%; margin: 0; }
       #home-view #inicio #funciones .section-head {
         position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -1962,42 +1970,45 @@
       #home-view #inicio #funciones .gig-taburete .gig-place,
       #home-view #inicio #funciones .gig-taburete .gig-meta,
       #home-view #inicio #funciones .gig-taburete .ticket-desktop-label,
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta > i { display: none; }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta > i,
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta::after { display: none; }
       #home-view #inicio #funciones .gig-taburete a.ticket-cta,
       #home-view #inicio #funciones .gig-taburete a.ticket-cta:hover {
-        position: relative; inset: auto; display: flex; align-items: center;
-        justify-content: space-between; gap: .75rem; width: 100%; height: auto;
-        min-height: 74px; margin: 0; padding: .88rem 1.05rem;
-        color: var(--ink); background: var(--button-amber);
-        border: 0; border-radius: 14px; box-shadow: none;
-        font-family: "Inter", Arial, sans-serif; text-transform: none;
-        text-align: left; opacity: 1; transform: none;
+        position: relative; inset: auto; display: block; width: 100%; height: auto;
+        min-height: 0; margin: 0; padding: 0; border: 0; border-radius: 0;
+        color: var(--white); background: transparent; box-shadow: none;
+        text-align: left; opacity: 1; transform: none; overflow: visible;
       }
       #home-view #inicio #funciones .gig-taburete .ticket-mobile-label {
-        display: flex; flex: 1 1 auto; flex-direction: column-reverse;
-        align-items: flex-start; gap: .3rem; min-width: 0; line-height: 1.2;
+        display: flex; flex-direction: column; align-items: stretch; width: 100%; gap: .7rem;
+        font-family: "Inter", Arial, sans-serif; line-height: 1.25;
       }
       #home-view #inicio #funciones .ticket-mobile-date {
-        color: var(--ink); font-size: clamp(.99rem, 4.5vw, 1.26rem);
-        font-weight: 800; letter-spacing: -.035em; text-transform: uppercase;
+        color: var(--white); font-size: clamp(1rem, 4.6vw, 1.28rem);
+        font-weight: 800; letter-spacing: -.025em; text-transform: uppercase;
       }
       #home-view #inicio #funciones .ticket-mobile-action {
-        color: var(--ink); font-size: .86rem; font-weight: 800; letter-spacing: .015em; text-transform: uppercase;
+        box-sizing: border-box; display: flex; align-items: center; justify-content: center;
+        gap: .7rem; width: 100%; min-height: 56px; padding: .85rem 1rem;
+        border: 0; border-radius: 7px; background: var(--white); color: var(--photo-night);
+        font-family: "Inter", Arial, sans-serif; font-size: 1.08rem; font-weight: 800;
+        letter-spacing: -.02em; line-height: 1.25; text-transform: none; text-align: center;
+        transition: background .16s, transform .16s;
       }
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta::after {
-        content: ""; display: block; flex: 0 0 22px; width: 22px; height: 22px;
-        background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b1c1e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15m-7-7 7 7-7 7'/%3E%3C/svg%3E");
+      #home-view #inicio #funciones .ticket-mobile-action::after {
+        content: ""; display: inline-block; flex: 0 0 20px; width: 20px; height: 20px;
+        background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231c2733' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15m-7-7 7 7-7 7'/%3E%3C/svg%3E");
       }
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta:active {
-        background: var(--pastel-yellow); transform: scale(.985); box-shadow: none;
-      }
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta:focus-visible {
-        outline: 3px solid var(--ink); outline-offset: 4px;
-      }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta:hover .ticket-mobile-action { background: #eadbb8; }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta:active { background: transparent; transform: none; box-shadow: none; }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta:active .ticket-mobile-action { transform: scale(.985); }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta:focus-visible { outline: 2px solid var(--white); outline-offset: 5px; }
       @media (max-height: 550px) {
-        #home-view #inicio .hero-art { height: 165px; }
-        #home-view #inicio .hero-copy { padding-top: .8rem; }
-        #home-view #inicio .hero-line { margin-bottom: .7rem; }
+        #home-view #inicio .hero-art { height: 150px; }
+        #home-view #inicio .hero-copy { padding-top: .8rem; padding-bottom: 1rem; }
+        #home-view #inicio .hero-title { font-size: clamp(1.65rem, 8.3vw, 2.6rem); }
+        #home-view #inicio .hero-line { margin-bottom: .65rem; }
+        #home-view #inicio #funciones { padding-top: .65rem; }
       }
     }
 
@@ -2014,9 +2025,6 @@
         max-width: 560px;
         margin-inline: auto;
       }
-      #home-view #inicio { padding-bottom: 1.2rem; }
-      #home-view #inicio .hero-copy { padding-top: 1rem; padding-bottom: .25rem; }
-      #home-view #inicio .hero-line { margin-bottom: .95rem; }
       #home-view .identity .identity-grid { gap: 1.3rem; }
       #home-view .identity .identity-title {
         margin: 0 0 .85rem; font-size: clamp(2rem, 10vw, 3.25rem); line-height: 1.02;
@@ -2048,40 +2056,6 @@
       #home-view .footer { padding: 1.6rem 0; }
       #home-view .footer-grid { gap: 1rem; }
 
-      /* Venta móvil: información del evento y CTA diferenciado, dentro de un único enlace. */
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta,
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta:hover {
-        display: block; min-height: 0; padding: 0; margin: 0;
-        border: 0; border-radius: 0; background: transparent;
-        color: var(--ink); box-shadow: none; text-align: left; transform: none;
-        overflow: visible;
-      }
-      #home-view #inicio #funciones .gig-taburete .ticket-mobile-label {
-        display: flex; flex-direction: column; align-items: stretch;
-        width: 100%; gap: .55rem; line-height: 1.25;
-      }
-      #home-view #inicio #funciones .ticket-mobile-date {
-        color: var(--ink); font-family: "Inter", Arial, sans-serif;
-        font-size: clamp(.98rem, 4.5vw, 1.23rem); font-weight: 800;
-        letter-spacing: -.025em; text-transform: uppercase;
-      }
-      #home-view #inicio #funciones .ticket-mobile-action {
-        display: flex; justify-content: center; align-items: center; gap: .7rem;
-        width: 100%; min-height: 56px; padding: .85rem 1rem;
-        border-radius: 8px; background: #994a32; color: #fffdf8;
-        font-family: "Inter", Arial, sans-serif; font-size: clamp(1rem, 4.7vw, 1.2rem);
-        font-weight: 800; letter-spacing: -.015em; line-height: 1.25;
-        text-transform: none; text-align: center;
-        transition: background .16s, transform .16s;
-      }
-      #home-view #inicio #funciones .ticket-mobile-action::after {
-        content: ""; display: inline-block; flex: 0 0 19px; width: 19px; height: 19px;
-        background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fffdf8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15m-7-7 7 7-7 7'/%3E%3C/svg%3E");
-      }
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta::after { display: none; }
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta:hover .ticket-mobile-action { background: #82402d; }
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta:active { background: transparent; transform: none; box-shadow: none; }
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta:active .ticket-mobile-action { transform: scale(.985); background: #743724; }
     }
 </style>
 </head>
