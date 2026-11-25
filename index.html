@@ -1900,6 +1900,36 @@
     @media (max-width: 700px) {
       html.entry-agenda #home-view > main { padding-top: 62px; }
     }
+
+    /* Portada móvil: las funciones son el primer bloque, sin cambiar escritorio. */
+    @media (max-width: 700px) {
+      #home-view > main { display: flex; flex-direction: column; padding-top: 62px; }
+      #home-view > main > #funciones { order: -1; padding: 1.75rem 0 1.85rem; }
+      #home-view > main > #inicio { padding-top: 0; }
+      #home-view #funciones > .wrap { width: calc(100% - 36px); max-width: 560px; }
+      #home-view #funciones .section-head { margin: 0 0 1.15rem; text-align: left; }
+      #home-view #funciones .section-title { margin: 0; font-size: clamp(1.75rem, 7.2vw, 2.65rem); line-height: 1.05; letter-spacing: -.045em; }
+      #home-view #funciones .reveal { opacity: 1; transform: none; }
+      #home-view #funciones .gig-list { gap: .95rem; }
+      #home-view #funciones .gig {
+        grid-template-columns: 68px minmax(0,1fr);
+        grid-template-rows: auto auto;
+        gap: .3rem .85rem;
+        min-height: 124px;
+        padding: 1rem 3.4rem 1rem .8rem;
+        margin: 0 4px 4px 0;
+      }
+      #home-view #funciones .gig-date { grid-row: 1 / 3; padding-right: .65rem; }
+      #home-view #funciones .gig-date strong { font-size: 1.28rem; line-height: 1.05; }
+      #home-view #funciones .gig-date span { display: block; margin-top: .38rem; font-size: .66rem; line-height: 1.25; letter-spacing: .02em; }
+      #home-view #funciones .gig-place { font-size: clamp(1rem, 4.15vw, 1.23rem); line-height: 1.16; overflow-wrap: break-word; }
+      #home-view #funciones .gig-meta { font-size: .73rem; line-height: 1.35; color: var(--muted); overflow-wrap: break-word; }
+      #home-view #funciones .gig-meta strong { margin: 0 0 .16rem; font-size: .86rem; color: var(--ink); }
+      #home-view #funciones .gig::after { right: .7rem; }
+      #home-view #funciones .gig.gig-upcoming { padding-right: .95rem; }
+      #home-view #inicio .hero-copy { padding-top: 1.6rem; }
+      #home-view #inicio .hero-actions .btn-primary i { transform: rotate(180deg); }
+    }
 </style>
 </head>
 <body>
@@ -1957,11 +1987,19 @@
 </div>
 </section>
 <script>
-  if (document.documentElement.classList.contains('entry-agenda')) {
+  (() => {
     const agendaEntry = document.getElementById('funciones');
     const heroEntry = document.getElementById('inicio');
-    heroEntry.before(agendaEntry);
-  }
+    const mobile = window.matchMedia('(max-width: 700px)');
+    function syncOrder() {
+      const agendaFirst = mobile.matches || document.documentElement.classList.contains('entry-agenda');
+      if (agendaFirst && agendaEntry.nextElementSibling !== heroEntry) heroEntry.before(agendaEntry);
+      if (!agendaFirst && heroEntry.nextElementSibling !== agendaEntry) agendaEntry.before(heroEntry);
+    }
+    syncOrder();
+    if (mobile.addEventListener) mobile.addEventListener('change', syncOrder);
+    else mobile.addListener(syncOrder);
+  })();
 </script>
 <section class="reel" id="en-escena">
 <div class="wrap">
