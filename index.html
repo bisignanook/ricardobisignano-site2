@@ -1901,6 +1901,7 @@
       html.entry-agenda #funciones .section-head { margin-bottom: 1rem; }
     }
 
+    .agenda-mobile-title { display: none; }
     /* Portada móvil: composición fotográfica y editorial, con una acción de venta. */
     @media (max-width: 700px) {
       #home-view > .topbar { display: none; }
@@ -1916,7 +1917,7 @@
         min-height: 0; max-height: none; aspect-ratio: auto; margin: 0;
         border: 0; border-radius: 0; box-shadow: none; filter: none;
         clip-path: none; transform: none; overflow: hidden; opacity: 1;
-        background: #d8d7dc;
+        background: var(--paper);
       }
       #home-view #inicio .hero-art::before { content: none; }
       #home-view #inicio .hero-photo {
@@ -1945,18 +1946,25 @@
       }
       #home-view #inicio .hero-title .accent::before { content: none; }
       #home-view #inicio .hero-line {
-        width: 100%; margin: 0 0 1.15rem; color: #e2e1df;
+        width: 100%; margin: 0 0 1.15rem; color: var(--paper);
         font-family: "Inter", Arial, sans-serif; font-size: .92rem; font-weight: 500; line-height: 1.4;
       }
       #home-view #inicio #funciones {
-        padding: 1rem 0 0; margin: 0; border: 0; border-top: 1px solid rgba(255,255,255,.2);
+        padding: 1rem 0 0; margin: 0; border: 0; border-top: 1px solid color-mix(in srgb, var(--white) 20%, transparent);
         background: transparent; scroll-margin-top: 12px;
       }
       #home-view #inicio #funciones > .wrap { width: 100%; margin: 0; }
       #home-view #inicio #funciones .section-head {
-        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-        clip-path: inset(50%); overflow: hidden; white-space: nowrap;
+        position: static; display: block; width: auto; height: auto;
+        padding: 0; margin: 0 0 .45rem; clip-path: none;
+        overflow: visible; white-space: normal; text-align: left;
       }
+      #home-view #inicio #funciones .section-head .section-title {
+        margin: 0; color: var(--pastel-yellow); font: 700 .76rem/1.3 "Inter", Arial, sans-serif;
+        text-transform: uppercase; letter-spacing: .06em;
+      }
+      #home-view #inicio #funciones .agenda-desktop-title { display: none; }
+      #home-view #inicio #funciones .agenda-mobile-title { display: inline; }
       #home-view #inicio #funciones .gig-list { gap: .85rem; }
       #home-view #inicio #funciones .reveal { opacity: 1; transform: none; }
       #home-view #inicio #funciones .gig.gig-taburete,
@@ -1999,7 +2007,7 @@
         content: ""; display: inline-block; flex: 0 0 20px; width: 20px; height: 20px;
         background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231c2733' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15m-7-7 7 7-7 7'/%3E%3C/svg%3E");
       }
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta:hover .ticket-mobile-action { background: #eadbb8; }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta:hover .ticket-mobile-action { background: var(--pastel-yellow); }
       #home-view #inicio #funciones .gig-taburete a.ticket-cta:active { background: transparent; transform: none; box-shadow: none; }
       #home-view #inicio #funciones .gig-taburete a.ticket-cta:active .ticket-mobile-action { transform: scale(.985); }
       #home-view #inicio #funciones .gig-taburete a.ticket-cta:focus-visible { outline: 2px solid var(--white); outline-offset: 5px; }
@@ -2101,7 +2109,7 @@
 <section class="agenda" id="funciones">
 <div class="wrap">
 <div class="section-head reveal">
-<div><h2 class="section-title black">Funciones y entradas</h2></div>
+<div><h2 class="section-title black"><span class="agenda-desktop-title">Funciones y entradas</span><span class="agenda-mobile-title">Próximas fechas:</span></h2></div>
 </div>
 <div class="gig-list">
 <div class="gig gig-taburete reveal">
