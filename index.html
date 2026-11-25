@@ -1931,15 +1931,16 @@
       #home-view #inicio .hero-actions .btn-primary i { transform: rotate(180deg); }
     }
 
-    /* Taburete: un único botón real, sin columnas ni zonas vacías. */
+    /* Entrada móvil: una acción compacta, con contraste alto y sin adornos. */
     .gig-taburete .ticket-mobile-label { display: none; }
     @media (max-width: 700px) {
+      #home-view #funciones .section-head { text-align: center; margin-bottom: .9rem; }
+      #home-view #funciones .section-title { font-family: "Inter", Arial, sans-serif; font-size: 1.15rem; font-weight: 700; letter-spacing: -.025em; text-transform: none; }
       #home-view #funciones .gig.gig-taburete,
       #home-view #funciones .gig.gig-taburete:hover,
       #home-view #funciones .gig.gig-taburete:active {
-        display: block; min-height: 0; padding: 0; margin: 0 4px 4px 0;
-        border: 0; border-radius: 0; background: transparent;
-        box-shadow: none; transform: none;
+        display: flex; justify-content: center; min-height: 0; padding: 0; margin: 0;
+        border: 0; background: transparent; box-shadow: none; transform: none;
       }
       #home-view #funciones .gig.gig-taburete::after,
       #home-view #funciones .gig.gig-taburete .gig-date,
@@ -1949,29 +1950,27 @@
       #home-view #funciones .gig.gig-taburete a.ticket-cta > i { display: none; }
       #home-view #funciones .gig.gig-taburete a.ticket-cta,
       #home-view #funciones .gig.gig-taburete a.ticket-cta:hover {
-        position: static; inset: auto; z-index: auto;
-        display: flex; align-items: center; justify-content: center;
-        width: 100%; height: auto; min-height: 0; margin: 0;
-        padding: .95rem .65rem 1rem;
-        border: 2px solid var(--ink); border-radius: 8px;
-        background: var(--button-amber); color: var(--ink);
-        box-shadow: 4px 4px 0 var(--ink);
-        text-transform: none; text-align: center;
-        opacity: 1; transform: none;
+        position: relative; inset: auto; display: inline-flex; align-items: center;
+        justify-content: center; width: auto; max-width: 100%; height: auto;
+        min-height: 0; margin: 0; padding: .88rem 1.2rem;
+        border: 0; border-radius: 12px; background: var(--photo-night);
+        color: var(--white); box-shadow: none; text-transform: none;
+        text-align: left; opacity: 1; transform: none;
       }
       #home-view #funciones .gig.gig-taburete .ticket-mobile-label {
-        display: flex; flex-direction: column; align-items: center; gap: .32rem;
-        width: 100%; line-height: 1.25;
+        display: flex; flex-direction: column; align-items: flex-start; gap: .3rem;
+        width: auto; line-height: 1.25;
       }
       #home-view #funciones .gig.gig-taburete .ticket-mobile-date {
-        font-size: clamp(.98rem, 4.4vw, 1.2rem); font-weight: 700; letter-spacing: -.025em;
+        font-size: clamp(.98rem, 4.7vw, 1.24rem); font-weight: 700; letter-spacing: -.025em;
+        color: var(--white);
       }
       #home-view #funciones .gig.gig-taburete .ticket-mobile-action {
-        display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
-        font-size: clamp(1.15rem, 5vw, 1.42rem); font-weight: 800; letter-spacing: -.035em;
+        display: inline-flex; align-items: center; gap: .45rem;
+        font-size: .93rem; font-weight: 700; letter-spacing: 0; color: var(--pastel-yellow);
       }
       #home-view #funciones .gig.gig-taburete a.ticket-cta:active {
-        transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink);
+        background: var(--ink); transform: scale(.98); box-shadow: none;
       }
     }
 </style>
