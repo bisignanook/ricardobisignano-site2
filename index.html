@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
+<script>
+  if (new URLSearchParams(location.search).get('entradas') === '1') {
+    document.documentElement.classList.add('entry-agenda');
+  }
+</script>
 <meta content="Ricardo Bisignano. Stand up y canciones improvisadas. Próximas funciones y entradas." name="description"/>
 <title>Ricardo Bisignano — Stand up en vivo</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -1885,6 +1890,16 @@
       #home-view .agenda .gig-meta strong { font-size: .88rem; line-height: 1.35; font-weight: 700; }
       .identity-copy { font-size: 1rem; line-height: 1.65; }
     }
+
+    /* Acceso especial por URL: sin desplazar la página ni alterar la portada normal. */
+    html.entry-agenda #home-view > main { display: flex; flex-direction: column; padding-top: 70px; }
+    html.entry-agenda #home-view > main > #funciones { order: -1; padding-top: 1.5rem; padding-bottom: 2rem; }
+    html.entry-agenda #home-view > main > #inicio { padding-top: 0; }
+    html.entry-agenda #funciones .reveal { opacity: 1; transform: none; }
+    html.entry-agenda #funciones .section-head { margin-bottom: 1rem; }
+    @media (max-width: 700px) {
+      html.entry-agenda #home-view > main { padding-top: 62px; }
+    }
 </style>
 </head>
 <body>
@@ -1941,6 +1956,13 @@
 </div>
 </div>
 </section>
+<script>
+  if (document.documentElement.classList.contains('entry-agenda')) {
+    const agendaEntry = document.getElementById('funciones');
+    const heroEntry = document.getElementById('inicio');
+    heroEntry.before(agendaEntry);
+  }
+</script>
 <section class="reel" id="en-escena">
 <div class="wrap">
 <div class="reel-head reveal">
@@ -2289,8 +2311,8 @@
 
       if (location.hash === storyHash) {
         setStoryOpen(true, { restoreScroll: false });
-      } else if (location.hash === '#funciones' ||
-                 new URLSearchParams(location.search).get('entradas') === '1') {
+      } else if (location.hash === '#funciones' &&
+                 !document.documentElement.classList.contains('entry-agenda')) {
         // Enlaces externos: aplicar el ancla también al cargar la página.
         var userNavigated = false;
         ['touchstart', 'wheel', 'pointerdown', 'keydown'].forEach(function (type) {
