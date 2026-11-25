@@ -57,7 +57,9 @@ jobs:
               raise SystemExit("No encontré channelVideos en index.html.")
 
           current = re.findall(r"'([^']+)'", match.group(1))
-          videos = [latest_id] + [v for v in current if v != latest_id]
+          # Keep the artist-selected featured video first; sync new uploads after it.
+          featured_id = "V5FKt_2jNw4"
+          videos = list(dict.fromkeys([featured_id, latest_id] + current))
           videos = videos[:12]
 
           replacement = "const channelVideos = [" + ",".join(repr(v) for v in videos) + "];"
