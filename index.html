@@ -2000,6 +2000,79 @@
         #home-view #inicio .hero-line { margin-bottom: .7rem; }
       }
     }
+
+    /* Ritmo móvil: reducir espacios heredados de escritorio sin tocar el contenido. */
+    @media (max-width: 700px) {
+      #home-view > main > .identity,
+      #home-view > main > .bondi-feature,
+      #home-view > main > .reel,
+      #home-view > main > .gallery,
+      #home-view > main > .booking { padding: 1.75rem 0 2rem; }
+
+      #home-view > main > section:not(.hero) > .wrap {
+        width: calc(100% - 36px);
+        max-width: 560px;
+        margin-inline: auto;
+      }
+      #home-view #inicio { padding-bottom: 1.2rem; }
+      #home-view #inicio .hero-copy { padding-top: 1rem; padding-bottom: .25rem; }
+      #home-view #inicio .hero-line { margin-bottom: .95rem; }
+      #home-view .identity .identity-grid { gap: 1.3rem; }
+      #home-view .identity .identity-title {
+        margin: 0 0 .85rem; font-size: clamp(2rem, 10vw, 3.25rem); line-height: 1.02;
+      }
+      #home-view .identity .identity-copy { margin-bottom: .85rem; }
+      #home-view .identity .identity-copy:last-of-type { margin-bottom: 0; }
+      #home-view .identity .credits { margin-top: 1.05rem; gap: .5rem; }
+      #home-view .identity .credit { padding: .42rem .6rem; }
+
+      /* El margen inferior del artículo destacado era un espacio adicional de 64px. */
+      #home-view .bondi-feature .bondi-card { margin: 0 5px 5px 0; min-height: 0; }
+      #home-view .bondi-feature .bondi-visual { min-height: 0; aspect-ratio: 1 / 1; }
+      #home-view .bondi-feature .bondi-copy { padding: 1.45rem 1.2rem 1.5rem; }
+      #home-view .bondi-feature .bondi-kicker { margin-bottom: .9rem; }
+      #home-view .bondi-feature .bondi-title { font-size: clamp(3rem, 17.5vw, 5rem); line-height: .83; }
+      #home-view .bondi-feature .bondi-excerpt { margin-top: 1.05rem; line-height: 1.5; }
+      #home-view .bondi-feature .bondi-cta { margin-top: 1.1rem; min-height: 48px; }
+
+      #home-view .reel .reel-head,
+      #home-view .gallery .section-head { margin: 0 0 1.15rem; }
+      #home-view .reel .section-title,
+      #home-view .gallery .section-title {
+        margin: 0; font-size: clamp(2rem, 10vw, 3.25rem); line-height: 1.05;
+      }
+      #home-view .reel .reel-head .btn { margin-top: .65rem; min-height: 44px; }
+      #home-view .gallery .gallery-controls { margin-top: .65rem; }
+      #home-view .booking .booking-grid { gap: 1.05rem; }
+      #home-view .booking .booking-title { margin: 0 0 .65rem; line-height: 1.08; }
+      #home-view .footer { padding: 1.6rem 0; }
+      #home-view .footer-grid { gap: 1rem; }
+
+      /* CTA principal: toda la superficie es un enlace directo, fecha en primer plano. */
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta,
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta:hover {
+        min-height: 80px; padding: .9rem 1rem;
+        gap: .75rem; border: 1px solid rgba(27,28,30,.15); border-radius: 12px;
+        color: var(--ink); background: #e2b76f;
+        box-shadow: 0 3px 0 rgba(27,28,30,.15);
+      }
+      #home-view #inicio #funciones .gig-taburete .ticket-mobile-label {
+        gap: .35rem; align-items: flex-start;
+      }
+      #home-view #inicio #funciones .ticket-mobile-date {
+        font-size: clamp(1rem, 5.1vw, 1.4rem); font-weight: 800;
+        line-height: 1.16; letter-spacing: -.04em;
+      }
+      #home-view #inicio #funciones .ticket-mobile-action {
+        font-size: .86rem; font-weight: 800; letter-spacing: .035em; line-height: 1.2;
+      }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta::after {
+        flex-basis: 22px; width: 22px; height: 22px;
+      }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta:active {
+        background: var(--button-amber); transform: scale(.985); box-shadow: none;
+      }
+    }
 </style>
 </head>
 <body>
