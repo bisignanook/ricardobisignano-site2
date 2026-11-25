@@ -1930,6 +1930,65 @@
       #home-view #inicio .hero-copy { padding-top: 1.6rem; }
       #home-view #inicio .hero-actions .btn-primary i { transform: rotate(180deg); }
     }
+
+    /* Taburete en celular: una sola tarjeta de compra, clara y sin botones duplicados. */
+    @media (max-width: 700px) {
+      #home-view #funciones .gig.gig-taburete,
+      #home-view #funciones .gig.gig-taburete:hover {
+        grid-template-columns: 64px minmax(0,1fr);
+        grid-template-rows: auto auto;
+        gap: .25rem .85rem;
+        align-items: center;
+        min-height: 0;
+        padding: 1rem 1rem 3.35rem;
+        border: 1px solid var(--ink);
+        border-radius: 10px;
+        background: var(--pastel-yellow);
+        box-shadow: 3px 3px 0 var(--ink);
+        transform: none;
+      }
+      #home-view #funciones .gig.gig-taburete::after { display: none; }
+      #home-view #funciones .gig.gig-taburete .gig-date {
+        align-self: center; padding-right: .65rem;
+        border-right: 1px solid rgba(27,28,30,.28);
+      }
+      #home-view #funciones .gig.gig-taburete .gig-date strong {
+        font-size: 1.27rem; line-height: 1.1; color: var(--ink);
+      }
+      #home-view #funciones .gig.gig-taburete .gig-date span {
+        font-size: .66rem; text-transform: none; letter-spacing: 0;
+      }
+      #home-view #funciones .gig.gig-taburete .gig-place {
+        padding: 0; font-size: 1.12rem; line-height: 1.2;
+        text-transform: none; letter-spacing: -.025em;
+      }
+      #home-view #funciones .gig.gig-taburete .gig-city { display: block; }
+      #home-view #funciones .gig.gig-taburete .gig-separator { display: none; }
+      #home-view #funciones .gig.gig-taburete .gig-venue {
+        display: block; font-size: .85rem; font-weight: 600; margin-top: .2rem;
+      }
+      #home-view #funciones .gig.gig-taburete .gig-meta strong {
+        font-size: .83rem; font-weight: 600; margin: 0;
+      }
+      #home-view #funciones .gig.gig-taburete .gig-address { display: none; }
+      #home-view #funciones .gig.gig-taburete a.ticket-cta,
+      #home-view #funciones .gig.gig-taburete a.ticket-cta:hover {
+        position: absolute; inset: 0; z-index: 5;
+        display: flex; align-items: flex-end; justify-content: flex-end;
+        width: 100%; height: 100%; margin: 0; padding: 0 1rem .85rem;
+        border: 0; border-radius: inherit; box-shadow: none;
+        background: transparent; color: var(--ink);
+        font-size: .88rem; font-weight: 800; letter-spacing: -.01em;
+        text-transform: none; line-height: 1.3; opacity: 1; transform: none;
+      }
+      #home-view #funciones .gig.gig-taburete a.ticket-cta::before {
+        content: ""; position: absolute; left: 1rem; right: 1rem;
+        bottom: 2.65rem; border-top: 1px solid rgba(27,28,30,.22);
+      }
+      #home-view #funciones .gig.gig-taburete a.ticket-cta i { display: none; }
+      #home-view #funciones .gig.gig-taburete a.ticket-cta::after { content: "↗"; font-size: 1.05rem; line-height: 1.1; }
+      #home-view #funciones .gig.gig-taburete:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+    }
 </style>
 </head>
 <body>
@@ -1977,10 +2036,10 @@
 <div><h2 class="section-title black">Funciones y entradas</h2></div>
 </div>
 <div class="gig-list">
-<div class="gig reveal">
+<div class="gig gig-taburete reveal">
 <div class="gig-date"><strong>11 DIC</strong><span>Viernes</span></div>
-<h3 class="gig-place">Palermo · Taburete Comedia</h3>
-<div class="gig-meta"><strong>20:30 hs</strong>Thames 1511, Palermo</div>
+<h3 class="gig-place"><span class="gig-city">Palermo</span><span class="gig-separator"> · </span><span class="gig-venue">Taburete Comedia</span></h3>
+<div class="gig-meta"><strong>20:30 hs</strong><span class="gig-address">Thames 1511, Palermo</span></div>
 <a class="btn btn-primary ticket-cta" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2862?utm_source=ricardobisignano&amp;utm_medium=referral&amp;utm_campaign=bruto-en-diamante" data-analytics-event="ClickEntradas_Taburete_11Dic" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 11 de diciembre en Taburete Comedia">Comprar entradas <i class="fa-solid fa-ticket"></i></a>
 </div>
 </div>
