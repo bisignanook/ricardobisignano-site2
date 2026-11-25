@@ -2048,30 +2048,40 @@
       #home-view .footer { padding: 1.6rem 0; }
       #home-view .footer-grid { gap: 1rem; }
 
-      /* CTA principal: toda la superficie es un enlace directo, fecha en primer plano. */
+      /* Venta móvil: información del evento y CTA diferenciado, dentro de un único enlace. */
       #home-view #inicio #funciones .gig-taburete a.ticket-cta,
       #home-view #inicio #funciones .gig-taburete a.ticket-cta:hover {
-        min-height: 80px; padding: .9rem 1rem;
-        gap: .75rem; border: 1px solid rgba(27,28,30,.15); border-radius: 12px;
-        color: var(--ink); background: #e2b76f;
-        box-shadow: 0 3px 0 rgba(27,28,30,.15);
+        display: block; min-height: 0; padding: 0; margin: 0;
+        border: 0; border-radius: 0; background: transparent;
+        color: var(--ink); box-shadow: none; text-align: left; transform: none;
+        overflow: visible;
       }
       #home-view #inicio #funciones .gig-taburete .ticket-mobile-label {
-        gap: .35rem; align-items: flex-start;
+        display: flex; flex-direction: column; align-items: stretch;
+        width: 100%; gap: .55rem; line-height: 1.25;
       }
       #home-view #inicio #funciones .ticket-mobile-date {
-        font-size: clamp(1rem, 5.1vw, 1.4rem); font-weight: 800;
-        line-height: 1.16; letter-spacing: -.04em;
+        color: var(--ink); font-family: "Inter", Arial, sans-serif;
+        font-size: clamp(.98rem, 4.5vw, 1.23rem); font-weight: 800;
+        letter-spacing: -.025em; text-transform: uppercase;
       }
       #home-view #inicio #funciones .ticket-mobile-action {
-        font-size: .86rem; font-weight: 800; letter-spacing: .035em; line-height: 1.2;
+        display: flex; justify-content: center; align-items: center; gap: .7rem;
+        width: 100%; min-height: 56px; padding: .85rem 1rem;
+        border-radius: 8px; background: #994a32; color: #fffdf8;
+        font-family: "Inter", Arial, sans-serif; font-size: clamp(1rem, 4.7vw, 1.2rem);
+        font-weight: 800; letter-spacing: -.015em; line-height: 1.25;
+        text-transform: none; text-align: center;
+        transition: background .16s, transform .16s;
       }
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta::after {
-        flex-basis: 22px; width: 22px; height: 22px;
+      #home-view #inicio #funciones .ticket-mobile-action::after {
+        content: ""; display: inline-block; flex: 0 0 19px; width: 19px; height: 19px;
+        background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fffdf8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15m-7-7 7 7-7 7'/%3E%3C/svg%3E");
       }
-      #home-view #inicio #funciones .gig-taburete a.ticket-cta:active {
-        background: var(--button-amber); transform: scale(.985); box-shadow: none;
-      }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta::after { display: none; }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta:hover .ticket-mobile-action { background: #82402d; }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta:active { background: transparent; transform: none; box-shadow: none; }
+      #home-view #inicio #funciones .gig-taburete a.ticket-cta:active .ticket-mobile-action { transform: scale(.985); background: #743724; }
     }
 </style>
 </head>
@@ -2103,7 +2113,7 @@
 <div class="hero-copy reveal">
 <p class="eyebrow">Comediante · actor · músico</p>
 <h1 class="hero-title black">Ricardo<span class="accent">Bisignano</span></h1>
-<p class="hero-line">Stand up y canciones improvisadas.</p>
+<p class="hero-line">Comediante, actor, músico</p>
 <div class="hero-actions">
 <a class="btn btn-primary" href="#funciones" data-scroll-to="funciones">Ver funciones y entradas <i class="fa-solid fa-arrow-down"></i></a>
 </div>
@@ -2124,7 +2134,7 @@
 <div class="gig-date"><strong>11 DIC</strong><span>Viernes</span></div>
 <h3 class="gig-place"><span class="gig-city">Palermo</span><span class="gig-separator"> · </span><span class="gig-venue">Taburete Comedia</span></h3>
 <div class="gig-meta"><strong>20:30 hs</strong><span class="gig-address">Thames 1511, Palermo</span></div>
-<a class="btn btn-primary ticket-cta" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2862?utm_source=ricardobisignano&amp;utm_medium=referral&amp;utm_campaign=bruto-en-diamante" data-analytics-event="ClickEntradas_Taburete_11Dic" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 11 de diciembre en Taburete Comedia"><span class="ticket-desktop-label">Comprar entradas</span><span class="ticket-mobile-label"><span class="ticket-mobile-action">Comprar entradas</span><span class="ticket-mobile-date">11 de diciembre · Palermo</span></span> <i class="fa-solid fa-ticket"></i></a>
+<a class="btn btn-primary ticket-cta" href="https://taburetecomedia.com.ar/funcion/ricardo-bisignano-bruto-en-diamante-2862?utm_source=ricardobisignano&amp;utm_medium=referral&amp;utm_campaign=bruto-en-diamante" data-analytics-event="ClickEntradas_Taburete_11Dic" target="_blank" rel="noopener noreferrer" aria-label="Comprar entradas para el 11 de diciembre en Taburete Comedia"><span class="ticket-desktop-label">Comprar entradas</span><span class="ticket-mobile-label"><span class="ticket-mobile-date">11 de diciembre · Palermo</span><span class="ticket-mobile-action">Comprar entradas</span></span> <i class="fa-solid fa-ticket"></i></a>
 </div>
 </div>
 </div>
