@@ -11,76 +11,67 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: sync-youtube-main
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Detect latest upload and update site
+        with:
+          ref: main
+      - name: Detect latest upload and safely update site
         shell: bash
         run: |
           python -m pip install --quiet --disable-pip-version-check yt-dlp
-          python - <<'PY'
-          import re
-          import subprocess
-          from pathlib import Path
-
-          CHANNEL_URL = "https://www.youtube.com/@Ricardo.Bisignano/videos"
-
-          try:
-              latest_id = subprocess.check_output(
-                  [
-                      "yt-dlp",
-                      "--flat-playlist",
-                      "--playlist-end", "1",
-                      "--print", "id",
-                      "--no-warnings",
-                      CHANNEL_URL,
-                  ],
-                  text=True,
-                  timeout=90,
-              ).strip().splitlines()[0]
-          except Exception as exc:
-              raise SystemExit(f"No pude detectar el último video de YouTube: {exc}")
-
-          if not re.fullmatch(r"[A-Za-z0-9_-]{11}", latest_id):
-              raise SystemExit(f"ID de video inválido recibido: {latest_id!r}")
-
-          path = Path("index.html")
-          text = path.read_text(encoding="utf-8")
-
-          pattern = r"const channelVideos = \[(.*?)\];"
-          match = re.search(pattern, text)
-          if not match:
-              raise SystemExit("No encontré channelVideos en index.html.")
-
-          current = re.findall(r"'([^']+)'", match.group(1))
-          # Keep the artist-selected featured video first; sync new uploads after it.
-          featured_id = "V5FKt_2jNw4"
-          videos = list(dict.fromkeys([featured_id, latest_id] + current))
-          videos = videos[:12]
-
-          replacement = "const channelVideos = [" + ",".join(repr(v) for v in videos) + "];"
-          new_text = text[:match.start()] + replacement + text[match.end():]
-
-          if new_text != text:
-              path.write_text(new_text, encoding="utf-8")
-              print(f"Nuevo video detectado: {latest_id}")
-          else:
-              print(f"Sin cambios. Último video: {latest_id}")
-          PY
-
-      - name: Commit changes
-        shell: bash
-        run: |
-          if git diff --quiet; then
-            echo "No hay cambios."
-            exit 0
-          fi
+          latest_id="$(yt-dlp --flat-playlist --playlist-end 1 --print id --no-warnings https://www.youtube.com/@Ricardo.Bisignano/videos)"
+          export latest_id
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
-          git commit -m "Auto-update latest YouTube video"
-          git push
+          for attempt in 1 2 3 4 5; do
+            # Recompute only the video list against the current remote version.
+            git fetch origin main
+            git reset --hard FETCH_HEAD
+            python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          latest_id = os.environ["latest_id"].strip()
+          if not re.fullmatch(r"[A-Za-z0-9_-]{11}", latest_id):
+              raise SystemExit("ID de video inválido")
+          path = Path("index.html")
+          text = path.read_text(encoding="utf-8")
+          match = re.search(r"const channelVideos = \[(.*?)\];", text)
+          if not match:
+              raise SystemExit("No encontré channelVideos")
+          current = re.findall(r"'([^']+)'", match.group(1))
+          featured_id = "V5FKt_2jNw4"
+          videos = list(dict.fromkeys([featured_id, latest_id] + current))[:12]
+          replacement = "const channelVideos = [" + ",".join(repr(v) for v in videos) + "];"
+          new_text = text[:match.start()] + replacement + text[match.end():]
+          if new_text != text:
+              path.write_text(new_text, encoding="utf-8")
+          PY
+            if git diff --quiet; then
+              echo "Lista actualizada; sin cambios."
+              exit 0
+            fi
+            git add index.html
+            git commit -m "Auto-update latest YouTube video"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            # Never force-push. If another edit arrived, retry from the new main.
+            local_base="$(git rev-parse HEAD^)"
+            git fetch origin main
+            if [ "$(git rev-parse FETCH_HEAD)" = "$local_base" ]; then
+              echo "::error::Push failed without a concurrent change."
+              exit 1
+            fi
+            sleep "$((attempt * 3))"
+          done
+          echo "::notice::Concurrent site edits; sync deferred to the next scheduled run."
