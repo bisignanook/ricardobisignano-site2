@@ -1885,16 +1885,6 @@
       #home-view .agenda .gig-meta strong { font-size: .88rem; line-height: 1.35; font-weight: 700; }
       .identity-copy { font-size: 1rem; line-height: 1.65; }
     }
-
-    /* Mobile: agenda primero, con acceso directo a la ticketera. */
-    @media (max-width: 700px) {
-      #home-view > main { display: flex; flex-direction: column; padding-top: 62px; }
-      #home-view > main > #funciones { order: -1; padding: 1.5rem 0 2rem; }
-      #home-view > main > #inicio { padding-top: 0; }
-      #home-view #funciones .section-head { margin-bottom: 1rem; }
-      #home-view #funciones .section-title { font-size: clamp(1.95rem, 8.5vw, 2.8rem); line-height: 1.1; }
-      #home-view #funciones .reveal { opacity: 1; transform: none; }
-    }
 </style>
 </head>
 <body>
@@ -1951,24 +1941,6 @@
 </div>
 </div>
 </section>
-<script>
-    // Mantiene también el orden de lectura y navegación por teclado.
-    (() => {
-      const agenda = document.getElementById('funciones');
-      const hero = document.getElementById('inicio');
-      const mobile = window.matchMedia('(max-width: 700px)');
-      function syncSectionOrder() {
-        if (mobile.matches) {
-          if (agenda.nextElementSibling !== hero) hero.before(agenda);
-        } else {
-          if (hero.nextElementSibling !== agenda) agenda.before(hero);
-        }
-      }
-      syncSectionOrder();
-      if (mobile.addEventListener) mobile.addEventListener('change', syncSectionOrder);
-      else mobile.addListener(syncSectionOrder);
-    })();
-</script>
 <section class="reel" id="en-escena">
 <div class="wrap">
 <div class="reel-head reveal">
